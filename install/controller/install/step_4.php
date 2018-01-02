@@ -7,7 +7,7 @@ class ControllerInstallStep4 extends Controller {
 
 		$data['heading_title'] = $this->language->get('heading_title');
 		
-		$data['text_step_4'] = $this->language->get('text_step_4');		
+		$data['text_step_4'] = $this->language->get('text_step_4');
 		$data['text_catalog'] = $this->language->get('text_catalog');
 		$data['text_admin'] = $this->language->get('text_admin');
 		$data['text_loading'] = $this->language->get('text_loading');
@@ -33,12 +33,10 @@ class ControllerInstallStep4 extends Controller {
 
 		$data['button_mail'] = $this->language->get('button_mail');
 		$data['button_setup'] = $this->language->get('button_setup');
-
 		$data['error_warning'] = $this->language->get('error_warning');
 
 		if (isset($this->session->data['success'])) {
 			$data['success'] = $this->session->data['success'];
-
 			unset($this->session->data['success']);
 		} else {
 			$data['success'] = '';
@@ -348,165 +346,165 @@ class ControllerInstallStep4 extends Controller {
 			$this->db->query($psa_11_sql);
 		}
 		$abc3 = $this->db->query("SELECT * FROM information_schema.COLUMNS WHERE COLUMN_NAME='seller_id' AND TABLE_NAME='".DB_PREFIX."option' AND TABLE_SCHEMA='".DB_DATABASE."'");
-		if($abc3->num_rows==0){			
+		if($abc3->num_rows==0){
 			$a_12_sql = "ALTER TABLE " .DB_PREFIX. "option ADD COLUMN seller_id int(11) NOT NULL default 0";
 			$this->db->query($a_12_sql);
 		}
 
 		$abc4 = $this->db->query("SELECT * FROM information_schema.COLUMNS WHERE COLUMN_NAME='approve' AND TABLE_NAME='".DB_PREFIX."option' AND TABLE_SCHEMA='".DB_DATABASE."'");
-		if($abc4->num_rows==0){		
+		if($abc4->num_rows==0){
 			$a_13_sql = "ALTER TABLE " .DB_PREFIX. "option ADD COLUMN approve smallint(6) NOT NULL default 0";
 			$this->db->query($a_13_sql);
 		}
 		$abc5 = $this->db->query("SELECT * FROM information_schema.COLUMNS WHERE COLUMN_NAME='seller_id' AND TABLE_NAME='".DB_PREFIX."download' AND TABLE_SCHEMA='".DB_DATABASE."'");
-		if($abc5->num_rows==0){	
+		if($abc5->num_rows==0){
 			$a_14_sql = "ALTER TABLE " .DB_PREFIX. "download ADD COLUMN seller_id int(11) NOT NULL default 0";
 			$this->db->query($a_14_sql);
 		}
 
 		$abcc5 = $this->db->query("SELECT * FROM information_schema.COLUMNS WHERE COLUMN_NAME='commission' AND TABLE_NAME='".DB_PREFIX."order_product' AND TABLE_SCHEMA='".DB_DATABASE."'");
-		if($abcc5->num_rows==0){	
+		if($abcc5->num_rows==0){
 			$a_15_sql = "ALTER TABLE " .DB_PREFIX. "order_product ADD commission decimal(15,4) NOT NULL DEFAULT 0.0000";
 			$this->db->query($a_15_sql);
 		}
 		$abccp5 = $this->db->query("SELECT * FROM information_schema.COLUMNS WHERE COLUMN_NAME='commissionper' AND TABLE_NAME='".DB_PREFIX."order_product' AND TABLE_SCHEMA='".DB_DATABASE."'");
-		if($abccp5->num_rows==0){	
+		if($abccp5->num_rows==0){
 			$a_17_sql = "ALTER TABLE " .DB_PREFIX. "order_product ADD commissionper decimal(15,4) NOT NULL DEFAULT 0.0000";
 			$this->db->query($a_17_sql);
 		}
 		$abcst5 = $this->db->query("SELECT * FROM information_schema.COLUMNS WHERE COLUMN_NAME='seller_total' AND TABLE_NAME='".DB_PREFIX."order_product' AND TABLE_SCHEMA='".DB_DATABASE."'");
-		if($abcst5->num_rows==0){	
+		if($abcst5->num_rows==0){
 			$a_18_sql = "ALTER TABLE " .DB_PREFIX. "order_product ADD seller_total decimal(15,4) NOT NULL DEFAULT 0.0000";
 			$this->db->query($a_18_sql);
 		}
 		$abc64 = $this->db->query("SELECT * FROM information_schema.COLUMNS WHERE COLUMN_NAME='seller_paid_status' AND TABLE_NAME='".DB_PREFIX."order_product' AND TABLE_SCHEMA='".DB_DATABASE."'");
-		if($abc64->num_rows==0){	
+		if($abc64->num_rows==0){
 			$a_19_sql = "ALTER TABLE " .DB_PREFIX. "order_product ADD seller_paid_status tinyint(1) NOT NULL DEFAULT 0";
 			$this->db->query($a_19_sql);
 		}
 		$abc65 = $this->db->query("SELECT * FROM information_schema.COLUMNS WHERE COLUMN_NAME='product_status_id' AND TABLE_NAME='".DB_PREFIX."order_product' AND TABLE_SCHEMA='".DB_DATABASE."'");
-		if($abc65->num_rows==0){	
+		if($abc65->num_rows==0){
 			$a_20_sql = "ALTER TABLE " .DB_PREFIX. "order_product ADD product_status_id int(11) NOT NULL DEFAULT 0";
 			$this->db->query($a_20_sql);
 		}
 		$abc15 = $this->db->query("SELECT * FROM information_schema.COLUMNS WHERE COLUMN_NAME='payment_description' AND TABLE_NAME='".DB_PREFIX."order_product' AND TABLE_SCHEMA='".DB_DATABASE."'");
-		if($abc15->num_rows==0){	
+		if($abc15->num_rows==0){
 			$a_21_sql = "ALTER TABLE " .DB_PREFIX. "order_product ADD payment_description text NOT NULL";
 			$this->db->query($a_21_sql);
 		}
 		$abc25 = $this->db->query("SELECT * FROM information_schema.COLUMNS WHERE COLUMN_NAME='payment_date' AND TABLE_NAME='".DB_PREFIX."order_product' AND TABLE_SCHEMA='".DB_DATABASE."'");
-		if($abc25->num_rows==0){	
+		if($abc25->num_rows==0){
 			$a_22_sql = "ALTER TABLE " .DB_PREFIX. "order_product ADD payment_date datetime NOT NULL";
 			$this->db->query($a_22_sql);
 		}
 		$abc35 = $this->db->query("SELECT * FROM information_schema.COLUMNS WHERE COLUMN_NAME='seller_id' AND TABLE_NAME='".DB_PREFIX."order_product' AND TABLE_SCHEMA='".DB_DATABASE."'");
-		if($abc35->num_rows==0){	
+		if($abc35->num_rows==0){
 			$a_23_sql = "ALTER TABLE " .DB_PREFIX. "order_product ADD seller_id int(11) NOT NULL DEFAULT 0";
 			$this->db->query($a_23_sql);
 		}
 		$abc25 = $this->db->query("SELECT * FROM information_schema.COLUMNS WHERE COLUMN_NAME='seller_id' AND TABLE_NAME='".DB_PREFIX."product' AND TABLE_SCHEMA='".DB_DATABASE."'");
-		if($abc25->num_rows==0){	
+		if($abc25->num_rows==0){
 			$a_24_sql = "ALTER TABLE " .DB_PREFIX. "product ADD seller_id int(11) NOT NULL DEFAULT 1";
 			$this->db->query($a_24_sql);
 		}
 		$abcd5 = $this->db->query("SELECT * FROM information_schema.COLUMNS WHERE COLUMN_NAME='documentation' AND TABLE_NAME='".DB_PREFIX."product' AND TABLE_SCHEMA='".DB_DATABASE."'");
-		if($abcd5->num_rows==0){	
+		if($abcd5->num_rows==0){
 			$a_25_sql = "ALTER TABLE " .DB_PREFIX. "product ADD documentation text COLLATE utf8_bin NOT NULL";
 		$this->db->query($a_25_sql);
 		}
 		$abcoh5 = $this->db->query("SELECT * FROM information_schema.COLUMNS WHERE COLUMN_NAME='seller_id' AND TABLE_NAME='".DB_PREFIX."order_history' AND TABLE_SCHEMA='".DB_DATABASE."'");
-		if($abcoh5->num_rows==0){	
+		if($abcoh5->num_rows==0){
 			$a_26_sql = "ALTER TABLE " .DB_PREFIX. "order_history ADD seller_id int(11) NOT NULL DEFAULT 1";
 			$this->db->query($a_26_sql);
 		}
 		$abcr5 = $this->db->query("SELECT * FROM information_schema.COLUMNS WHERE COLUMN_NAME='seller_id' AND TABLE_NAME='".DB_PREFIX."review' AND TABLE_SCHEMA='".DB_DATABASE."'");
-		if($abcr5->num_rows==0){	
+		if($abcr5->num_rows==0){
 			$a_27_sql = "ALTER TABLE " .DB_PREFIX. "review ADD seller_id int(11) NOT NULL DEFAULT 0";
 			$this->db->query($a_27_sql);
 				}
 		$abcd5 = $this->db->query("SELECT * FROM information_schema.COLUMNS WHERE COLUMN_NAME='seller_id' AND TABLE_NAME='".DB_PREFIX."product_discount' AND TABLE_SCHEMA='".DB_DATABASE."'");
-		if($abcd5->num_rows==0){	
+		if($abcd5->num_rows==0){
 		   	$a_28_sql = "ALTER TABLE " .DB_PREFIX. "product_discount ADD seller_id int(11) NOT NULL DEFAULT 0";
 			$this->db->query($a_28_sql);
 		}
 		$abco5 = $this->db->query("SELECT * FROM information_schema.COLUMNS WHERE COLUMN_NAME='seller_id' AND TABLE_NAME='".DB_PREFIX."product_option' AND TABLE_SCHEMA='".DB_DATABASE."'");
-		if($abco5->num_rows==0){	
+		if($abco5->num_rows==0){
 			$a_29_sql = "ALTER TABLE " .DB_PREFIX. "product_option ADD seller_id int(11) NOT NULL DEFAULT 0";
 			$this->db->query($a_29_sql);
 		}
 		$alt_option_value = $this->db->query("SELECT * FROM information_schema.COLUMNS WHERE COLUMN_NAME='seller_id' AND TABLE_NAME='".DB_PREFIX."product_option_value' AND TABLE_SCHEMA='".DB_DATABASE."'");
-		if($alt_option_value->num_rows==0){	
+		if($alt_option_value->num_rows==0){
 			$a_30_sql = "ALTER TABLE " .DB_PREFIX. "product_option_value ADD seller_id int(11) NOT NULL DEFAULT 0";
 			$this->db->query($a_30_sql);
 		}
 		$alt_product_special = $this->db->query("SELECT * FROM information_schema.COLUMNS WHERE COLUMN_NAME='seller_id' AND TABLE_NAME='".DB_PREFIX."product_special' AND TABLE_SCHEMA='".DB_DATABASE."'");
-		if($alt_product_special->num_rows==0){	
+		if($alt_product_special->num_rows==0){
 			$a_31_sql = "ALTER TABLE " .DB_PREFIX. "product_special ADD seller_id int(11) NOT NULL DEFAULT 0";
 			$this->db->query($a_31_sql);
 		}
 		$abc60 = $this->db->query("SELECT * FROM information_schema.COLUMNS WHERE COLUMN_NAME='seller_id' AND TABLE_NAME='".DB_PREFIX."product_attribute' AND TABLE_SCHEMA='".DB_DATABASE."'");
-		if($abc60->num_rows==0){	
+		if($abc60->num_rows==0){
 			$a_32_sql = "ALTER TABLE " .DB_PREFIX. "product_attribute ADD seller_id int(11) NOT NULL DEFAULT 0";
 			$this->db->query($a_32_sql);
 		}
 		$abc59 = $this->db->query("SELECT * FROM information_schema.COLUMNS WHERE COLUMN_NAME='seller_id' AND TABLE_NAME='".DB_PREFIX."attribute' AND TABLE_SCHEMA='".DB_DATABASE."'");
-		if($abc59->num_rows==0){	
+		if($abc59->num_rows==0){
 			$a_33_sql = "ALTER TABLE " .DB_PREFIX. "attribute ADD seller_id int(11) NOT NULL DEFAULT 0";
 			$this->db->query($a_33_sql);
 		}
 		$abc58 = $this->db->query("SELECT * FROM information_schema.COLUMNS WHERE COLUMN_NAME='approve' AND TABLE_NAME='".DB_PREFIX."attribute' AND TABLE_SCHEMA='".DB_DATABASE."'");
-		if($abc58->num_rows==0){	
+		if($abc58->num_rows==0){
 			$a_34_sql = "ALTER TABLE " .DB_PREFIX. "attribute ADD approve smallint(6) NOT NULL DEFAULT 0";
 			$this->db->query($a_34_sql);
 		}
 		$abc57 = $this->db->query("SELECT * FROM information_schema.COLUMNS WHERE COLUMN_NAME='amount' AND TABLE_NAME='".DB_PREFIX."commission' AND TABLE_SCHEMA='".DB_DATABASE."'");
-		if($abc57->num_rows==0){	
+		if($abc57->num_rows==0){
 			$a_44_sql = "ALTER TABLE `".DB_PREFIX."commission`  ADD amount float NOT NULL";
 			$this->db->query($a_44_sql);
 		}
 		$abc56 = $this->db->query("SELECT * FROM information_schema.COLUMNS WHERE COLUMN_NAME='per' AND TABLE_NAME='".DB_PREFIX."commission' AND TABLE_SCHEMA='".DB_DATABASE."'");
 
-		if($abc56->num_rows==0){	
+		if($abc56->num_rows==0){
 			$a_45_sql = "ALTER TABLE `".DB_PREFIX."commission`  ADD per int(11) NOT NULL";
 			$this->db->query($a_45_sql);
 		}
 
 		$abc55 = $this->db->query("SELECT * FROM information_schema.COLUMNS WHERE COLUMN_NAME='duration_id' AND TABLE_NAME='".DB_PREFIX."commission' AND TABLE_SCHEMA='".DB_DATABASE."'");
-		if($abc55->num_rows==0){	
+		if($abc55->num_rows==0){
 			$a_46_sql = "ALTER TABLE `".DB_PREFIX."commission`  ADD  duration_id varchar(255) NOT NULL";
 			$this->db->query($a_46_sql);
 		}
 
 		$abc54 = $this->db->query("SELECT * FROM information_schema.COLUMNS WHERE COLUMN_NAME='expiry_date' AND TABLE_NAME='".DB_PREFIX."sellers' AND TABLE_SCHEMA='".DB_DATABASE."'");
-		if($abc54->num_rows==0){	
+		if($abc54->num_rows==0){
 			$a_47_sql = "ALTER TABLE `".DB_PREFIX."sellers`  ADD  expiry_date datetime NOT NULL";
 			$this->db->query($a_47_sql);
 		}
 
 		$abc53 = $this->db->query("SELECT * FROM information_schema.COLUMNS WHERE COLUMN_NAME='payment_status' AND TABLE_NAME='".DB_PREFIX."sellers' AND TABLE_SCHEMA='".DB_DATABASE."'");
-		if($abc53->num_rows==0){	
+		if($abc53->num_rows==0){
 			$a_48_sql = "ALTER TABLE `".DB_PREFIX."sellers`  ADD  payment_status int(11) NOT NULL";
 			$this->db->query($a_48_sql);
 		}
 		$abc52 = $this->db->query("SELECT * FROM information_schema.COLUMNS WHERE COLUMN_NAME='payment_date' AND TABLE_NAME='".DB_PREFIX."sellers' AND TABLE_SCHEMA='".DB_DATABASE."'");
-		if($abc52->num_rows==0){	
+		if($abc52->num_rows==0){
 			$a_49_sql = "ALTER TABLE `".DB_PREFIX."sellers`  ADD  payment_date datetime NOT NULL";
 			$this->db->query($a_49_sql);
 		}
 		$abc51 = $this->db->query("SELECT * FROM information_schema.COLUMNS WHERE COLUMN_NAME='payment_amount' AND TABLE_NAME='".DB_PREFIX."sellers' AND TABLE_SCHEMA='".DB_DATABASE."'");
-		if($abc51->num_rows==0){	
+		if($abc51->num_rows==0){
 			$a_50_sql = "ALTER TABLE `".DB_PREFIX."sellers`  ADD  payment_amount float NOT NULL";
 			$this->db->query($a_50_sql);
 		}
 
 		$abc50 = $this->db->query("SELECT * FROM information_schema.COLUMNS WHERE COLUMN_NAME='approve' AND TABLE_NAME='".DB_PREFIX."product' AND TABLE_SCHEMA='".DB_DATABASE."'");
-		if($abc50->num_rows==0){	
+		if($abc50->num_rows==0){
 			$asp_50_sql = "ALTER TABLE `".DB_PREFIX."product`  ADD approve int(11) NOT NULL";
 			$this->db->query($asp_50_sql);
 		}
 
 		$abc501 = $this->db->query("SELECT * FROM information_schema.COLUMNS WHERE COLUMN_NAME='seller_id' AND TABLE_NAME='".DB_PREFIX."cart' AND TABLE_SCHEMA='".DB_DATABASE."'");
-		if($abc501->num_rows==0){	
+		if($abc501->num_rows==0){
 			$asp_501_sql = "ALTER TABLE `".DB_PREFIX."cart`  ADD seller_id int(11) NOT NULL";
 			$this->db->query($asp_501_sql);
 		}
@@ -547,7 +545,7 @@ class ControllerInstallStep4 extends Controller {
 					$username = $query->row['firstname'].'_'.$query->row['lastname'];
 					if($username) {
 					 $this->db->query("INSERT INTO " . DB_PREFIX . "seo_url SET language_id = '1', query = 'seller_id=" . (int)$seller_id . "', keyword = '" . $this->db->escape(strtolower($username)) . "'");
-					}	
+					}
 					$this->db->query("INSERT INTO " . DB_PREFIX . "saddress SET 
 					seller_id = '" . (int)$seller_id . "', 
 					firstname = '" . $this->db->escape($query->row['firstname']) . "', 
@@ -556,7 +554,7 @@ class ControllerInstallStep4 extends Controller {
 					$address_id = $this->db->getLastId();
 					$this->db->query("UPDATE " . DB_PREFIX . "sellers SET address_id = '" . (int)$address_id . "' WHERE
 					seller_id = '" . (int)$seller_id . "'");
-					$store_id = 0;			
+					$store_id = 0;
 					$code = "config";
 					$key = "config_defaultseller_id";
 					$value = $seller_id;
@@ -581,7 +579,7 @@ class ControllerInstallStep4 extends Controller {
 				if(!$product_query->num_rows){
 					$update_products = "UPDATE " . DB_PREFIX . "product 
 					SET seller_id = '" . (int)$default_seller_id . "' 
-					WHERE product_id = '" . (int)$row['product_id'] . "'";	
+					WHERE product_id = '" . (int)$row['product_id'] . "'";
 					$this->db->query($update_products);
 
 	                $insert_into_seller = "INSERT INTO " . DB_PREFIX . "seller SET 

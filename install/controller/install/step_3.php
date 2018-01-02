@@ -21,7 +21,7 @@ class ControllerInstallStep3 extends Controller {
 			$output .= 'define(\'DIR_APPLICATION\', \'' . addslashes(DIR_OPENCART) . 'catalog/\');' . "\n";
 			$output .= 'define(\'DIR_SYSTEM\', \'' . addslashes(DIR_OPENCART) . 'system/\');' . "\n";
 			$output .= 'define(\'DIR_IMAGE\', \'' . addslashes(DIR_OPENCART) . 'image/\');' . "\n";
-			$output .= 'define(\'DIR_STORAGE\', DIR_SYSTEM . \'storage/\');' . "\n";			
+			$output .= 'define(\'DIR_STORAGE\', DIR_SYSTEM . \'storage/\');' . "\n";
 			$output .= 'define(\'DIR_LANGUAGE\', DIR_APPLICATION . \'language/\');' . "\n";
 			$output .= 'define(\'DIR_TEMPLATE\', DIR_APPLICATION . \'view/theme/\');' . "\n";
 			$output .= 'define(\'DIR_CONFIG\', DIR_SYSTEM . \'config/\');' . "\n";
@@ -60,7 +60,7 @@ class ControllerInstallStep3 extends Controller {
 			$output .= '// DIR' . "\n";
 			$output .= 'define(\'DIR_APPLICATION\', \'' . addslashes(DIR_OPENCART) . 'admin/\');' . "\n";
 			$output .= 'define(\'DIR_SYSTEM\', \'' . addslashes(DIR_OPENCART) . 'system/\');' . "\n";
-			$output .= 'define(\'DIR_IMAGE\', \'' . addslashes(DIR_OPENCART) . 'image/\');' . "\n";	
+			$output .= 'define(\'DIR_IMAGE\', \'' . addslashes(DIR_OPENCART) . 'image/\');' . "\n";
 			$output .= 'define(\'DIR_STORAGE\', DIR_SYSTEM . \'storage/\');' . "\n";
 			$output .= 'define(\'DIR_CATALOG\', \'' . addslashes(DIR_OPENCART) . 'catalog/\');' . "\n";
 			$output .= 'define(\'DIR_LANGUAGE\', DIR_APPLICATION . \'language/\');' . "\n";
@@ -95,7 +95,7 @@ class ControllerInstallStep3 extends Controller {
 				echo 'Warning: seller/config.php does not exist. You need to create 1 file in  seller/config.php!';
 				die;
 			} elseif (!is_writable(DIR_OPENCART . 'seller/config.php')) {
-				echo 'Warning: seller/config.php needs to be writable for multiseller to be installed!';
+				echo 'Warning: seller/config.php needs to be writable for Multi Vendor to be installed!';
 				die;
 			}
 			$output  = '<?php' . "\n";
@@ -113,7 +113,7 @@ class ControllerInstallStep3 extends Controller {
 			$output .= 'define(\'DIR_TEMPLATE\', \'' . DIR_OPENCART . 'seller/catalog/view/theme/\');' . "\n";
 			$output .= 'define(\'DIR_CONFIG\', \'' . DIR_OPENCART . 'seller/system/config/\');' . "\n";
 			$output .= 'define(\'DIR_CACHE\', \'' . DIR_OPENCART . 'seller/system/storage/cache/\');' . "\n";
-			$output .= 'define(\'DIR_DOWNLOAD\', \'' . DIR_OPENCART . 'seller/system/storage/download/\');' . "\n";
+			$output .= 'define(\'DIR_DOWNLOAD\', \'' . DIR_OPENCART . 'system/storage/download/\');' . "\n";
 			$output .= 'define(\'DIR_LOGS\', \'' . DIR_OPENCART . 'seller/system/storage/logs/\');' . "\n";
 			$output .= 'define(\'DIR_MODIFICATION\', \'' . DIR_OPENCART . 'seller/system/storage/modification/\');' . "\n";
 			$output .= 'define(\'DIR_UPLOAD\', \'' . DIR_OPENCART . 'system/storage/upload/\');' . "\n\n";
@@ -304,7 +304,7 @@ class ControllerInstallStep3 extends Controller {
 
 		if (!$this->request->post['db_port']) {
 			$this->error['db_port'] = $this->language->get('error_db_port');
-		}		
+		}
 
 		if ($this->request->post['db_prefix'] && preg_match('/[^a-z0-9_]/', $this->request->post['db_prefix'])) {
 			$this->error['db_prefix'] = $this->language->get('error_db_prefix');
@@ -330,7 +330,7 @@ class ControllerInstallStep3 extends Controller {
 			} catch(Exception $e) {
 				$this->error['warning'] = $e->getMessage();
 			}
-		}			
+		}
 		
 		if (!$this->request->post['username']) {
 			$this->error['username'] = $this->language->get('error_username');
