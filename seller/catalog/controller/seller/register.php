@@ -12,6 +12,7 @@ class ControllerSellerRegister extends Controller {
 		$this->document->addStyle('catalog/view/javascript/jquery/datetimepicker/bootstrap-datetimepicker.min.css');
 		$this->load->model('seller/seller');
 		$data['name'] = $this->config->get('config_name');
+		$data['home'] = HTTP_SERVER1;
 		if (is_file(DIR_IMAGE . $this->config->get('config_logo'))) {
 				$data['logo'] = HTTP_SERVER1. 'image/' . $this->config->get('config_logo');
 		} else {			$data['logo'] = '';		}

@@ -24,9 +24,9 @@
 <div class="login-box">
   <div class="login-logo">
       <?php if ($logo) { ?>  
-      <a href="<?php echo $home; ?>"><img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>"  height="40px" /></a   
+      <a href="<?php echo HTTP_SERVER1; ?>"><img src="<?php echo $logo; ?>" title="<?php echo HTTP_SERVER1; ?>" alt="<?php echo HTTP_SERVER1; ?>"  height="40px" /></a   
      <?php } else { ?>        
-      <b><a href="<?php echo $home; ?>"><?php echo $name; ?></a></b><?php } ?>
+      <b><a href="<?php echo HTTP_SERVER1; ?>"><?php echo $name; ?></a></b><?php } ?>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">

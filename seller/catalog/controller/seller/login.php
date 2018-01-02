@@ -84,7 +84,7 @@ class ControllerSellerLogin extends Controller {
 		$this->load->language('common/header');
 		$data['text_home'] = $this->language->get('text_home');
 		$data['heading_title'] = $this->language->get('heading_title');
-		$data['home'] = $this->url->link('common/home');
+		$data['home'] = HTTP_SERVER1;
 		$data['register'] = $this->url->link('seller/register');
 		$data['text_new_seller'] = $this->language->get('text_new_seller');
 		$data['text_register'] = $this->language->get('text_register');
@@ -130,7 +130,6 @@ class ControllerSellerLogin extends Controller {
 			$data['password'] = '';
 		}
 		$data['column_left'] = $this->load->controller('common/column_left');
-		$data['column_right'] = 
 		$data['content_top'] = $this->load->controller('common/content_top');
 		$data['content_bottom'] = $this->load->controller('common/content_bottom');
 		$data['footer'] = $this->load->controller('common/footer');

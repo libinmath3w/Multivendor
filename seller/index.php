@@ -203,7 +203,7 @@ $controller = new Front($registry);
 // Maintenance Mode
 $controller->addPreAction(new Action('common/maintenance'));
 // SEO URL's
-$controller->addPreAction(new Action('common/seo_url'));
+//$controller->addPreAction(new Action('common/seo_url'));
 // Router
 if (isset($request->get['route'])) {
 	$action = new Action($request->get['route']);

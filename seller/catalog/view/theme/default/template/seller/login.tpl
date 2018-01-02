@@ -33,7 +33,7 @@
       <?php if ($logo) { ?>  
       <a href="<?php echo $home; ?>"><img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>"  height="40px" /></a   
      <?php } else { ?>        
-      <b><a href="<?php echo $home; ?>"><?php echo $name; ?></a></b><?php } ?>
+      <b><a href="<?php echo HTTP_SERVER1; ?>"><?php echo $name; ?></a></b><?php } ?>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
@@ -76,10 +76,7 @@
     <a  id="login1" href="<?php echo $forgotten; ?>" class="register">I forgot my password</a><br><br>
     <a  id="login1" href="<?php echo $register; ?>" class="text-center">Register a new membership</a> <Hr>
     <a  id="login1" href="<?php echo HTTP_SERVER1; ?>" class="text-center"> Back to store</a>  
-<!--     <a href="#"></a>
-    <a href="register.html" class="text-center"></a>
-    <a href="register.html" class="text-center">Register a new membership</a>
- -->
+
   </div>
   <!-- /.login-box-body -->
 </div>
@@ -99,16 +96,4 @@
 </script>
 </body>
 </html>
-<!-- <div  style="background-color: #e9eff3;">
- <h1 class="loginh1">  </h1>
-<script src="catalog/view/javascript/jquery/jquery-2.1.1.min.js" type="text/javascript"></script><link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" /><script src="catalog/view/javascript/bootstrap/js/bootstrap.min.js" type="text/javascript"></script><link href="catalog/view/javascript/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" /><link href="//fonts.googleapis.com/css?family=Open+Sans:400,400i,300,700" rel="stylesheet" type="text/css" /><link href="catalog/view/theme/default/stylesheet/stylesheet.css" rel="stylesheet"><link href="catalog/view/theme/default/stylesheet/register.css" rel="stylesheet">
-<script src="catalog/view/javascript/common.js" type="text/javascript"></script>
-                <input type="text" name="email" value="<?php echo $email; ?>" placeholder="<?php echo $entry_email; ?>" id="input-email" class="form-control" />
-              </div>
-              <div class="form-group">
-                <label class="control-label" for="input-password" style="font-size: 14px;font-weight: 600;"><?php echo $entry_password; ?></label>
-                <input type="password" name="password" value="<?php echo $password; ?>" placeholder="<?php echo $entry_password; ?>" id="input-password" class="form-control" />
-              </div>
-            </form>
-          </div> -->
 <?php echo $footer; ?>

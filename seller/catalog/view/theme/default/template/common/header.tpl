@@ -145,21 +145,10 @@ $(document).ready(function() {
           </a>
           <div class="navbar-custom-menu">
             <ul class="nav navbar-nav pull-left">
-            <!-- Messages: style can be found in dropdown.less-->
-            <!-- <li class="dropdown messages-menu"> -->
-              <li><a href="<?php echo $store_home; ?>" id="store_home" title="<?php echo $name; ?>"><i class="fa fa-home"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $name; ?></span></a>
-              </li>
-              <li>
-              <a href="<?php echo $shopping_cart; ?>" title="<?php echo $text_shopping_cart; ?>"><i class="fa fa-shopping-cart"></i> 
-              <span class="hidden-xs hidden-sm hidden-md"><?php echo $text_shopping_cart; ?></span></a></li>
-              <li><a href="<?php echo $checkout; ?>" title="<?php echo $text_checkout; ?>">
-              <i class="fa fa-share"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $text_checkout; ?></span></a>
-              </li>
-            <!-- </li> -->
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <!-- <img src="<?php echo $thumb;?>" class="user-image" alt="User Image"> --><i class="fa fa-user"></i>
+                  <i class="fa fa-user"></i>
                   <span class="hidden-xs"><?php echo $username?></span>
                 </a>
                 <ul class="dropdown-menu">
