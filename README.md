@@ -39,18 +39,18 @@ Multi Vendor features include
 	That's it!  
 	You can now access the seller dashboard at yourdomain/seller/index.php  
   
-##Screeshots
-###Seller  dashboard
+##Screenshots 
+###Seller  dashboard  
 ![Seller Dashboard](screenshots/SellerDashboard.png)
-###Seller  products
+###Seller  products  
 ![Seller Products](screenshots/seler%20Products.png)
-###Admin Seller settings
+###Admin Seller settings  
 ![Seller Products](screenshots/adminSettings.png)
 ###Seller Messages
 ![Seller Products](screenshots/SELLERMessages.png)
-###Seller  Order history
+###Seller  Order history  
 ![Seller Products](screenshots/SELLER_ORDER_HISTORY.png)
-###Seller  Order  Info
+###Seller  Order  Info 
 ![Seller Products](screenshots/ORDER_INFO.png)
 ## To do
 Fix code intentions and adapt standard OpenCart coding styles.
