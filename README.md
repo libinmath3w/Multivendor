@@ -34,11 +34,24 @@ Multi Vendor features include
     Rename the admin/config-dist.php,seller/config-dist.php and config-dist.php files to config.php.  
     Make sure the seller/config.php, admin/config.php, config.php files have read and write permissions.  
     Visit http://yourdomain.com/install to start the installtion process  
-    Login to your admin end, give admins permissions by navigating to System->Users->User groups (edit) select all and save.  
+    Login to your admin end, give admins permissions by navigating to System->Users->User groups (edit) select all and save. 
+    ![Add Admin permissions](select_all_user_permissions.png) 
 	That's it!  
 	You can now access the seller dashboard at yourdomain/seller/index.php  
-    
-    
+  
+##Screeshots
+###Seller  dashboard
+![Seller Dashboard](screenshots/SellerDashboard.png)
+###Seller  products
+![Seller Products](screenshots/seler%20Products.png)
+###Admin Seller settings
+![Seller Products](screenshots/adminSettings.png)
+###Seller Messages
+![Seller Products](screenshots/SELLERMessages.png)
+###Seller  Order history
+![Seller Products](screenshots/SELLER_ORDER_HISTORY.png)
+###Seller  Order  Info
+![Seller Products](screenshots/ORDER_INFO.png)
 ## To do
 Fix code intentions and adapt standard OpenCart coding styles.
 ## Extensions
