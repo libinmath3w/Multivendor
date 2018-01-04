@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e025f402-4bfb-423a-9d02-bcb18a0103e7" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/seller/catalog/controller/common/seo_url.php" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/install/controller/install/step_3.php" afterPath="$PROJECT_DIR$/install/controller/install/step_3.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/install/controller/install/step_4.php" afterPath="$PROJECT_DIR$/install/controller/install/step_4.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/install/language/en-gb/common/footer.php" afterPath="$PROJECT_DIR$/install/language/en-gb/common/footer.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/seller/catalog/model/seller/product.php" afterPath="$PROJECT_DIR$/seller/catalog/model/seller/product.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/storage/logs/error.log" afterPath="$PROJECT_DIR$/system/storage/logs/error.log" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,218 +20,15 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="column_left.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/install/language/en-gb/common/column_left.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="theme.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/install/controller/event/theme.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="extension.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/install/controller/3rd_party/extension.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="openbay.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/install/controller/3rd_party/openbay.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-287">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="cli_install.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/install/cli_install.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <marker date="1511289268000" expanded="true" signature="5276:5301" ph="DROP TABLE I... " />
-                <marker date="1511289268000" expanded="true" signature="5305:5327" ph="DROP TABLE I... " />
-                <marker date="1511289268000" expanded="true" signature="5474:5490" ph="INSERT INTO " />
-                <marker date="1511289268000" expanded="true" signature="5494:5507" ph="INSERT INTO " />
-                <marker date="1511289268000" expanded="true" signature="5703:5767" ph="DELETE FROM " />
-                <marker date="1511289268000" expanded="true" signature="5786:6176" ph="INSERT INTO `${$data['db_prefix']}user`... " />
-                <marker date="1511289268000" expanded="true" signature="6195:6271" ph="DELETE FROM " />
-                <marker date="1511289268000" expanded="true" signature="6289:6429" ph="INSERT INTO `${$data['db_prefix']}setting`... " />
-                <marker date="1511289268000" expanded="true" signature="6448:6529" ph="DELETE FROM " />
-                <marker date="1511289268000" expanded="true" signature="6547:6689" ph="INSERT INTO `${$data['db_prefix']}setting`... " />
-                <marker date="1511289268000" expanded="true" signature="6788:6954" ph="INSERT INTO `${$data['db_prefix']}api`... " />
-                <marker date="1511289268000" expanded="true" signature="7004:7081" ph="DELETE FROM " />
-                <marker date="1511289268000" expanded="true" signature="7099:7225" ph="INSERT INTO `${$data['db_prefix']}setting`... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/install/index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-600">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="step_1.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/install/controller/install/step_1.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-312">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="step_2.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/install/controller/install/step_2.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1312">
-              <caret line="214" column="45" lean-forward="false" selection-start-line="214" selection-start-column="45" selection-end-line="214" selection-end-column="45" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="step_3.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/install/controller/install/step_3.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-5601">
-              <caret line="115" column="71" lean-forward="false" selection-start-line="115" selection-start-column="71" selection-end-line="115" selection-end-column="71" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="step_4.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/install/controller/install/step_4.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-5588">
-              <caret line="282" column="27" lean-forward="false" selection-start-line="282" selection-start-column="27" selection-end-line="282" selection-end-column="27" />
-              <folding>
-                <marker date="1514449718685" expanded="true" signature="2764:3119" ph="CREATE TABLE... IF" />
-                <marker date="1514449718685" expanded="true" signature="3173:4200" ph="CREATE TABLE... IF" />
-                <marker date="1514449718685" expanded="true" signature="4251:4451" ph="CREATE TABLE... IF" />
-                <marker date="1514449718685" expanded="true" signature="4505:4893" ph="CREATE TABLE... IF" />
-                <marker date="1514449718685" expanded="true" signature="4951:5255" ph="CREATE TABLE... IF" />
-                <marker date="1514449718685" expanded="true" signature="5310:5598" ph="CREATE TABLE... IF" />
-                <marker date="1514449718685" expanded="true" signature="5655:6137" ph="CREATE TABLE... IF" />
-                <marker date="1514449718685" expanded="true" signature="6198:6539" ph="CREATE TABLE... IF" />
-                <marker date="1514449718685" expanded="true" signature="6603:6849" ph="CREATE TABLE... IF" />
-                <marker date="1514449718685" expanded="true" signature="6908:7206" ph="CREATE TABLE... IF" />
-                <marker date="1514449718685" expanded="true" signature="7266:7663" ph="CREATE TABLE... IF" />
-                <marker date="1514449718685" expanded="true" signature="7723:8135" ph="CREATE TABLE... IF" />
-                <marker date="1514449718685" expanded="true" signature="8194:8731" ph="CREATE TABLE... IF" />
-                <marker date="1514449718685" expanded="true" signature="8787:9188" ph="CREATE TABLE... IF" />
-                <marker date="1514449718685" expanded="true" signature="9247:9548" ph="CREATE TABLE... IF" />
-                <marker date="1514449718685" expanded="true" signature="9607:10136" ph="CREATE TABLE... IF" />
-                <marker date="1514449718685" expanded="true" signature="10195:10553" ph="CREATE TABLE... IF" />
-                <marker date="1514449718685" expanded="true" signature="10609:11184" ph="CREATE TABLE... IF" />
-                <marker date="1514449718685" expanded="true" signature="11240:11417" ph="CREATE TABLE... IF" />
-                <marker date="1514449718685" expanded="true" signature="11477:13359" ph="CREATE TABLE... IF" />
-                <marker date="1514449718685" expanded="true" signature="13485:13528" ph="SELECT * FRO... ${DB_PREFIX}commission" />
-                <marker date="1514449718685" expanded="true" signature="13571:13900" ph="INSERT INTO `${DB_PREFIX}commission`... " />
-                <marker date="1514449718685" expanded="true" signature="13965:14109" ph="SELECT * FRO... COLUMNS" />
-                <marker date="1514449718685" expanded="true" signature="14153:14236" ph="ALTER TABLE ${DB_PREFIX}category... " />
-                <marker date="1514449718685" expanded="true" signature="14303:14450" ph="SELECT * FRO... COLUMNS" />
-                <marker date="1514449718685" expanded="true" signature="14496:14581" ph="ALTER TABLE ${DB_PREFIX}category... " />
-                <marker date="1514449718685" expanded="true" signature="14648:14789" ph="SELECT * FRO... COLUMNS" />
-                <marker date="1514449718685" expanded="true" signature="14837:14921" ph="ALTER TABLE ${DB_PREFIX}product... " />
-                <marker date="1514449718685" expanded="true" signature="14990:15132" ph="SELECT * FRO... COLUMNS" />
-                <marker date="1514449718685" expanded="true" signature="15178:15259" ph="ALTER TABLE ${DB_PREFIX}option... " />
-                <marker date="1514449718685" expanded="true" signature="15327:15467" ph="SELECT * FRO... COLUMNS" />
-                <marker date="1514449718685" expanded="true" signature="15513:15596" ph="ALTER TABLE ${DB_PREFIX}option... " />
-                <marker date="1514449718685" expanded="true" signature="15663:15807" ph="SELECT * FRO... COLUMNS" />
-                <marker date="1514449718685" expanded="true" signature="15853:15936" ph="ALTER TABLE ${DB_PREFIX}download... " />
-                <marker date="1514449718685" expanded="true" signature="16005:16155" ph="SELECT * FRO... COLUMNS" />
-                <marker date="1514449718685" expanded="true" signature="16202:16295" ph="ALTER TABLE ${DB_PREFIX}order_product... " />
-                <marker date="1514449718685" expanded="true" signature="16364:16517" ph="SELECT * FRO... COLUMNS" />
-                <marker date="1514449718685" expanded="true" signature="16565:16661" ph="ALTER TABLE ${DB_PREFIX}order_product... " />
-                <marker date="1514449718685" expanded="true" signature="16730:16882" ph="SELECT * FRO... COLUMNS" />
-                <marker date="1514449718685" expanded="true" signature="16930:17025" ph="ALTER TABLE ${DB_PREFIX}order_product... " />
-                <marker date="1514449718685" expanded="true" signature="17093:17251" ph="SELECT * FRO... COLUMNS" />
-                <marker date="1514449718685" expanded="true" signature="17298:17391" ph="ALTER TABLE ${DB_PREFIX}order_product... " />
-                <marker date="1514449718685" expanded="true" signature="17459:17616" ph="SELECT * FRO... COLUMNS" />
-                <marker date="1514449718685" expanded="true" signature="17663:17752" ph="ALTER TABLE ${DB_PREFIX}order_product... " />
-                <marker date="1514449718685" expanded="true" signature="17820:17979" ph="SELECT * FRO... COLUMNS" />
-                <marker date="1514449718685" expanded="true" signature="18026:18104" ph="ALTER TABLE ${DB_PREFIX}order_product... " />
-                <marker date="1514449718685" expanded="true" signature="18172:18324" ph="SELECT * FRO... COLUMNS" />
-                <marker date="1514449718685" expanded="true" signature="18371:18446" ph="ALTER TABLE ${DB_PREFIX}order_product... " />
-                <marker date="1514449718685" expanded="true" signature="18514:18663" ph="SELECT * FRO... COLUMNS" />
-                <marker date="1514449718685" expanded="true" signature="18710:18791" ph="ALTER TABLE ${DB_PREFIX}order_product... " />
-                <marker date="1514449718685" expanded="true" signature="18859:19002" ph="SELECT * FRO... COLUMNS" />
-                <marker date="1514449718685" expanded="true" signature="19049:19124" ph="ALTER TABLE ${DB_PREFIX}product... " />
-                <marker date="1514449718685" expanded="true" signature="19192:19339" ph="SELECT * FRO... COLUMNS" />
-                <marker date="1514449718685" expanded="true" signature="19386:19469" ph="ALTER TABLE ${DB_PREFIX}product... " />
-                <marker date="1514449718685" expanded="true" signature="19537:19686" ph="SELECT * FRO... COLUMNS" />
-                <marker date="1514449718685" expanded="true" signature="19734:19815" ph="ALTER TABLE ${DB_PREFIX}order_history... " />
-                <marker date="1514449718685" expanded="true" signature="19883:20025" ph="SELECT * FRO... COLUMNS" />
-                <marker date="1514449718685" expanded="true" signature="20072:20146" ph="ALTER TABLE ${DB_PREFIX}review... " />
-                <marker date="1514449718685" expanded="true" signature="20216:20368" ph="SELECT * FRO... COLUMNS" />
-                <marker date="1514449718685" expanded="true" signature="20418:20502" ph="ALTER TABLE ${DB_PREFIX}product_discount... " />
-                <marker date="1514449718685" expanded="true" signature="20570:20720" ph="SELECT * FRO... COLUMNS" />
-                <marker date="1514449718685" expanded="true" signature="20767:20849" ph="ALTER TABLE ${DB_PREFIX}product_option... " />
-                <marker date="1514449718685" expanded="true" signature="20928:21084" ph="SELECT * FRO... COLUMNS" />
-                <marker date="1514449718685" expanded="true" signature="21142:21230" ph="ALTER TABLE ${DB_PREFIX}product_option_value... " />
-                <marker date="1514449718685" expanded="true" signature="21312:21463" ph="SELECT * FRO... COLUMNS" />
-                <marker date="1514449718685" expanded="true" signature="21524:21607" ph="ALTER TABLE ${DB_PREFIX}product_special... " />
-                <marker date="1514449718685" expanded="true" signature="21675:21828" ph="SELECT * FRO... COLUMNS" />
-                <marker date="1514449718685" expanded="true" signature="21875:21960" ph="ALTER TABLE ${DB_PREFIX}product_attribute... " />
-                <marker date="1514449718685" expanded="true" signature="22028:22173" ph="SELECT * FRO... COLUMNS" />
-                <marker date="1514449718685" expanded="true" signature="22220:22297" ph="ALTER TABLE ${DB_PREFIX}attribute... " />
-                <marker date="1514449718685" expanded="true" signature="22365:22508" ph="SELECT * FRO... COLUMNS" />
-                <marker date="1514449718685" expanded="true" signature="22555:22634" ph="ALTER TABLE ${DB_PREFIX}attribute... " />
-                <marker date="1514449718685" expanded="true" signature="22702:22845" ph="SELECT * FRO... COLUMNS" />
-                <marker date="1514449718685" expanded="true" signature="22892:22956" ph="ALTER TABLE `${DB_PREFIX}commission`... " />
-                <marker date="1514449718685" expanded="true" signature="23024:23164" ph="SELECT * FRO... COLUMNS" />
-                <marker date="1514449718685" expanded="true" signature="23212:23275" ph="ALTER TABLE `${DB_PREFIX}commission`... " />
-                <marker date="1514449718685" expanded="true" signature="23344:23492" ph="SELECT * FRO... COLUMNS" />
-                <marker date="1514449718685" expanded="true" signature="23539:23616" ph="ALTER TABLE `${DB_PREFIX}commission`... " />
-                <marker date="1514449718685" expanded="true" signature="23685:23830" ph="SELECT * FRO... COLUMNS" />
-                <marker date="1514449718685" expanded="true" signature="23877:23947" ph="ALTER TABLE `${DB_PREFIX}sellers`... " />
-                <marker date="1514449718685" expanded="true" signature="24016:24164" ph="SELECT * FRO... COLUMNS" />
-                <marker date="1514449718685" expanded="true" signature="24211:24283" ph="ALTER TABLE `${DB_PREFIX}sellers`... " />
-                <marker date="1514449718685" expanded="true" signature="24351:24497" ph="SELECT * FRO... COLUMNS" />
-                <marker date="1514449718685" expanded="true" signature="24544:24615" ph="ALTER TABLE `${DB_PREFIX}sellers`... " />
-                <marker date="1514449718685" expanded="true" signature="24683:24831" ph="SELECT * FRO... COLUMNS" />
-                <marker date="1514449718685" expanded="true" signature="24878:24948" ph="ALTER TABLE `${DB_PREFIX}sellers`... " />
-                <marker date="1514449718685" expanded="true" signature="25017:25158" ph="SELECT * FRO... COLUMNS" />
-                <marker date="1514449718685" expanded="true" signature="25207:25271" ph="ALTER TABLE `${DB_PREFIX}product`... " />
-                <marker date="1514449718685" expanded="true" signature="25343:25483" ph="SELECT * FRO... COLUMNS" />
-                <marker date="1514449718685" expanded="true" signature="25534:25597" ph="ALTER TABLE `${DB_PREFIX}cart`... " />
-                <marker date="1514449718685" expanded="true" signature="25944:25989" ph="SELECT * FRO... ${DB_PREFIX}user" />
-                <marker date="1514449718685" expanded="true" signature="26051:26207" ph="SELECT * FRO... ${DB_PREFIX}" />
-                <marker date="1514449718685" expanded="true" signature="26283:26404" ph="SELECT * FRO... ${DB_PREFIX}" />
-                <marker date="1514449718685" expanded="true" signature="26933:27855" ph="INSERT INTO ${DB_PREFIX}sellers... " />
-                <marker date="1514449718685" expanded="true" signature="28017:28182" ph="INSERT INTO ${DB_PREFIX}seo_url... " />
-                <marker date="1514449718685" expanded="true" signature="28216:28445" ph="INSERT INTO ${DB_PREFIX}saddress... " />
-                <marker date="1514449718685" expanded="true" signature="28780:28991" ph="INSERT INTO ${DB_PREFIX}setting... " />
-                <marker date="1514449718685" expanded="true" signature="29215:29253" ph="SELECT * FRO... ${DB_PREFIX}" />
-                <marker date="1514449718685" expanded="true" signature="29318:29425" ph="SELECT * FRO... ${DB_PREFIX}" />
-                <marker date="1514449718685" expanded="true" signature="29773:29919" ph="INSERT INTO ${DB_PREFIX}seller... " />
-                <marker date="1514449718685" expanded="true" signature="31079:31352" ph="INSERT INTO ${DB_PREFIX}sellers_products... " />
-              </folding>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="-144">
+                <caret line="46" column="24" lean-forward="true" selection-start-line="46" selection-start-column="24" selection-end-line="46" selection-end-column="24" />
+                <folding />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -295,6 +91,7 @@
         <option value="$PROJECT_DIR$/install/language/en-gb/common/footer.php" />
         <option value="$PROJECT_DIR$/install/controller/install/step_3.php" />
         <option value="$PROJECT_DIR$/install/controller/install/step_4.php" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -342,177 +139,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="opencart_multivendor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="opencart_multivendor" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="opencart_multivendor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="opencart_multivendor" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="seller" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="opencart_multivendor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="opencart_multivendor" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="seller" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="catalog" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="opencart_multivendor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="opencart_multivendor" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="seller" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="catalog" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controller" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="opencart_multivendor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="opencart_multivendor" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="seller" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="catalog" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controller" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="common" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="opencart_multivendor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="opencart_multivendor" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="install" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="opencart_multivendor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="opencart_multivendor" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="install" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controller" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="opencart_multivendor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="opencart_multivendor" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="install" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controller" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="install" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="opencart_multivendor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="opencart_multivendor" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="install" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controller" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="event" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="Scope">
         <subPane subId="Project Files">
           <PATH>
@@ -817,6 +443,21 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="opencart_multivendor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="opencart_multivendor" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -827,119 +468,6 @@
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
     <property name="settings.editor.selected.configurable" value="vcs.Mercurial" />
     <property name="settings.editor.splitter.proportion" value="0.23385519" />
-  </component>
-  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
-    <UpdatedFiles>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Updated from server" />
-        <option name="myStatusName" value="Changed on server" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="CHANGED_ON_SERVER" />
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Updated" />
-          <option name="myStatusName" value="Changed" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/README.md</PATH>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Created" />
-          <option name="myStatusName" value="Created" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="CREATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/multivendor_flexa.png</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/multivendor_moonsoon.png</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/multivendor_moonsoon_preview.png</PATH>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Deleted" />
-          <option name="myStatusName" value="Deleted" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="true" />
-          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Restored" />
-          <option name="myStatusName" value="Will be restored" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="RESTORED" />
-        </FILE-GROUP>
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Modified" />
-        <option name="myStatusName" value="Modified" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MODIFIED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Skipped" />
-        <option name="myStatusName" value="Skipped" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SKIPPED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with conflicts" />
-        <option name="myStatusName" value="Will be merged with conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_CONFLICTS" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with tree conflicts" />
-        <option name="myStatusName" value="Merged with tree conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with property conflicts" />
-        <option name="myStatusName" value="Will be merged with property conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged" />
-        <option name="myStatusName" value="Will be merged" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Not in repository" />
-        <option name="myStatusName" value="Not in repository" />
-        <option name="mySupportsDeletion" value="true" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="UNKNOWN" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally added" />
-        <option name="myStatusName" value="Locally added" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_ADDED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally removed" />
-        <option name="myStatusName" value="Locally removed" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_REMOVED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Switched" />
-        <option name="myStatusName" value="Switched" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SWITCHED" />
-      </FILE-GROUP>
-    </UpdatedFiles>
   </component>
   <component name="RunManager">
     <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
@@ -1014,33 +542,42 @@
       <updated>1512372988256</updated>
       <workItem from="1512372989709" duration="7892000" />
       <workItem from="1514440009662" duration="3267000" />
+      <workItem from="1515046969613" duration="665000" />
     </task>
+    <task id="LOCAL-00001" summary="Demo images">
+      <created>1515047615069</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1515047615069</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11159000" />
+    <option name="totallyTimeSpent" value="11824000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13616398" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.025622254" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18397626" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5014837" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32937685" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.047477745" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34699854" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.047477745" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5014837" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1048,6 +585,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Demo images" />
+    <option name="LAST_COMMIT_MESSAGE" value="Demo images" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1087,7 +628,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5575">
           <caret line="223" column="9" lean-forward="false" selection-start-line="223" selection-start-column="9" selection-end-line="223" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1098,18 +638,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3400">
           <caret line="157" column="29" lean-forward="false" selection-start-line="157" selection-start-column="29" selection-end-line="157" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="0">
-            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-            <folding />
-          </first_editor>
-          <second_editor />
         </state>
       </provider>
     </entry>
@@ -1117,7 +645,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
           <caret line="40" column="39" lean-forward="true" selection-start-line="40" selection-start-column="39" selection-end-line="40" selection-end-column="39" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1125,42 +652,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="235">
           <caret line="100" column="45" lean-forward="false" selection-start-line="100" selection-start-column="45" selection-end-line="100" selection-end-column="45" />
-          <folding>
-            <marker date="1514441081128" expanded="true" signature="661:758" ph="DELETE FROM " />
-            <marker date="1514441081128" expanded="true" signature="853:1317" ph="INSERT INTO ${DB_PREFIX}category_description... " />
-            <marker date="1514441081128" expanded="true" signature="1405:1514" ph="SELECT * FRO... ${DB_PREFIX}category_path" />
-            <marker date="1514441081128" expanded="true" signature="1653:1813" ph="DELETE FROM " />
-            <marker date="1514441081128" expanded="true" signature="1902:2021" ph="SELECT * FRO... ${DB_PREFIX}category_path" />
-            <marker date="1514441081128" expanded="true" signature="2185:2315" ph="SELECT * FRO... ${DB_PREFIX}category_path" />
-            <marker date="1514441081128" expanded="true" signature="2797:2889" ph="DELETE FROM " />
-            <marker date="1514441081128" expanded="true" signature="2974:3093" ph="SELECT * FRO... ${DB_PREFIX}category_path" />
-            <marker date="1514441081128" expanded="true" signature="3158:3326" ph="INSERT INTO `${DB_PREFIX}category_path`... " />
-            <marker date="1514441081128" expanded="true" signature="3602:3954" ph="INSERT INTO ${DB_PREFIX}category... " />
-            <marker date="1514441081128" expanded="true" signature="4327:4802" ph="INSERT INTO ${DB_PREFIX}category_description... " />
-            <marker date="1514441081128" expanded="true" signature="4853:4974" ph="SELECT * FRO... ${DB_PREFIX}category_path" />
-            <marker date="1514441081128" expanded="true" signature="5037:5209" ph="INSERT INTO `${DB_PREFIX}category_path`... " />
-            <marker date="1514441081128" expanded="true" signature="5250:5416" ph="INSERT INTO `${DB_PREFIX}category_path`... " />
-            <marker date="1514441081128" expanded="true" signature="5537:5666" ph="INSERT INTO ${DB_PREFIX}category_filter... " />
-            <marker date="1514441081128" expanded="true" signature="5793:5922" ph="INSERT INTO ${DB_PREFIX}category_to_store... " />
-            <marker date="1514441081128" expanded="true" signature="6143:6322" ph="INSERT INTO ${DB_PREFIX}category_to_layout... " />
-            <marker date="1514441081128" expanded="true" signature="6388:6535" ph="INSERT INTO ${DB_PREFIX}url_alias... " />
-            <marker date="1514441081128" expanded="true" signature="8215:8890" ph="SELECT DISTI... ${DB_PREFIX}" />
-            <marker date="1514441081128" expanded="true" signature="8994:9633" ph="SELECT DISTI... ${DB_PREFIX}" />
-            <marker date="1514441081128" expanded="true" signature="10522:11038" ph="SELECT c.*,c... ${DB_PREFIX}" />
-            <marker date="1514441081128" expanded="true" signature="11259:12020" ph="SELECT c1.ap... ${DB_PREFIX}" />
-            <marker date="1514441081128" expanded="true" signature="12882:13646" ph="SELECT cp.ca... ${DB_PREFIX}" />
-            <marker date="1514441081128" expanded="true" signature="14411:14888" ph="SELECT c.*,c... ${DB_PREFIX}" />
-            <marker date="1514441081128" expanded="true" signature="15027:15490" ph="SELECT * FRO... ${DB_PREFIX}" />
-            <marker date="1514441081128" expanded="true" signature="15535:15860" ph="SELECT * FRO... ${DB_PREFIX}" />
-            <marker date="1514441081128" expanded="true" signature="15991:16295" ph="SELECT name,... ${DB_PREFIX}" />
-            <marker date="1514441081128" expanded="true" signature="16665:16764" ph="SELECT * FRO... ${DB_PREFIX}" />
-            <marker date="1514441081128" expanded="true" signature="17280:17376" ph="SELECT * FRO... ${DB_PREFIX}" />
-            <marker date="1514441081128" expanded="true" signature="17621:17718" ph="SELECT * FRO... ${DB_PREFIX}" />
-            <marker date="1514441081128" expanded="true" signature="18078:18193" ph="SELECT COUNT... ${DB_PREFIX}" />
-            <marker date="1514441081128" expanded="true" signature="18434:18549" ph="SELECT COUNT... ${DB_PREFIX}" />
-            <marker date="1514441081128" expanded="true" signature="18679:18776" ph="SELECT COUNT... ${DB_PREFIX}" />
-            <marker date="1514441081128" expanded="true" signature="18903:19012" ph="SELECT COUNT... ${DB_PREFIX}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1168,82 +659,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="185">
           <caret line="199" column="0" lean-forward="false" selection-start-line="199" selection-start-column="0" selection-end-line="200" selection-end-column="0" />
-          <folding>
-            <marker date="1514441081316" expanded="true" signature="118:205" ph="SELECT * FRO... ${DB_PREFIX}seller_folder" />
-            <marker date="1514441081316" expanded="true" signature="824:1066" ph="INSERT INTO ${DB_PREFIX}seller_folder... " />
-            <marker date="1514441081316" expanded="true" signature="1143:1227" ph="SELECT * FRO... ${DB_PREFIX}sellers" />
-            <marker date="1514441081316" expanded="true" signature="1336:1420" ph="SELECT * FRO... ${DB_PREFIX}sellers" />
-            <marker date="1514441081316" expanded="true" signature="1579:1677" ph="SELECT COUNT... ${DB_PREFIX}" />
-            <marker date="1514441081316" expanded="true" signature="1788:1876" ph="SELECT * FRO... ${DB_PREFIX}" />
-            <marker date="1514441081316" expanded="true" signature="2124:2212" ph="SELECT * FRO... ${DB_PREFIX}" />
-            <marker date="1514441081316" expanded="true" signature="2402:2488" ph="DELETE FROM " />
-            <marker date="1514441081316" expanded="true" signature="3273:3364" ph="SELECT usern... ${DB_PREFIX}sellers" />
-            <marker date="1514441081316" expanded="true" signature="3555:3777" ph="INSERT INTO ${DB_PREFIX}seller_folder... " />
-            <marker date="1514441081316" expanded="true" signature="3848:3913" ph="SELECT * FRO... ${DB_PREFIX}" />
-            <marker date="1514441081316" expanded="true" signature="4522:4606" ph="SELECT * FRO... ${DB_PREFIX}" />
-            <marker date="1514441081316" expanded="true" signature="5261:5351" ph="select commi... ${DB_PREFIX}" />
-            <marker date="1514441081316" expanded="true" signature="5458:5787" ph="INSERT INTO ${DB_PREFIX}upgraded_members... " />
-            <marker date="1514441081316" expanded="true" signature="6667:7495" ph="INSERT INTO ${DB_PREFIX}sellers... " />
-            <marker date="1514441081316" expanded="true" signature="7772:7977" ph="INSERT INTO ${DB_PREFIX}saddress... " />
-            <marker date="1514441081316" expanded="true" signature="11163:11247" ph="SELECT * FRO... ${DB_PREFIX}" />
-            <marker date="1514441081316" expanded="true" signature="11902:11992" ph="select commi... ${DB_PREFIX}" />
-            <marker date="1514441081316" expanded="true" signature="12099:12428" ph="INSERT INTO ${DB_PREFIX}upgraded_sellers... " />
-            <marker date="1514441081316" expanded="true" signature="13392:13495" ph="SELECT folde... ${DB_PREFIX}" />
-            <marker date="1514441081316" expanded="true" signature="14408:14490" ph="SELECT * FRO... ${DB_PREFIX}" />
-            <marker date="1514441081316" expanded="true" signature="14592:14680" ph="SELECT * FRO... ${DB_PREFIX}" />
-            <marker date="1514441081316" expanded="true" signature="14782:14886" ph="SELECT * FRO... ${DB_PREFIX}" />
-            <marker date="1514441081316" expanded="true" signature="15042:15240" ph="SELECT *, CO... ${DB_PREFIX}" />
-            <marker date="1514441081316" expanded="true" signature="17384:17507" ph="SELECT COUNT... ${DB_PREFIX}" />
-            <marker date="1514441081316" expanded="true" signature="17630:17759" ph="SELECT COUNT... ${DB_PREFIX}" />
-            <marker date="1514441081316" expanded="true" signature="17876:17989" ph="SELECT * FRO... ${DB_PREFIX}" />
-            <marker date="1514441081316" expanded="true" signature="18085:18171" ph="SELECT * FRO... ${DB_PREFIX}seller_ip" />
-            <marker date="1514441081316" expanded="true" signature="18274:18367" ph="SELECT folde... ${DB_PREFIX}sellers" />
-            <marker date="1514441081316" expanded="true" signature="18477:18573" ph="SELECT * FRO... ${DB_PREFIX}seller_ip_blacklist" />
-            <marker date="1514441081316" expanded="true" signature="18683:18801" ph="SELECT SUM(a... ${DB_PREFIX}" />
-            <marker date="1514441081316" expanded="true" signature="19163:19296" ph="SELECT SUM(a... ${DB_PREFIX}" />
-            <marker date="1514441081316" expanded="true" signature="19329:19586" ph="SELECT SUM(a... ${DB_PREFIX}" />
-            <marker date="1514441081316" expanded="true" signature="19727:19837" ph="SELECT COUNT... ${DB_PREFIX}" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/seller/catalog/controller/seller/uploadimages.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1050">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/seller/catalog/controller/seller/uploadimages.php" />
     <entry file="file://$PROJECT_DIR$/seller/catalog/view/theme/default/template/seller/detail_form.tpl">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="174">
           <caret line="641" column="37" lean-forward="false" selection-start-line="641" selection-start-column="37" selection-end-line="641" selection-end-column="37" />
-          <folding>
-            <marker date="1514441080991" expanded="true" signature="29670:29695" ph="..." />
-            <marker date="1514441080991" expanded="true" signature="29793:29857" ph="..." />
-            <marker date="1514441080991" expanded="true" signature="30667:30678" ph="..." />
-            <marker date="1514441080991" expanded="true" signature="35460:35478" ph="..." />
-            <marker date="1514441080991" expanded="true" signature="38912:38930" ph="..." />
-            <marker date="1514441080991" expanded="true" signature="42559:42573" ph="..." />
-            <marker date="1514441080991" expanded="true" signature="46393:46407" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/seller/catalog/language/english/seller/uploadimages.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/seller/catalog/language/english/seller/uploadimages.php" />
     <entry file="file://$PROJECT_DIR$/seller/catalog/controller/common/home.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-90">
           <caret line="6" column="58" lean-forward="false" selection-start-line="6" selection-start-column="58" selection-end-line="6" selection-end-column="58" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1251,7 +682,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
           <caret line="7" column="16" lean-forward="true" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1259,7 +689,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-600">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1267,7 +696,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
           <caret line="206" column="42" lean-forward="false" selection-start-line="206" selection-start-column="42" selection-end-line="206" selection-end-column="42" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1275,23 +703,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
           <caret line="7" column="19" lean-forward="true" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/seller/catalog/controller/common/seo_url.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-576">
-          <caret line="58" column="12" lean-forward="true" selection-start-line="58" selection-start-column="12" selection-end-line="58" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/seller/catalog/controller/common/seo_url.php" />
     <entry file="file://$PROJECT_DIR$/seller/catalog/controller/common/language.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-662">
           <caret line="8" column="37" lean-forward="true" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="37" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1299,7 +718,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="25">
           <caret line="1" column="28" lean-forward="false" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1307,7 +725,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-351">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1315,7 +732,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1125">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1323,7 +739,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="125">
           <caret line="5" column="49" lean-forward="false" selection-start-line="5" selection-start-column="49" selection-end-line="5" selection-end-column="49" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1331,15 +746,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/install/language/en-gb/common/column_left.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1361,7 +767,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/install/controller/3rd_party/openbay.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-287">
+        <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
@@ -1391,7 +797,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/install/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-600">
+        <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
@@ -1399,7 +805,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/install/controller/install/step_1.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-312">
+        <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
@@ -1407,7 +813,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/install/controller/install/step_2.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1312">
+        <state relative-caret-position="5350">
           <caret line="214" column="45" lean-forward="false" selection-start-line="214" selection-start-column="45" selection-end-line="214" selection-end-column="45" />
           <folding />
         </state>
@@ -1415,7 +821,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/install/controller/install/step_3.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5601">
+        <state relative-caret-position="2875">
           <caret line="115" column="71" lean-forward="false" selection-start-line="115" selection-start-column="71" selection-end-line="115" selection-end-column="71" />
           <folding />
         </state>
@@ -1423,7 +829,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/install/controller/install/step_4.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5588">
+        <state relative-caret-position="25">
           <caret line="282" column="27" lean-forward="false" selection-start-line="282" selection-start-column="27" selection-end-line="282" selection-end-column="27" />
           <folding>
             <marker date="1514449718685" expanded="true" signature="2764:3119" ph="CREATE TABLE... IF" />
@@ -1528,6 +934,25 @@
             <marker date="1514449718685" expanded="true" signature="29773:29919" ph="INSERT INTO ${DB_PREFIX}seller... " />
             <marker date="1514449718685" expanded="true" signature="31079:31352" ph="INSERT INTO ${DB_PREFIX}sellers_products... " />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/install/language/en-gb/common/column_left.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="-144">
+            <caret line="46" column="24" lean-forward="true" selection-start-line="46" selection-start-column="24" selection-end-line="46" selection-end-column="24" />
+            <folding />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>

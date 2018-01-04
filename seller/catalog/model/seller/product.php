@@ -48,10 +48,6 @@ public function getAssignLimit() {
 		$this->db->query("DELETE FROM " . DB_PREFIX . "product_description WHERE product_id = '" . (int)$product_id . "'");
 		/**new query**/
 		foreach ($data['product_description'] as $language_id => $value) {
-			// $this->db->query("INSERT INTO " . DB_PREFIX . "product_description SET product_id = '" . (int)$product_id . "',
-			// language_id = '" . (int)$language_id . "', name = '" . $this->db->escape($value['name']) . "', 
-			// description = '" . $this->db->escape($value['description']) . "',
-			// tag = '" . $this->db->escape($value['tag']) . "'");
 			$this->db->query("INSERT INTO " . DB_PREFIX . "product_description SET product_id = '" . (int)$product_id . "', language_id = '" . (int)$language_id . "', name = '" . $this->db->escape($value['name']) . "', description = '" . $this->db->escape($value['description']) . "', tag = '" . $this->db->escape($value['tag']) . "', meta_title = '" . $this->db->escape($value['meta_title']) . "', meta_description = '" . $this->db->escape($value['meta_description']) . "', meta_keyword = '" . $this->db->escape($value['meta_keyword']) . "'");
 		}
 		$this->db->query("INSERT INTO " . DB_PREFIX . "product_to_store SET product_id = '" . (int)$product_id . "', store_id = '0'");
@@ -296,12 +292,6 @@ public function getAssignLimit() {
 		$this->db->query("DELETE FROM " . DB_PREFIX . "product_option WHERE product_id = '" . (int)$product_id . "' AND seller_id = '".(int)$this->seller->getId()."'");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "product_option_value WHERE product_id = '" . (int)$product_id . "' AND seller_id = '".(int)$this->seller->getId()."'");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "product_special WHERE product_id = '" . (int)$product_id . "' AND seller_id = '".(int)$this->seller->getId()."'");
-		/*$this->db->query("DELETE FROM " . DB_PREFIX . "product_to_category WHERE product_id = '" . (int)$product_id . "'");
-		$this->db->query("DELETE FROM " . DB_PREFIX . "product_to_download WHERE product_id = '" . (int)$product_id . "'");
-		$this->db->query("DELETE FROM " . DB_PREFIX . "product_to_layout WHERE product_id = '" . (int)$product_id . "'");
-		$this->db->query("DELETE FROM " . DB_PREFIX . "product_to_store WHERE product_id = '" . (int)$product_id . "'");
-		$this->db->query("DELETE FROM " . DB_PREFIX . "review WHERE product_id = '" . (int)$product_id . "'");
-		$this->db->query("DELETE FROM " . DB_PREFIX . "url_alias WHERE query = 'product_id=" . (int)$product_id. "'");*/
 		$this->cache->delete('product');
 	}
 	public function deleteProduct12($product_id) {
@@ -324,36 +314,14 @@ public function getAssignLimit() {
 		$this->db->query("DELETE FROM " . DB_PREFIX . "product_to_layout WHERE product_id = '" . (int)$product_id . "'");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "product_to_store WHERE product_id = '" . (int)$product_id . "'");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "review WHERE product_id = '" . (int)$product_id . "'");
-		// $this->db->query("DELETE FROM " . DB_PREFIX . "url_alias WHERE query = 'product_id=" . (int)$product_id. "'");
 		$this->cache->delete('product');
 	}
 	public function getProduct($product_id,$seller="") {
-		// if ($seller) {
-		// 	$query = $this->db->query("SELECT DISTINCT *, CONCAT(vds.firstname, ' ', vds.lastname) AS vname,
-		// 	p.status as status FROM " . DB_PREFIX . "product p LEFT JOIN " . DB_PREFIX . "product_description pd 
-		// 	ON (p.product_id = pd.product_id)
-		// 	LEFT JOIN " . DB_PREFIX . "seller vd ON (pd.product_id = vd.vproduct_id) LEFT JOIN " . DB_PREFIX . "customer vds 
-		// 	ON (vd.seller_id = vds.customer_id) WHERE p.product_id = '" . (int)$product_id . "' 
-		// 	AND vd.seller_id IN('" . $seller . "') AND pd.language_id = '" . (int)$this->config->get('config_language_id') . "'");
-		// } else {
-		// 	$query = $this->db->query("SELECT DISTINCT *FROM " . DB_PREFIX . "product p 
-		// 	LEFT JOIN " . DB_PREFIX . "product_description pd 
-		// 	ON (p.product_id = pd.product_id)
-		// 	LEFT JOIN " . DB_PREFIX . "seller vd ON (pd.product_id = vd.vproduct_id) LEFT JOIN " . DB_PREFIX . "sellers vds 
-		// 	ON (vd.seller_id = vds.seller_id) WHERE p.product_id = '" . (int)$product_id . "' AND 
-		// 	pd.language_id = '" . (int)$this->config->get('config_language_id') . "'");
-		// }
 		$query = $this->db->query("SELECT DISTINCT * FROM " . DB_PREFIX . "product p LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id)
 			LEFT JOIN " . DB_PREFIX . "seller vd ON (pd.product_id = vd.vproduct_id)
 			AND (vd.seller_id = '" . (int)$seller . "') WHERE p.product_id = '" . (int)$product_id . "' AND pd.language_id = '" . (int)$this->config->get('config_language_id') . "'");
-
-		//return $query->row;
 		return $query->row;
 	}
-	// public function getProduct($product_id) {
-	// 	$query = $this->db->query("SELECT DISTINCT * FROM " . DB_PREFIX . "product p LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id) WHERE p.product_id = '" . (int)$product_id . "' AND pd.language_id = '" . (int)$this->config->get('config_language_id') . "'");
-	// 	return $query->row;
-	// }
 	public function getProducts($data = array(),$seller) {
 			$sql = "SELECT p.*,pd.*,vd.price as sprice,vd.quantity as squantity FROM " . DB_PREFIX . "product p 
 			LEFT JOIN " . DB_PREFIX . "product_description pd 

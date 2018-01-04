@@ -2,6 +2,7 @@ config.php
 admin/config.php
 seller/config.php
 **/system/storage/*
+**/seller/image/*
 **/seller/system/storage/*
 seller/system/storage/logs/error.log
 system/storage/logs/error.log
