@@ -30,14 +30,17 @@ Multi Vendor features include
 
 
 ## Installation
-    Unzip the zip files to your web directory.  
-    Rename the admin/config-dist.php,seller/config-dist.php and config-dist.php files to config.php.  
-    Make sure the seller/config.php, admin/config.php, config.php files have read and write permissions.  
-    Visit http://yourdomain.com/install to start the installtion process  
-    Login to your admin end, give admins permissions by navigating to System->Users->User groups (edit) select all and save. 
-    ![Add Admin permissions](select_all_user_permissions.png) 
-	That's it!  
-	You can now access the seller dashboard at yourdomain/seller/index.php  
+Unzip the zip files to your web directory.  
+
+Rename the `admin/config-dist.php`,`seller/config-dist.php` and `config-dist.php` files to **`config.php`**.  
+Make sure the `seller/config.php`, `admin/config.php` and `config.php` files have read and write permissions.  
+
+Visit `http://yourdomain.com/install` to start the installtion process
+
+Login to your admin end, give admins permissions by navigating to `System->Users->User groups (edit)` **select all** and save. 
+![Add Admin permissions](select_all_user_permissions.png) 
+That's it!  
+You can now access the seller dashboard at yourdomain/seller/index.php  
   
 ##  Screenshots 
 ###  Seller  dashboard  
