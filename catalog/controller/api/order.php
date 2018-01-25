@@ -200,15 +200,15 @@ class ControllerApiOrder extends Controller {
 							'name'                    => $option['name'],
 							'value'                   => $option['value'],
 							'type'                    => $option['type']
-						);
+							);
 					}
 
 					$order_data['products'][] = array(
 
-            /*START OVICKO MULTISELLER*/
-			'seller_id' => $product['seller_id'],
-			/*END OVICKO MULTISELLER*/
-			
+						/*START OVICKO MULTISELLER*/
+						'seller_id' => $product['seller_id'],
+						/*END OVICKO MULTISELLER*/
+
 						'product_id' => $product['product_id'],
 						'name'       => $product['name'],
 						'model'      => $product['model'],
@@ -220,7 +220,7 @@ class ControllerApiOrder extends Controller {
 						'total'      => $product['total'],
 						'tax'        => $this->tax->getTax($product['price'], $product['tax_class_id']),
 						'reward'     => $product['reward']
-					);
+						);
 				}
 
 				// Gift Voucher
@@ -238,7 +238,7 @@ class ControllerApiOrder extends Controller {
 							'voucher_theme_id' => $voucher['voucher_theme_id'],
 							'message'          => $voucher['message'],
 							'amount'           => $voucher['amount']
-						);
+							);
 					}
 				}
 
@@ -254,8 +254,8 @@ class ControllerApiOrder extends Controller {
 					'totals' => &$totals,
 					'taxes'  => &$taxes,
 					'total'  => &$total
-				);
-			
+					);
+
 				$sort_order = array();
 
 				$results = $this->model_setting_extension->getExtensions('total');
@@ -575,15 +575,15 @@ class ControllerApiOrder extends Controller {
 								'name'                    => $option['name'],
 								'value'                   => $option['value'],
 								'type'                    => $option['type']
-							);
+								);
 						}
 
 						$order_data['products'][] = array(
 
-            /*START OVICKO MULTISELLER*/
-			'seller_id' => $product['seller_id'],
-			/*END OVICKO MULTISELLER*/
-			
+							/*START OVICKO MULTISELLER*/
+							'seller_id' => $product['seller_id'],
+							/*END OVICKO MULTISELLER*/
+
 							'product_id' => $product['product_id'],
 							'name'       => $product['name'],
 							'model'      => $product['model'],
@@ -595,7 +595,7 @@ class ControllerApiOrder extends Controller {
 							'total'      => $product['total'],
 							'tax'        => $this->tax->getTax($product['price'], $product['tax_class_id']),
 							'reward'     => $product['reward']
-						);
+							);
 					}
 
 					// Gift Voucher
@@ -613,7 +613,7 @@ class ControllerApiOrder extends Controller {
 								'voucher_theme_id' => $voucher['voucher_theme_id'],
 								'message'          => $voucher['message'],
 								'amount'           => $voucher['amount']
-							);
+								);
 						}
 					}
 
@@ -629,8 +629,8 @@ class ControllerApiOrder extends Controller {
 						'totals' => &$totals,
 						'taxes'  => &$taxes,
 						'total'  => &$total
-					);
-			
+						);
+
 					$sort_order = array();
 
 					$results = $this->model_setting_extension->getExtensions('total');
@@ -782,7 +782,7 @@ class ControllerApiOrder extends Controller {
 				'notify',
 				'override',
 				'comment'
-			);
+				);
 
 			foreach ($keys as $key) {
 				if (!isset($this->request->post[$key])) {
@@ -802,15 +802,14 @@ class ControllerApiOrder extends Controller {
 
 			if ($order_info) {
 				
-            /*START OVICKO MULTISELLER*/
-			if($this->request->post['seller_id']>0){
-			  $seller_id = $this->request->post['seller_id'];
-			}else{
-			$seller_id = 0;
-			}	
-			$this->model_checkout_order->addOrderHistory($order_id, $this->request->post['order_status_id'], $this->request->post['comment'], $this->request->post['notify'], $this->request->post['override'],$seller_id);
-			/*END OVICKO MULTISELLER*/
-			
+				/*START OVICKO MULTISELLER*/
+				if($this->request->post['seller_id'] > 0){
+					$seller_id = $this->request->post['seller_id'];
+				}else{
+					$seller_id = 0;
+				}	
+				$this->model_checkout_order->addOrderHistory($order_id, $this->request->post['order_status_id'], $this->request->post['comment'], $this->request->post['notify'], $this->request->post['override'],$seller_id);
+				/*END OVICKO MULTISELLER*/
 
 				$json['success'] = $this->language->get('text_success');
 			} else {

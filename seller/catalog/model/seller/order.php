@@ -86,7 +86,7 @@ class ModelSellerOrder extends Model {
 				'date_modified'           => $order_query->row['date_modified'],
 				'date_added'              => $order_query->row['date_added'],
 				'ip'                      => $order_query->row['ip']
-			);
+				);
 		} else {
 			return false;	
 		}
@@ -97,7 +97,7 @@ class ModelSellerOrder extends Model {
 		$sql .= "WHERE o.order_id IN (select distinct order_id from " . DB_PREFIX . "order_product where 
 		seller_id = '" . (int)$this->seller->getId()."') AND 
 		o.order_status_id > '0' AND os.language_id = '" . (int)$this->config->get('config_language_id') . "'";
-        if (!empty($data['filter_order_id'])) {
+		if (!empty($data['filter_order_id'])) {
 			$sql .= " AND o.order_id = '" . (int)$data['filter_order_id'] . "'";
 		}
 		if (!empty($data['filter_date_start'])) {
@@ -148,7 +148,7 @@ class ModelSellerOrder extends Model {
 		return $query->rows; 
 	}	
 	public function getTotalOrders($data = array()) {
-      	$sql = "SELECT COUNT(*) AS total FROM `" . DB_PREFIX . "order` o WHERE o.order_id IN 
+		$sql = "SELECT COUNT(*) AS total FROM `" . DB_PREFIX . "order` o WHERE o.order_id IN 
 		(select distinct order_id from " . DB_PREFIX . "order_product where seller_id = '" . (int)$this->seller->getId()."') AND o.order_status_id > '0'";
 		if (!empty($data['filter_order_id'])) {
 			$sql .= " AND o.order_id = '" . (int)$data['filter_order_id'] . "'";
@@ -181,7 +181,7 @@ class ModelSellerOrder extends Model {
 		return $query->row['total'];
 	}
 	public function getOrderStatuses($data = array()) {
-      	if ($data) {
+		if ($data) {
 			$sql = "SELECT * FROM " . DB_PREFIX . "order_status WHERE language_id = '" . (int)$this->config->get('config_language_id') . "'";
 			$sql .= " ORDER BY name";	
 			if (isset($data['order']) && ($data['order'] == 'DESC')) {
@@ -211,18 +211,19 @@ class ModelSellerOrder extends Model {
 		}
 	}
 	public function getOrderStatus($order_id) {
-			$sql = "SELECT * FROM " . DB_PREFIX . "order_history WHERE order_id = '" . (int)$order_id . "' AND seller_id = '" . (int)$this->seller->getId()."' ORDER BY date_added DESC limit 1";
-			$query = $this->db->query($sql);			
-			return $query->row;
+		$sql = "SELECT * FROM " . DB_PREFIX . "order_history WHERE order_id = '" . (int)$order_id . "' AND seller_id = '" . (int)$this->seller->getId()."' ORDER BY date_added DESC limit 1";
+		$query = $this->db->query($sql);			
+		return $query->row;
 	}
 	public function addOrderHistory($order_id, $data) {
 		$this->db->query("INSERT INTO " . DB_PREFIX . "order_history SET order_id = '" . (int)$order_id . "', order_status_id = '" . (int)$data['order_status_id'] . "', notify = '" . (isset($data['notify']) ? (int)$data['notify'] : 0) . "', comment = '" . $this->db->escape(strip_tags($data['comment'])) . "', date_added = NOW(),seller_id='" . (int)$this->seller->getId()."'");
 		$order_info = $this->getOrder($order_id);
+		$this->db->query("UPDATE `" . DB_PREFIX . "order` SET order_status_id = '" . (int)$data['order_status_id'] . "', date_modified = NOW() WHERE order_id = '" . (int)$order_id . "'");
 		$this->db->query("UPDATE " . DB_PREFIX . "order_product SET 
-		product_status_id = '" . (int)$data['order_status_id'] . "' WHERE order_id = '" . (int)$order_id . "' AND seller_id='" . (int)$this->seller->getId()."'");
- $this->db->query("UPDATE `" . DB_PREFIX . "seller_transaction` SET transaction_status = '".(int)$data['order_status_id']."' WHERE order_id = '" . (int)$order_id . "' AND  seller_id='" . (int)$this->seller->getId()."'");
+			product_status_id = '" . (int)$data['order_status_id'] . "' WHERE order_id = '" . (int)$order_id . "' AND seller_id='" . (int)$this->seller->getId()."'");
+		$this->db->query("UPDATE `" . DB_PREFIX . "seller_transaction` SET transaction_status = '".(int)$data['order_status_id']."' WHERE order_id = '" . (int)$order_id . "' AND  seller_id='" . (int)$this->seller->getId()."'");
 		$data['notify'] = "";
-      	if ($data['notify']) {
+		if ($data['notify']) {
 			$language = new Language($order_info['language_directory']);
 			$language->load($order_info['language_filename']);
 			$language->load('mail/order');

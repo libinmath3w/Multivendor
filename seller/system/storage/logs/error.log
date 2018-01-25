@@ -17,3 +17,4 @@
 2018-01-25 10:05:05 - PHP Notice:  Undefined variable: no_image in E:\xampp71\htdocs\projects\opencart_multivendor\seller\catalog\view\theme\default\template\seller\detail_form.tpl on line 559
 2018-01-25 10:05:13 - PHP Notice:  Undefined variable: text_confirm in E:\xampp71\htdocs\projects\opencart_multivendor\seller\catalog\view\theme\default\template\seller\download_list.tpl on line 18
 2018-01-25 10:05:16 - PHP Notice:  Undefined variable: text_confirm in E:\xampp71\htdocs\projects\opencart_multivendor\seller\catalog\view\theme\default\template\seller\download_list.tpl on line 18
+2018-01-25 12:43:49 - PHP Notice:  Undefined index: order_status_id  in E:\xampp71\htdocs\projects\opencart_multivendor\seller\catalog\model\seller\order.php on line 221

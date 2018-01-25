@@ -2,7 +2,7 @@
 class ModelReportSellerTransactions extends Model {
 
 
-public function getPaymentInfos() {
+	public function getPaymentInfos() {
 		$sql = "SELECT v.username AS name, vp.payment_info AS details, vp.payment_amount, vp.payment_date,v.seller_id FROM `" . DB_PREFIX . "seller_payment` vp LEFT JOIN `" . DB_PREFIX . "sellers` v ON (vp.seller_id = v.seller_id) ";
 		$sql .= " ORDER BY vp.payment_date DESC LIMIT 10";		
 		$query = $this->db->query($sql);		
@@ -10,16 +10,12 @@ public function getPaymentInfos() {
 	}
 
 	public function addPaymentToSellerId($data,$seller_info) {
-	
-	
-	
-			
-			$this->db->query("INSERT INTO " . DB_PREFIX . "seller_transaction SET seller_id = '" . (int)$data['seller_id'] . "',
+		$this->db->query("INSERT INTO " . DB_PREFIX . "seller_transaction SET seller_id = '" . (int)$data['seller_id'] . "',
 			description = '" . $this->db->escape($data['description']) . "',
 			amount = '-" . (float)$data['seller_amount']. "',
 			transaction_status ='5', 
 			date_added = NOW()");
-						
+
 
 
                     /*if(isset($nids)){
@@ -38,27 +34,27 @@ public function getPaymentInfos() {
 		}*/
 		
 
-				$this->language->load('mail/seller');
-				$store_name = $this->config->get('config_name');		
-				$message  = "You have received ".$this->currency->format($data['seller_amount'], $this->config->get('config_currency'))." credit in your bank"."\n\n";
-				$message  .= "Comment:\n\n";
-				$message  .= $data['description'];
-				$message  .= "\n\n";
+		$this->language->load('mail/seller');
+		$store_name = $this->config->get('config_name');		
+		$message  = "You have received ".$this->currency->format($data['seller_amount'], $this->config->get('config_currency'))." credit in your bank"."\n\n";
+		$message  .= "Comment:\n\n";
+		$message  .= $data['description'];
+		$message  .= "\n\n";
 
-				$mail = new Mail($this->config->get('config_mail_engine'));
-			$mail->parameter = $this->config->get('config_mail_parameter');
-			$mail->smtp_hostname = $this->config->get('config_mail_smtp_hostname');
-			$mail->smtp_username = $this->config->get('config_mail_smtp_username');
-			$mail->smtp_password = html_entity_decode($this->config->get('config_mail_smtp_password'), ENT_QUOTES, 'UTF-8');
-			$mail->smtp_port = $this->config->get('config_mail_smtp_port');
-			$mail->smtp_timeout = $this->config->get('config_mail_smtp_timeout');
+		$mail = new Mail($this->config->get('config_mail_engine'));
+		$mail->parameter = $this->config->get('config_mail_parameter');
+		$mail->smtp_hostname = $this->config->get('config_mail_smtp_hostname');
+		$mail->smtp_username = $this->config->get('config_mail_smtp_username');
+		$mail->smtp_password = html_entity_decode($this->config->get('config_mail_smtp_password'), ENT_QUOTES, 'UTF-8');
+		$mail->smtp_port = $this->config->get('config_mail_smtp_port');
+		$mail->smtp_timeout = $this->config->get('config_mail_smtp_timeout');
 
-				$mail->setTo($seller_info['email']);
-				$mail->setFrom($this->config->get('config_email'));
-				$mail->setSender($store_name);
-				$mail->setSubject(html_entity_decode(sprintf($this->language->get('text_transaction_subject'), $this->config->get('config_name')), ENT_QUOTES, 'UTF-8'));
-				$mail->setText(html_entity_decode($message, ENT_QUOTES, 'UTF-8'));
-				$mail->send();
+		$mail->setTo($seller_info['email']);
+		$mail->setFrom($this->config->get('config_email'));
+		$mail->setSender($store_name);
+		$mail->setSubject(html_entity_decode(sprintf($this->language->get('text_transaction_subject'), $this->config->get('config_name')), ENT_QUOTES, 'UTF-8'));
+		$mail->setText(html_entity_decode($message, ENT_QUOTES, 'UTF-8'));
+		$mail->send();
 	}
 	
 	public function getOrderStatus($order_id) {
@@ -134,9 +130,9 @@ public function getPaymentInfos() {
 		if(empty($seller_access)){$seller_access=0;}
 		
 		
-	
-	
-	
+
+
+
 		$sql = "SELECT 
 		st.date_added AS date,
 		st.order_id AS order_id,
@@ -154,12 +150,12 @@ public function getPaymentInfos() {
 		st.amount AS amount,
 		
 		st.sub_total,
-	
+
 		
 		st.transaction_status AS paid_status 
 		FROM " . DB_PREFIX . "seller_transaction st 
 		LEFT JOIN " . DB_PREFIX . "order_product op ON (st.order_product_id=op.order_product_id)
-        LEFT JOIN " . DB_PREFIX . "order o ON (o.order_id = op.order_id) WHERE (st.seller_id IN (" . $seller_access . ") AND op.seller_id IN (" . $seller_access . ") AND op.order_id=st.order_id)  AND o.order_status_id > '0' AND st.transaction_status='0'";
+		LEFT JOIN " . DB_PREFIX . "order o ON (o.order_id = op.order_id) WHERE (st.seller_id IN (" . $seller_access . ") AND op.seller_id IN (" . $seller_access . ") AND op.order_id=st.order_id)  AND o.order_status_id > '0' AND st.transaction_status='0'";
 		
 		if (!empty($data['filter_eligible_status_id'])) {
 			$sql .= " AND op.product_status_id IN (".$data['filter_eligible_status_id'].")";
@@ -167,7 +163,7 @@ public function getPaymentInfos() {
 			$sql .= " AND op.product_status_id > '0'";
 		}
 
-	
+
 		
 		$sql .= " ORDER BY o.order_id DESC";
 		
@@ -196,7 +192,7 @@ public function getPaymentInfos() {
 		}
 
 		$sql .= " AND op.seller_id IN (" . $seller_access . ")";
-	
+
 		$sql .= " AND op.seller_paid_status = '5'";
 		
 		
@@ -257,46 +253,46 @@ public function getPaymentInfos() {
 	public function updateorderproduct($seller_id,$opid) {
 
 
-  			
+
 		$query = $this->db->query("SELECT *	FROM `" . DB_PREFIX . "order` o 
-		LEFT JOIN `" . DB_PREFIX . "order_product` op ON (o.order_id = op.order_id) 
-		where op.order_product_id = '" . (int)$opid . "' AND op.seller_id ='" . (int)$seller_id . "' AND 
-		op.seller_paid_status = '0' AND o.order_id = op.order_id");
-	
-			
-        if ($query->rows) {
+			LEFT JOIN `" . DB_PREFIX . "order_product` op ON (o.order_id = op.order_id) 
+			where op.order_product_id = '" . (int)$opid . "' AND op.seller_id ='" . (int)$seller_id . "' AND 
+			op.seller_paid_status = '0' AND o.order_id = op.order_id");
+
+
+		if ($query->rows) {
 			foreach ($query->rows AS $data) {
 
-			$this->db->query("UPDATE " . DB_PREFIX . "order_product  SET seller_paid_status = '5'
-			WHERE order_id = '" . (int)$data['order_id'] . "'"); 			
-		     
-			
-		
-           }
+				$this->db->query("UPDATE " . DB_PREFIX . "order_product  SET seller_paid_status = '5'
+					WHERE order_id = '" . (int)$data['order_id'] . "'"); 			
 
-         }
 
-		 
-			return 1;
+
+			}
+
+		}
+
+
+		return 1;
 		
 	}
 	
 	public function updatetransaction($seller_id,$amt) {
-	
+
 		if ($seller_id) {
 			$query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "seller_transaction`  WHERE seller_id = '" . (int)$seller_id . "'");
 			
 			$this->db->query("INSERT INTO " . DB_PREFIX . "seller_payment SET seller_id = '" . (int)$seller_id . "', 
-			payment_info = 'Paypal Payment', payment_amount = '" . (float)$amt . "', payment_status = '5', payment_date = Now()");
+				payment_info = 'Paypal Payment', payment_amount = '" . (float)$amt . "', payment_status = '5', payment_date = Now()");
 			
 			if ($query->rows) {
-			foreach ($query->rows AS $data) {
-						
-							  
-				 	$this->db->query("UPDATE " . DB_PREFIX . "seller_transaction  SET transaction_status = '5' WHERE 
-					seller_transaction_id = '" . (int)$data['seller_transaction_id'] . "'");      
-				   
-		           }	
+				foreach ($query->rows AS $data) {
+
+
+					$this->db->query("UPDATE " . DB_PREFIX . "seller_transaction  SET transaction_status = '5' WHERE 
+						seller_transaction_id = '" . (int)$data['seller_transaction_id'] . "'");      
+
+				}	
 			}
 			
 			
@@ -322,7 +318,7 @@ public function getPaymentInfos() {
 		FROM " . DB_PREFIX . "seller_transaction st 
 		LEFT JOIN " . DB_PREFIX . "order_product op ON (op.order_product_id=st.order_product_id)
 		LEFT JOIN " . DB_PREFIX . "sellers vds ON (st.seller_id=vds.seller_id)
-        LEFT JOIN " . DB_PREFIX . "order o ON (o.order_id = st.order_id)		
+		LEFT JOIN " . DB_PREFIX . "order o ON (o.order_id = st.order_id)		
 		WHERE ((st.seller_id IN (".$seller_access.") AND o.order_status_id IN (".$filter_eligible_status_id.") AND st.transaction_status IN (".$filter_eligible_status_id.")) OR (st.seller_id IN (".$seller_access.") AND st.order_id=0))";
 		$sql .= " group by st.seller_id";
 		
@@ -496,26 +492,26 @@ public function getPaymentInfos() {
 		$sql = "SELECT  distinct(seller_transaction_id),st.seller_id,st.order_id,st.order_product_id,st.description,st.amount,st.commission,
 		st.sub_total,st.date_added,st.transaction_status FROM " . DB_PREFIX . "seller_transaction st LEFT JOIN " . DB_PREFIX . "order_product op ON (st.seller_id=op.seller_id) WHERE (st.seller_id = '" . (int)$seller_id. "' AND op.seller_id= '" . (int)$seller_id. "' AND op.order_id=st.order_id AND op.product_status_id IN (".$filter_eligible_status_id.")) OR (st.seller_id = '" . (int)$seller_id. "' AND st.order_id=0)";
 
-		 if (!empty($data['filter_order_id'])) {
+		if (!empty($data['filter_order_id'])) {
 			$sql .= " AND order_id = '" . (int)$data['filter_order_id'] . "'";
 		}
 		if (!empty($data['filter_date_start'])) {
 			$sql .= " AND DATE(date_added) = '" . $this->db->escape($data['filter_date_start']) . "'";
 		}
- 
+
 		$sort_data = array(
 			'amount',
 			'description',
 			'seller_transaction_id',
 			'date_added'
-		);
-	
+			);
+
 		if (isset($data['sort']) && in_array($data['sort'], $sort_data)) {
 			$sql .= " ORDER BY " . $data['sort'];	
 		} else {
 			$sql .= " ORDER BY date_added";	
 		}
-			
+
 		if (isset($data['order']) && ($data['order'] == 'DESC')) {
 			$sql .= " DESC";
 		} else {
@@ -535,7 +531,7 @@ public function getPaymentInfos() {
 		}
 
 		$query = $this->db->query($sql);
-	
+
 		return $query->rows;
 	}
 	
@@ -550,7 +546,7 @@ public function getPaymentInfos() {
 		if(!empty($filter_eligible_status_id))
 		{	
 			$filter_eligible_status_id = implode(",",$filter_eligible_status_id);
-		}else{
+		} else {
 			$filter_eligible_status_id = 0;
 		}
 		$query = $this->db->query("SELECT SUM(st.amount) AS pamount FROM " . DB_PREFIX . "seller_transaction st LEFT JOIN " . DB_PREFIX . "order o ON (st.order_id=o.order_id) WHERE (st.seller_id = '" . (int)$seller_id. "' AND o.order_status_id IN (".$filter_eligible_status_id.") AND st.transaction_status IN (".$filter_eligible_status_id.")) OR (st.seller_id = '" .(int)$seller_id. "' AND st.order_id=0)");
@@ -561,14 +557,14 @@ public function getPaymentInfos() {
 	
 	
 	public function getTotalTransactions($data,$seller_id ) {
-      	$filter_eligible_status_id = $this->config->get('config_seller_payments');
+		$filter_eligible_status_id = $this->config->get('config_seller_payments');
 		if(!empty($filter_eligible_status_id))
 		{	
 			$filter_eligible_status_id = implode(",",$filter_eligible_status_id);
 		}else{
 			$filter_eligible_status_id = 0;
 		}
-     
+
 		$query = $this->db->query("SELECT distinct(seller_transaction_id) FROM " . DB_PREFIX . "seller_transaction st INNER JOIN " . DB_PREFIX . "order_product op ON (st.seller_id=op.seller_id) WHERE (st.seller_id = '" . (int)$seller_id . "' AND op.seller_id= '" . (int)$seller_id . "' AND op.order_id=st.order_id AND op.product_status_id IN (".$filter_eligible_status_id.") AND st.transaction_status IN (".$filter_eligible_status_id.")) OR (st.seller_id = '" . (int)$seller_id . "' AND st.order_id=0)");
 		return $query->num_rows;
 	}	
