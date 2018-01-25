@@ -55,7 +55,7 @@ class ControllerSellerLogin extends Controller {
 			$activity_data = array(
 				'seller_id' => $this->seller->getId(),
 				'name'        => $this->seller->getFirstName() . ' ' . $this->seller->getLastName()
-			);
+				);
 			$this->model_seller_activity->addActivity('login', $activity_data);
 			// Added strpos check to pass McAfee PCI compliance test (http://forum.opencart.com/viewtopic.php?f=10&t=12043&p=151494#p151295)
 			if (isset($this->request->post['redirect']) && (strpos($this->request->post['redirect'], $this->config->get('config_url')) !== false || strpos($this->request->post['redirect'], $this->config->get('config_ssl')) !== false)) {
@@ -68,18 +68,18 @@ class ControllerSellerLogin extends Controller {
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home')
-		);
+			);
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('text_account'),
 			'href' => $this->url->link('seller/account', '', 'SSL')
-		);
+			);
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('text_login'),
 			'href' => $this->url->link('seller/login', '', 'SSL')
-		);
+			);
 		$data['name'] = $this->config->get('config_name');	
 		if (is_file(DIR_IMAGE . $this->config->get('config_logo'))) {
-				$data['logo'] = HTTP_SERVER1. 'image/' . $this->config->get('config_logo');
+			$data['logo'] = HTTP_SERVER1. 'image/' . $this->config->get('config_logo');
 		} else {			$data['logo'] = '';		}
 		$this->load->language('common/header');
 		$data['text_home'] = $this->language->get('text_home');

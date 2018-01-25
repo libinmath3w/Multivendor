@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e025f402-4bfb-423a-9d02-bcb18a0103e7" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/seller/system/storage/logs/error.log" afterPath="$PROJECT_DIR$/seller/system/storage/logs/error.log" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,8 +22,8 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="381">
-                <caret line="52" column="5" lean-forward="false" selection-start-line="52" selection-start-column="5" selection-end-line="52" selection-end-column="5" />
+              <first_editor relative-caret-position="25">
+                <caret line="43" column="52" lean-forward="false" selection-start-line="43" selection-start-column="52" selection-end-line="43" selection-end-column="52" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -136,6 +137,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="Scope">
         <subPane subId="Project Files">
           <PATH>
@@ -440,7 +442,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -539,7 +540,8 @@
       <updated>1512372988256</updated>
       <workItem from="1512372989709" duration="7892000" />
       <workItem from="1514440009662" duration="3267000" />
-      <workItem from="1515046969613" duration="1371000" />
+      <workItem from="1515046969613" duration="1971000" />
+      <workItem from="1515084181789" duration="17000" />
     </task>
     <task id="LOCAL-00001" summary="Demo images">
       <created>1515047615069</created>
@@ -552,7 +554,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12530000" />
+    <option name="totallyTimeSpent" value="13147000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
@@ -750,7 +752,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -758,7 +759,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -766,7 +766,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -774,21 +773,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1511289268000" expanded="true" signature="5276:5301" ph="DROP TABLE I... " />
-            <marker date="1511289268000" expanded="true" signature="5305:5327" ph="DROP TABLE I... " />
-            <marker date="1511289268000" expanded="true" signature="5474:5490" ph="INSERT INTO " />
-            <marker date="1511289268000" expanded="true" signature="5494:5507" ph="INSERT INTO " />
-            <marker date="1511289268000" expanded="true" signature="5703:5767" ph="DELETE FROM " />
-            <marker date="1511289268000" expanded="true" signature="5786:6176" ph="INSERT INTO `${$data['db_prefix']}user`... " />
-            <marker date="1511289268000" expanded="true" signature="6195:6271" ph="DELETE FROM " />
-            <marker date="1511289268000" expanded="true" signature="6289:6429" ph="INSERT INTO `${$data['db_prefix']}setting`... " />
-            <marker date="1511289268000" expanded="true" signature="6448:6529" ph="DELETE FROM " />
-            <marker date="1511289268000" expanded="true" signature="6547:6689" ph="INSERT INTO `${$data['db_prefix']}setting`... " />
-            <marker date="1511289268000" expanded="true" signature="6788:6954" ph="INSERT INTO `${$data['db_prefix']}api`... " />
-            <marker date="1511289268000" expanded="true" signature="7004:7081" ph="DELETE FROM " />
-            <marker date="1511289268000" expanded="true" signature="7099:7225" ph="INSERT INTO `${$data['db_prefix']}setting`... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -796,7 +780,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -804,7 +787,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -812,7 +794,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5350">
           <caret line="214" column="45" lean-forward="false" selection-start-line="214" selection-start-column="45" selection-end-line="214" selection-end-column="45" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -820,7 +801,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2875">
           <caret line="115" column="71" lean-forward="false" selection-start-line="115" selection-start-column="71" selection-end-line="115" selection-end-column="71" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -828,109 +808,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="25">
           <caret line="282" column="27" lean-forward="false" selection-start-line="282" selection-start-column="27" selection-end-line="282" selection-end-column="27" />
-          <folding>
-            <marker date="1514449718685" expanded="true" signature="2764:3119" ph="CREATE TABLE... IF" />
-            <marker date="1514449718685" expanded="true" signature="3173:4200" ph="CREATE TABLE... IF" />
-            <marker date="1514449718685" expanded="true" signature="4251:4451" ph="CREATE TABLE... IF" />
-            <marker date="1514449718685" expanded="true" signature="4505:4893" ph="CREATE TABLE... IF" />
-            <marker date="1514449718685" expanded="true" signature="4951:5255" ph="CREATE TABLE... IF" />
-            <marker date="1514449718685" expanded="true" signature="5310:5598" ph="CREATE TABLE... IF" />
-            <marker date="1514449718685" expanded="true" signature="5655:6137" ph="CREATE TABLE... IF" />
-            <marker date="1514449718685" expanded="true" signature="6198:6539" ph="CREATE TABLE... IF" />
-            <marker date="1514449718685" expanded="true" signature="6603:6849" ph="CREATE TABLE... IF" />
-            <marker date="1514449718685" expanded="true" signature="6908:7206" ph="CREATE TABLE... IF" />
-            <marker date="1514449718685" expanded="true" signature="7266:7663" ph="CREATE TABLE... IF" />
-            <marker date="1514449718685" expanded="true" signature="7723:8135" ph="CREATE TABLE... IF" />
-            <marker date="1514449718685" expanded="true" signature="8194:8731" ph="CREATE TABLE... IF" />
-            <marker date="1514449718685" expanded="true" signature="8787:9188" ph="CREATE TABLE... IF" />
-            <marker date="1514449718685" expanded="true" signature="9247:9548" ph="CREATE TABLE... IF" />
-            <marker date="1514449718685" expanded="true" signature="9607:10136" ph="CREATE TABLE... IF" />
-            <marker date="1514449718685" expanded="true" signature="10195:10553" ph="CREATE TABLE... IF" />
-            <marker date="1514449718685" expanded="true" signature="10609:11184" ph="CREATE TABLE... IF" />
-            <marker date="1514449718685" expanded="true" signature="11240:11417" ph="CREATE TABLE... IF" />
-            <marker date="1514449718685" expanded="true" signature="11477:13359" ph="CREATE TABLE... IF" />
-            <marker date="1514449718685" expanded="true" signature="13485:13528" ph="SELECT * FRO... ${DB_PREFIX}commission" />
-            <marker date="1514449718685" expanded="true" signature="13571:13900" ph="INSERT INTO `${DB_PREFIX}commission`... " />
-            <marker date="1514449718685" expanded="true" signature="13965:14109" ph="SELECT * FRO... COLUMNS" />
-            <marker date="1514449718685" expanded="true" signature="14153:14236" ph="ALTER TABLE ${DB_PREFIX}category... " />
-            <marker date="1514449718685" expanded="true" signature="14303:14450" ph="SELECT * FRO... COLUMNS" />
-            <marker date="1514449718685" expanded="true" signature="14496:14581" ph="ALTER TABLE ${DB_PREFIX}category... " />
-            <marker date="1514449718685" expanded="true" signature="14648:14789" ph="SELECT * FRO... COLUMNS" />
-            <marker date="1514449718685" expanded="true" signature="14837:14921" ph="ALTER TABLE ${DB_PREFIX}product... " />
-            <marker date="1514449718685" expanded="true" signature="14990:15132" ph="SELECT * FRO... COLUMNS" />
-            <marker date="1514449718685" expanded="true" signature="15178:15259" ph="ALTER TABLE ${DB_PREFIX}option... " />
-            <marker date="1514449718685" expanded="true" signature="15327:15467" ph="SELECT * FRO... COLUMNS" />
-            <marker date="1514449718685" expanded="true" signature="15513:15596" ph="ALTER TABLE ${DB_PREFIX}option... " />
-            <marker date="1514449718685" expanded="true" signature="15663:15807" ph="SELECT * FRO... COLUMNS" />
-            <marker date="1514449718685" expanded="true" signature="15853:15936" ph="ALTER TABLE ${DB_PREFIX}download... " />
-            <marker date="1514449718685" expanded="true" signature="16005:16155" ph="SELECT * FRO... COLUMNS" />
-            <marker date="1514449718685" expanded="true" signature="16202:16295" ph="ALTER TABLE ${DB_PREFIX}order_product... " />
-            <marker date="1514449718685" expanded="true" signature="16364:16517" ph="SELECT * FRO... COLUMNS" />
-            <marker date="1514449718685" expanded="true" signature="16565:16661" ph="ALTER TABLE ${DB_PREFIX}order_product... " />
-            <marker date="1514449718685" expanded="true" signature="16730:16882" ph="SELECT * FRO... COLUMNS" />
-            <marker date="1514449718685" expanded="true" signature="16930:17025" ph="ALTER TABLE ${DB_PREFIX}order_product... " />
-            <marker date="1514449718685" expanded="true" signature="17093:17251" ph="SELECT * FRO... COLUMNS" />
-            <marker date="1514449718685" expanded="true" signature="17298:17391" ph="ALTER TABLE ${DB_PREFIX}order_product... " />
-            <marker date="1514449718685" expanded="true" signature="17459:17616" ph="SELECT * FRO... COLUMNS" />
-            <marker date="1514449718685" expanded="true" signature="17663:17752" ph="ALTER TABLE ${DB_PREFIX}order_product... " />
-            <marker date="1514449718685" expanded="true" signature="17820:17979" ph="SELECT * FRO... COLUMNS" />
-            <marker date="1514449718685" expanded="true" signature="18026:18104" ph="ALTER TABLE ${DB_PREFIX}order_product... " />
-            <marker date="1514449718685" expanded="true" signature="18172:18324" ph="SELECT * FRO... COLUMNS" />
-            <marker date="1514449718685" expanded="true" signature="18371:18446" ph="ALTER TABLE ${DB_PREFIX}order_product... " />
-            <marker date="1514449718685" expanded="true" signature="18514:18663" ph="SELECT * FRO... COLUMNS" />
-            <marker date="1514449718685" expanded="true" signature="18710:18791" ph="ALTER TABLE ${DB_PREFIX}order_product... " />
-            <marker date="1514449718685" expanded="true" signature="18859:19002" ph="SELECT * FRO... COLUMNS" />
-            <marker date="1514449718685" expanded="true" signature="19049:19124" ph="ALTER TABLE ${DB_PREFIX}product... " />
-            <marker date="1514449718685" expanded="true" signature="19192:19339" ph="SELECT * FRO... COLUMNS" />
-            <marker date="1514449718685" expanded="true" signature="19386:19469" ph="ALTER TABLE ${DB_PREFIX}product... " />
-            <marker date="1514449718685" expanded="true" signature="19537:19686" ph="SELECT * FRO... COLUMNS" />
-            <marker date="1514449718685" expanded="true" signature="19734:19815" ph="ALTER TABLE ${DB_PREFIX}order_history... " />
-            <marker date="1514449718685" expanded="true" signature="19883:20025" ph="SELECT * FRO... COLUMNS" />
-            <marker date="1514449718685" expanded="true" signature="20072:20146" ph="ALTER TABLE ${DB_PREFIX}review... " />
-            <marker date="1514449718685" expanded="true" signature="20216:20368" ph="SELECT * FRO... COLUMNS" />
-            <marker date="1514449718685" expanded="true" signature="20418:20502" ph="ALTER TABLE ${DB_PREFIX}product_discount... " />
-            <marker date="1514449718685" expanded="true" signature="20570:20720" ph="SELECT * FRO... COLUMNS" />
-            <marker date="1514449718685" expanded="true" signature="20767:20849" ph="ALTER TABLE ${DB_PREFIX}product_option... " />
-            <marker date="1514449718685" expanded="true" signature="20928:21084" ph="SELECT * FRO... COLUMNS" />
-            <marker date="1514449718685" expanded="true" signature="21142:21230" ph="ALTER TABLE ${DB_PREFIX}product_option_value... " />
-            <marker date="1514449718685" expanded="true" signature="21312:21463" ph="SELECT * FRO... COLUMNS" />
-            <marker date="1514449718685" expanded="true" signature="21524:21607" ph="ALTER TABLE ${DB_PREFIX}product_special... " />
-            <marker date="1514449718685" expanded="true" signature="21675:21828" ph="SELECT * FRO... COLUMNS" />
-            <marker date="1514449718685" expanded="true" signature="21875:21960" ph="ALTER TABLE ${DB_PREFIX}product_attribute... " />
-            <marker date="1514449718685" expanded="true" signature="22028:22173" ph="SELECT * FRO... COLUMNS" />
-            <marker date="1514449718685" expanded="true" signature="22220:22297" ph="ALTER TABLE ${DB_PREFIX}attribute... " />
-            <marker date="1514449718685" expanded="true" signature="22365:22508" ph="SELECT * FRO... COLUMNS" />
-            <marker date="1514449718685" expanded="true" signature="22555:22634" ph="ALTER TABLE ${DB_PREFIX}attribute... " />
-            <marker date="1514449718685" expanded="true" signature="22702:22845" ph="SELECT * FRO... COLUMNS" />
-            <marker date="1514449718685" expanded="true" signature="22892:22956" ph="ALTER TABLE `${DB_PREFIX}commission`... " />
-            <marker date="1514449718685" expanded="true" signature="23024:23164" ph="SELECT * FRO... COLUMNS" />
-            <marker date="1514449718685" expanded="true" signature="23212:23275" ph="ALTER TABLE `${DB_PREFIX}commission`... " />
-            <marker date="1514449718685" expanded="true" signature="23344:23492" ph="SELECT * FRO... COLUMNS" />
-            <marker date="1514449718685" expanded="true" signature="23539:23616" ph="ALTER TABLE `${DB_PREFIX}commission`... " />
-            <marker date="1514449718685" expanded="true" signature="23685:23830" ph="SELECT * FRO... COLUMNS" />
-            <marker date="1514449718685" expanded="true" signature="23877:23947" ph="ALTER TABLE `${DB_PREFIX}sellers`... " />
-            <marker date="1514449718685" expanded="true" signature="24016:24164" ph="SELECT * FRO... COLUMNS" />
-            <marker date="1514449718685" expanded="true" signature="24211:24283" ph="ALTER TABLE `${DB_PREFIX}sellers`... " />
-            <marker date="1514449718685" expanded="true" signature="24351:24497" ph="SELECT * FRO... COLUMNS" />
-            <marker date="1514449718685" expanded="true" signature="24544:24615" ph="ALTER TABLE `${DB_PREFIX}sellers`... " />
-            <marker date="1514449718685" expanded="true" signature="24683:24831" ph="SELECT * FRO... COLUMNS" />
-            <marker date="1514449718685" expanded="true" signature="24878:24948" ph="ALTER TABLE `${DB_PREFIX}sellers`... " />
-            <marker date="1514449718685" expanded="true" signature="25017:25158" ph="SELECT * FRO... COLUMNS" />
-            <marker date="1514449718685" expanded="true" signature="25207:25271" ph="ALTER TABLE `${DB_PREFIX}product`... " />
-            <marker date="1514449718685" expanded="true" signature="25343:25483" ph="SELECT * FRO... COLUMNS" />
-            <marker date="1514449718685" expanded="true" signature="25534:25597" ph="ALTER TABLE `${DB_PREFIX}cart`... " />
-            <marker date="1514449718685" expanded="true" signature="25944:25989" ph="SELECT * FRO... ${DB_PREFIX}user" />
-            <marker date="1514449718685" expanded="true" signature="26051:26207" ph="SELECT * FRO... ${DB_PREFIX}" />
-            <marker date="1514449718685" expanded="true" signature="26283:26404" ph="SELECT * FRO... ${DB_PREFIX}" />
-            <marker date="1514449718685" expanded="true" signature="26933:27855" ph="INSERT INTO ${DB_PREFIX}sellers... " />
-            <marker date="1514449718685" expanded="true" signature="28017:28182" ph="INSERT INTO ${DB_PREFIX}seo_url... " />
-            <marker date="1514449718685" expanded="true" signature="28216:28445" ph="INSERT INTO ${DB_PREFIX}saddress... " />
-            <marker date="1514449718685" expanded="true" signature="28780:28991" ph="INSERT INTO ${DB_PREFIX}setting... " />
-            <marker date="1514449718685" expanded="true" signature="29215:29253" ph="SELECT * FRO... ${DB_PREFIX}" />
-            <marker date="1514449718685" expanded="true" signature="29318:29425" ph="SELECT * FRO... ${DB_PREFIX}" />
-            <marker date="1514449718685" expanded="true" signature="29773:29919" ph="INSERT INTO ${DB_PREFIX}seller... " />
-            <marker date="1514449718685" expanded="true" signature="31079:31352" ph="INSERT INTO ${DB_PREFIX}sellers_products... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -938,15 +815,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="381">
-            <caret line="52" column="5" lean-forward="false" selection-start-line="52" selection-start-column="5" selection-end-line="52" selection-end-column="5" />
+          <first_editor relative-caret-position="25">
+            <caret line="43" column="52" lean-forward="false" selection-start-line="43" selection-start-column="52" selection-end-line="43" selection-end-column="52" />
             <folding />
           </first_editor>
           <second_editor />

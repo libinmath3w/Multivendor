@@ -20,7 +20,7 @@ class ControllerAccountEdit extends Controller {
 			$activity_data = array(
 				'customer_id' => $this->customer->getId(),
 				'name'        => $this->customer->getFirstName() . ' ' . $this->customer->getLastName()
-			);
+				);
 			$this->model_account_activity->addActivity('edit', $activity_data);
 			$this->response->redirect($this->url->link('account/account', '', 'SSL'));
 		}
@@ -28,15 +28,15 @@ class ControllerAccountEdit extends Controller {
 		$data['breadcrumbs'][] = array(
 			'text'      => $this->language->get('text_home'),
 			'href'      => $this->url->link('common/home')
-		);
+			);
 		$data['breadcrumbs'][] = array(
 			'text'      => $this->language->get('text_account'),
 			'href'      => $this->url->link('account/account', '', 'SSL')
-		);
+			);
 		$data['breadcrumbs'][] = array(
 			'text'      => $this->language->get('text_edit'),
 			'href'      => $this->url->link('account/edit', '', 'SSL')
-		);
+			);
 		$data['heading_title'] = $this->language->get('heading_title');
 		$data['text_your_details'] = $this->language->get('text_your_details');
 		$data['text_additional'] = $this->language->get('text_additional');

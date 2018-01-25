@@ -63,7 +63,7 @@ class ControllerAccountLogin extends Controller {
 			$activity_data = array(
 				'customer_id' => $this->customer->getId(),
 				'name'        => $this->customer->getFirstName() . ' ' . $this->customer->getLastName()
-			);
+				);
 			$this->model_account_activity->addActivity('login', $activity_data);
 			// Trigger customer post login event
 			$this->event->trigger('post.customer.login');
@@ -78,15 +78,15 @@ class ControllerAccountLogin extends Controller {
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home')
-		);
+			);
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('text_account'),
 			'href' => $this->url->link('account/account', '', 'SSL')
-		);
+			);
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('text_login'),
 			'href' => $this->url->link('account/login', '', 'SSL')
-		);
+			);
 		$data['heading_title'] = $this->language->get('heading_title');
 		$data['text_new_customer'] = $this->language->get('text_new_customer');
 		$data['text_register'] = $this->language->get('text_register');

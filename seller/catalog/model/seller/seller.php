@@ -1,6 +1,6 @@
 <?php
 class ModelSellerSeller extends Model {
-public function addFolder($parent,$data) {
+	public function addFolder($parent,$data) {
 		$query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "seller_folder` WHERE folder_id = '" . (int)$parent . "'");
 		$path = $query->row['path'];
 		$parent_folder = $query->row['parent_folder'];
@@ -16,7 +16,7 @@ public function addFolder($parent,$data) {
 		}*/
 		$fPath1 = DIR_IMAGE. $path;
 		$exist1 = is_dir($fPath1);
-        if($exist1) {
+		if($exist1) {
 			$folder1 = $fPath1."/".$data['folder_name'];
 			if(!is_dir($folder1)){
 				//echo "okokoko";die;
@@ -37,116 +37,120 @@ public function addFolder($parent,$data) {
 		return $query->rows;
 	}
 	public function getTotalFolders($data=array(),$seller_id) {
-      	$query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "sellers where seller_id = '" . (int)$seller_id . "'");
+		$query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "sellers where seller_id = '" . (int)$seller_id . "'");
 		return $query->row['total'];
 	}
 	public function deleteImages($folder_id) {
-	 $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "seller_folder WHERE folder_id = '" . (int)$folder_id . "'");
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "seller_folder WHERE folder_id = '" . (int)$folder_id . "'");
 		if($query->row['path']){
-	    $dir = DIR_IMAGE.$query->row['path'];
-		$this->rrmdir1($dir);
-		$dir1 = DIR_IMAGE1.$query->row['path'];
-		$this->rrmdir1($dir1);
-	    }
+			$dir = DIR_IMAGE.$query->row['path'];
+			$this->removeDirectory1($dir);
+			$dir1 = DIR_IMAGE1.$query->row['path'];
+			$this->removeDirectory1($dir1);
+		}
 	}
 	public function deleteFolder($folder_id) {
 		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "seller_folder WHERE folder_id = '" . (int)$folder_id . "'");
 		if($query->row['path']){
-	    $dir = DIR_IMAGE.$query->row['path'];
-		$this->rrmdir($dir);
-		$dir1 = DIR_IMAGE1.$query->row['path'];
-		$this->rrmdir($dir1);
-         $this->db->query("DELETE FROM " . DB_PREFIX . "seller_folder WHERE folder_id = '" . (int)$folder_id . "'");
-	    }
+			$dir = DIR_IMAGE.$query->row['path'];
+			$this->removeDirectory($dir);
+			$dir1 = DIR_IMAGE1.$query->row['path'];
+			$this->removeDirectory($dir1);
+			$this->db->query("DELETE FROM " . DB_PREFIX . "seller_folder WHERE folder_id = '" . (int)$folder_id . "'");
+		}
 	}
-	function rrmdir($dir) {
-  if (is_dir($dir)) {
-    $objects = scandir($dir);
-    foreach ($objects as $object) {
-      if ($object != "." && $object != "..") {
-        if (filetype($dir."/".$object) == "dir")
-           $this->rrmdir($dir."/".$object);
-        else unlink   ($dir."/".$object);
-      }
-    }
-    reset($objects);
-    rmdir($dir);
-  }
- }
- function rrmdir1($dir) {
-  if (is_dir($dir)) {
-    $objects = scandir($dir);
-    foreach ($objects as $object) {
-      if ($object != "." && $object != "..") {
-        if (filetype($dir."/".$object) == "dir")
-           $this->rrmdir1($dir."/".$object);
-        else unlink   ($dir."/".$object);
-      }
-    }
-    reset($objects);
-  }
- }
-public function addFolderForSeller($seller_id) {
+
+	public function removeDirectory($dir) {
+		//tell whether the filename is a directory
+		if (is_dir($dir)) {
+			$objects = scandir($dir);
+			foreach ($objects as $object) {
+				if ($object != "." && $object != "..") {
+					if (filetype($dir."/".$object) == "dir")
+						$this->removeDirectory($dir."/".$object);
+					//else delete a file
+					else unlink($dir."/".$object);
+				}
+			}
+			reset($objects);
+			//remove directory
+			rmdir($dir);
+		}
+	}
+	public function removeDirectory1($dir) {
+		if (is_dir($dir)) {
+			$objects = scandir($dir);
+			foreach ($objects as $object) {
+				if ($object != "." && $object != "..") {
+					if (filetype($dir."/".$object) == "dir")
+						$this->removeDirectory1($dir."/".$object);
+					else unlink($dir."/".$object);
+				}
+			}
+			reset($objects);
+		}
+	}
+	public function addFolderForSeller($seller_id) {
 		$query = $this->db->query("SELECT username FROM `" . DB_PREFIX . "sellers` WHERE seller_id = '" . (int)$seller_id . "'");
 		$folderName = $query->row['username'];
 		$fPath = "image/" . $folderName;
 		$exist = is_dir($fPath);
 		if(!$exist) {
-		mkdir("$fPath");
-		chmod("$fPath", 0777);
+			mkdir("$fPath");
+			chmod("$fPath", 0777);
 		}
 		$this->db->query("INSERT INTO " . DB_PREFIX . "seller_folder SET seller_id='" . (int)$seller_id . "', parent_folder = '" . $this->db->escape($folderName) . "', folder_name = '" . $this->db->escape($folderName) . "', path = '".$folderName."'");
 	}
-public function getcommissions() {
+	public function getcommissions() {
 		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "commission ORDER BY sort_order ASC");
 		return $query->rows;
 	}
-public function updateexpirycusts(){
-				$config_sellercommission_id = $this->config->get('config_sellercommission_id');
+	public function updateexpirycusts(){
+		$config_sellercommission_id = $this->config->get('config_sellercommission_id');
 		if(!$config_sellercommission_id){
 			$config_sellercommission_id = 1;
 		}
-				$this->db->query("UPDATE  `" . DB_PREFIX . "sellers` set commission_id = '" . (int)$config_sellercommission_id . "',
-				expiry_date = '0000-00-00 00:00:00' WHERE
-				commission_id !='".(int)$config_sellercommission_id."' AND expiry_date != '0000-00-00 00:00:00' AND expiry_date < NOW()");
-			}
-			public function updatePlan($seller_id,$plan_id) {
-			$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "commission WHERE 	commission_id = '".(int)$plan_id."'");
-			$durationid = $query->row['duration_id'];
-			$days = $query->row['per'];
-			$Date = date("Y-m-d H:i:s");
-			$expirydate = "0000-00-00 00:00:00";
-			if($durationid == 'd'){
-				$expirydate = date('Y-m-d H:i:s', strtotime($Date. " + $days days"));
-			}
-			if($durationid == 'm'){
-				$expirydate = date('Y-m-d H:i:s', strtotime($Date. " + $days months"));
-			}
-			if($durationid == 'y'){
-				$expirydate = date('Y-m-d H:i:s', strtotime($Date. " + $days years"));
-			}
-			if($durationid == 'w'){
-				$days = $days*7;
-				$expirydate = date('Y-m-d H:i:s', strtotime($Date. " + $days days"));
-			}
-			$oldgroup_id = 0;
-			$custquery = $this->db->query("select commission_id from " . DB_PREFIX . "sellers where seller_id = '".(int)$seller_id."'");
-			if($custquery->row){
-				$oldgroup_id = $custquery->row['commission_id'];
-			}
-			$this->db->query("INSERT INTO " . DB_PREFIX . "upgraded_members SET seller_id = '" . (int)$seller_id . "',
+		$this->db->query("UPDATE  `" . DB_PREFIX . "sellers` set commission_id = '" . (int)$config_sellercommission_id . "',
+			expiry_date = '0000-00-00 00:00:00' WHERE
+			commission_id !='".(int)$config_sellercommission_id."' AND expiry_date != '0000-00-00 00:00:00' AND expiry_date < NOW()");
+	}
+	public function updatePlan($seller_id,$plan_id) {
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "commission WHERE 	commission_id = '".(int)$plan_id."'");
+		$durationid = $query->row['duration_id'];
+		$days = $query->row['per'];
+		$Date = date("Y-m-d H:i:s");
+		$expirydate = "0000-00-00 00:00:00";
+		if($durationid == 'd'){
+			$expirydate = date('Y-m-d H:i:s', strtotime($Date. " + $days days"));
+		}
+		if($durationid == 'm'){
+			$expirydate = date('Y-m-d H:i:s', strtotime($Date. " + $days months"));
+		}
+		if($durationid == 'y'){
+			$expirydate = date('Y-m-d H:i:s', strtotime($Date. " + $days years"));
+		}
+		if($durationid == 'w'){
+			$days = $days*7;
+			$expirydate = date('Y-m-d H:i:s', strtotime($Date. " + $days days"));
+		}
+		$oldgroup_id = 0;
+		$custquery = $this->db->query("select commission_id from " . DB_PREFIX . "sellers where seller_id = '".(int)$seller_id."'");
+		if($custquery->row){
+			$oldgroup_id = $custquery->row['commission_id'];
+		}
+		$this->db->query("INSERT INTO " . DB_PREFIX . "upgraded_members SET seller_id = '" . (int)$seller_id . "',
 			old_commission_id = '" . (int)$oldgroup_id . "',
 			commission_id = '" . (int)$plan_id . "', 
 			amount = '" . (float)$query->row['amount'] . "', 
 			upgrade_date = NOW(), expiry_date = '" . $expirydate. "', upgradedby = '".$seller_id."'");
-			$this->db->query("UPDATE  " . DB_PREFIX . "sellers
+		$this->db->query("UPDATE  " . DB_PREFIX . "sellers
 			SET commission_id = '" . (int)$plan_id. "',
 			expiry_date = '".$expirydate."',pay_status = 1
 			WHERE seller_id = '" . (int)$seller_id . "'");
 	}
 	public function updateplanseller($data,$seller_id) {
 		$this->db->query("UPDATE " . DB_PREFIX . "sellers SET commission_id = '" . (int)$data['commission_id'] . "'
-		WHERE seller_id = '" . (int)$seller_id . "'");
+			WHERE seller_id = '" . (int)$seller_id . "'");
 	}
 	public function addSeller($data) {
 		$this->event->trigger('pre.seller.add', $data);
@@ -159,42 +163,42 @@ public function updateexpirycusts(){
 		$fPath = DIR_IMAGE. $folderName;
 		$exist = is_dir($fPath);
 		if(!$exist) {
-		mkdir("$fPath");
-		chmod("$fPath", 0777);
+			mkdir("$fPath");
+			chmod("$fPath", 0777);
 		}
-      	$this->db->query("INSERT INTO " . DB_PREFIX . "sellers SET store_id = '" . (int)$this->config->get('config_store_id') . "',
-		username = '" . $this->db->escape($data['username']) . "', firstname = '" . $this->db->escape($data['firstname']) . "', 
-		lastname = '" . $this->db->escape($data['lastname']) . "', email = '" . $this->db->escape($data['email']) . "'
-		, telephone = '" . $this->db->escape($data['telephone']) . "', 
-		salt = '" . $this->db->escape($salt = substr(md5(uniqid(rand(), true)), 0, 9)) . "',
-		password = '" . $this->db->escape(sha1($salt . sha1($salt . sha1($data['password'])))) . "',    
-		foldername = '" . $this->db->escape($data['username']) . "', 
-		commission_id = '" . (int)$config_sellercommission_id . "', 
-		ip = '" . $this->db->escape($this->request->server['REMOTE_ADDR']) . "', status = '1', date_added = NOW()");
+		$this->db->query("INSERT INTO " . DB_PREFIX . "sellers SET store_id = '" . (int)$this->config->get('config_store_id') . "',
+			username = '" . $this->db->escape($data['username']) . "', firstname = '" . $this->db->escape($data['firstname']) . "', 
+			lastname = '" . $this->db->escape($data['lastname']) . "', email = '" . $this->db->escape($data['email']) . "'
+			, telephone = '" . $this->db->escape($data['telephone']) . "', 
+			salt = '" . $this->db->escape($salt = substr(md5(uniqid(rand(), true)), 0, 9)) . "',
+			password = '" . $this->db->escape(sha1($salt . sha1($salt . sha1($data['password'])))) . "',    
+			foldername = '" . $this->db->escape($data['username']) . "', 
+			commission_id = '" . (int)$config_sellercommission_id . "', 
+			ip = '" . $this->db->escape($this->request->server['REMOTE_ADDR']) . "', status = '1', date_added = NOW()");
 		$seller_id = $this->db->getLastId();
 		// if ($data['username']) {
 		// 	$this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET query = 'seller_id=" . (int)$seller_id . "', keyword = '" . $this->db->escape($data['username']) . "'");
 		// }
-      	$this->db->query("INSERT INTO " . DB_PREFIX . "saddress SET seller_id = '" . (int)$seller_id . "', 
-		firstname = '" . $this->db->escape($data['firstname']) . "', 
-		lastname = '" . $this->db->escape($data['lastname']) . "'
-		");
+		$this->db->query("INSERT INTO " . DB_PREFIX . "saddress SET seller_id = '" . (int)$seller_id . "', 
+			firstname = '" . $this->db->escape($data['firstname']) . "', 
+			lastname = '" . $this->db->escape($data['lastname']) . "'
+			");
 		$address_id = $this->db->getLastId();
-      	$this->db->query("UPDATE " . DB_PREFIX . "sellers SET address_id = '" . (int)$address_id . "' WHERE
-		seller_id = '" . (int)$seller_id . "'");
+		$this->db->query("UPDATE " . DB_PREFIX . "sellers SET address_id = '" . (int)$address_id . "' WHERE
+			seller_id = '" . (int)$seller_id . "'");
 		if ($this->config->get('config_seller_autoapprove')) {
 			$this->db->query("UPDATE " . DB_PREFIX . "sellers SET approved = 1,status=1
-			WHERE	seller_id = '" . (int)$seller_id . "'");
+				WHERE	seller_id = '" . (int)$seller_id . "'");
 		}
 		$this->load->language('mail/seller');
 		if (!$this->config->get('config_seller_autoapprove')) {
-				$subject = sprintf($this->language->get('text_approvalsubject'), $this->config->get('config_name'));
-				$message = sprintf($this->language->get('text_welcome'), $this->config->get('config_name')) . "\n\n";
-				$message .= $this->language->get('text_approval') . "\n";
-			}else{
-				$subject = sprintf($this->language->get('text_subject'), $this->config->get('config_name'));
-				$message = sprintf($this->language->get('text_welcome'), $this->config->get('config_name')) . "\n\n";
-			}
+			$subject = sprintf($this->language->get('text_approvalsubject'), $this->config->get('config_name'));
+			$message = sprintf($this->language->get('text_welcome'), $this->config->get('config_name')) . "\n\n";
+			$message .= $this->language->get('text_approval') . "\n";
+		}else{
+			$subject = sprintf($this->language->get('text_subject'), $this->config->get('config_name'));
+			$message = sprintf($this->language->get('text_welcome'), $this->config->get('config_name')) . "\n\n";
+		}
 		$message .= $this->url->link('seller/login', '', 'SSL') . "\n\n";
 		$message .= $this->language->get('text_services') . "\n\n";
 		$message .= $this->language->get('text_thanks') . "\n";
@@ -230,68 +234,68 @@ public function updateexpirycusts(){
 		$this->event->trigger('post.seller.add', $seller_id);
 	}
 	public function updateexpirycusts1(){
-				$config_sellercommission_id = $this->config->get('config_sellercommission_id');
+		$config_sellercommission_id = $this->config->get('config_sellercommission_id');
 		if(!$config_sellercommission_id){
 			$config_sellercommission_id = 1;
 		}
-				$this->db->query("UPDATE  `" . DB_PREFIX . "sellers` set commission_id = '" . (int)$config_sellercommission_id . "',
-				expiry_date = '0000-00-00 00:00:00' WHERE
-				commission_id !='".(int)$config_sellercommission_id."' AND expiry_date != '0000-00-00 00:00:00' AND expiry_date < NOW()");
-			}
-			public function updatePlan1($seller_id,$plan_id) {
-			$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "commission WHERE 	commission_id = '".(int)$plan_id."'");
-			$durationid = $query->row['duration_id'];
-			$days = $query->row['per'];
-			$Date = date("Y-m-d H:i:s");
-			$expirydate = "0000-00-00 00:00:00";
-			if($durationid == 'd'){
-				$expirydate = date('Y-m-d H:i:s', strtotime($Date. " + $days days"));
-			}
-			if($durationid == 'm'){
-				$expirydate = date('Y-m-d H:i:s', strtotime($Date. " + $days months"));
-			}
-			if($durationid == 'y'){
-				$expirydate = date('Y-m-d H:i:s', strtotime($Date. " + $days years"));
-			}
-			if($durationid == 'w'){
-				$days = $days*7;
-				$expirydate = date('Y-m-d H:i:s', strtotime($Date. " + $days days"));
-			}
-			$oldgroup_id = 0;
-			$custquery = $this->db->query("select commission_id from " . DB_PREFIX . "sellers where seller_id = '".(int)$seller_id."'");
-			if($custquery->row){
-				$oldgroup_id = $custquery->row['commission_id'];
-			}
-			$this->db->query("INSERT INTO " . DB_PREFIX . "upgraded_sellers SET seller_id = '" . (int)$seller_id . "',
+		$this->db->query("UPDATE  `" . DB_PREFIX . "sellers` set commission_id = '" . (int)$config_sellercommission_id . "',
+			expiry_date = '0000-00-00 00:00:00' WHERE
+			commission_id !='".(int)$config_sellercommission_id."' AND expiry_date != '0000-00-00 00:00:00' AND expiry_date < NOW()");
+	}
+	public function updatePlan1($seller_id,$plan_id) {
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "commission WHERE 	commission_id = '".(int)$plan_id."'");
+		$durationid = $query->row['duration_id'];
+		$days = $query->row['per'];
+		$Date = date("Y-m-d H:i:s");
+		$expirydate = "0000-00-00 00:00:00";
+		if($durationid == 'd'){
+			$expirydate = date('Y-m-d H:i:s', strtotime($Date. " + $days days"));
+		}
+		if($durationid == 'm'){
+			$expirydate = date('Y-m-d H:i:s', strtotime($Date. " + $days months"));
+		}
+		if($durationid == 'y'){
+			$expirydate = date('Y-m-d H:i:s', strtotime($Date. " + $days years"));
+		}
+		if($durationid == 'w'){
+			$days = $days*7;
+			$expirydate = date('Y-m-d H:i:s', strtotime($Date. " + $days days"));
+		}
+		$oldgroup_id = 0;
+		$custquery = $this->db->query("select commission_id from " . DB_PREFIX . "sellers where seller_id = '".(int)$seller_id."'");
+		if($custquery->row){
+			$oldgroup_id = $custquery->row['commission_id'];
+		}
+		$this->db->query("INSERT INTO " . DB_PREFIX . "upgraded_sellers SET seller_id = '" . (int)$seller_id . "',
 			old_commission_id = '" . (int)$oldgroup_id . "',
 			commission_id = '" . (int)$plan_id . "', 
 			amount = '" . (float)$query->row['amount'] . "', 
 			upgrade_date = NOW(), expiry_date = '" . $expirydate. "', upgradedby = '".$seller_id."'");
-			$this->db->query("UPDATE  " . DB_PREFIX . "sellers
+		$this->db->query("UPDATE  " . DB_PREFIX . "sellers
 			SET commission_id = '" . (int)$plan_id. "',
 			expiry_date = '".$expirydate."',payment_status = 1
 			WHERE seller_id = '" . (int)$seller_id . "'");
 	}
 	public function updateplanseller1($data,$seller_id) {
 		$this->db->query("UPDATE " . DB_PREFIX . "sellers SET commission_id = '" . (int)$data['commission_id'] . "'
-		WHERE seller_id = '" . (int)$seller_id . "'");
+			WHERE seller_id = '" . (int)$seller_id . "'");
 	}
 	public function editSeller($data) {
 		$this->db->query("UPDATE " . DB_PREFIX . "sellers SET firstname = '" . $this->db->escape($data['firstname']) . "', 
-		lastname = '" . $this->db->escape($data['lastname']) . "', email = '" . $this->db->escape($data['email']) . "', 
-		aboutus = '" . $this->db->escape($data['aboutus']). "',tin_no = '" . $this->db->escape($data['tin_no']) . "', 
-		telephone = '" . $this->db->escape($data['telephone']) . "'
-		WHERE seller_id = '" . (int)$this->seller->getId() . "'");
+			lastname = '" . $this->db->escape($data['lastname']) . "', email = '" . $this->db->escape($data['email']) . "', 
+			aboutus = '" . $this->db->escape($data['aboutus']). "',tin_no = '" . $this->db->escape($data['tin_no']) . "', 
+			telephone = '" . $this->db->escape($data['telephone']) . "'
+			WHERE seller_id = '" . (int)$this->seller->getId() . "'");
 		$query = $this->db->query("SELECT foldername FROM " . DB_PREFIX . "sellers WHERE seller_id = '" . (int)$this->seller->getId() . "'");
 		$foldername = $query->row['foldername'];
 		if (isset($data['image'])) {
 			$this->db->query("UPDATE " . DB_PREFIX . "sellers SET 
-			image = '". $this->db->escape(html_entity_decode($data['image'], ENT_QUOTES, 'UTF-8')) . "' 
-			WHERE seller_id = '" . (int)$this->seller->getId() . "'");
+				image = '". $this->db->escape(html_entity_decode($data['image'], ENT_QUOTES, 'UTF-8')) . "' 
+				WHERE seller_id = '" . (int)$this->seller->getId() . "'");
 		}
 	}
 	public function editPassword($email, $password) {
-      	$this->db->query("UPDATE " . DB_PREFIX . "sellers SET salt = '" . $this->db->escape($salt = substr(md5(uniqid(rand(), true)), 0, 9)) . "', password = '" . $this->db->escape(sha1($salt . sha1($salt . sha1($password)))) . "' WHERE email = '" . $this->db->escape($email) . "'");
+		$this->db->query("UPDATE " . DB_PREFIX . "sellers SET salt = '" . $this->db->escape($salt = substr(md5(uniqid(rand(), true)), 0, 9)) . "', password = '" . $this->db->escape(sha1($salt . sha1($salt . sha1($password)))) . "' WHERE email = '" . $this->db->escape($email) . "'");
 	}
 	public function editNewsletter($newsletter) {
 		$this->db->query("UPDATE " . DB_PREFIX . "sellers SET newsletter = '" . (int)$newsletter . "' WHERE seller_id = '" . (int)$this->seller->getId() . "'");
@@ -343,7 +347,7 @@ public function updateexpirycusts(){
 			'c.status',
 			'c.ip',
 			'c.date_added'
-		);
+			);
 		if (isset($data['sort']) && in_array($data['sort'], $sort_data)) {
 			$sql .= " ORDER BY " . $data['sort'];
 		} else {
@@ -382,7 +386,7 @@ public function updateexpirycusts(){
 		$query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "seller_ip` WHERE seller_id = '" . (int)$seller_id . "'");
 		return $query->rows;
 	}
-public function getfoldername($seller_id) {
+	public function getfoldername($seller_id) {
 		$query = $this->db->query("SELECT foldername FROM `" . DB_PREFIX . "sellers` WHERE seller_id = '" . (int)$seller_id . "'");
 		return $query->row['foldername'];
 	}

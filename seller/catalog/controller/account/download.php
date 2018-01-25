@@ -11,15 +11,15 @@ class ControllerAccountDownload extends Controller {
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home')
-		);
+			);
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('text_account'),
 			'href' => $this->url->link('account/account', '', 'SSL')
-		);
+			);
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('text_downloads'),
 			'href' => $this->url->link('account/download', '', 'SSL')
-		);
+			);
 		$this->load->model('account/download');
 		$data['heading_title'] = $this->language->get('heading_title');
 		$data['text_empty'] = $this->language->get('text_empty');
@@ -51,7 +51,7 @@ class ControllerAccountDownload extends Controller {
 					'EB',
 					'ZB',
 					'YB'
-				);
+					);
 				while (($size / 1024) > 1) {
 					$size = $size / 1024;
 					$i++;
@@ -62,7 +62,7 @@ class ControllerAccountDownload extends Controller {
 					'name'       => $result['name'],
 					'size'       => round(substr($size, 0, strpos($size, '.') + 4), 2) . $suffix[$i],
 					'href'       => $this->url->link('account/download/download', 'download_id=' . $result['download_id'], 'SSL')
-				);
+					);
 			}
 		}
 		$pagination = new Pagination();

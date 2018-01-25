@@ -22,7 +22,7 @@ class ControllerAccountRegister extends Controller {
 			$activity_data = array(
 				'customer_id' => $customer_id,
 				'name'        => $this->request->post['firstname'] . ' ' . $this->request->post['lastname']
-			);
+				);
 			$this->model_account_activity->addActivity('register', $activity_data);
 			$this->response->redirect($this->url->link('account/success'));
 		}
@@ -30,15 +30,15 @@ class ControllerAccountRegister extends Controller {
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home')
-		);
+			);
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('text_account'),
 			'href' => $this->url->link('account/account', '', 'SSL')
-		);
+			);
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('text_register'),
 			'href' => $this->url->link('account/register', '', 'SSL')
-		);
+			);
 		$data['heading_title'] = $this->language->get('heading_title');
 		$data['text_account_already'] = sprintf($this->language->get('text_account_already'), $this->url->link('account/login', '', 'SSL'));
 		$data['text_your_details'] = $this->language->get('text_your_details');
@@ -368,7 +368,7 @@ class ControllerAccountRegister extends Controller {
 			$json[] = array(
 				'custom_field_id' => $custom_field['custom_field_id'],
 				'required'        => $custom_field['required']
-			);
+				);
 		}
 		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));

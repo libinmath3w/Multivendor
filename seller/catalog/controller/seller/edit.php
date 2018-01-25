@@ -14,23 +14,23 @@ class ControllerSellerEdit extends Controller {
 			$this->session->data['success'] = $this->language->get('text_success');
 			$this->response->redirect($this->url->link('seller/account', '', 'SSL'));
 		}
-      	$data['breadcrumbs'] = array();
-      	$data['breadcrumbs'][] = array(
-        	'text'      => $this->language->get('text_home'),
+		$data['breadcrumbs'] = array();
+		$data['breadcrumbs'][] = array(
+			'text'      => $this->language->get('text_home'),
 			'href'      => $this->url->link('common/home'),     	
-        	'separator' => false
-      	); 
-      	$data['breadcrumbs'][] = array(
-        	'text'      => $this->language->get('text_account'),
+			'separator' => false
+			); 
+		$data['breadcrumbs'][] = array(
+			'text'      => $this->language->get('text_account'),
 			'href'      => $this->url->link('seller/account', '', 'SSL')
-      	);
-      	$data['breadcrumbs'][] = array(
-        	'text'      => $this->language->get('text_edit'),
+			);
+		$data['breadcrumbs'][] = array(
+			'text'      => $this->language->get('text_edit'),
 			'href'      => $this->url->link('seller/edit', '', 'SSL')
-      	);
+			);
 		$data['heading_title'] = $this->language->get('heading_title');
 		$data['text_your_details'] = $this->language->get('text_your_details');
-        $data['entry_tin_no'] = $this->language->get('entry_tin_no');
+		$data['entry_tin_no'] = $this->language->get('entry_tin_no');
 		$data['entry_firstname'] = $this->language->get('entry_firstname');
 		$data['entry_lastname'] = $this->language->get('entry_lastname');
 		$data['entry_email'] = $this->language->get('entry_email');
@@ -38,8 +38,8 @@ class ControllerSellerEdit extends Controller {
 		$data['entry_fax'] = $this->language->get('entry_fax');
 		$data['text_desc'] = $this->language->get('text_desc');
 		$data['entry_aboutus'] = $this->language->get('entry_aboutus');
-				$data['button_upload'] = $this->language->get('button_upload');
-$data['entry_image'] = $this->language->get('entry_image');
+		$data['button_upload'] = $this->language->get('button_upload');
+		$data['entry_image'] = $this->language->get('entry_image');
 		$data['button_continue'] = $this->language->get('button_continue');
 		$data['button_back'] = $this->language->get('button_back');
 		if (isset($this->error['warning'])) {
@@ -79,7 +79,7 @@ $data['entry_image'] = $this->language->get('entry_image');
 		} else {
 			$data['firstname'] = '';
 		}
-if (isset($this->request->post['tin_no'])) {			$data['tin_no'] = $this->request->post['tin_no'];		} elseif (isset($seller_info)) {			$data['tin_no'] = $seller_info['tin_no'];		} else {			$data['tin_no'] = '';		}
+		if (isset($this->request->post['tin_no'])) {			$data['tin_no'] = $this->request->post['tin_no'];		} elseif (isset($seller_info)) {			$data['tin_no'] = $seller_info['tin_no'];		} else {			$data['tin_no'] = '';		}
 		if (isset($this->request->post['lastname'])) {
 			$data['lastname'] = $this->request->post['lastname'];
 		} elseif (isset($seller_info)) {
@@ -117,7 +117,7 @@ if (isset($this->request->post['tin_no'])) {			$data['tin_no'] = $this->request-
 			$data['image'] = '';
 		}
 		if (isset($this->request->post['aboutus'])) {
-    		$data['aboutus'] = $this->request->post['aboutus'];
+			$data['aboutus'] = $this->request->post['aboutus'];
 		}elseif (isset($seller_info)) {
 			$data['aboutus'] = $seller_info['aboutus'];
 		}   else {
@@ -152,8 +152,8 @@ if (isset($this->request->post['tin_no'])) {			$data['tin_no'] = $this->request-
 		if (!empty($this->request->files['file']['name'])) {
 			$filename = basename(html_entity_decode($this->request->files['file']['name'], ENT_QUOTES, 'UTF-8'));
 			if ((strlen($filename) < 3) || (strlen($filename) > 128)) {
-        		$json['error'] = $this->language->get('error_filename');
-	  		}	  	
+				$json['error'] = $this->language->get('error_filename');
+			}	  	
 			$allowed = array();
 			$filetypes = explode("\n", $this->config->get('config_file_ext_allowed'));
 			foreach ($filetypes as $filetype) {
@@ -161,7 +161,7 @@ if (isset($this->request->post['tin_no'])) {			$data['tin_no'] = $this->request-
 			}
 			if (!in_array(substr(strrchr($filename, '.'), 1), $allowed)) {
 				$json['error'] = $this->language->get('error_filetype');
-       		}	
+			}	
 			if ($this->request->files['file']['error'] != UPLOAD_ERR_OK) {
 				$json['error'] = $this->language->get('error_upload_' . $this->request->files['file']['error']);
 			}
@@ -189,8 +189,8 @@ if (isset($this->request->post['tin_no'])) {			$data['tin_no'] = $this->request-
 		if (!empty($this->request->files['file']['name'])) {
 			$filename = basename(html_entity_decode($this->request->files['file']['name'], ENT_QUOTES, 'UTF-8'));
 			if ((strlen($filename) < 3) || (strlen($filename) > 128)) {
-        		$json['error'] = $this->language->get('error_filename');
-	  		}	  	
+				$json['error'] = $this->language->get('error_filename');
+			}	  	
 			$allowed = array();
 			$filetypes = explode(',','zip');
 			foreach ($filetypes as $filetype) {
@@ -198,7 +198,7 @@ if (isset($this->request->post['tin_no'])) {			$data['tin_no'] = $this->request-
 			}
 			if (!in_array(substr(strrchr($filename, '.'), 1), $allowed)) {
 				$json['error'] = $this->language->get('error_filetype1');
-       		}	
+			}	
 			if ($this->request->files['file']['error'] != UPLOAD_ERR_OK) {
 				$json['error'] = $this->language->get('error_upload_' . $this->request->files['file']['error']);
 			}

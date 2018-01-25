@@ -57,265 +57,265 @@ class ControllerInstallStep4 extends Controller {
 	private function createTables()
 	{
 		$order_trans = "CREATE TABLE IF NOT EXISTS `" .DB_PREFIX. "order_transaction` (
-			`order_transaction_id` int(11) NOT NULL AUTO_INCREMENT,
-			`customer_id` int(11) NOT NULL,
-			`order_id` int(11) NOT NULL,
-			`description` text COLLATE utf8_bin NOT NULL,
-			`amount` decimal(15,4) NOT NULL,
-			`date_added` datetime NOT NULL,
-			PRIMARY KEY (`order_transaction_id`) 
-			)";
+		`order_transaction_id` int(11) NOT NULL AUTO_INCREMENT,
+		`customer_id` int(11) NOT NULL,
+		`order_id` int(11) NOT NULL,
+		`description` text COLLATE utf8_bin NOT NULL,
+		`amount` decimal(15,4) NOT NULL,
+		`date_added` datetime NOT NULL,
+		PRIMARY KEY (`order_transaction_id`) 
+		)";
 		$this->db->query($order_trans);
 
 		$s_address = "CREATE TABLE IF NOT EXISTS `" .DB_PREFIX. "saddress` (
-			 `address_id` int(11) NOT NULL AUTO_INCREMENT,
-			  `seller_id` int(11) NOT NULL,
-			  `firstname` varchar(32) COLLATE utf8_bin NOT NULL DEFAULT '',
-			  `lastname` varchar(32) COLLATE utf8_bin NOT NULL DEFAULT '',
-			  `company` varchar(32) COLLATE utf8_bin NOT NULL,
-			  `company_id` varchar(32) COLLATE utf8_bin NOT NULL,
-			  `tax_id` varchar(32) COLLATE utf8_bin NOT NULL,
-			  `address_1` varchar(128) COLLATE utf8_bin NOT NULL,
-			  `address_2` varchar(128) COLLATE utf8_bin NOT NULL,
-			  `city` varchar(128) COLLATE utf8_bin NOT NULL,
-			  `postcode` varchar(10) COLLATE utf8_bin NOT NULL,
-			  `country_id` int(11) NOT NULL DEFAULT '0',
-			  `zone_id` int(11) NOT NULL DEFAULT '0',
-			  `city2` varchar(128) COLLATE utf8_bin NOT NULL,
-			  `postcode2` varchar(10) COLLATE utf8_bin NOT NULL,
-			  `country_id2` int(11) NOT NULL DEFAULT '0',
-			  `zone_id2` int(11) NOT NULL DEFAULT '0',
-			  PRIMARY KEY (`address_id`),
-			  KEY `seller_id` (`seller_id`)
-			)";
+		`address_id` int(11) NOT NULL AUTO_INCREMENT,
+		`seller_id` int(11) NOT NULL,
+		`firstname` varchar(32) COLLATE utf8_bin NOT NULL DEFAULT '',
+		`lastname` varchar(32) COLLATE utf8_bin NOT NULL DEFAULT '',
+		`company` varchar(32) COLLATE utf8_bin NOT NULL,
+		`company_id` varchar(32) COLLATE utf8_bin NOT NULL,
+		`tax_id` varchar(32) COLLATE utf8_bin NOT NULL,
+		`address_1` varchar(128) COLLATE utf8_bin NOT NULL,
+		`address_2` varchar(128) COLLATE utf8_bin NOT NULL,
+		`city` varchar(128) COLLATE utf8_bin NOT NULL,
+		`postcode` varchar(10) COLLATE utf8_bin NOT NULL,
+		`country_id` int(11) NOT NULL DEFAULT '0',
+		`zone_id` int(11) NOT NULL DEFAULT '0',
+		`city2` varchar(128) COLLATE utf8_bin NOT NULL,
+		`postcode2` varchar(10) COLLATE utf8_bin NOT NULL,
+		`country_id2` int(11) NOT NULL DEFAULT '0',
+		`zone_id2` int(11) NOT NULL DEFAULT '0',
+		PRIMARY KEY (`address_id`),
+		KEY `seller_id` (`seller_id`)
+		)";
 		$this->db->query($s_address);
 
 		$s_seller = "CREATE TABLE IF NOT EXISTS `" .DB_PREFIX. "seller` (
-			`seller_id` int(11) NOT NULL,
-			  `vproduct_id` int(11) NOT NULL,
-			  `expiry_date` datetime NOT NULL,
-			  `pay_status` int(11) NOT NULL
-			)";
+		`seller_id` int(11) NOT NULL,
+		`vproduct_id` int(11) NOT NULL,
+		`expiry_date` datetime NOT NULL,
+		`pay_status` int(11) NOT NULL
+		)";
 		$this->db->query($s_seller);
 
 		$seller_group = "CREATE TABLE IF NOT EXISTS `" .DB_PREFIX. "seller_group` (
-			`seller_group_id` int(11) NOT NULL AUTO_INCREMENT,
-			  `approval` int(1) NOT NULL,
-			  `company_id_display` int(1) NOT NULL,
-			  `company_id_required` int(1) NOT NULL,
-			  `tax_id_display` int(1) NOT NULL,
-			  `tax_id_required` int(1) NOT NULL,
-			  `sort_order` int(3) NOT NULL,
-			  PRIMARY KEY (`seller_group_id`)
-			)";
+		`seller_group_id` int(11) NOT NULL AUTO_INCREMENT,
+		`approval` int(1) NOT NULL,
+		`company_id_display` int(1) NOT NULL,
+		`company_id_required` int(1) NOT NULL,
+		`tax_id_display` int(1) NOT NULL,
+		`tax_id_required` int(1) NOT NULL,
+		`sort_order` int(3) NOT NULL,
+		PRIMARY KEY (`seller_group_id`)
+		)";
 		$this->db->query($seller_group);
 
 		$s_group_desc = "CREATE TABLE IF NOT EXISTS `" .DB_PREFIX. "seller_group_description` (
-			`seller_group_id` int(11) NOT NULL,
-			  `language_id` int(11) NOT NULL,
-			  `name` varchar(32) COLLATE utf8_bin NOT NULL,
-			  `description` text COLLATE utf8_bin NOT NULL,
-			  PRIMARY KEY (`seller_group_id`,`language_id`)
-			)";
+		`seller_group_id` int(11) NOT NULL,
+		`language_id` int(11) NOT NULL,
+		`name` varchar(32) COLLATE utf8_bin NOT NULL,
+		`description` text COLLATE utf8_bin NOT NULL,
+		PRIMARY KEY (`seller_group_id`,`language_id`)
+		)";
 		$this->db->query($s_group_desc);
 
 		$seller_ip = "CREATE TABLE IF NOT EXISTS `" .DB_PREFIX. "seller_ip` (
-			`seller_ip_id` int(11) NOT NULL AUTO_INCREMENT,
-			  `seller_id` int(11) NOT NULL,
-			  `ip` varchar(40) COLLATE utf8_bin NOT NULL,
-			  `date_added` datetime NOT NULL,
-			  PRIMARY KEY (`seller_ip_id`),
-			  KEY `ip` (`ip`)
-			)";
+		`seller_ip_id` int(11) NOT NULL AUTO_INCREMENT,
+		`seller_id` int(11) NOT NULL,
+		`ip` varchar(40) COLLATE utf8_bin NOT NULL,
+		`date_added` datetime NOT NULL,
+		PRIMARY KEY (`seller_ip_id`),
+		KEY `ip` (`ip`)
+		)";
 		$this->db->query($seller_ip);
 
 		$seller_message = "CREATE TABLE IF NOT EXISTS `" .DB_PREFIX. "seller_message` ( `message_id` INT(11) NOT NULL AUTO_INCREMENT ,
-			`seller_id` VARCHAR(20) NOT NULL ,
-			`customer` VARCHAR(255) NOT NULL , 
-			`product_name` VARCHAR(255) NOT NULL , 
-			`email` VARCHAR(30) NOT NULL , 
-			`phone` VARCHAR(20) NOT NULL ,
-			`message` TEXT NOT NULL,
-			`reply` TEXT NOT NULL ,
-			`date_added` DATETIME NOT NULL,
-			`date_reply` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
-			PRIMARY KEY (`message_id`))";
+		`seller_id` VARCHAR(20) NOT NULL ,
+		`customer` VARCHAR(255) NOT NULL , 
+		`product_name` VARCHAR(255) NOT NULL , 
+		`email` VARCHAR(30) NOT NULL , 
+		`phone` VARCHAR(20) NOT NULL ,
+		`message` TEXT NOT NULL,
+		`reply` TEXT NOT NULL ,
+		`date_added` DATETIME NOT NULL,
+		`date_reply` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
+		PRIMARY KEY (`message_id`))";
 		$this->db->query($seller_message);
 
 		$reply_message = "CREATE TABLE IF NOT EXISTS `" .DB_PREFIX. "seller_message_reply` ( `reply_id` INT(11) NOT NULL AUTO_INCREMENT ,
-		    `seller_id` VARCHAR(11) NOT NULL ,
-		    `message_id` VARCHAR(11) NOT NULL ,
-		    `content` TEXT NOT NULL ,
-		    `email` VARCHAR(100) NOT NULL,
-		    `date_added` DATETIME NOT NULL,
-		    PRIMARY KEY  (`reply_id`)
-		    )";
-        $this->db->query($reply_message);
+		`seller_id` VARCHAR(11) NOT NULL ,
+		`message_id` VARCHAR(11) NOT NULL ,
+		`content` TEXT NOT NULL ,
+		`email` VARCHAR(100) NOT NULL,
+		`date_added` DATETIME NOT NULL,
+		PRIMARY KEY  (`reply_id`)
+		)";
+		$this->db->query($reply_message);
 		$ip_blacklist = "CREATE TABLE IF NOT EXISTS `" .DB_PREFIX. "seller_ip_blacklist` (
-			`seller_ip_blacklist_id` int(11) NOT NULL AUTO_INCREMENT,
-			  `ip` varchar(40) COLLATE utf8_bin NOT NULL,
-			  PRIMARY KEY (`seller_ip_blacklist_id`),
-			  KEY `ip` (`ip`)
-			)";
+		`seller_ip_blacklist_id` int(11) NOT NULL AUTO_INCREMENT,
+		`ip` varchar(40) COLLATE utf8_bin NOT NULL,
+		PRIMARY KEY (`seller_ip_blacklist_id`),
+		KEY `ip` (`ip`)
+		)";
 		$this->db->query($ip_blacklist);
 
 		$seller_online = "CREATE TABLE IF NOT EXISTS `" .DB_PREFIX. "seller_online` (
-			 `ip` varchar(40) COLLATE utf8_bin NOT NULL,
-			  `seller_id` int(11) NOT NULL,
-			  `url` text COLLATE utf8_bin NOT NULL,
-			  `referer` text COLLATE utf8_bin NOT NULL,
-			  `date_added` datetime NOT NULL,
-			  PRIMARY KEY (`ip`)
-			)";
+		`ip` varchar(40) COLLATE utf8_bin NOT NULL,
+		`seller_id` int(11) NOT NULL,
+		`url` text COLLATE utf8_bin NOT NULL,
+		`referer` text COLLATE utf8_bin NOT NULL,
+		`date_added` datetime NOT NULL,
+		PRIMARY KEY (`ip`)
+		)";
 		$this->db->query($seller_online);
 		$seller_payment = "CREATE TABLE IF NOT EXISTS `" .DB_PREFIX. "seller_payment` (
-			`payment_id` int(11) NOT NULL AUTO_INCREMENT,
-			  `seller_id` int(11) NOT NULL,
-			  `payment_info` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-			  `payment_status` tinyint(5) NOT NULL,
-			  `payment_amount` decimal(15,4) NOT NULL DEFAULT '0.0000',
-			  `payment_date` datetime NOT NULL,
-			  PRIMARY KEY (`payment_id`)
-			)";
+		`payment_id` int(11) NOT NULL AUTO_INCREMENT,
+		`seller_id` int(11) NOT NULL,
+		`payment_info` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+		`payment_status` tinyint(5) NOT NULL,
+		`payment_amount` decimal(15,4) NOT NULL DEFAULT '0.0000',
+		`payment_date` datetime NOT NULL,
+		PRIMARY KEY (`payment_id`)
+		)";
 		$this->db->query($seller_payment);
 		$seller_reward = "CREATE TABLE IF NOT EXISTS `" .DB_PREFIX. "seller_reward` (
-			 `seller_reward_id` int(11) NOT NULL AUTO_INCREMENT,
-			  `seller_id` int(11) NOT NULL DEFAULT '0',
-			  `order_id` int(11) NOT NULL DEFAULT '0',
-			  `description` text COLLATE utf8_bin NOT NULL,
-			  `points` int(8) NOT NULL DEFAULT '0',
-			  `date_added` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-			  PRIMARY KEY (`seller_reward_id`)
-			)";
+		`seller_reward_id` int(11) NOT NULL AUTO_INCREMENT,
+		`seller_id` int(11) NOT NULL DEFAULT '0',
+		`order_id` int(11) NOT NULL DEFAULT '0',
+		`description` text COLLATE utf8_bin NOT NULL,
+		`points` int(8) NOT NULL DEFAULT '0',
+		`date_added` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+		PRIMARY KEY (`seller_reward_id`)
+		)";
 		$this->db->query($seller_reward);
 
 		$seller_trans = "CREATE TABLE IF NOT EXISTS `" .DB_PREFIX. "seller_transaction` (
-			 `seller_transaction_id` int(11) NOT NULL AUTO_INCREMENT,
-			  `seller_id` int(11) NOT NULL,
-			  `order_id` int(11) NOT NULL,
-			  `order_product_id` int(11) NOT NULL,
-			  `description` text COLLATE utf8_bin NOT NULL,
-			  `amount` decimal(15,4) NOT NULL,
-			  `sub_total` decimal(15,4) NOT NULL,
-			  `commission` decimal(15,4) NOT NULL,
-			  `date_added` datetime NOT NULL,
-			  `transaction_status` int(11) NOT NULL,
-			  PRIMARY KEY (`seller_transaction_id`)
-			)";
+		`seller_transaction_id` int(11) NOT NULL AUTO_INCREMENT,
+		`seller_id` int(11) NOT NULL,
+		`order_id` int(11) NOT NULL,
+		`order_product_id` int(11) NOT NULL,
+		`description` text COLLATE utf8_bin NOT NULL,
+		`amount` decimal(15,4) NOT NULL,
+		`sub_total` decimal(15,4) NOT NULL,
+		`commission` decimal(15,4) NOT NULL,
+		`date_added` datetime NOT NULL,
+		`transaction_status` int(11) NOT NULL,
+		PRIMARY KEY (`seller_transaction_id`)
+		)";
 		$this->db->query($seller_trans);
 
 		$up_sellers = "CREATE TABLE IF NOT EXISTS `".DB_PREFIX."upgraded_sellers` (
-			`upgrade_id` int(11) NOT NULL AUTO_INCREMENT,
-			`seller_id` int(11) NOT NULL,
-			`commission_id` int(11) NOT NULL,
-			`old_commission_id` int(11) NOT NULL,
-			`amount` float(15,4) NOT NULL,
-			`upgrade_date` datetime NOT NULL,
-			`expiry_date` datetime NOT NULL,
-			`upgradedby` varchar(100) NOT NULL,
-			PRIMARY KEY (`upgrade_id`)
-			)";
+		`upgrade_id` int(11) NOT NULL AUTO_INCREMENT,
+		`seller_id` int(11) NOT NULL,
+		`commission_id` int(11) NOT NULL,
+		`old_commission_id` int(11) NOT NULL,
+		`amount` float(15,4) NOT NULL,
+		`upgrade_date` datetime NOT NULL,
+		`expiry_date` datetime NOT NULL,
+		`upgradedby` varchar(100) NOT NULL,
+		PRIMARY KEY (`upgrade_id`)
+		)";
 		$this->db->query($up_sellers);
 
 		$seller_activity = "CREATE TABLE IF NOT EXISTS `" .DB_PREFIX. "seller_activity` (
-			`activity_id` int(11) NOT NULL AUTO_INCREMENT,
-			`seller_id` int(11) NOT NULL,
-			`key` varchar(64) NOT NULL,
-			`data` text NOT NULL,
-			`ip` varchar(40) NOT NULL,
-			`date_added` datetime NOT NULL,
-			PRIMARY KEY (`activity_id`)
-			)";
+		`activity_id` int(11) NOT NULL AUTO_INCREMENT,
+		`seller_id` int(11) NOT NULL,
+		`key` varchar(64) NOT NULL,
+		`data` text NOT NULL,
+		`ip` varchar(40) NOT NULL,
+		`date_added` datetime NOT NULL,
+		PRIMARY KEY (`activity_id`)
+		)";
 		$this->db->query($seller_activity);
 
 		$seller_rev = "CREATE TABLE IF NOT EXISTS `" .DB_PREFIX. "sellerreview` (
-			`review_id` int(11) NOT NULL AUTO_INCREMENT,
-			`customer_id` int(11) NOT NULL,
-			`order_id` int(11) NOT NULL,
-			`seller_id` int(11) NOT NULL,
-			`author` varchar(64) NOT NULL,
-			`text` text NOT NULL,
-			`rating` int(1) NOT NULL,
-			`status` tinyint(1) NOT NULL DEFAULT '0',
-			`date_added` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-			`date_modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-			PRIMARY KEY (`review_id`,`order_id`,`seller_id`)
-			)";
-	    $this->db->query($seller_rev);
+		`review_id` int(11) NOT NULL AUTO_INCREMENT,
+		`customer_id` int(11) NOT NULL,
+		`order_id` int(11) NOT NULL,
+		`seller_id` int(11) NOT NULL,
+		`author` varchar(64) NOT NULL,
+		`text` text NOT NULL,
+		`rating` int(1) NOT NULL,
+		`status` tinyint(1) NOT NULL DEFAULT '0',
+		`date_added` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+		`date_modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+		PRIMARY KEY (`review_id`,`order_id`,`seller_id`)
+		)";
+		$this->db->query($seller_rev);
 
-	    $seller_pd = "CREATE TABLE IF NOT EXISTS `" .DB_PREFIX. "sellers_products` (
-			`id` int(11) NOT NULL AUTO_INCREMENT,
-			`seller_id` int(11) NOT NULL,
-			`product_id` int(11) NOT NULL,
-			`price` decimal(15,4) NOT NULL DEFAULT '0.0000',
-			`quantity` int(11) NOT NULL,
-			`date_added` datetime NOT NULL,
-			`status` int(11) NOT NULL DEFAULT '1',
-			PRIMARY KEY (`id`)
-			)";
+		$seller_pd = "CREATE TABLE IF NOT EXISTS `" .DB_PREFIX. "sellers_products` (
+		`id` int(11) NOT NULL AUTO_INCREMENT,
+		`seller_id` int(11) NOT NULL,
+		`product_id` int(11) NOT NULL,
+		`price` decimal(15,4) NOT NULL DEFAULT '0.0000',
+		`quantity` int(11) NOT NULL,
+		`date_added` datetime NOT NULL,
+		`status` int(11) NOT NULL DEFAULT '1',
+		PRIMARY KEY (`id`)
+		)";
 		$this->db->query($seller_pd);
 
-    	$comm_table = "CREATE TABLE IF NOT EXISTS `" .DB_PREFIX. "commission` (
-			`commission_id` int(11) NOT NULL AUTO_INCREMENT,
-			`commission_name` varchar(64) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-			`commission_type` tinyint(4) NOT NULL,
-			`commission` int(11) NOT NULL,
-			`product_limit` int(11) NOT NULL,
-			`sort_order` int(11) NOT NULL,
-			`date_add` datetime NOT NULL,
-			`amount` float NOT NULL,
-			`commission_discount` int(11) NOT NULL,
-			`per` int(11) NOT NULL,
-			`duration_id` varchar(255) NOT NULL,
-			`description` text NOT NULL,
-			PRIMARY KEY (`commission_id`)
-			)";
+		$comm_table = "CREATE TABLE IF NOT EXISTS `" .DB_PREFIX. "commission` (
+		`commission_id` int(11) NOT NULL AUTO_INCREMENT,
+		`commission_name` varchar(64) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+		`commission_type` tinyint(4) NOT NULL,
+		`commission` int(11) NOT NULL,
+		`product_limit` int(11) NOT NULL,
+		`sort_order` int(11) NOT NULL,
+		`date_add` datetime NOT NULL,
+		`amount` float NOT NULL,
+		`commission_discount` int(11) NOT NULL,
+		`per` int(11) NOT NULL,
+		`duration_id` varchar(255) NOT NULL,
+		`description` text NOT NULL,
+		PRIMARY KEY (`commission_id`)
+		)";
 		$this->db->query($comm_table);
 
-  		$comm_rates = "CREATE TABLE IF NOT EXISTS `" .DB_PREFIX. "commission_rates` (
-			`category_id` int(11) NOT NULL,
-			`commission_id` int(11) NOT NULL,
-			`commission_rate` int(11) NOT NULL
-			)";
-     	$this->db->query($comm_rates);
+		$comm_rates = "CREATE TABLE IF NOT EXISTS `" .DB_PREFIX. "commission_rates` (
+		`category_id` int(11) NOT NULL,
+		`commission_id` int(11) NOT NULL,
+		`commission_rate` int(11) NOT NULL
+		)";
+		$this->db->query($comm_rates);
 
 		$seller_table = "CREATE TABLE IF NOT EXISTS `" .DB_PREFIX. "sellers` (
-			`seller_id` int(11) NOT NULL AUTO_INCREMENT,
-			`commission_id` int(11) NOT NULL,
-			`store_id` int(11) NOT NULL DEFAULT '0',
-			`username` varchar(128) COLLATE utf8_bin NOT NULL,
-			`firstname` varchar(32) COLLATE utf8_bin NOT NULL DEFAULT '',
-			`lastname` varchar(32) COLLATE utf8_bin NOT NULL DEFAULT '',
-			`email` varchar(96) COLLATE utf8_bin NOT NULL DEFAULT '',
-			`paypal_email` varchar(96) COLLATE utf8_bin NOT NULL,
-			`payee_name` varchar(255) COLLATE utf8_bin NOT NULL,
-			`tin_no` varchar(255) COLLATE utf8_bin NOT NULL,
-			`bank_name` varchar(96) COLLATE utf8_bin NOT NULL DEFAULT '',
-			`account_number` varchar(32) COLLATE utf8_bin NOT NULL DEFAULT '',
-			`account_name` varchar(32) COLLATE utf8_bin NOT NULL DEFAULT '',
-			`branch` varchar(32) COLLATE utf8_bin NOT NULL DEFAULT '',
-			`ifsccode` varchar(32) COLLATE utf8_bin NOT NULL DEFAULT '',
-			`telephone` varchar(32) COLLATE utf8_bin NOT NULL DEFAULT '',
-			`fax` varchar(32) COLLATE utf8_bin NOT NULL DEFAULT '',
-			`password` varchar(40) COLLATE utf8_bin NOT NULL DEFAULT '',
-			`salt` varchar(9) COLLATE utf8_bin NOT NULL DEFAULT '',
-			`cart` text COLLATE utf8_bin,
-			`wishlist` text COLLATE utf8_bin,
-			`paypalorcheque` tinyint(1) NOT NULL DEFAULT '0',
-			`address_id` int(11) NOT NULL DEFAULT '0',
-			`seller_group_id` int(11) NOT NULL,
-			`ip` varchar(40) COLLATE utf8_bin NOT NULL DEFAULT '0',
-			`status` tinyint(1) NOT NULL,
-			`approved` tinyint(1) NOT NULL,
-			`token` varchar(255) COLLATE utf8_bin NOT NULL,
-			`date_added` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-			`image` varchar(255) COLLATE utf8_bin DEFAULT NULL,
-			`foldername` varchar(255) COLLATE utf8_bin DEFAULT NULL,
-			`aboutus` text COLLATE utf8_bin NOT NULL,
-			`expiry_date` datetime NOT NULL,
-			`pay_status` int(11) NOT NULL,
-			PRIMARY KEY (`seller_id`)
-			)";
+		`seller_id` int(11) NOT NULL AUTO_INCREMENT,
+		`commission_id` int(11) NOT NULL,
+		`store_id` int(11) NOT NULL DEFAULT '0',
+		`username` varchar(128) COLLATE utf8_bin NOT NULL,
+		`firstname` varchar(32) COLLATE utf8_bin NOT NULL DEFAULT '',
+		`lastname` varchar(32) COLLATE utf8_bin NOT NULL DEFAULT '',
+		`email` varchar(96) COLLATE utf8_bin NOT NULL DEFAULT '',
+		`paypal_email` varchar(96) COLLATE utf8_bin NOT NULL,
+		`payee_name` varchar(255) COLLATE utf8_bin NOT NULL,
+		`tin_no` varchar(255) COLLATE utf8_bin NOT NULL,
+		`bank_name` varchar(96) COLLATE utf8_bin NOT NULL DEFAULT '',
+		`account_number` varchar(32) COLLATE utf8_bin NOT NULL DEFAULT '',
+		`account_name` varchar(32) COLLATE utf8_bin NOT NULL DEFAULT '',
+		`branch` varchar(32) COLLATE utf8_bin NOT NULL DEFAULT '',
+		`ifsccode` varchar(32) COLLATE utf8_bin NOT NULL DEFAULT '',
+		`telephone` varchar(32) COLLATE utf8_bin NOT NULL DEFAULT '',
+		`fax` varchar(32) COLLATE utf8_bin NOT NULL DEFAULT '',
+		`password` varchar(40) COLLATE utf8_bin NOT NULL DEFAULT '',
+		`salt` varchar(9) COLLATE utf8_bin NOT NULL DEFAULT '',
+		`cart` text COLLATE utf8_bin,
+		`wishlist` text COLLATE utf8_bin,
+		`paypalorcheque` tinyint(1) NOT NULL DEFAULT '0',
+		`address_id` int(11) NOT NULL DEFAULT '0',
+		`seller_group_id` int(11) NOT NULL,
+		`ip` varchar(40) COLLATE utf8_bin NOT NULL DEFAULT '0',
+		`status` tinyint(1) NOT NULL,
+		`approved` tinyint(1) NOT NULL,
+		`token` varchar(255) COLLATE utf8_bin NOT NULL,
+		`date_added` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+		`image` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+		`foldername` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+		`aboutus` text COLLATE utf8_bin NOT NULL,
+		`expiry_date` datetime NOT NULL,
+		`pay_status` int(11) NOT NULL,
+		PRIMARY KEY (`seller_id`)
+		)";
 		$this->db->query($seller_table);
 	}
 
@@ -332,10 +332,10 @@ class ControllerInstallStep4 extends Controller {
 		$abc = $this->db->query("SELECT * FROM information_schema.COLUMNS WHERE COLUMN_NAME='seller_id' AND TABLE_NAME='".DB_PREFIX."category' AND TABLE_SCHEMA='".DB_DATABASE."'");
 		if($abc->num_rows==0){
 			$a_1_sql = "ALTER TABLE " .DB_PREFIX. "category ADD COLUMN seller_id int(11) NOT NULL default 0";
-				$this->db->query($a_1_sql);
+			$this->db->query($a_1_sql);
 		}
 		$abc1 = $this->db->query("SELECT * FROM information_schema.COLUMNS WHERE COLUMN_NAME='approve' AND 
-				TABLE_NAME='".DB_PREFIX."category' AND TABLE_SCHEMA='".DB_DATABASE."'");
+			TABLE_NAME='".DB_PREFIX."category' AND TABLE_SCHEMA='".DB_DATABASE."'");
 		if($abc1->num_rows==0){
 			$a_11_sql = "ALTER TABLE " .DB_PREFIX. "category ADD COLUMN approve smallint(6) NOT NULL default 0";
 			$this->db->query($a_11_sql);
@@ -410,7 +410,7 @@ class ControllerInstallStep4 extends Controller {
 		$abcd5 = $this->db->query("SELECT * FROM information_schema.COLUMNS WHERE COLUMN_NAME='documentation' AND TABLE_NAME='".DB_PREFIX."product' AND TABLE_SCHEMA='".DB_DATABASE."'");
 		if($abcd5->num_rows==0){
 			$a_25_sql = "ALTER TABLE " .DB_PREFIX. "product ADD documentation text COLLATE utf8_bin NOT NULL";
-		$this->db->query($a_25_sql);
+			$this->db->query($a_25_sql);
 		}
 		$abcoh5 = $this->db->query("SELECT * FROM information_schema.COLUMNS WHERE COLUMN_NAME='seller_id' AND TABLE_NAME='".DB_PREFIX."order_history' AND TABLE_SCHEMA='".DB_DATABASE."'");
 		if($abcoh5->num_rows==0){
@@ -421,10 +421,10 @@ class ControllerInstallStep4 extends Controller {
 		if($abcr5->num_rows==0){
 			$a_27_sql = "ALTER TABLE " .DB_PREFIX. "review ADD seller_id int(11) NOT NULL DEFAULT 0";
 			$this->db->query($a_27_sql);
-				}
+		}
 		$abcd5 = $this->db->query("SELECT * FROM information_schema.COLUMNS WHERE COLUMN_NAME='seller_id' AND TABLE_NAME='".DB_PREFIX."product_discount' AND TABLE_SCHEMA='".DB_DATABASE."'");
 		if($abcd5->num_rows==0){
-		   	$a_28_sql = "ALTER TABLE " .DB_PREFIX. "product_discount ADD seller_id int(11) NOT NULL DEFAULT 0";
+			$a_28_sql = "ALTER TABLE " .DB_PREFIX. "product_discount ADD seller_id int(11) NOT NULL DEFAULT 0";
 			$this->db->query($a_28_sql);
 		}
 		$abco5 = $this->db->query("SELECT * FROM information_schema.COLUMNS WHERE COLUMN_NAME='seller_id' AND TABLE_NAME='".DB_PREFIX."product_option' AND TABLE_SCHEMA='".DB_DATABASE."'");
@@ -517,63 +517,63 @@ class ControllerInstallStep4 extends Controller {
 		$query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "user` limit 1");
 		if($query->num_rows){
 			$userquery = $this->db->query("SELECT * FROM " . DB_PREFIX . "sellers WHERE LOWER(username) = '" . $this->db->escape(strtolower($query->row['firstname'].'_'.$query->row['lastname'])) . "'");
-		    if(!$userquery->num_rows){
-			    $emailquery = $this->db->query("SELECT * FROM " . DB_PREFIX . "sellers WHERE LOWER(email) = '" . $this->db->escape(strtolower($query->row['email'])) . "'");
-			    if(!$emailquery->num_rows){
-				    $config_sellercommission_id = $this->config->get('config_sellercommission_id');
-			    	if(!$config_sellercommission_id){
-				   	 $config_sellercommission_id = 1;
+			if(!$userquery->num_rows){
+				$emailquery = $this->db->query("SELECT * FROM " . DB_PREFIX . "sellers WHERE LOWER(email) = '" . $this->db->escape(strtolower($query->row['email'])) . "'");
+				if(!$emailquery->num_rows){
+					$config_sellercommission_id = $this->config->get('config_sellercommission_id');
+					if(!$config_sellercommission_id){
+						$config_sellercommission_id = 1;
 					}
-			  		$folderName = strtolower($query->row['firstname']).'_'.strtolower($query->row['lastname']);
+					$folderName = strtolower($query->row['firstname']).'_'.strtolower($query->row['lastname']);
 					//$path = HTTPS_SERVER;//throwing error
 					$fPath = DIR_IMAGE. $folderName;
 					$exist = is_dir($fPath);
 					if(!$exist) {
-					mkdir("$fPath");
-					chmod("$fPath", 0777);
+						mkdir("$fPath");
+						chmod("$fPath", 0777);
 					}
 					$this->db->query("INSERT INTO " . DB_PREFIX . "sellers SET store_id = '" . (int)$this->config->get('config_store_id') . "',
-					username = '" . $this->db->escape(strtolower($query->row['firstname'].'_'.$query->row['lastname'])) . "', firstname = '" . $this->db->escape($query->row['firstname']) . "', 
-					lastname = '" . $this->db->escape($query->row['lastname']) . "', email = '" . $this->db->escape($query->row['email']) . "'
-					, 
-					salt = '" . $this->db->escape($salt = substr(md5(uniqid(rand(), true)), 0, 9)) . "',
-					password = '" . $this->db->escape($query->row['password']) . "',    
-					foldername = '" . $this->db->escape(strtolower($query->row['firstname'].'_'.$query->row['lastname'])) . "', 
-					commission_id = '" . (int)$config_sellercommission_id . "', 
-					ip = '" . $this->db->escape($this->request->server['REMOTE_ADDR']) . "', status = '1', approved='1',pay_status='1',payment_status='1',date_added = NOW()");
+						username = '" . $this->db->escape(strtolower($query->row['firstname'].'_'.$query->row['lastname'])) . "', firstname = '" . $this->db->escape($query->row['firstname']) . "', 
+						lastname = '" . $this->db->escape($query->row['lastname']) . "', email = '" . $this->db->escape($query->row['email']) . "'
+						, 
+						salt = '" . $this->db->escape($salt = substr(md5(uniqid(rand(), true)), 0, 9)) . "',
+						password = '" . $this->db->escape($query->row['password']) . "',    
+						foldername = '" . $this->db->escape(strtolower($query->row['firstname'].'_'.$query->row['lastname'])) . "', 
+						commission_id = '" . (int)$config_sellercommission_id . "', 
+						ip = '" . $this->db->escape($this->request->server['REMOTE_ADDR']) . "', status = '1', approved='1',pay_status='1',payment_status='1',date_added = NOW()");
 					$seller_id = $this->db->getLastId();
 					$username = $query->row['firstname'].'_'.$query->row['lastname'];
 					if($username) {
-					 $this->db->query("INSERT INTO " . DB_PREFIX . "seo_url SET language_id = '1', query = 'seller_id=" . (int)$seller_id . "', keyword = '" . $this->db->escape(strtolower($username)) . "'");
+						$this->db->query("INSERT INTO " . DB_PREFIX . "seo_url SET language_id = '1', query = 'seller_id=" . (int)$seller_id . "', keyword = '" . $this->db->escape(strtolower($username)) . "'");
 					}
 					$this->db->query("INSERT INTO " . DB_PREFIX . "saddress SET 
-					seller_id = '" . (int)$seller_id . "', 
-					firstname = '" . $this->db->escape($query->row['firstname']) . "', 
-					lastname = '" . $this->db->escape($query->row['lastname']) . "'
-					");
+						seller_id = '" . (int)$seller_id . "', 
+						firstname = '" . $this->db->escape($query->row['firstname']) . "', 
+						lastname = '" . $this->db->escape($query->row['lastname']) . "'
+						");
 					$address_id = $this->db->getLastId();
 					$this->db->query("UPDATE " . DB_PREFIX . "sellers SET address_id = '" . (int)$address_id . "' WHERE
-					seller_id = '" . (int)$seller_id . "'");
+						seller_id = '" . (int)$seller_id . "'");
 					$store_id = 0;
 					$code = "config";
 					$key = "config_defaultseller_id";
 					$value = $seller_id;
 					$this->db->query("INSERT INTO " . DB_PREFIX . "setting SET store_id = '" . (int)$store_id . "', `code` = '" . $this->db->escape($code) . "', `key` = '" . $this->db->escape($key) . "', `value` = '" . $this->db->escape($value) . "'");
-				   }
 				}
 			}
-			
+		}
+		
 	}
 
 	public function setDefaultSeller()
 	{
 		$defaultseller = $this->config->get('config_defaultseller_id');
 
-	    if(!$defaultseller){
-	    $default_seller_id = 1;
-		  $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product");
-		    foreach($query->rows as $row){
-		    	$default_sql1 = "SELECT * FROM " . DB_PREFIX . "sellers_products WHERE 		
+		if(!$defaultseller){
+			$default_seller_id = 1;
+			$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product");
+			foreach($query->rows as $row){
+				$default_sql1 = "SELECT * FROM " . DB_PREFIX . "sellers_products WHERE 		
 				product_id = '" . (int)$row['product_id'] . "'";
 				$product_query = $this->db->query($default_sql1);
 				if(!$product_query->num_rows){
@@ -582,7 +582,7 @@ class ControllerInstallStep4 extends Controller {
 					WHERE product_id = '" . (int)$row['product_id'] . "'";
 					$this->db->query($update_products);
 
-	                $insert_into_seller = "INSERT INTO " . DB_PREFIX . "seller SET 
+					$insert_into_seller = "INSERT INTO " . DB_PREFIX . "seller SET 
 					vproduct_id = '" . (int)$row['product_id'] . "', 
 					seller_id = '" . (int)$default_seller_id . "'";
 					$this->db->query($insert_into_seller);
@@ -611,7 +611,7 @@ class ControllerInstallStep4 extends Controller {
 					$this->db->query($update_pd_special);
 
 				}
-			 }
+			}
 		}
 		else {
 			echo "Default seller not set!";

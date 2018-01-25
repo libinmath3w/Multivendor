@@ -4,9 +4,9 @@ class ModelSellerOffer extends Model {
 		$price = $data['price'];
 		$product_id = $data['product_id'];
 		$this->db->query("INSERT INTO " . DB_PREFIX . "sellers_products SET price='".(float)$price."', 
-		seller_id='".(int)$this->seller->getId()."',
-		product_id = '" . (int)$data['product_id'] . "',quantity ='" . (int)$data['quantity'] . "'
-		date_added = NOW()");
+			seller_id='".(int)$this->seller->getId()."',
+			product_id = '" . (int)$data['product_id'] . "',quantity ='" . (int)$data['quantity'] . "'
+			date_added = NOW()");
 		if (isset($data['product_option'])) {
 			foreach ($data['product_option'] as $product_option) {
 				if ($product_option['type'] == 'select' || $product_option['type'] == 'radio' || $product_option['type'] == 'checkbox' || $product_option['type'] == 'image') {
@@ -30,11 +30,11 @@ class ModelSellerOffer extends Model {
 		$this->db->query("DELETE FROM " . DB_PREFIX . "product_option WHERE product_id = '" . (int)$product_id . "'");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "product_option_value WHERE product_id = '" . (int)$product_id . "'");
 		$this->db->query("UPDATE  " . DB_PREFIX . "sellers_products SET 		
-		price='".(float)$price."', 
-		seller_id='".(int)$this->seller->getId()."',
-		product_id = '" . (int)$data['product_id'] . "',quantity ='" . (int)$data['quantity'] . "'		
-		WHERE sproduct_id = '" . (int)$product_id . "'
-		");
+			price='".(float)$price."', 
+			seller_id='".(int)$this->seller->getId()."',
+			product_id = '" . (int)$data['product_id'] . "',quantity ='" . (int)$data['quantity'] . "'		
+			WHERE sproduct_id = '" . (int)$product_id . "'
+			");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "product_option WHERE product_id = '" . (int)$product_id . "' AND seller_id = '" . (int)$this->seller->getId() . "'");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "product_option_value WHERE product_id = '" . (int)$product_id . "' AND seller_id = '" . (int)$this->seller->getId() . "'");
 		if (isset($data['product_option'])) {
@@ -59,11 +59,11 @@ class ModelSellerOffer extends Model {
 		$product_id = $data['product_id'];
 		$price = $data['price'];	
 		$query = $this->db->query("SELECT *  FROM " . DB_PREFIX . "sellers_products  WHERE 
-		seller_id = '" . (int)$this->seller->getId() . "'
-		AND product_id = '" . (int)$data['product_id'] . "'");
+			seller_id = '" . (int)$this->seller->getId() . "'
+			AND product_id = '" . (int)$data['product_id'] . "'");
 		if ($query->num_rows){
 			$this->db->query("UPDATE  " . DB_PREFIX . "sellers_products SET price='".(float)$price."',
-			quantity = '" .(float)$data['quantity']. "' WHERE seller_id = '" . (int)$this->seller->getId() . "' AND product_id = '" . (int)$data['product_id'] . "'");
+				quantity = '" .(float)$data['quantity']. "' WHERE seller_id = '" . (int)$this->seller->getId() . "' AND product_id = '" . (int)$data['product_id'] . "'");
 			$this->db->query("UPDATE  " . DB_PREFIX . "product SET quantity = '" .(float)$data['quantity']. "',price='".(float)$price."' WHERE seller_id = '" . (int)$this->seller->getId() . "' AND product_id = '" . (int)$data['product_id'] . "'");
 		}else{		
 			$this->db->query("INSERT INTO " . DB_PREFIX . "sellers_products SET product_id = '" . (int)$data['product_id'] . "',price='".(float)$price."',seller_id='".(int)$this->seller->getId()."',quantity = '" .(float)$data['quantity']. "',date_added = NOW()");
@@ -75,9 +75,9 @@ class ModelSellerOffer extends Model {
 		if (isset($data['product_special'])) {
 			foreach ($data['product_special'] as $product_special) {
 				$this->db->query("INSERT INTO " . DB_PREFIX . "product_special SET product_id = '" . (int)$product_id . "', 
-				customer_group_id = '" . (int)$product_special['customer_group_id'] . "', priority = '" . (int)$product_special['priority'] . "', 
-				price = '" . (float)$product_special['price'] . "', date_start = '" . $this->db->escape($product_special['date_start']) . "', 
-				date_end = '" . $this->db->escape($product_special['date_end']) . "',seller_id='".(int)$this->seller->getId()."'");
+					customer_group_id = '" . (int)$product_special['customer_group_id'] . "', priority = '" . (int)$product_special['priority'] . "', 
+					price = '" . (float)$product_special['price'] . "', date_start = '" . $this->db->escape($product_special['date_start']) . "', 
+					date_end = '" . $this->db->escape($product_special['date_end']) . "',seller_id='".(int)$this->seller->getId()."'");
 			}
 		}
 		if (isset($data['product_discount'])) {
@@ -104,61 +104,61 @@ class ModelSellerOffer extends Model {
 		}
 	}
 	public function getoffer($product_id) {
-			$query = $this->db->query("SELECT DISTINCT * FROM " . DB_PREFIX . "seller_product p 
+		$query = $this->db->query("SELECT DISTINCT * FROM " . DB_PREFIX . "seller_product p 
 			WHERE p.sproduct_id = '" . (int)$product_id . "'");
 		return $query->row;
 	}
 	public function getProduct($product_id) {
-			$query = $this->db->query("SELECT DISTINCT *, 
-	      (SELECT keyword FROM " . DB_PREFIX . "url_alias WHERE query = 'product_id=" . (int)$product_id . "') 
+		$query = $this->db->query("SELECT DISTINCT *, 
+			(SELECT keyword FROM " . DB_PREFIX . "url_alias WHERE query = 'product_id=" . (int)$product_id . "') 
 			AS keyword FROM " . DB_PREFIX . "product p LEFT JOIN " . DB_PREFIX . "product_description pd
 			ON (p.product_id = pd.product_id) WHERE p.product_id = '" . (int)$product_id . "'
 			AND pd.language_id = '" . (int)$this->config->get('config_language_id') . "'");
 		return $query->row;
 	}
 	public function getProduct1($product_id) {		
-			$query = $this->db->query("SELECT DISTINCT *,sp.price as sprice,sp.quantity as squantity 
+		$query = $this->db->query("SELECT DISTINCT *,sp.price as sprice,sp.quantity as squantity 
 			FROM " . DB_PREFIX . "product p LEFT JOIN " . DB_PREFIX . "product_description pd
 			ON (p.product_id = pd.product_id) LEFT JOIN " . DB_PREFIX . "sellers_products sp
 			ON (p.product_id = sp.product_id) WHERE p.product_id = '" . (int)$product_id . "' AND 
 			sp.seller_id = '" . (int)$this->seller->getId() . "'
 			AND pd.language_id = '" . (int)$this->config->get('config_language_id') . "'");	
-			return $query->row;
+		return $query->row;
 	}
 	public function getsellerProduct($product_id) {
-			$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "sellers_products
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "sellers_products
 			WHERE product_id = '" . (int)$product_id . "'
 			AND seller_id = '" . (int)$this->seller->getId() . "'");
 		return $query->row;
 	}
 	public function getProducts($data = array()) {
-			$sql = "SELECT p.*,pd.* FROM " . DB_PREFIX . "product p LEFT JOIN " . DB_PREFIX . "product_description pd 
-			ON (p.product_id = pd.product_id)"; 
-				$sql .= " WHERE pd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND status=1 AND approve=1"; 
-			if (!empty($data['filter_name'])) {
-				$sql .= " AND LCASE(pd.name) LIKE '%" . $this->db->escape(utf8_strtolower($data['filter_name'])) . "%'";
-			}
-			$sql .= " GROUP BY p.product_id";
-			$sort_data = array(
-				'pd.name',
-				'p.model',
-				'p.price',
-				'p.quantity',
-				'p.status',
-				'p.sort_order'
+		$sql = "SELECT p.*,pd.* FROM " . DB_PREFIX . "product p LEFT JOIN " . DB_PREFIX . "product_description pd 
+		ON (p.product_id = pd.product_id)"; 
+		$sql .= " WHERE pd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND status=1 AND approve=1"; 
+		if (!empty($data['filter_name'])) {
+			$sql .= " AND LCASE(pd.name) LIKE '%" . $this->db->escape(utf8_strtolower($data['filter_name'])) . "%'";
+		}
+		$sql .= " GROUP BY p.product_id";
+		$sort_data = array(
+			'pd.name',
+			'p.model',
+			'p.price',
+			'p.quantity',
+			'p.status',
+			'p.sort_order'
 			);	
-			if (isset($data['sort']) && in_array($data['sort'], $sort_data)) {
-				$sql .= " ORDER BY " . $data['sort'];	
-			} else {
-				$sql .= " ORDER BY pd.name";	
-			}
-			if (isset($data['order']) && ($data['order'] == 'DESC')) {
-				$sql .= " DESC";
-			} else {
-				$sql .= " ASC";
-			}
-			$query = $this->db->query($sql);
-			return $query->rows;
+		if (isset($data['sort']) && in_array($data['sort'], $sort_data)) {
+			$sql .= " ORDER BY " . $data['sort'];	
+		} else {
+			$sql .= " ORDER BY pd.name";	
+		}
+		if (isset($data['order']) && ($data['order'] == 'DESC')) {
+			$sql .= " DESC";
+		} else {
+			$sql .= " ASC";
+		}
+		$query = $this->db->query($sql);
+		return $query->rows;
 	}
 	public function getpendingTotalProducts($data = array()) {
 		/*code start*/
@@ -172,30 +172,30 @@ class ModelSellerOffer extends Model {
 		return $query->row['total'];
 	}
 	public function getpendingProducts($data = array()) {
-			$sql = "SELECT pd.* FROM " . DB_PREFIX . "seller_product pd"; 
-			$sql .= " WHERE pd.seller_id = '" . (int)$this->seller->getId(). "' AND pd.offer_status = '1'  AND  pd.approve = '0'
-			AND pd.product_id='0'"; 
-			if (!empty($data['filter_name'])) {
-				$sql .= " AND LCASE(pd.name) LIKE '%" . $this->db->escape(utf8_strtolower($data['filter_name'])) . "%'";
-			}
-			$sort_data = array(
-				'pd.name',
-				'pd.price',
-				'pd.status',
-				'pd.quantity',
-				'pd.date_added'
+		$sql = "SELECT pd.* FROM " . DB_PREFIX . "seller_product pd"; 
+		$sql .= " WHERE pd.seller_id = '" . (int)$this->seller->getId(). "' AND pd.offer_status = '1'  AND  pd.approve = '0'
+		AND pd.product_id='0'"; 
+		if (!empty($data['filter_name'])) {
+			$sql .= " AND LCASE(pd.name) LIKE '%" . $this->db->escape(utf8_strtolower($data['filter_name'])) . "%'";
+		}
+		$sort_data = array(
+			'pd.name',
+			'pd.price',
+			'pd.status',
+			'pd.quantity',
+			'pd.date_added'
 			);	
-			if (isset($data['sort']) && in_array($data['sort'], $sort_data)) {
-				$sql .= " ORDER BY " . $data['sort'];	
-			} else {
-				$sql .= " ORDER BY pd.name";	
-			}
-			if (isset($data['order']) && ($data['order'] == 'DESC')) {
-				$sql .= " DESC";
-			} else {
-				$sql .= " ASC";
-			}
-			if (isset($data['start']) || isset($data['limit'])) {
+		if (isset($data['sort']) && in_array($data['sort'], $sort_data)) {
+			$sql .= " ORDER BY " . $data['sort'];	
+		} else {
+			$sql .= " ORDER BY pd.name";	
+		}
+		if (isset($data['order']) && ($data['order'] == 'DESC')) {
+			$sql .= " DESC";
+		} else {
+			$sql .= " ASC";
+		}
+		if (isset($data['start']) || isset($data['limit'])) {
 			if ($data['start'] < 0) {
 				$data['start'] = 0;
 			}				
@@ -204,8 +204,8 @@ class ModelSellerOffer extends Model {
 			}	
 			$sql .= " LIMIT " . (int)$data['start'] . "," . (int)$data['limit'];
 		}
-			$query = $this->db->query($sql);
-			return $query->rows;
+		$query = $this->db->query($sql);
+		return $query->rows;
 	}
 	public function getscheduleTotalProducts($data = array()) {
 		/*code start*/
@@ -218,29 +218,29 @@ class ModelSellerOffer extends Model {
 		return $query->row['total'];
 	}
 	public function getscheduleProducts($data = array()) {
-			$sql = "SELECT pd.* FROM " . DB_PREFIX . "seller_product pd"; 
-			$sql .= " WHERE pd.seller_id = '" . (int)$this->seller->getId(). "' AND pd.offer_status = '3'  AND  pd.approve = '1'"; 
-			if (!empty($data['filter_name'])) {
-				$sql .= " AND LCASE(pd.name) LIKE '%" . $this->db->escape(utf8_strtolower($data['filter_name'])) . "%'";
-			}
-			$sort_data = array(
-				'pd.name',
-				'pd.price',
-				'pd.schedule_date_start',
-				'pd.quantity',
-				'pd.schedule_date_end'
+		$sql = "SELECT pd.* FROM " . DB_PREFIX . "seller_product pd"; 
+		$sql .= " WHERE pd.seller_id = '" . (int)$this->seller->getId(). "' AND pd.offer_status = '3'  AND  pd.approve = '1'"; 
+		if (!empty($data['filter_name'])) {
+			$sql .= " AND LCASE(pd.name) LIKE '%" . $this->db->escape(utf8_strtolower($data['filter_name'])) . "%'";
+		}
+		$sort_data = array(
+			'pd.name',
+			'pd.price',
+			'pd.schedule_date_start',
+			'pd.quantity',
+			'pd.schedule_date_end'
 			);	
-			if (isset($data['sort']) && in_array($data['sort'], $sort_data)) {
-				$sql .= " ORDER BY " . $data['sort'];	
-			} else {
-				$sql .= " ORDER BY pd.name";	
-			}
-			if (isset($data['order']) && ($data['order'] == 'DESC')) {
-				$sql .= " DESC";
-			} else {
-				$sql .= " ASC";
-			}
-			if (isset($data['start']) || isset($data['limit'])) {
+		if (isset($data['sort']) && in_array($data['sort'], $sort_data)) {
+			$sql .= " ORDER BY " . $data['sort'];	
+		} else {
+			$sql .= " ORDER BY pd.name";	
+		}
+		if (isset($data['order']) && ($data['order'] == 'DESC')) {
+			$sql .= " DESC";
+		} else {
+			$sql .= " ASC";
+		}
+		if (isset($data['start']) || isset($data['limit'])) {
 			if ($data['start'] < 0) {
 				$data['start'] = 0;
 			}				
@@ -249,8 +249,8 @@ class ModelSellerOffer extends Model {
 			}	
 			$sql .= " LIMIT " . (int)$data['start'] . "," . (int)$data['limit'];
 		}
-			$query = $this->db->query($sql);
-			return $query->rows;
+		$query = $this->db->query($sql);
+		return $query->rows;
 	}
 	public function getarchiveTotalProducts($data = array()) {
 		/*code start*/
@@ -263,27 +263,27 @@ class ModelSellerOffer extends Model {
 		return $query->row['total'];
 	}
 	public function getarchiveProducts($data = array()) {
-			$sql = "SELECT pd.* FROM " . DB_PREFIX . "seller_product pd"; 
-			$sql .= " WHERE pd.seller_id = '" . (int)$this->seller->getId(). "' AND pd.offer_status = '2'  AND  pd.approve = '1'"; 
-			if (!empty($data['filter_name'])) {
-				$sql .= " AND LCASE(pd.name) LIKE '%" . $this->db->escape(utf8_strtolower($data['filter_name'])) . "%'";
-			}
-			$sort_data = array(
-				'pd.name',
-				'pd.price',
-				'pd.quantity'
+		$sql = "SELECT pd.* FROM " . DB_PREFIX . "seller_product pd"; 
+		$sql .= " WHERE pd.seller_id = '" . (int)$this->seller->getId(). "' AND pd.offer_status = '2'  AND  pd.approve = '1'"; 
+		if (!empty($data['filter_name'])) {
+			$sql .= " AND LCASE(pd.name) LIKE '%" . $this->db->escape(utf8_strtolower($data['filter_name'])) . "%'";
+		}
+		$sort_data = array(
+			'pd.name',
+			'pd.price',
+			'pd.quantity'
 			);	
-			if (isset($data['sort']) && in_array($data['sort'], $sort_data)) {
-				$sql .= " ORDER BY " . $data['sort'];	
-			} else {
-				$sql .= " ORDER BY pd.name";	
-			}
-			if (isset($data['order']) && ($data['order'] == 'DESC')) {
-				$sql .= " DESC";
-			} else {
-				$sql .= " ASC";
-			}
-			if (isset($data['start']) || isset($data['limit'])) {
+		if (isset($data['sort']) && in_array($data['sort'], $sort_data)) {
+			$sql .= " ORDER BY " . $data['sort'];	
+		} else {
+			$sql .= " ORDER BY pd.name";	
+		}
+		if (isset($data['order']) && ($data['order'] == 'DESC')) {
+			$sql .= " DESC";
+		} else {
+			$sql .= " ASC";
+		}
+		if (isset($data['start']) || isset($data['limit'])) {
 			if ($data['start'] < 0) {
 				$data['start'] = 0;
 			}				
@@ -292,10 +292,10 @@ class ModelSellerOffer extends Model {
 			}	
 			$sql .= " LIMIT " . (int)$data['start'] . "," . (int)$data['limit'];
 		}
-			$query = $this->db->query($sql);
-			return $query->rows;
+		$query = $this->db->query($sql);
+		return $query->rows;
 	}
-		public function getTotalProducts($data = array()) {
+	public function getTotalProducts($data = array()) {
 		$today = date('Y-m-d');
 		/*code start*/
 		$sql = "SELECT COUNT(*) AS total FROM " . DB_PREFIX . "seller_product pd"; 
@@ -308,30 +308,30 @@ class ModelSellerOffer extends Model {
 		return $query->row['total'];
 	}
 	public function getinactiveProducts($data = array()) {
-	      $today = date('Y-m-d');
-			$sql = "SELECT pd.* FROM " . DB_PREFIX . "seller_product pd"; 
-			$sql .= " WHERE pd.seller_id = '" . (int)$this->seller->getId(). "' AND  pd.approve = '1'
-			AND pd.offer_status = '1' AND pd.date_end < '".$today."'"; 
-			if (!empty($data['filter_name'])) {
-				$sql .= " AND LCASE(pd.name) LIKE '%" . $this->db->escape(utf8_strtolower($data['filter_name'])) . "%'";
-			}
-			$sort_data = array(
-				'pd.name',
-				'pd.price',
-				'pd.status',
-				'pd.quantity'
+		$today = date('Y-m-d');
+		$sql = "SELECT pd.* FROM " . DB_PREFIX . "seller_product pd"; 
+		$sql .= " WHERE pd.seller_id = '" . (int)$this->seller->getId(). "' AND  pd.approve = '1'
+		AND pd.offer_status = '1' AND pd.date_end < '".$today."'"; 
+		if (!empty($data['filter_name'])) {
+			$sql .= " AND LCASE(pd.name) LIKE '%" . $this->db->escape(utf8_strtolower($data['filter_name'])) . "%'";
+		}
+		$sort_data = array(
+			'pd.name',
+			'pd.price',
+			'pd.status',
+			'pd.quantity'
 			);	
-			if (isset($data['sort']) && in_array($data['sort'], $sort_data)) {
-				$sql .= " ORDER BY " . $data['sort'];	
-			} else {
-				$sql .= " ORDER BY pd.name";	
-			}
-			if (isset($data['order']) && ($data['order'] == 'DESC')) {
-				$sql .= " DESC";
-			} else {
-				$sql .= " ASC";
-			}
-			if (isset($data['start']) || isset($data['limit'])) {
+		if (isset($data['sort']) && in_array($data['sort'], $sort_data)) {
+			$sql .= " ORDER BY " . $data['sort'];	
+		} else {
+			$sql .= " ORDER BY pd.name";	
+		}
+		if (isset($data['order']) && ($data['order'] == 'DESC')) {
+			$sql .= " DESC";
+		} else {
+			$sql .= " ASC";
+		}
+		if (isset($data['start']) || isset($data['limit'])) {
 			if ($data['start'] < 0) {
 				$data['start'] = 0;
 			}				
@@ -340,8 +340,8 @@ class ModelSellerOffer extends Model {
 			}	
 			$sql .= " LIMIT " . (int)$data['start'] . "," . (int)$data['limit'];
 		}
-			$query = $this->db->query($sql);
-			return $query->rows;
+		$query = $this->db->query($sql);
+		return $query->rows;
 	}
 	public function getProductsByCategoryId($category_id) {
 		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product p LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id) LEFT JOIN " . DB_PREFIX . "product_to_category p2c ON (p.product_id = p2c.product_id) WHERE pd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND p2c.category_id = '" . (int)$category_id . "' ORDER BY pd.name ASC");
@@ -369,7 +369,7 @@ class ModelSellerOffer extends Model {
 				'meta_keyword'     => $result['meta_keyword'],
 				'meta_description' => $result['meta_description'],
 				'tag' => $result['tag']
-			);
+				);
 		}
 		return $product_description_data;
 	}
@@ -386,7 +386,7 @@ class ModelSellerOffer extends Model {
 				'attribute_id'                  => $product_attribute['attribute_id'],
 				'name'                          => $product_attribute['name'],
 				'product_attribute_description' => $product_attribute_description_data
-			);
+				);
 		}
 		return $product_attribute_data;
 	}
@@ -403,13 +403,13 @@ class ModelSellerOffer extends Model {
 				'attribute_id'                  => $product_attribute['attribute_id'],
 				'name'                          => $product_attribute['name'],
 				'product_attribute_description' => $product_attribute_description_data
-			);
+				);
 		}
 		return $product_attribute_data;
 	}
 	public function getProductSpecials($product_id,$sellerid) {
 		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product_special WHERE product_id = '" . (int)$product_id . "' AND 
-		seller_id = '".(int)$sellerid."' ORDER BY priority, price");
+			seller_id = '".(int)$sellerid."' ORDER BY priority, price");
 		return $query->rows;
 	}
 	public function getOptionValues1($option_id) {
@@ -421,7 +421,7 @@ class ModelSellerOffer extends Model {
 				'name'            => $option_value['name'],
 				'image'           => $option_value['image'],
 				'sort_order'      => $option_value['sort_order']
-			);
+				);
 		}
 		return $option_value_data;
 	}
@@ -446,7 +446,7 @@ class ModelSellerOffer extends Model {
 						'points_prefix'           => $product_option_value['points_prefix'],						
 						'weight'                  => $product_option_value['weight'],
 						'weight_prefix'           => $product_option_value['weight_prefix']					
-					);
+						);
 				}
 				$product_option_data[] = array(
 					'product_option_id'    => $product_option['product_option_id'],
@@ -455,7 +455,7 @@ class ModelSellerOffer extends Model {
 					'type'                 => $product_option['type'],
 					'product_option_value' => $product_option_value_data,
 					'required'             => $product_option['required']
-				);				
+					);				
 			} else {
 				$product_option_data[] = array(
 					'product_option_id' => $product_option['product_option_id'],
@@ -464,7 +464,7 @@ class ModelSellerOffer extends Model {
 					'type'              => $product_option['type'],
 					'option_value'      => $product_option['option_value'],
 					'required'          => $product_option['required']
-				);				
+					);				
 			}
 		}	
 		return $product_option_data;
@@ -478,7 +478,7 @@ class ModelSellerOffer extends Model {
 				'name'            => $option_value['name'],
 				'image'           => $option_value['image'],
 				'sort_order'      => $option_value['sort_order']
-			);
+				);
 		}
 		return $option_value_data;
 	}
@@ -496,7 +496,7 @@ class ModelSellerOffer extends Model {
 				'option_value_description' => $option_value_description_data,
 				'image'                    => $option_value['image'],
 				'sort_order'               => $option_value['sort_order']
-			);
+				);
 		}
 		return $option_value_data;
 	}
@@ -654,11 +654,11 @@ class ModelSellerOffer extends Model {
 		return $query->row['total_product'];
 	}
 	public function getSellerProducts($seller) {
-				$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product p LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id) LEFT JOIN " . DB_PREFIX . "seller vd ON (pd.product_id = vd.vproduct_id) LEFT JOIN " . DB_PREFIX . "customer vds ON (vd.seller_id = vds.customer_id) WHERE vd.seller_id IN('" . $seller . "') AND pd.language_id = '" . (int)$this->config->get('config_language_id') . "' ORDER BY pd.name ASC");
-				$product_data = $query->rows;
-			return $product_data;
-		}
-		public function getsellers() {
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product p LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id) LEFT JOIN " . DB_PREFIX . "seller vd ON (pd.product_id = vd.vproduct_id) LEFT JOIN " . DB_PREFIX . "customer vds ON (vd.seller_id = vds.customer_id) WHERE vd.seller_id IN('" . $seller . "') AND pd.language_id = '" . (int)$this->config->get('config_language_id') . "' ORDER BY pd.name ASC");
+		$product_data = $query->rows;
+		return $product_data;
+	}
+	public function getsellers() {
 		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "sellers where status=1 ORDER BY firstname ");
 		$sellers_data = $query->rows;
 		return $sellers_data;

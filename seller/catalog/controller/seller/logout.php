@@ -1,8 +1,8 @@
 <?php 
 class ControllerSellerLogout extends Controller {
 	public function index() {
-    	if ($this->seller->isLogged()) {
-      		$this->seller->logout();
+		if ($this->seller->isLogged()) {
+			$this->seller->logout();
 			unset($this->session->data['shipping_address_id']);
 			unset($this->session->data['shipping_country_id']);
 			unset($this->session->data['shipping_zone_id']);
@@ -15,30 +15,30 @@ class ControllerSellerLogout extends Controller {
 			unset($this->session->data['payment_method']);
 			unset($this->session->data['payment_methods']);
 			unset($this->session->data['comment']);
-      		$this->response->redirect($this->url->link('seller/logout', '', 'SSL'));
-    	}
-    	$this->language->load('seller/logout');
+			$this->response->redirect($this->url->link('seller/logout', '', 'SSL'));
+		}
+		$this->language->load('seller/logout');
 		$this->document->setTitle($this->language->get('heading_title'));
 		$data['breadcrumbs'] = array();
-      	$data['breadcrumbs'][] = array(
-        	'text'      => $this->language->get('text_home'),
-			'href'      => $this->url->link('common/home'),        	
-        	'separator' => false
-      	);
 		$data['breadcrumbs'][] = array(
-        	'text'      => $this->language->get('text_account'),
+			'text'      => $this->language->get('text_home'),
+			'href'      => $this->url->link('common/home'),        	
+			'separator' => false
+			);
+		$data['breadcrumbs'][] = array(
+			'text'      => $this->language->get('text_account'),
 			'href'      => $this->url->link('seller/account', '', 'SSL'),       	
-        	'separator' => $this->language->get('text_separator')
-      	);
-      	$data['breadcrumbs'][] = array(
-        	'text'      => $this->language->get('text_logout'),
+			'separator' => $this->language->get('text_separator')
+			);
+		$data['breadcrumbs'][] = array(
+			'text'      => $this->language->get('text_logout'),
 			'href'      => $this->url->link('seller/logout', '', 'SSL'),
-        	'separator' => $this->language->get('text_separator')
-      	);	
-    	$data['heading_title'] = $this->language->get('heading_title');
-    	$data['text_message'] = $this->language->get('text_message');
-    	$data['button_continue'] = $this->language->get('button_continue');
-    	$data['continue'] = $this->url->link('common/home');
+			'separator' => $this->language->get('text_separator')
+			);	
+		$data['heading_title'] = $this->language->get('heading_title');
+		$data['text_message'] = $this->language->get('text_message');
+		$data['button_continue'] = $this->language->get('button_continue');
+		$data['continue'] = $this->url->link('common/home');
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['content_top'] = $this->load->controller('common/content_top');
 		$data['content_bottom'] = $this->load->controller('common/content_bottom');
@@ -46,7 +46,7 @@ class ControllerSellerLogout extends Controller {
 		$data['header'] = $this->load->controller('common/header');
 		$data['name'] = $this->config->get('config_name');	
 		if (is_file(DIR_IMAGE . $this->config->get('config_logo'))) {
-				$data['logo'] = HTTP_SERVER1. 'image/' . $this->config->get('config_logo');
+			$data['logo'] = HTTP_SERVER1. 'image/' . $this->config->get('config_logo');
 		} else {			$data['logo'] = '';		}
 		$this->load->language('common/header');
 		$this->load->language('seller/login');
@@ -97,16 +97,11 @@ class ControllerSellerLogout extends Controller {
 		} else {
 			$data['password'] = '';
 		}
-		// if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/common/success.tpl')) {
-		// 	$this->response->setOutput($this->load->view($this->config->get('config_template') . '/template/common/success.tpl', $data));
-		// } else {
-		// 	$this->response->setOutput($this->load->view('default/template/common/success.tpl', $data));
-		// }
 		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/seller/login.tpl')) {
 			$this->response->setOutput($this->load->view($this->config->get('config_template') . '/template/seller/login.tpl', $data));
 		} else {
 			$this->response->setOutput($this->load->view('default/template/seller/login.tpl', $data));
 		}	
-  	}
+	}
 }
 ?>

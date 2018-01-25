@@ -38,7 +38,7 @@ class ControllerAccountForgotten extends Controller {
 				$activity_data = array(
 					'customer_id' => $customer_info['customer_id'],
 					'name'        => $customer_info['firstname'] . ' ' . $customer_info['lastname']
-				);
+					);
 				$this->model_account_activity->addActivity('forgotten', $activity_data);
 			}
 			$this->response->redirect($this->url->link('account/login', '', 'SSL'));
@@ -47,15 +47,15 @@ class ControllerAccountForgotten extends Controller {
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home')
-		);
+			);
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('text_account'),
 			'href' => $this->url->link('account/account', '', 'SSL')
-		);
+			);
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('text_forgotten'),
 			'href' => $this->url->link('account/forgotten', '', 'SSL')
-		);
+			);
 		$data['heading_title'] = $this->language->get('heading_title');
 		$data['text_your_email'] = $this->language->get('text_your_email');
 		$data['text_email'] = $this->language->get('text_email');
@@ -89,7 +89,7 @@ class ControllerAccountForgotten extends Controller {
 		}
 		$customer_info = $this->model_account_customer->getCustomerByEmail($this->request->post['email']);
 		if ($customer_info && !$customer_info['approved']) {
-		    $this->error['warning'] = $this->language->get('error_approved');
+			$this->error['warning'] = $this->language->get('error_approved');
 		}
 		return !$this->error;
 	}

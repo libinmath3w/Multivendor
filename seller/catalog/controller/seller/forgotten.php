@@ -31,7 +31,7 @@ class ControllerSellerForgotten extends Controller {
 				$activity_data = array(
 					'seller_id' => $seller_info['seller_id'],
 					'name'        => $seller_info['firstname'] . ' ' . $seller_info['lastname']
-				);
+					);
 				$this->model_seller_activity->addActivity('forgotten', $activity_data);
 			}
 			$this->response->redirect($this->url->link('seller/login', '', 'SSL'));
@@ -40,15 +40,15 @@ class ControllerSellerForgotten extends Controller {
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home')
-		);
+			);
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('text_account'),
 			'href' => $this->url->link('seller/account', '', 'SSL')
-		);
+			);
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('text_forgotten'),
 			'href' => $this->url->link('seller/forgotten', '', 'SSL')
-		);
+			);
 		$data['heading_title'] = $this->language->get('heading_title');
 		$data['text_your_email'] = $this->language->get('text_your_email');
 		$data['text_email'] = $this->language->get('text_email');
@@ -57,7 +57,7 @@ class ControllerSellerForgotten extends Controller {
 		$data['button_back'] = $this->language->get('button_back');
 		$data['name'] = $this->config->get('config_name');	
 		if (is_file(DIR_IMAGE . $this->config->get('config_logo'))) {
-				$data['logo'] = HTTP_SERVER1. 'image/' . $this->config->get('config_logo');
+			$data['logo'] = HTTP_SERVER1. 'image/' . $this->config->get('config_logo');
 		} else {			$data['logo'] = '';		}
 		$this->load->language('common/header');
 		$this->load->language('seller/login');
@@ -79,22 +79,22 @@ class ControllerSellerForgotten extends Controller {
 		} else {
 			$data['error_warning'] = '';
 		}
-         if (isset($this->session->data['success'])) {
-         	$data['success'] = $this->session->data['success'];
-         	unset($this->session->data['success']);
-         } else {
-         	$data['success'] = '';
-         }
-         if (isset($this->request->post['email'])) {
-         	$data['email'] = $this->request->post['email'];
-         } else {
-         	$data['email'] = '';
-         }
-         if (isset($this->request->post['password'])) {
-         	$data['password'] = $this->request->post['password'];
-         } else {
-         	$data['password'] = '';
-         }
+		if (isset($this->session->data['success'])) {
+			$data['success'] = $this->session->data['success'];
+			unset($this->session->data['success']);
+		} else {
+			$data['success'] = '';
+		}
+		if (isset($this->request->post['email'])) {
+			$data['email'] = $this->request->post['email'];
+		} else {
+			$data['email'] = '';
+		}
+		if (isset($this->request->post['password'])) {
+			$data['password'] = $this->request->post['password'];
+		} else {
+			$data['password'] = '';
+		}
 		$data['action'] = $this->url->link('seller/forgotten', '', 'SSL');
 		$data['back'] = $this->url->link('seller/login', '', 'SSL');
 		$data['column_left'] = $this->load->controller('common/column_left');

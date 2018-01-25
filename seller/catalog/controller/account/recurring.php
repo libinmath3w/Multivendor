@@ -16,15 +16,15 @@ class ControllerAccountRecurring extends Controller {
 		$data['breadcrumbs'][] = array(
 			'text'      => $this->language->get('text_home'),
 			'href'      => $this->url->link('common/home'),
-		);
+			);
 		$data['breadcrumbs'][] = array(
 			'text'      => $this->language->get('text_account'),
 			'href'      => $this->url->link('account/account', '', 'SSL'),
-		);
+			);
 		$data['breadcrumbs'][] = array(
 			'text'      => $this->language->get('heading_title'),
 			'href'      => $this->url->link('account/recurring', $url, 'SSL'),
-		);
+			);
 		$data['heading_title'] = $this->language->get('heading_title');
 		$data['column_date_added'] = $this->language->get('column_date_added');
 		$data['column_status'] = $this->language->get('column_status');
@@ -51,7 +51,7 @@ class ControllerAccountRecurring extends Controller {
 					'status'                => $result['status'],
 					'date_added'               => date($this->language->get('date_format_short'), strtotime($result['date_added'])),
 					'href'                  => $this->url->link('account/recurring/info', 'recurring_id=' . $result['order_recurring_id'], 'SSL'),
-				);
+					);
 			}
 		}
 		$data['status_types'] = array(
@@ -61,7 +61,7 @@ class ControllerAccountRecurring extends Controller {
 			4 => $this->language->get('text_status_cancelled'),
 			5 => $this->language->get('text_status_expired'),
 			6 => $this->language->get('text_status_pending'),
-		);
+			);
 		$pagination = new Pagination();
 		$pagination->total = $recurring_total;
 		$pagination->page = $page;
@@ -114,7 +114,7 @@ class ControllerAccountRecurring extends Controller {
 			4 => $this->language->get('text_status_cancelled'),
 			5 => $this->language->get('text_status_expired'),
 			6 => $this->language->get('text_status_pending'),
-		);
+			);
 		$data['transaction_types'] = array(
 			0 => $this->language->get('text_transaction_date_added'),
 			1 => $this->language->get('text_transaction_payment'),
@@ -126,7 +126,7 @@ class ControllerAccountRecurring extends Controller {
 			7 => $this->language->get('text_transaction_suspended_failed'),
 			8 => $this->language->get('text_transaction_outstanding_failed'),
 			9 => $this->language->get('text_transaction_expired'),
-		);
+			);
 		if ($recurring) {
 			$recurring['transactions'] = $this->model_account_recurring->getProfileTransactions($this->request->get['recurring_id']);
 			$recurring['date_added'] = date($this->language->get('date_format_short'), strtotime($recurring['date_added']));
@@ -137,11 +137,11 @@ class ControllerAccountRecurring extends Controller {
 			$data['breadcrumbs'][] = array(
 				'text'      => $this->language->get('text_home'),
 				'href'      => $this->url->link('common/home'),
-			);
+				);
 			$data['breadcrumbs'][] = array(
 				'text'      => $this->language->get('text_account'),
 				'href'      => $this->url->link('account/account', '', 'SSL'),
-			);
+				);
 			$url = '';
 			if (isset($this->request->get['page'])) {
 				$url .= '&page=' . $this->request->get['page'];
@@ -149,11 +149,11 @@ class ControllerAccountRecurring extends Controller {
 			$data['breadcrumbs'][] = array(
 				'text'      => $this->language->get('heading_title'),
 				'href'      => $this->url->link('account/recurring', $url, 'SSL'),
-			);
+				);
 			$data['breadcrumbs'][] = array(
 				'text'      => $this->language->get('text_recurring'),
 				'href'      => $this->url->link('account/recurring/info', 'recurring_id=' . $this->request->get['recurring_id'] . $url, 'SSL'),
-			);
+				);
 			$data['heading_title'] = $this->language->get('text_recurring');
 			$data['column_date_added'] = $this->language->get('column_date_added');
 			$data['column_type'] = $this->language->get('column_type');

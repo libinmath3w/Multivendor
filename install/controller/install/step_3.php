@@ -51,7 +51,7 @@ class ControllerInstallStep3 extends Controller {
 			$output .= '// HTTP' . "\n";
 			$output .= 'define(\'HTTP_SERVER\', \'' . HTTP_OPENCART . 'admin/\');' . "\n";
 			$output .= 'define(\'HTTP_CATALOG\', \'' . HTTP_OPENCART . '\');' . "\n\n";
-            $output .= 'define(\'HTTP_CATALOG1\', \'' . HTTP_OPENCART . 'seller/\');' . "\n";
+			$output .= 'define(\'HTTP_CATALOG1\', \'' . HTTP_OPENCART . 'seller/\');' . "\n";
 			$output .= '// HTTPS' . "\n";
 			$output .= 'define(\'HTTPS_SERVER\', \'' . HTTP_OPENCART . 'admin/\');' . "\n";
 			$output .= 'define(\'HTTPS_CATALOG\', \'' . HTTP_OPENCART . '\');' . "\n\n";
@@ -323,7 +323,7 @@ class ControllerInstallStep3 extends Controller {
 		} elseif ($this->request->post['db_driver'] == 'mpdo') {
 			try {
 				$db = new \DB\mPDO($this->request->post['db_hostname'], $this->request->post['db_username'], html_entity_decode($this->request->post['db_password'], ENT_QUOTES, 'UTF-8'), $this->request->post['db_database'], $this->request->post['db_port']);
-			
+				
 				if (is_resource($db)) {
 					$db->close();
 				}

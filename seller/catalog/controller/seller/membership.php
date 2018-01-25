@@ -9,22 +9,22 @@ class ControllerSellerMembership extends Controller {
 		$this->language->load('seller/plan');
 		$this->document->setTitle($this->language->get('heading_title'));
 		$this->load->model('seller/seller');
-      	$data['breadcrumbs'] = array();
-      	$data['breadcrumbs'][] = array(
-        	'text'      => $this->language->get('text_home'),
+		$data['breadcrumbs'] = array();
+		$data['breadcrumbs'][] = array(
+			'text'      => $this->language->get('text_home'),
 			'href'      => $this->url->link('common/home'),     	
-        	'separator' => false
-      	); 
-      	$data['breadcrumbs'][] = array(
-        	'text'      => $this->language->get('text_account'),
+			'separator' => false
+			); 
+		$data['breadcrumbs'][] = array(
+			'text'      => $this->language->get('text_account'),
 			'href'      => $this->url->link('seller/account', '', 'SSL'),        	
-        	'separator' => $this->language->get('text_separator')
-      	);
-      	$data['breadcrumbs'][] = array(
-        	'text'      => $this->language->get('text_plan'),
+			'separator' => $this->language->get('text_separator')
+			);
+		$data['breadcrumbs'][] = array(
+			'text'      => $this->language->get('text_plan'),
 			'href'      => $this->url->link('seller/membership', '', 'SSL'),       	
-        	'separator' => $this->language->get('text_separator')
-      	);
+			'separator' => $this->language->get('text_separator')
+			);
 		$data['heading_title'] = $this->language->get('heading_title');
 		$data['text_your_details'] = $this->language->get('text_your_details');
 		$data['text_your_imagegallery'] = $this->language->get('text_your_imagegallery');
@@ -51,27 +51,27 @@ class ControllerSellerMembership extends Controller {
 		} else {
 			$data['error_warning'] = '';
 		}
-	  $data['testmode'] = $this->config->get('pp_standard_test');
-	  if (!$this->config->get('pp_standard_test')) {
-		$data['action'] = 'https://www.paypal.com/cgi-bin/webscr';
-	  } else {
-		$data['action'] = 'https://www.sandbox.paypal.com/cgi-bin/webscr';
-	  }
-	 $data['business'] = $this->config->get('pp_standard_email');
-	 $custquery = $this->db->query("select commission_id from " . DB_PREFIX . "sellers where seller_id = '".(int)$this->seller->getId()."'");		$data['currentamount'] =0;				if($custquery->row){				$plan_id = $custquery->row['commission_id'];				  $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "commission WHERE 	commission_id = '".(int)$plan_id."'");						$data['currentamount'] = $query->row['amount'];		  		}
-      $results = $this->model_seller_seller->getcommissions();	   	   	   
-	  $data['getmemberships'] =array();
+		$data['testmode'] = $this->config->get('pp_standard_test');
+		if (!$this->config->get('pp_standard_test')) {
+			$data['action'] = 'https://www.paypal.com/cgi-bin/webscr';
+		} else {
+			$data['action'] = 'https://www.sandbox.paypal.com/cgi-bin/webscr';
+		}
+		$data['business'] = $this->config->get('pp_standard_email');
+		$custquery = $this->db->query("select commission_id from " . DB_PREFIX . "sellers where seller_id = '".(int)$this->seller->getId()."'");		$data['currentamount'] =0;				if($custquery->row){				$plan_id = $custquery->row['commission_id'];				  $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "commission WHERE 	commission_id = '".(int)$plan_id."'");						$data['currentamount'] = $query->row['amount'];		  		}
+		$results = $this->model_seller_seller->getcommissions();	   	   	   
+		$data['getmemberships'] =array();
 		foreach ($results as $result) {				
 			$data['getmemberships'][] = array(
 				'commission_id' 	=> $result['commission_id'],
 				'commission_name' 	=> $result['commission_name'],
-                'amount' 	=> $this->currency->format($result['amount']),				
+				'amount' 	=> $this->currency->format($result['amount']),				
 				'commission'    	=> $result['commission'],								'product_limit'    	=> $result['product_limit'],
 				'per'    	=> $result['per'],
 				'duration_id'    	=> $result['duration_id'],
 				'amt'    	=> $result['amount']
-			);
-    	}
+				);
+		}
 		$seller_info = $this->model_seller_seller->getSeller($this->seller->getId());
 		$data['durations']['d'] = 'Day(s)'; 
 		$data['durations']['w'] = 'Week(s)'; 
@@ -80,7 +80,7 @@ class ControllerSellerMembership extends Controller {
 		$data['durations']['l'] = 'Lifetime';
 		$this->load->model('localisation/language');
 		$data['languages'] = $this->model_localisation_language->getLanguages();
-	   $data['currency_code'] = $this->config->get('config_currency');
+		$data['currency_code'] = $this->config->get('config_currency');
 		$data['lc'] = $this->session->data['language'];
 		$data['custom'] = $this->seller->getId();
 		$data['email'] = $seller_info['email'];
@@ -88,8 +88,8 @@ class ControllerSellerMembership extends Controller {
 		$data['notify_url'] = $this->url->link('seller/membership/callback', 'seller_id=' . $this->seller->getId(), 'SSL');
 		$data['cancelURL'] = $this->url->link('seller/membership', 'seller_id=' . $this->seller->getId(), 'SSL');
 		$data['paymentaction'] = 'Payment';		
-		 if (isset($this->request->post['commission_id'])) {
-    		$data['commission_id'] = $this->request->post['commission_id'];
+		if (isset($this->request->post['commission_id'])) {
+			$data['commission_id'] = $this->request->post['commission_id'];
 		}elseif($seller_info) {
 			$data['commission_id'] =$seller_info['commission_id'];
 		} else {
@@ -131,11 +131,11 @@ class ControllerSellerMembership extends Controller {
 
 			if (!$this->config->get('pp_standard_test')) {
 				$curl = curl_init('https://www.paypal.com/cgi-bin/webscr');
-		  	}
-		  	 else {
+			}
+			else {
 				$curl = curl_init('https://www.sandbox.paypal.com/cgi-bin/webscr');
-		  	}										
-		  	curl_setopt($curl, CURLOPT_POST, true);
+			}										
+			curl_setopt($curl, CURLOPT_POST, true);
 			curl_setopt($curl, CURLOPT_POSTFIELDS, $request);
 			curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 			curl_setopt($curl, CURLOPT_HEADER, false);
@@ -178,22 +178,22 @@ class ControllerSellerMembership extends Controller {
 				$this->db->query("UPDATE  " . DB_PREFIX . "sellers	SET commission_id = '" . (int)$membership_id. "',expiry_date = '".$expirydate."',payment_status = 1,approved='1',status='1'	WHERE seller_id = '" . (int)$seller_id . "'");
 			} 
 
-		curl_close($curl);
+			curl_close($curl);
 		}
 
 		$this->response->redirect($this->url->link('seller/account', '', 'SSL'));			
 	}
 	public function update(){
-	$json = array();
-	$this->load->model('seller/seller');
-	        $seller_info = $this->model_seller_seller->getSeller($this->seller->getId());
-			if ($seller_info) {
-				$this->model_seller_seller->updateplanseller($this->request->post,$this->seller->getId());
-			         $json['success'] = "Your membership is successfully updated";
-			} else {
-				$json['error'] = "Your membership is not updated";
-			}
-			$this->response->setOutput(json_encode($json));
-}
+		$json = array();
+		$this->load->model('seller/seller');
+		$seller_info = $this->model_seller_seller->getSeller($this->seller->getId());
+		if ($seller_info) {
+			$this->model_seller_seller->updateplanseller($this->request->post,$this->seller->getId());
+			$json['success'] = "Your membership is successfully updated";
+		} else {
+			$json['error'] = "Your membership is not updated";
+		}
+		$this->response->setOutput(json_encode($json));
+	}
 }
 ?>

@@ -2,21 +2,21 @@
 class ControllerSellerAttribute extends Controller {
 	private $error = array();
 	public function index() {
-	if (!$this->seller->isLogged()) {
-	  		$this->session->data['redirect'] = $this->url->link('seller/account', '', 'SSL');
-	  		$this->response->redirect($this->url->link('seller/login', '', 'SSL'));
-    	} 
-    	
+		if (!$this->seller->isLogged()) {
+			$this->session->data['redirect'] = $this->url->link('seller/account', '', 'SSL');
+			$this->response->redirect($this->url->link('seller/login', '', 'SSL'));
+		} 
+		
 		$this->load->language('seller/attribute');
 		$this->document->setTitle($this->language->get('heading_title'));
 		$this->load->model('seller/attribute');
 		$this->getList();
 	}
 	public function add() {
-	if (!$this->seller->isLogged()) {
-	  		$this->session->data['redirect'] = $this->url->link('seller/account', '', 'SSL');
-	  		$this->response->redirect($this->url->link('seller/login', '', 'SSL'));
-    	} 
+		if (!$this->seller->isLogged()) {
+			$this->session->data['redirect'] = $this->url->link('seller/account', '', 'SSL');
+			$this->response->redirect($this->url->link('seller/login', '', 'SSL'));
+		} 
 		$this->load->language('seller/attribute');
 		$this->document->setTitle($this->language->get('heading_title'));
 		$this->load->model('seller/attribute');
@@ -111,15 +111,15 @@ class ControllerSellerAttribute extends Controller {
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/dashboard',  'SSL')
-		);
+			);
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('text_account'),
 			'href' => $this->url->link('seller/account',$url, 'SSL')
-		);
+			);
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('seller/attribute',$url, 'SSL')
-		);
+			);
 		$data['add'] = $this->url->link('seller/attribute/add',$url, 'SSL');
 		$data['delete'] = $this->url->link('seller/attribute/delete',$url, 'SSL');
 		$data['attributes'] = array();
@@ -128,7 +128,7 @@ class ControllerSellerAttribute extends Controller {
 			'order' => $order,
 			'start' => ($page - 1) * $this->config->get('config_limit_admin'),
 			'limit' => $this->config->get('config_limit_admin')
-		);
+			);
 		$attribute_total = $this->model_seller_attribute->getTotalAttributes();
 		$results = $this->model_seller_attribute->getAttributes($filter_data);
 		foreach ($results as $result) {
@@ -139,7 +139,7 @@ class ControllerSellerAttribute extends Controller {
 				'attribute_group' => $result['attribute_group'],
 				'sort_order'      => $result['sort_order'],
 				'edit'            => $this->url->link('seller/attribute/edit','&attribute_id=' . $result['attribute_id'] . $url, 'SSL')
-			);
+				);
 		}
 		$data['heading_title'] = $this->language->get('heading_title');
 		$data['text_list'] = $this->language->get('text_list');
@@ -237,15 +237,15 @@ class ControllerSellerAttribute extends Controller {
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/dashboard',  'SSL')
-		);
+			);
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('text_account'),
 			'href' => $this->url->link('seller/account',  $url, 'SSL')
-		);
+			);
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('seller/attribute',$url, 'SSL')
-		);
+			);
 		if (!isset($this->request->get['attribute_id'])) {
 			$data['action'] = $this->url->link('seller/attribute/add',$url, 'SSL');
 		} else {
@@ -318,14 +318,14 @@ class ControllerSellerAttribute extends Controller {
 				'filter_name' => $this->request->get['filter_name'],
 				'start'       => 0,
 				'limit'       => 5
-			);
+				);
 			$results = $this->model_seller_attribute->getAttributes12($filter_data);
 			foreach ($results as $result) {
 				$json[] = array(
 					'attribute_id'    => $result['attribute_id'],
 					'name'            => strip_tags(html_entity_decode($result['name'], ENT_QUOTES, 'UTF-8')),
 					'attribute_group' => $result['attribute_group']
-				);
+					);
 			}
 		}
 		$sort_order = array();

@@ -30,7 +30,7 @@ class ControllerAccountAddress extends Controller {
 			$activity_data = array(
 				'customer_id' => $this->customer->getId(),
 				'name'        => $this->customer->getFirstName() . ' ' . $this->customer->getLastName()
-			);
+				);
 			$this->model_account_activity->addActivity('address_add', $activity_data);
 			$this->response->redirect($this->url->link('account/address', '', 'SSL'));
 		}
@@ -67,7 +67,7 @@ class ControllerAccountAddress extends Controller {
 			$activity_data = array(
 				'customer_id' => $this->customer->getId(),
 				'name'        => $this->customer->getFirstName() . ' ' . $this->customer->getLastName()
-			);
+				);
 			$this->model_account_activity->addActivity('address_edit', $activity_data);
 			$this->response->redirect($this->url->link('account/address', '', 'SSL'));
 		}
@@ -101,7 +101,7 @@ class ControllerAccountAddress extends Controller {
 			$activity_data = array(
 				'customer_id' => $this->customer->getId(),
 				'name'        => $this->customer->getFirstName() . ' ' . $this->customer->getLastName()
-			);
+				);
 			$this->model_account_activity->addActivity('address_delete', $activity_data);
 			$this->response->redirect($this->url->link('account/address', '', 'SSL'));
 		}
@@ -111,15 +111,15 @@ class ControllerAccountAddress extends Controller {
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home')
-		);
+			);
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('text_account'),
 			'href' => $this->url->link('account/account', '', 'SSL')
-		);
+			);
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('account/address', '', 'SSL')
-		);
+			);
 		$data['heading_title'] = $this->language->get('heading_title');
 		$data['text_address_book'] = $this->language->get('text_address_book');
 		$data['text_empty'] = $this->language->get('text_empty');
@@ -157,7 +157,7 @@ class ControllerAccountAddress extends Controller {
 				'{zone}',
 				'{zone_code}',
 				'{country}'
-			);
+				);
 			$replace = array(
 				'firstname' => $result['firstname'],
 				'lastname'  => $result['lastname'],
@@ -169,13 +169,13 @@ class ControllerAccountAddress extends Controller {
 				'zone'      => $result['zone'],
 				'zone_code' => $result['zone_code'],
 				'country'   => $result['country']
-			);
+				);
 			$data['addresses'][] = array(
 				'address_id' => $result['address_id'],
 				'address'    => str_replace(array("\r\n", "\r", "\n"), '<br />', preg_replace(array("/\s\s+/", "/\r\r+/", "/\n\n+/"), '<br />', trim(str_replace($find, $replace, $format)))),
 				'update'     => $this->url->link('account/address/edit', 'address_id=' . $result['address_id'], 'SSL'),
 				'delete'     => $this->url->link('account/address/delete', 'address_id=' . $result['address_id'], 'SSL')
-			);
+				);
 		}
 		$data['add'] = $this->url->link('account/address/add', '', 'SSL');
 		$data['back'] = $this->url->link('account/account', '', 'SSL');
@@ -196,25 +196,25 @@ class ControllerAccountAddress extends Controller {
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home')
-		);
+			);
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('text_account'),
 			'href' => $this->url->link('account/account', '', 'SSL')
-		);
+			);
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('account/address', '', 'SSL')
-		);
+			);
 		if (!isset($this->request->get['address_id'])) {
 			$data['breadcrumbs'][] = array(
 				'text' => $this->language->get('text_edit_address'),
 				'href' => $this->url->link('account/address/add', '', 'SSL')
-			);
+				);
 		} else {
 			$data['breadcrumbs'][] = array(
 				'text' => $this->language->get('text_edit_address'),
 				'href' => $this->url->link('account/address/edit', 'address_id=' . $this->request->get['address_id'], 'SSL')
-			);
+				);
 		}
 		$data['heading_title'] = $this->language->get('heading_title');
 		$data['text_edit_address'] = $this->language->get('text_edit_address');

@@ -41,58 +41,58 @@ class ControllerSaleOrder extends Controller {
 
 		$url = '';
 
- /*START OVICKO MULTISELLER*/
-				if (isset($this->request->get['filter_seller'])) {
-					$url .= '&filter_seller=' . urlencode(html_entity_decode($this->request->get['filter_seller'], ENT_QUOTES, 'UTF-8'));
-				}
-				if (isset($this->request->get['filter_seller_status_id'])) {
-					$url .= '&filter_seller_status_id=' . $this->request->get['filter_seller_status_id'];
-				}
-			/*END OVICKO MULTISELLER*/
-			
+		/*START OVICKO MULTISELLER*/
+		if (isset($this->request->get['filter_seller'])) {
+			$url .= '&filter_seller=' . urlencode(html_entity_decode($this->request->get['filter_seller'], ENT_QUOTES, 'UTF-8'));
+		}
+		if (isset($this->request->get['filter_seller_status_id'])) {
+			$url .= '&filter_seller_status_id=' . $this->request->get['filter_seller_status_id'];
+		}
+		/*END OVICKO MULTISELLER*/
 
- /*START OVICKO MULTISELLER*/
-				if (isset($this->request->get['filter_seller'])) {
-					$url .= '&filter_seller=' . urlencode(html_entity_decode($this->request->get['filter_seller'], ENT_QUOTES, 'UTF-8'));
-				}
-				if (isset($this->request->get['filter_seller_status_id'])) {
-					$url .= '&filter_seller_status_id=' . $this->request->get['filter_seller_status_id'];
-				}
-			/*END OVICKO MULTISELLER*/
-			
+
+		/*START OVICKO MULTISELLER*/
+		if (isset($this->request->get['filter_seller'])) {
+			$url .= '&filter_seller=' . urlencode(html_entity_decode($this->request->get['filter_seller'], ENT_QUOTES, 'UTF-8'));
+		}
+		if (isset($this->request->get['filter_seller_status_id'])) {
+			$url .= '&filter_seller_status_id=' . $this->request->get['filter_seller_status_id'];
+		}
+		/*END OVICKO MULTISELLER*/
+
 
 		if (isset($this->request->get['filter_order_id'])) {
 			$url .= '&filter_order_id=' . $this->request->get['filter_order_id'];
 		}
 
 
- /*START OVICKO MULTISELLER*/
-				if (isset($this->request->get['filter_seller'])) {
-					$filter_seller = $this->request->get['filter_seller'];
-				} else {
-					$filter_seller = null;
-				}
-				if (isset($this->request->get['filter_seller_status_id'])) {
-					$filter_seller_status_id = $this->request->get['filter_seller_status_id'];
-				} else {
-					$filter_seller_status_id = null;
-				}
-			/*END OVICKO MULTISELLER*/
-			
+		/*START OVICKO MULTISELLER*/
+		if (isset($this->request->get['filter_seller'])) {
+			$filter_seller = $this->request->get['filter_seller'];
+		} else {
+			$filter_seller = null;
+		}
+		if (isset($this->request->get['filter_seller_status_id'])) {
+			$filter_seller_status_id = $this->request->get['filter_seller_status_id'];
+		} else {
+			$filter_seller_status_id = null;
+		}
+		/*END OVICKO MULTISELLER*/
 
- /*START OVICKO MULTISELLER*/
-				if (isset($this->request->get['filter_seller'])) {
-					$filter_seller = $this->request->get['filter_seller'];
-				} else {
-					$filter_seller = null;
-				}
-				if (isset($this->request->get['filter_seller_status_id'])) {
-					$filter_seller_status_id = $this->request->get['filter_seller_status_id'];
-				} else {
-					$filter_seller_status_id = null;
-				}
-			/*END OVICKO MULTISELLER*/
-			
+
+		/*START OVICKO MULTISELLER*/
+		if (isset($this->request->get['filter_seller'])) {
+			$filter_seller = $this->request->get['filter_seller'];
+		} else {
+			$filter_seller = null;
+		}
+		if (isset($this->request->get['filter_seller_status_id'])) {
+			$filter_seller_status_id = $this->request->get['filter_seller_status_id'];
+		} else {
+			$filter_seller_status_id = null;
+		}
+		/*END OVICKO MULTISELLER*/
+
 		if (isset($this->request->get['filter_customer'])) {
 			$url .= '&filter_customer=' . urlencode(html_entity_decode($this->request->get['filter_customer'], ENT_QUOTES, 'UTF-8'));
 		}
@@ -100,11 +100,11 @@ class ControllerSaleOrder extends Controller {
 		if (isset($this->request->get['filter_order_status'])) {
 			$url .= '&filter_order_status=' . $this->request->get['filter_order_status'];
 		}
-	
+
 		if (isset($this->request->get['filter_order_status_id'])) {
 			$url .= '&filter_order_status_id=' . $this->request->get['filter_order_status_id'];
 		}
-			
+
 		if (isset($this->request->get['filter_total'])) {
 			$url .= '&filter_total=' . $this->request->get['filter_total'];
 		}
@@ -131,7 +131,7 @@ class ControllerSaleOrder extends Controller {
 
 		$this->response->redirect($this->url->link('sale/order', 'user_token=' . $this->session->data['user_token'] . $url, true));
 	}
-			
+
 	protected function getList() {
 		if (isset($this->request->get['filter_order_id'])) {
 			$filter_order_id = $this->request->get['filter_order_id'];
@@ -140,33 +140,33 @@ class ControllerSaleOrder extends Controller {
 		}
 
 
- /*START OVICKO MULTISELLER*/
-				if (isset($this->request->get['filter_seller'])) {
-					$filter_seller = $this->request->get['filter_seller'];
-				} else {
-					$filter_seller = null;
-				}
-				if (isset($this->request->get['filter_seller_status_id'])) {
-					$filter_seller_status_id = $this->request->get['filter_seller_status_id'];
-				} else {
-					$filter_seller_status_id = null;
-				}
-			/*END OVICKO MULTISELLER*/
-			
+		/*START OVICKO MULTISELLER*/
+		if (isset($this->request->get['filter_seller'])) {
+			$filter_seller = $this->request->get['filter_seller'];
+		} else {
+			$filter_seller = null;
+		}
+		if (isset($this->request->get['filter_seller_status_id'])) {
+			$filter_seller_status_id = $this->request->get['filter_seller_status_id'];
+		} else {
+			$filter_seller_status_id = null;
+		}
+		/*END OVICKO MULTISELLER*/
 
- /*START OVICKO MULTISELLER*/
-				if (isset($this->request->get['filter_seller'])) {
-					$filter_seller = $this->request->get['filter_seller'];
-				} else {
-					$filter_seller = null;
-				}
-				if (isset($this->request->get['filter_seller_status_id'])) {
-					$filter_seller_status_id = $this->request->get['filter_seller_status_id'];
-				} else {
-					$filter_seller_status_id = null;
-				}
-			/*END OVICKO MULTISELLER*/
-			
+
+		/*START OVICKO MULTISELLER*/
+		if (isset($this->request->get['filter_seller'])) {
+			$filter_seller = $this->request->get['filter_seller'];
+		} else {
+			$filter_seller = null;
+		}
+		if (isset($this->request->get['filter_seller_status_id'])) {
+			$filter_seller_status_id = $this->request->get['filter_seller_status_id'];
+		} else {
+			$filter_seller_status_id = null;
+		}
+		/*END OVICKO MULTISELLER*/
+
 		if (isset($this->request->get['filter_customer'])) {
 			$filter_customer = $this->request->get['filter_customer'];
 		} else {
@@ -223,58 +223,58 @@ class ControllerSaleOrder extends Controller {
 
 		$url = '';
 
- /*START OVICKO MULTISELLER*/
-				if (isset($this->request->get['filter_seller'])) {
-					$url .= '&filter_seller=' . urlencode(html_entity_decode($this->request->get['filter_seller'], ENT_QUOTES, 'UTF-8'));
-				}
-				if (isset($this->request->get['filter_seller_status_id'])) {
-					$url .= '&filter_seller_status_id=' . $this->request->get['filter_seller_status_id'];
-				}
-			/*END OVICKO MULTISELLER*/
-			
+		/*START OVICKO MULTISELLER*/
+		if (isset($this->request->get['filter_seller'])) {
+			$url .= '&filter_seller=' . urlencode(html_entity_decode($this->request->get['filter_seller'], ENT_QUOTES, 'UTF-8'));
+		}
+		if (isset($this->request->get['filter_seller_status_id'])) {
+			$url .= '&filter_seller_status_id=' . $this->request->get['filter_seller_status_id'];
+		}
+		/*END OVICKO MULTISELLER*/
 
- /*START OVICKO MULTISELLER*/
-				if (isset($this->request->get['filter_seller'])) {
-					$url .= '&filter_seller=' . urlencode(html_entity_decode($this->request->get['filter_seller'], ENT_QUOTES, 'UTF-8'));
-				}
-				if (isset($this->request->get['filter_seller_status_id'])) {
-					$url .= '&filter_seller_status_id=' . $this->request->get['filter_seller_status_id'];
-				}
-			/*END OVICKO MULTISELLER*/
-			
+
+		/*START OVICKO MULTISELLER*/
+		if (isset($this->request->get['filter_seller'])) {
+			$url .= '&filter_seller=' . urlencode(html_entity_decode($this->request->get['filter_seller'], ENT_QUOTES, 'UTF-8'));
+		}
+		if (isset($this->request->get['filter_seller_status_id'])) {
+			$url .= '&filter_seller_status_id=' . $this->request->get['filter_seller_status_id'];
+		}
+		/*END OVICKO MULTISELLER*/
+
 
 		if (isset($this->request->get['filter_order_id'])) {
 			$url .= '&filter_order_id=' . $this->request->get['filter_order_id'];
 		}
 
 
- /*START OVICKO MULTISELLER*/
-				if (isset($this->request->get['filter_seller'])) {
-					$filter_seller = $this->request->get['filter_seller'];
-				} else {
-					$filter_seller = null;
-				}
-				if (isset($this->request->get['filter_seller_status_id'])) {
-					$filter_seller_status_id = $this->request->get['filter_seller_status_id'];
-				} else {
-					$filter_seller_status_id = null;
-				}
-			/*END OVICKO MULTISELLER*/
-			
+		/*START OVICKO MULTISELLER*/
+		if (isset($this->request->get['filter_seller'])) {
+			$filter_seller = $this->request->get['filter_seller'];
+		} else {
+			$filter_seller = null;
+		}
+		if (isset($this->request->get['filter_seller_status_id'])) {
+			$filter_seller_status_id = $this->request->get['filter_seller_status_id'];
+		} else {
+			$filter_seller_status_id = null;
+		}
+		/*END OVICKO MULTISELLER*/
 
- /*START OVICKO MULTISELLER*/
-				if (isset($this->request->get['filter_seller'])) {
-					$filter_seller = $this->request->get['filter_seller'];
-				} else {
-					$filter_seller = null;
-				}
-				if (isset($this->request->get['filter_seller_status_id'])) {
-					$filter_seller_status_id = $this->request->get['filter_seller_status_id'];
-				} else {
-					$filter_seller_status_id = null;
-				}
-			/*END OVICKO MULTISELLER*/
-			
+
+		/*START OVICKO MULTISELLER*/
+		if (isset($this->request->get['filter_seller'])) {
+			$filter_seller = $this->request->get['filter_seller'];
+		} else {
+			$filter_seller = null;
+		}
+		if (isset($this->request->get['filter_seller_status_id'])) {
+			$filter_seller_status_id = $this->request->get['filter_seller_status_id'];
+		} else {
+			$filter_seller_status_id = null;
+		}
+		/*END OVICKO MULTISELLER*/
+
 		if (isset($this->request->get['filter_customer'])) {
 			$url .= '&filter_customer=' . urlencode(html_entity_decode($this->request->get['filter_customer'], ENT_QUOTES, 'UTF-8'));
 		}
@@ -282,11 +282,11 @@ class ControllerSaleOrder extends Controller {
 		if (isset($this->request->get['filter_order_status'])) {
 			$url .= '&filter_order_status=' . $this->request->get['filter_order_status'];
 		}
-	
+
 		if (isset($this->request->get['filter_order_status_id'])) {
 			$url .= '&filter_order_status_id=' . $this->request->get['filter_order_status_id'];
 		}
-			
+
 		if (isset($this->request->get['filter_total'])) {
 			$url .= '&filter_total=' . $this->request->get['filter_total'];
 		}
@@ -316,12 +316,12 @@ class ControllerSaleOrder extends Controller {
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/dashboard', 'user_token=' . $this->session->data['user_token'], true)
-		);
+			);
 
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('sale/order', 'user_token=' . $this->session->data['user_token'] . $url, true)
-		);
+			);
 
 		$data['invoice'] = $this->url->link('sale/order/invoice', 'user_token=' . $this->session->data['user_token'], true);
 		$data['shipping'] = $this->url->link('sale/order/shipping', 'user_token=' . $this->session->data['user_token'], true);
@@ -346,7 +346,7 @@ class ControllerSaleOrder extends Controller {
 			'order'                  => $order,
 			'start'                  => ($page - 1) * $this->config->get('config_limit_admin'),
 			'limit'                  => $this->config->get('config_limit_admin')
-		);
+			);
 
 		$order_total = $this->model_sale_order->getTotalOrders($filter_data);
 
@@ -357,17 +357,17 @@ class ControllerSaleOrder extends Controller {
 				'order_id'      => $result['order_id'],
 				'customer'      => $result['customer'],
 
- /*START OVICKO MULTISELLER*/
+				/*START OVICKO MULTISELLER*/
 				'seller'      =>$this->model_sale_order->getOrderSellers($result['order_id'],$filter_seller),
 				'sellerstatus' =>$this->model_sale_order->getOrderSellerStatus($result['order_id'],$filter_seller_status_id),
-			/*END OVICKO MULTISELLER*/
-			
+				/*END OVICKO MULTISELLER*/
 
- /*START OVICKO MULTISELLER*/
+
+				/*START OVICKO MULTISELLER*/
 				'seller'      =>$this->model_sale_order->getOrderSellers($result['order_id'],$filter_seller),
 				'sellerstatus' =>$this->model_sale_order->getOrderSellerStatus($result['order_id'],$filter_seller_status_id),
-			/*END OVICKO MULTISELLER*/
-			
+				/*END OVICKO MULTISELLER*/
+
 				'order_status'  => $result['order_status'] ? $result['order_status'] : $this->language->get('text_missing'),
 				'total'         => $this->currency->format($result['total'], $result['currency_code'], $result['currency_value']),
 				'date_added'    => date($this->language->get('date_format_short'), strtotime($result['date_added'])),
@@ -375,7 +375,7 @@ class ControllerSaleOrder extends Controller {
 				'shipping_code' => $result['shipping_code'],
 				'view'          => $this->url->link('sale/order/info', 'user_token=' . $this->session->data['user_token'] . '&order_id=' . $result['order_id'] . $url, true),
 				'edit'          => $this->url->link('sale/order/edit', 'user_token=' . $this->session->data['user_token'] . '&order_id=' . $result['order_id'] . $url, true)
-			);
+				);
 		}
 
 		$data['user_token'] = $this->session->data['user_token'];
@@ -402,58 +402,55 @@ class ControllerSaleOrder extends Controller {
 
 		$url = '';
 
- /*START OVICKO MULTISELLER*/
-				if (isset($this->request->get['filter_seller'])) {
-					$url .= '&filter_seller=' . urlencode(html_entity_decode($this->request->get['filter_seller'], ENT_QUOTES, 'UTF-8'));
-				}
-				if (isset($this->request->get['filter_seller_status_id'])) {
-					$url .= '&filter_seller_status_id=' . $this->request->get['filter_seller_status_id'];
-				}
-			/*END OVICKO MULTISELLER*/
-			
+		/*START OVICKO MULTISELLER*/
+		if (isset($this->request->get['filter_seller'])) {
+			$url .= '&filter_seller=' . urlencode(html_entity_decode($this->request->get['filter_seller'], ENT_QUOTES, 'UTF-8'));
+		}
+		if (isset($this->request->get['filter_seller_status_id'])) {
+			$url .= '&filter_seller_status_id=' . $this->request->get['filter_seller_status_id'];
+		}
+		/*END OVICKO MULTISELLER*/
 
- /*START OVICKO MULTISELLER*/
-				if (isset($this->request->get['filter_seller'])) {
-					$url .= '&filter_seller=' . urlencode(html_entity_decode($this->request->get['filter_seller'], ENT_QUOTES, 'UTF-8'));
-				}
-				if (isset($this->request->get['filter_seller_status_id'])) {
-					$url .= '&filter_seller_status_id=' . $this->request->get['filter_seller_status_id'];
-				}
-			/*END OVICKO MULTISELLER*/
-			
+
+		/*START OVICKO MULTISELLER*/
+		if (isset($this->request->get['filter_seller'])) {
+			$url .= '&filter_seller=' . urlencode(html_entity_decode($this->request->get['filter_seller'], ENT_QUOTES, 'UTF-8'));
+		}
+		if (isset($this->request->get['filter_seller_status_id'])) {
+			$url .= '&filter_seller_status_id=' . $this->request->get['filter_seller_status_id'];
+		}
+		/*END OVICKO MULTISELLER*/
 
 		if (isset($this->request->get['filter_order_id'])) {
 			$url .= '&filter_order_id=' . $this->request->get['filter_order_id'];
 		}
 
+		/*START OVICKO MULTISELLER*/
+		if (isset($this->request->get['filter_seller'])) {
+			$filter_seller = $this->request->get['filter_seller'];
+		} else {
+			$filter_seller = null;
+		}
+		if (isset($this->request->get['filter_seller_status_id'])) {
+			$filter_seller_status_id = $this->request->get['filter_seller_status_id'];
+		} else {
+			$filter_seller_status_id = null;
+		}
+		/*END OVICKO MULTISELLER*/
 
- /*START OVICKO MULTISELLER*/
-				if (isset($this->request->get['filter_seller'])) {
-					$filter_seller = $this->request->get['filter_seller'];
-				} else {
-					$filter_seller = null;
-				}
-				if (isset($this->request->get['filter_seller_status_id'])) {
-					$filter_seller_status_id = $this->request->get['filter_seller_status_id'];
-				} else {
-					$filter_seller_status_id = null;
-				}
-			/*END OVICKO MULTISELLER*/
-			
+		/*START OVICKO MULTISELLER*/
+		if (isset($this->request->get['filter_seller'])) {
+			$filter_seller = $this->request->get['filter_seller'];
+		} else {
+			$filter_seller = null;
+		}
+		if (isset($this->request->get['filter_seller_status_id'])) {
+			$filter_seller_status_id = $this->request->get['filter_seller_status_id'];
+		} else {
+			$filter_seller_status_id = null;
+		}
+		/*END OVICKO MULTISELLER*/
 
- /*START OVICKO MULTISELLER*/
-				if (isset($this->request->get['filter_seller'])) {
-					$filter_seller = $this->request->get['filter_seller'];
-				} else {
-					$filter_seller = null;
-				}
-				if (isset($this->request->get['filter_seller_status_id'])) {
-					$filter_seller_status_id = $this->request->get['filter_seller_status_id'];
-				} else {
-					$filter_seller_status_id = null;
-				}
-			/*END OVICKO MULTISELLER*/
-			
 		if (isset($this->request->get['filter_customer'])) {
 			$url .= '&filter_customer=' . urlencode(html_entity_decode($this->request->get['filter_customer'], ENT_QUOTES, 'UTF-8'));
 		}
@@ -465,7 +462,7 @@ class ControllerSaleOrder extends Controller {
 		if (isset($this->request->get['filter_order_status_id'])) {
 			$url .= '&filter_order_status_id=' . $this->request->get['filter_order_status_id'];
 		}
-			
+
 		if (isset($this->request->get['filter_total'])) {
 			$url .= '&filter_total=' . $this->request->get['filter_total'];
 		}
@@ -497,58 +494,58 @@ class ControllerSaleOrder extends Controller {
 
 		$url = '';
 
- /*START OVICKO MULTISELLER*/
-				if (isset($this->request->get['filter_seller'])) {
-					$url .= '&filter_seller=' . urlencode(html_entity_decode($this->request->get['filter_seller'], ENT_QUOTES, 'UTF-8'));
-				}
-				if (isset($this->request->get['filter_seller_status_id'])) {
-					$url .= '&filter_seller_status_id=' . $this->request->get['filter_seller_status_id'];
-				}
-			/*END OVICKO MULTISELLER*/
-			
+		/*START OVICKO MULTISELLER*/
+		if (isset($this->request->get['filter_seller'])) {
+			$url .= '&filter_seller=' . urlencode(html_entity_decode($this->request->get['filter_seller'], ENT_QUOTES, 'UTF-8'));
+		}
+		if (isset($this->request->get['filter_seller_status_id'])) {
+			$url .= '&filter_seller_status_id=' . $this->request->get['filter_seller_status_id'];
+		}
+		/*END OVICKO MULTISELLER*/
 
- /*START OVICKO MULTISELLER*/
-				if (isset($this->request->get['filter_seller'])) {
-					$url .= '&filter_seller=' . urlencode(html_entity_decode($this->request->get['filter_seller'], ENT_QUOTES, 'UTF-8'));
-				}
-				if (isset($this->request->get['filter_seller_status_id'])) {
-					$url .= '&filter_seller_status_id=' . $this->request->get['filter_seller_status_id'];
-				}
-			/*END OVICKO MULTISELLER*/
-			
+
+		/*START OVICKO MULTISELLER*/
+		if (isset($this->request->get['filter_seller'])) {
+			$url .= '&filter_seller=' . urlencode(html_entity_decode($this->request->get['filter_seller'], ENT_QUOTES, 'UTF-8'));
+		}
+		if (isset($this->request->get['filter_seller_status_id'])) {
+			$url .= '&filter_seller_status_id=' . $this->request->get['filter_seller_status_id'];
+		}
+		/*END OVICKO MULTISELLER*/
+
 
 		if (isset($this->request->get['filter_order_id'])) {
 			$url .= '&filter_order_id=' . $this->request->get['filter_order_id'];
 		}
 
 
- /*START OVICKO MULTISELLER*/
-				if (isset($this->request->get['filter_seller'])) {
-					$filter_seller = $this->request->get['filter_seller'];
-				} else {
-					$filter_seller = null;
-				}
-				if (isset($this->request->get['filter_seller_status_id'])) {
-					$filter_seller_status_id = $this->request->get['filter_seller_status_id'];
-				} else {
-					$filter_seller_status_id = null;
-				}
-			/*END OVICKO MULTISELLER*/
-			
+		/*START OVICKO MULTISELLER*/
+		if (isset($this->request->get['filter_seller'])) {
+			$filter_seller = $this->request->get['filter_seller'];
+		} else {
+			$filter_seller = null;
+		}
+		if (isset($this->request->get['filter_seller_status_id'])) {
+			$filter_seller_status_id = $this->request->get['filter_seller_status_id'];
+		} else {
+			$filter_seller_status_id = null;
+		}
+		/*END OVICKO MULTISELLER*/
 
- /*START OVICKO MULTISELLER*/
-				if (isset($this->request->get['filter_seller'])) {
-					$filter_seller = $this->request->get['filter_seller'];
-				} else {
-					$filter_seller = null;
-				}
-				if (isset($this->request->get['filter_seller_status_id'])) {
-					$filter_seller_status_id = $this->request->get['filter_seller_status_id'];
-				} else {
-					$filter_seller_status_id = null;
-				}
-			/*END OVICKO MULTISELLER*/
-			
+
+		/*START OVICKO MULTISELLER*/
+		if (isset($this->request->get['filter_seller'])) {
+			$filter_seller = $this->request->get['filter_seller'];
+		} else {
+			$filter_seller = null;
+		}
+		if (isset($this->request->get['filter_seller_status_id'])) {
+			$filter_seller_status_id = $this->request->get['filter_seller_status_id'];
+		} else {
+			$filter_seller_status_id = null;
+		}
+		/*END OVICKO MULTISELLER*/
+
 		if (isset($this->request->get['filter_customer'])) {
 			$url .= '&filter_customer=' . urlencode(html_entity_decode($this->request->get['filter_customer'], ENT_QUOTES, 'UTF-8'));
 		}
@@ -560,7 +557,7 @@ class ControllerSaleOrder extends Controller {
 		if (isset($this->request->get['filter_order_status_id'])) {
 			$url .= '&filter_order_status_id=' . $this->request->get['filter_order_status_id'];
 		}
-			
+
 		if (isset($this->request->get['filter_total'])) {
 			$url .= '&filter_total=' . $this->request->get['filter_total'];
 		}
@@ -618,7 +615,7 @@ class ControllerSaleOrder extends Controller {
 			$session = new Session($this->config->get('session_engine'), $this->registry);
 			
 			$session->start();
-					
+
 			$this->model_user_api->deleteApiSessionBySessonId($session->getId());
 			
 			$this->model_user_api->addApiSession($api_info['api_id'], $session->getId(), $this->request->server['REMOTE_ADDR']);
@@ -636,64 +633,58 @@ class ControllerSaleOrder extends Controller {
 
 		$this->response->setOutput($this->load->view('sale/order_list', $data));
 	}
-		
+
 	public function getForm() {
 		$data['text_form'] = !isset($this->request->get['order_id']) ? $this->language->get('text_add') : $this->language->get('text_edit');
 
 		$url = '';
 
- /*START OVICKO MULTISELLER*/
-				if (isset($this->request->get['filter_seller'])) {
-					$url .= '&filter_seller=' . urlencode(html_entity_decode($this->request->get['filter_seller'], ENT_QUOTES, 'UTF-8'));
-				}
-				if (isset($this->request->get['filter_seller_status_id'])) {
-					$url .= '&filter_seller_status_id=' . $this->request->get['filter_seller_status_id'];
-				}
-			/*END OVICKO MULTISELLER*/
-			
-
- /*START OVICKO MULTISELLER*/
-				if (isset($this->request->get['filter_seller'])) {
-					$url .= '&filter_seller=' . urlencode(html_entity_decode($this->request->get['filter_seller'], ENT_QUOTES, 'UTF-8'));
-				}
-				if (isset($this->request->get['filter_seller_status_id'])) {
-					$url .= '&filter_seller_status_id=' . $this->request->get['filter_seller_status_id'];
-				}
-			/*END OVICKO MULTISELLER*/
-			
+		/*START OVICKO MULTISELLER*/
+		if (isset($this->request->get['filter_seller'])) {
+			$url .= '&filter_seller=' . urlencode(html_entity_decode($this->request->get['filter_seller'], ENT_QUOTES, 'UTF-8'));
+		}
+		if (isset($this->request->get['filter_seller_status_id'])) {
+			$url .= '&filter_seller_status_id=' . $this->request->get['filter_seller_status_id'];
+		}
+		
+		if (isset($this->request->get['filter_seller'])) {
+			$url .= '&filter_seller=' . urlencode(html_entity_decode($this->request->get['filter_seller'], ENT_QUOTES, 'UTF-8'));
+		}
+		if (isset($this->request->get['filter_seller_status_id'])) {
+			$url .= '&filter_seller_status_id=' . $this->request->get['filter_seller_status_id'];
+		}
+		/*END OVICKO MULTISELLER*/			
 
 		if (isset($this->request->get['filter_order_id'])) {
 			$url .= '&filter_order_id=' . $this->request->get['filter_order_id'];
 		}
 
+		/*START OVICKO MULTISELLER*/
+		if (isset($this->request->get['filter_seller'])) {
+			$filter_seller = $this->request->get['filter_seller'];
+		} else {
+			$filter_seller = null;
+		}
+		if (isset($this->request->get['filter_seller_status_id'])) {
+			$filter_seller_status_id = $this->request->get['filter_seller_status_id'];
+		} else {
+			$filter_seller_status_id = null;
+		}		
+		/*END OVICKO MULTISELLER*/			
 
- /*START OVICKO MULTISELLER*/
-				if (isset($this->request->get['filter_seller'])) {
-					$filter_seller = $this->request->get['filter_seller'];
-				} else {
-					$filter_seller = null;
-				}
-				if (isset($this->request->get['filter_seller_status_id'])) {
-					$filter_seller_status_id = $this->request->get['filter_seller_status_id'];
-				} else {
-					$filter_seller_status_id = null;
-				}
-			/*END OVICKO MULTISELLER*/
-			
+		/*START OVICKO MULTISELLER*/
+		if (isset($this->request->get['filter_seller'])) {
+			$filter_seller = $this->request->get['filter_seller'];
+		} else {
+			$filter_seller = null;
+		}
+		if (isset($this->request->get['filter_seller_status_id'])) {
+			$filter_seller_status_id = $this->request->get['filter_seller_status_id'];
+		} else {
+			$filter_seller_status_id = null;
+		}					
+		/*END OVICKO MULTISELLER*/
 
- /*START OVICKO MULTISELLER*/
-				if (isset($this->request->get['filter_seller'])) {
-					$filter_seller = $this->request->get['filter_seller'];
-				} else {
-					$filter_seller = null;
-				}
-				if (isset($this->request->get['filter_seller_status_id'])) {
-					$filter_seller_status_id = $this->request->get['filter_seller_status_id'];
-				} else {
-					$filter_seller_status_id = null;
-				}
-			/*END OVICKO MULTISELLER*/
-			
 		if (isset($this->request->get['filter_customer'])) {
 			$url .= '&filter_customer=' . urlencode(html_entity_decode($this->request->get['filter_customer'], ENT_QUOTES, 'UTF-8'));
 		}
@@ -705,7 +696,7 @@ class ControllerSaleOrder extends Controller {
 		if (isset($this->request->get['filter_order_status_id'])) {
 			$url .= '&filter_order_status_id=' . $this->request->get['filter_order_status_id'];
 		}
-			
+
 		if (isset($this->request->get['filter_total'])) {
 			$url .= '&filter_total=' . $this->request->get['filter_total'];
 		}
@@ -735,12 +726,12 @@ class ControllerSaleOrder extends Controller {
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/dashboard', 'user_token=' . $this->session->data['user_token'], true)
-		);
+			);
 
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('sale/order', 'user_token=' . $this->session->data['user_token'] . $url, true)
-		);
+			);
 
 		$data['cancel'] = $this->url->link('sale/order', 'user_token=' . $this->session->data['user_token'] . $url, true);
 
@@ -799,121 +790,120 @@ class ControllerSaleOrder extends Controller {
 
 			$products = $this->model_sale_order->getOrderProducts($this->request->get['order_id']);
 
-
-			 /*START OVICKO MULTISELLER*/
+			/*START OVICKO MULTISELLER*/
+			$order_id = $this->request->get['order_id'];
 			$data['order_sellers'] = $this->model_sale_order->getSellersByOrder($order_id);	
 			$order_sellers = $this->model_sale_order->getSellersByOrder($order_id);	
 			$this->load->model('sale/seller');
 			$addresssellers =array();
 			foreach($order_sellers as $order_seller){
-			if($order_seller['seller_id']){			
-			$adsellers = $this->model_sale_seller->getaddressid($order_seller['seller_id']);
-		  	if($adsellers){
-			  $addresssellers[] = $this->model_sale_seller->getAddress($adsellers);
-						 $data['addresses'] = array();
-						 foreach($addresssellers as $result){
-						 if ($result['address_format']) {
-      			$format = $result['address_format'];
-    		} else {
-				$format = '{firstname} {lastname}' . "\n" . '{company}' . "\n" . '{address_1}' . "\n" . '{address_2}' . "\n" . '{city} {postcode}' . "\n" . '{zone}' . "\n" . '{country}'. "\n" . '{email}'. "\n" . '{telephone}';
-			}
-    		$find = array(
-	  			'{firstname}',
-	  			'{lastname}',
-				'{company}',
-      			'{address_1}',
-      			'{address_2}',
-     			'{city}',
-      			'{postcode}',
-      			'{zone}',
-				'{zone_code}',
-      			'{country}',
-				'{email}',
-				'{telephone}'
-			);
-			$replace = array(
-	  			'firstname' => $result['firstname'],
-	  			'lastname'  => $result['lastname'],
-				'company'   => $result['company'],
-      			'address_1' => $result['address_1'],
-      			'address_2' => $result['address_2'],
-      			'city'      => $result['city'],
-      			'postcode'  => $result['postcode'],
-      			'zone'      => $result['zone'],
-				'zone_code' => $result['zone_code'],
-      			'country'   => $result['country'] ,
-                'email'  => $result['email'],
-'telephone'  => $result['telephone']				
-			);
-      		$data['addresses'][] = array(
-        		'name' => $result['firstname'],
-        		'address'    => str_replace(array("\r\n", "\r", "\n"), '<br />', preg_replace(array("/\s\s+/", "/\r\r+/", "/\n\n+/"), '<br />', trim(str_replace($find, $replace, $format))))
-      		);
-			 }
-			     }
-			}
+				if($order_seller['seller_id']){			
+					$adsellers = $this->model_sale_seller->getaddressid($order_seller['seller_id']);
+					if($adsellers){
+						$addresssellers[] = $this->model_sale_seller->getAddress($adsellers);
+						$data['addresses'] = array();
+						foreach($addresssellers as $result){
+							if ($result['address_format']) {
+								$format = $result['address_format'];
+							} else {
+								$format = '{firstname} {lastname}' . "\n" . '{company}' . "\n" . '{address_1}' . "\n" . '{address_2}' . "\n" . '{city} {postcode}' . "\n" . '{zone}' . "\n" . '{country}'. "\n" . '{email}'. "\n" . '{telephone}';
+							}
+							$find = array(
+								'{firstname}',
+								'{lastname}',
+								'{company}',
+								'{address_1}',
+								'{address_2}',
+								'{city}',
+								'{postcode}',
+								'{zone}',
+								'{zone_code}',
+								'{country}',
+								'{email}',
+								'{telephone}'
+								);
+							$replace = array(
+								'firstname' => $result['firstname'],
+								'lastname'  => $result['lastname'],
+								'company'   => $result['company'],
+								'address_1' => $result['address_1'],
+								'address_2' => $result['address_2'],
+								'city'      => $result['city'],
+								'postcode'  => $result['postcode'],
+								'zone'      => $result['zone'],
+								'zone_code' => $result['zone_code'],
+								'country'   => $result['country'] ,
+								'email'  => $result['email'],
+								'telephone'  => $result['telephone']				
+								);
+							$data['addresses'][] = array(
+								'name' => $result['firstname'],
+								'address'    => str_replace(array("\r\n", "\r", "\n"), '<br />', preg_replace(array("/\s\s+/", "/\r\r+/", "/\n\n+/"), '<br />', trim(str_replace($find, $replace, $format))))
+								);
+						}
+					}
+				}
 			}
 			/*END OVICKO MULTISELLER*/
-			
 
-			 /*START OVICKO MULTISELLER*/
+			/*START OVICKO MULTISELLER*/
 			$data['order_sellers'] = $this->model_sale_order->getSellersByOrder($order_id);	
 			$order_sellers = $this->model_sale_order->getSellersByOrder($order_id);	
 			$this->load->model('sale/seller');
 			$addresssellers =array();
 			foreach($order_sellers as $order_seller){
-			if($order_seller['seller_id']){			
-			$adsellers = $this->model_sale_seller->getaddressid($order_seller['seller_id']);
-		  	if($adsellers){
-			  $addresssellers[] = $this->model_sale_seller->getAddress($adsellers);
-						 $data['addresses'] = array();
-						 foreach($addresssellers as $result){
-						 if ($result['address_format']) {
-      			$format = $result['address_format'];
-    		} else {
-				$format = '{firstname} {lastname}' . "\n" . '{company}' . "\n" . '{address_1}' . "\n" . '{address_2}' . "\n" . '{city} {postcode}' . "\n" . '{zone}' . "\n" . '{country}'. "\n" . '{email}'. "\n" . '{telephone}';
-			}
-    		$find = array(
-	  			'{firstname}',
-	  			'{lastname}',
-				'{company}',
-      			'{address_1}',
-      			'{address_2}',
-     			'{city}',
-      			'{postcode}',
-      			'{zone}',
-				'{zone_code}',
-      			'{country}',
-				'{email}',
-				'{telephone}'
-			);
-			$replace = array(
-	  			'firstname' => $result['firstname'],
-	  			'lastname'  => $result['lastname'],
-				'company'   => $result['company'],
-      			'address_1' => $result['address_1'],
-      			'address_2' => $result['address_2'],
-      			'city'      => $result['city'],
-      			'postcode'  => $result['postcode'],
-      			'zone'      => $result['zone'],
-				'zone_code' => $result['zone_code'],
-      			'country'   => $result['country'] ,
-                'email'  => $result['email'],
-'telephone'  => $result['telephone']				
-			);
-      		$data['addresses'][] = array(
-        		'name' => $result['firstname'],
-        		'address'    => str_replace(array("\r\n", "\r", "\n"), '<br />', preg_replace(array("/\s\s+/", "/\r\r+/", "/\n\n+/"), '<br />', trim(str_replace($find, $replace, $format))))
-      		);
-			 }
-			     }
-			}
+				if($order_seller['seller_id']){			
+					$adsellers = $this->model_sale_seller->getaddressid($order_seller['seller_id']);
+					if($adsellers){
+						$addresssellers[] = $this->model_sale_seller->getAddress($adsellers);
+						$data['addresses'] = array();
+						foreach($addresssellers as $result){
+							if ($result['address_format']) {
+								$format = $result['address_format'];
+							} else {
+								$format = '{firstname} {lastname}' . "\n" . '{company}' . "\n" . '{address_1}' . "\n" . '{address_2}' . "\n" . '{city} {postcode}' . "\n" . '{zone}' . "\n" . '{country}'. "\n" . '{email}'. "\n" . '{telephone}';
+							}
+							$find = array(
+								'{firstname}',
+								'{lastname}',
+								'{company}',
+								'{address_1}',
+								'{address_2}',
+								'{city}',
+								'{postcode}',
+								'{zone}',
+								'{zone_code}',
+								'{country}',
+								'{email}',
+								'{telephone}'
+								);
+							$replace = array(
+								'firstname' => $result['firstname'],
+								'lastname'  => $result['lastname'],
+								'company'   => $result['company'],
+								'address_1' => $result['address_1'],
+								'address_2' => $result['address_2'],
+								'city'      => $result['city'],
+								'postcode'  => $result['postcode'],
+								'zone'      => $result['zone'],
+								'zone_code' => $result['zone_code'],
+								'country'   => $result['country'] ,
+								'email'  => $result['email'],
+								'telephone'  => $result['telephone']				
+								);
+							$data['addresses'][] = array(
+								'name' => $result['firstname'],
+								'address'    => str_replace(array("\r\n", "\r", "\n"), '<br />', preg_replace(array("/\s\s+/", "/\r\r+/", "/\n\n+/"), '<br />', trim(str_replace($find, $replace, $format))))
+								);
+						}
+					}
+				}
 			}
 			/*END OVICKO MULTISELLER*/
 			
 			foreach ($products as $product) {
 
-                /*START OVICKO MULTISELLER*/
+				/*START OVICKO MULTISELLER*/
 				$product_history = $this->model_sale_order->getOrderProductStatus($product['order_id'],$product['seller_id']);
 				if($product_history){
 					$status = $product_history['name'];
@@ -923,11 +913,7 @@ class ControllerSaleOrder extends Controller {
 					$status ='';
 				}
 				/*END OVICKO MULTISELLER*/
-			/*END OVICKO MULTISELLER*/
-			/*END OVICKO MULTISELLER*/
-			
-
-                /*START OVICKO MULTISELLER*/
+				/*START OVICKO MULTISELLER*/
 				$product_history = $this->model_sale_order->getOrderProductStatus($product['order_id'],$product['seller_id']);
 				if($product_history){
 					$status = $product_history['name'];
@@ -937,28 +923,23 @@ class ControllerSaleOrder extends Controller {
 					$status ='';
 				}
 				/*END OVICKO MULTISELLER*/
-			/*END OVICKO MULTISELLER*/
-			/*END OVICKO MULTISELLER*/
-			
 				$data['order_products'][] = array(
 
-               /*START OVICKO MULTISELLER*/
-				'seller_id'     => $product['seller_id'],
-				'sellername'    => $product['username'],
-				'status'    => $status,
-				'status_id'    => $product['product_status_id'],
-				'sellerhref'    => $this->url->link('sale/seller/update', 'token=' . $this->session->data['user_token'] . '&seller_id=' . $product['seller_id'], 'SSL'),
-			/*END OVICKO MULTISELLER*/
-			
+					/*START OVICKO MULTISELLER*/
+					'seller_id'     => $product['seller_id'],
+					'sellername'    => $product['username'],
+					'status'    => $status,
+					'status_id'    => $product['product_status_id'],
+					'sellerhref'    => $this->url->link('sale/seller/update', 'token=' . $this->session->data['user_token'] . '&seller_id=' . $product['seller_id'], 'SSL'),
+					/*END OVICKO MULTISELLER*/
+					/*START OVICKO MULTISELLER*/
+					'seller_id'     => $product['seller_id'],
+					'sellername'    => $product['username'],
+					'status'    => $status,
+					'status_id'    => $product['product_status_id'],
+					'sellerhref'    => $this->url->link('sale/seller/update', 'token=' . $this->session->data['user_token'] . '&seller_id=' . $product['seller_id'], 'SSL'),
+					/*END OVICKO MULTISELLER*/
 
-               /*START OVICKO MULTISELLER*/
-				'seller_id'     => $product['seller_id'],
-				'sellername'    => $product['username'],
-				'status'    => $status,
-				'status_id'    => $product['product_status_id'],
-				'sellerhref'    => $this->url->link('sale/seller/update', 'token=' . $this->session->data['user_token'] . '&seller_id=' . $product['seller_id'], 'SSL'),
-			/*END OVICKO MULTISELLER*/
-			
 					'product_id' => $product['product_id'],
 					'name'       => $product['name'],
 					'model'      => $product['model'],
@@ -967,7 +948,7 @@ class ControllerSaleOrder extends Controller {
 					'price'      => $product['price'],
 					'total'      => $product['total'],
 					'reward'     => $product['reward']
-				);
+					);
 			}
 
 			// Vouchers
@@ -1061,7 +1042,7 @@ class ControllerSaleOrder extends Controller {
 		$data['stores'][] = array(
 			'store_id' => 0,
 			'name'     => $this->language->get('text_default')
-		);
+			);
 
 		$results = $this->model_setting_store->getStores();
 
@@ -1069,7 +1050,7 @@ class ControllerSaleOrder extends Controller {
 			$data['stores'][] = array(
 				'store_id' => $result['store_id'],
 				'name'     => $result['name']
-			);
+				);
 		}
 
 		// Customer Groups
@@ -1085,7 +1066,7 @@ class ControllerSaleOrder extends Controller {
 		$filter_data = array(
 			'sort'  => 'cf.sort_order',
 			'order' => 'ASC'
-		);
+			);
 
 		$custom_fields = $this->model_customer_custom_field->getCustomFields($filter_data);
 
@@ -1098,7 +1079,7 @@ class ControllerSaleOrder extends Controller {
 				'type'               => $custom_field['type'],
 				'location'           => $custom_field['location'],
 				'sort_order'         => $custom_field['sort_order']
-			);
+				);
 		}
 
 		$this->load->model('localisation/order_status');
@@ -1131,7 +1112,7 @@ class ControllerSaleOrder extends Controller {
 			$session = new Session($this->config->get('session_engine'), $this->registry);
 			
 			$session->start();
-					
+
 			$this->model_user_api->deleteApiSessionBySessonId($session->getId());
 			
 			$this->model_user_api->addApiSession($api_info['api_id'], $session->getId(), $this->request->server['REMOTE_ADDR']);
@@ -1171,23 +1152,23 @@ class ControllerSaleOrder extends Controller {
 
 			$url = '';
 
- /*START OVICKO MULTISELLER*/
-				if (isset($this->request->get['filter_seller'])) {
-					$url .= '&filter_seller=' . urlencode(html_entity_decode($this->request->get['filter_seller'], ENT_QUOTES, 'UTF-8'));
-				}
-				if (isset($this->request->get['filter_seller_status_id'])) {
-					$url .= '&filter_seller_status_id=' . $this->request->get['filter_seller_status_id'];
-				}
+			/*START OVICKO MULTISELLER*/
+			if (isset($this->request->get['filter_seller'])) {
+				$url .= '&filter_seller=' . urlencode(html_entity_decode($this->request->get['filter_seller'], ENT_QUOTES, 'UTF-8'));
+			}
+			if (isset($this->request->get['filter_seller_status_id'])) {
+				$url .= '&filter_seller_status_id=' . $this->request->get['filter_seller_status_id'];
+			}
 			/*END OVICKO MULTISELLER*/
 			
 
- /*START OVICKO MULTISELLER*/
-				if (isset($this->request->get['filter_seller'])) {
-					$url .= '&filter_seller=' . urlencode(html_entity_decode($this->request->get['filter_seller'], ENT_QUOTES, 'UTF-8'));
-				}
-				if (isset($this->request->get['filter_seller_status_id'])) {
-					$url .= '&filter_seller_status_id=' . $this->request->get['filter_seller_status_id'];
-				}
+			/*START OVICKO MULTISELLER*/
+			if (isset($this->request->get['filter_seller'])) {
+				$url .= '&filter_seller=' . urlencode(html_entity_decode($this->request->get['filter_seller'], ENT_QUOTES, 'UTF-8'));
+			}
+			if (isset($this->request->get['filter_seller_status_id'])) {
+				$url .= '&filter_seller_status_id=' . $this->request->get['filter_seller_status_id'];
+			}
 			/*END OVICKO MULTISELLER*/
 			
 
@@ -1196,31 +1177,31 @@ class ControllerSaleOrder extends Controller {
 			}
 
 
- /*START OVICKO MULTISELLER*/
-				if (isset($this->request->get['filter_seller'])) {
-					$filter_seller = $this->request->get['filter_seller'];
-				} else {
-					$filter_seller = null;
-				}
-				if (isset($this->request->get['filter_seller_status_id'])) {
-					$filter_seller_status_id = $this->request->get['filter_seller_status_id'];
-				} else {
-					$filter_seller_status_id = null;
-				}
+			/*START OVICKO MULTISELLER*/
+			if (isset($this->request->get['filter_seller'])) {
+				$filter_seller = $this->request->get['filter_seller'];
+			} else {
+				$filter_seller = null;
+			}
+			if (isset($this->request->get['filter_seller_status_id'])) {
+				$filter_seller_status_id = $this->request->get['filter_seller_status_id'];
+			} else {
+				$filter_seller_status_id = null;
+			}
 			/*END OVICKO MULTISELLER*/
 			
 
- /*START OVICKO MULTISELLER*/
-				if (isset($this->request->get['filter_seller'])) {
-					$filter_seller = $this->request->get['filter_seller'];
-				} else {
-					$filter_seller = null;
-				}
-				if (isset($this->request->get['filter_seller_status_id'])) {
-					$filter_seller_status_id = $this->request->get['filter_seller_status_id'];
-				} else {
-					$filter_seller_status_id = null;
-				}
+			/*START OVICKO MULTISELLER*/
+			if (isset($this->request->get['filter_seller'])) {
+				$filter_seller = $this->request->get['filter_seller'];
+			} else {
+				$filter_seller = null;
+			}
+			if (isset($this->request->get['filter_seller_status_id'])) {
+				$filter_seller_status_id = $this->request->get['filter_seller_status_id'];
+			} else {
+				$filter_seller_status_id = null;
+			}
 			/*END OVICKO MULTISELLER*/
 			
 			if (isset($this->request->get['filter_customer'])) {
@@ -1264,12 +1245,12 @@ class ControllerSaleOrder extends Controller {
 			$data['breadcrumbs'][] = array(
 				'text' => $this->language->get('text_home'),
 				'href' => $this->url->link('common/dashboard', 'user_token=' . $this->session->data['user_token'], true)
-			);
+				);
 
 			$data['breadcrumbs'][] = array(
 				'text' => $this->language->get('heading_title'),
 				'href' => $this->url->link('sale/order', 'user_token=' . $this->session->data['user_token'] . $url, true)
-			);
+				);
 
 			$data['shipping'] = $this->url->link('sale/order/shipping', 'user_token=' . $this->session->data['user_token'] . '&order_id=' . (int)$this->request->get['order_id'], true);
 			$data['invoice'] = $this->url->link('sale/order/invoice', 'user_token=' . $this->session->data['user_token'] . '&order_id=' . (int)$this->request->get['order_id'], true);
@@ -1340,7 +1321,7 @@ class ControllerSaleOrder extends Controller {
 				'{zone}',
 				'{zone_code}',
 				'{country}'
-			);
+				);
 
 			$replace = array(
 				'firstname' => $order_info['payment_firstname'],
@@ -1353,7 +1334,7 @@ class ControllerSaleOrder extends Controller {
 				'zone'      => $order_info['payment_zone'],
 				'zone_code' => $order_info['payment_zone_code'],
 				'country'   => $order_info['payment_country']
-			);
+				);
 
 			$data['payment_address'] = str_replace(array("\r\n", "\r", "\n"), '<br />', preg_replace(array("/\s\s+/", "/\r\r+/", "/\n\n+/"), '<br />', trim(str_replace($find, $replace, $format))));
 
@@ -1375,7 +1356,7 @@ class ControllerSaleOrder extends Controller {
 				'{zone}',
 				'{zone_code}',
 				'{country}'
-			);
+				);
 
 			$replace = array(
 				'firstname' => $order_info['shipping_firstname'],
@@ -1388,7 +1369,7 @@ class ControllerSaleOrder extends Controller {
 				'zone'      => $order_info['shipping_zone'],
 				'zone_code' => $order_info['shipping_zone_code'],
 				'country'   => $order_info['shipping_country']
-			);
+				);
 
 			$data['shipping_address'] = str_replace(array("\r\n", "\r", "\n"), '<br />', preg_replace(array("/\s\s+/", "/\r\r+/", "/\n\n+/"), '<br />', trim(str_replace($find, $replace, $format))));
 
@@ -1400,114 +1381,114 @@ class ControllerSaleOrder extends Controller {
 			$products = $this->model_sale_order->getOrderProducts($this->request->get['order_id']);
 
 
-			 /*START OVICKO MULTISELLER*/
+			/*START OVICKO MULTISELLER*/
 			$data['order_sellers'] = $this->model_sale_order->getSellersByOrder($order_id);	
 			$order_sellers = $this->model_sale_order->getSellersByOrder($order_id);	
 			$this->load->model('sale/seller');
 			$addresssellers =array();
 			foreach($order_sellers as $order_seller){
-			if($order_seller['seller_id']){			
-			$adsellers = $this->model_sale_seller->getaddressid($order_seller['seller_id']);
-		  	if($adsellers){
-			  $addresssellers[] = $this->model_sale_seller->getAddress($adsellers);
-						 $data['addresses'] = array();
-						 foreach($addresssellers as $result){
-						 if ($result['address_format']) {
-      			$format = $result['address_format'];
-    		} else {
-				$format = '{firstname} {lastname}' . "\n" . '{company}' . "\n" . '{address_1}' . "\n" . '{address_2}' . "\n" . '{city} {postcode}' . "\n" . '{zone}' . "\n" . '{country}'. "\n" . '{email}'. "\n" . '{telephone}';
-			}
-    		$find = array(
-	  			'{firstname}',
-	  			'{lastname}',
-				'{company}',
-      			'{address_1}',
-      			'{address_2}',
-     			'{city}',
-      			'{postcode}',
-      			'{zone}',
-				'{zone_code}',
-      			'{country}',
-				'{email}',
-				'{telephone}'
-			);
-			$replace = array(
-	  			'firstname' => $result['firstname'],
-	  			'lastname'  => $result['lastname'],
-				'company'   => $result['company'],
-      			'address_1' => $result['address_1'],
-      			'address_2' => $result['address_2'],
-      			'city'      => $result['city'],
-      			'postcode'  => $result['postcode'],
-      			'zone'      => $result['zone'],
-				'zone_code' => $result['zone_code'],
-      			'country'   => $result['country'] ,
-                'email'  => $result['email'],
-'telephone'  => $result['telephone']				
-			);
-      		$data['addresses'][] = array(
-        		'name' => $result['firstname'],
-        		'address'    => str_replace(array("\r\n", "\r", "\n"), '<br />', preg_replace(array("/\s\s+/", "/\r\r+/", "/\n\n+/"), '<br />', trim(str_replace($find, $replace, $format))))
-      		);
-			 }
-			     }
-			}
+				if($order_seller['seller_id']){			
+					$adsellers = $this->model_sale_seller->getaddressid($order_seller['seller_id']);
+					if($adsellers){
+						$addresssellers[] = $this->model_sale_seller->getAddress($adsellers);
+						$data['addresses'] = array();
+						foreach($addresssellers as $result){
+							if ($result['address_format']) {
+								$format = $result['address_format'];
+							} else {
+								$format = '{firstname} {lastname}' . "\n" . '{company}' . "\n" . '{address_1}' . "\n" . '{address_2}' . "\n" . '{city} {postcode}' . "\n" . '{zone}' . "\n" . '{country}'. "\n" . '{email}'. "\n" . '{telephone}';
+							}
+							$find = array(
+								'{firstname}',
+								'{lastname}',
+								'{company}',
+								'{address_1}',
+								'{address_2}',
+								'{city}',
+								'{postcode}',
+								'{zone}',
+								'{zone_code}',
+								'{country}',
+								'{email}',
+								'{telephone}'
+								);
+							$replace = array(
+								'firstname' => $result['firstname'],
+								'lastname'  => $result['lastname'],
+								'company'   => $result['company'],
+								'address_1' => $result['address_1'],
+								'address_2' => $result['address_2'],
+								'city'      => $result['city'],
+								'postcode'  => $result['postcode'],
+								'zone'      => $result['zone'],
+								'zone_code' => $result['zone_code'],
+								'country'   => $result['country'] ,
+								'email'  => $result['email'],
+								'telephone'  => $result['telephone']				
+								);
+							$data['addresses'][] = array(
+								'name' => $result['firstname'],
+								'address'    => str_replace(array("\r\n", "\r", "\n"), '<br />', preg_replace(array("/\s\s+/", "/\r\r+/", "/\n\n+/"), '<br />', trim(str_replace($find, $replace, $format))))
+								);
+						}
+					}
+				}
 			}
 			/*END OVICKO MULTISELLER*/
 			
 
-			 /*START OVICKO MULTISELLER*/
+			/*START OVICKO MULTISELLER*/
 			$data['order_sellers'] = $this->model_sale_order->getSellersByOrder($order_id);	
 			$order_sellers = $this->model_sale_order->getSellersByOrder($order_id);	
 			$this->load->model('sale/seller');
 			$addresssellers =array();
 			foreach($order_sellers as $order_seller){
-			if($order_seller['seller_id']){			
-			$adsellers = $this->model_sale_seller->getaddressid($order_seller['seller_id']);
-		  	if($adsellers){
-			  $addresssellers[] = $this->model_sale_seller->getAddress($adsellers);
-						 $data['addresses'] = array();
-						 foreach($addresssellers as $result){
-						 if ($result['address_format']) {
-      			$format = $result['address_format'];
-    		} else {
-				$format = '{firstname} {lastname}' . "\n" . '{company}' . "\n" . '{address_1}' . "\n" . '{address_2}' . "\n" . '{city} {postcode}' . "\n" . '{zone}' . "\n" . '{country}'. "\n" . '{email}'. "\n" . '{telephone}';
-			}
-    		$find = array(
-	  			'{firstname}',
-	  			'{lastname}',
-				'{company}',
-      			'{address_1}',
-      			'{address_2}',
-     			'{city}',
-      			'{postcode}',
-      			'{zone}',
-				'{zone_code}',
-      			'{country}',
-				'{email}',
-				'{telephone}'
-			);
-			$replace = array(
-	  			'firstname' => $result['firstname'],
-	  			'lastname'  => $result['lastname'],
-				'company'   => $result['company'],
-      			'address_1' => $result['address_1'],
-      			'address_2' => $result['address_2'],
-      			'city'      => $result['city'],
-      			'postcode'  => $result['postcode'],
-      			'zone'      => $result['zone'],
-				'zone_code' => $result['zone_code'],
-      			'country'   => $result['country'] ,
-                'email'  => $result['email'],
-'telephone'  => $result['telephone']				
-			);
-      		$data['addresses'][] = array(
-        		'name' => $result['firstname'],
-        		'address'    => str_replace(array("\r\n", "\r", "\n"), '<br />', preg_replace(array("/\s\s+/", "/\r\r+/", "/\n\n+/"), '<br />', trim(str_replace($find, $replace, $format))))
-      		);
-			 }
-			     }
-			}
+				if($order_seller['seller_id']){			
+					$adsellers = $this->model_sale_seller->getaddressid($order_seller['seller_id']);
+					if($adsellers){
+						$addresssellers[] = $this->model_sale_seller->getAddress($adsellers);
+						$data['addresses'] = array();
+						foreach($addresssellers as $result){
+							if ($result['address_format']) {
+								$format = $result['address_format'];
+							} else {
+								$format = '{firstname} {lastname}' . "\n" . '{company}' . "\n" . '{address_1}' . "\n" . '{address_2}' . "\n" . '{city} {postcode}' . "\n" . '{zone}' . "\n" . '{country}'. "\n" . '{email}'. "\n" . '{telephone}';
+							}
+							$find = array(
+								'{firstname}',
+								'{lastname}',
+								'{company}',
+								'{address_1}',
+								'{address_2}',
+								'{city}',
+								'{postcode}',
+								'{zone}',
+								'{zone_code}',
+								'{country}',
+								'{email}',
+								'{telephone}'
+								);
+							$replace = array(
+								'firstname' => $result['firstname'],
+								'lastname'  => $result['lastname'],
+								'company'   => $result['company'],
+								'address_1' => $result['address_1'],
+								'address_2' => $result['address_2'],
+								'city'      => $result['city'],
+								'postcode'  => $result['postcode'],
+								'zone'      => $result['zone'],
+								'zone_code' => $result['zone_code'],
+								'country'   => $result['country'] ,
+								'email'  => $result['email'],
+								'telephone'  => $result['telephone']				
+								);
+							$data['addresses'][] = array(
+								'name' => $result['firstname'],
+								'address'    => str_replace(array("\r\n", "\r", "\n"), '<br />', preg_replace(array("/\s\s+/", "/\r\r+/", "/\n\n+/"), '<br />', trim(str_replace($find, $replace, $format))))
+								);
+						}
+					}
+				}
 			}
 			/*END OVICKO MULTISELLER*/
 			
@@ -1522,7 +1503,7 @@ class ControllerSaleOrder extends Controller {
 							'name'  => $option['name'],
 							'value' => $option['value'],
 							'type'  => $option['type']
-						);
+							);
 					} else {
 						$upload_info = $this->model_tool_upload->getUploadByCode($option['value']);
 
@@ -1532,31 +1513,31 @@ class ControllerSaleOrder extends Controller {
 								'value' => $upload_info['name'],
 								'type'  => $option['type'],
 								'href'  => $this->url->link('tool/upload/download', 'user_token=' . $this->session->data['user_token'] . '&code=' . $upload_info['code'], true)
-							);
+								);
 						}
 					}
 				}
 
 
- /*START OVICKO MULTISELLER*/
+				/*START OVICKO MULTISELLER*/
 				$product_history = $this->model_sale_order->getOrderProductStatus($product['order_id'],$product['seller_id']);
 				if($product_history){
 					$status = $product_history['name'];
 				}else{
 					$status = '';
 				}
-			/*END OVICKO MULTISELLER*/
-			
+				/*END OVICKO MULTISELLER*/
 
- /*START OVICKO MULTISELLER*/
+
+				/*START OVICKO MULTISELLER*/
 				$product_history = $this->model_sale_order->getOrderProductStatus($product['order_id'],$product['seller_id']);
 				if($product_history){
 					$status = $product_history['name'];
 				}else{
 					$status = '';
 				}
-			/*END OVICKO MULTISELLER*/
-			
+				/*END OVICKO MULTISELLER*/
+
 				$data['products'][] = array(
 					'order_product_id' => $product['order_product_id'],
 					'product_id'       => $product['product_id'],
@@ -1564,20 +1545,20 @@ class ControllerSaleOrder extends Controller {
 					'model'    		   => $product['model'],
 					'option'   		   => $option_data,
 
-            /*START OVICKO MULTISELLER*/
-			'status' => $status,
-			/*END OVICKO MULTISELLER*/
-			
+					/*START OVICKO MULTISELLER*/
+					'status' => $status,
+					/*END OVICKO MULTISELLER*/
 
-            /*START OVICKO MULTISELLER*/
-			'status' => $status,
-			/*END OVICKO MULTISELLER*/
-			
+
+					/*START OVICKO MULTISELLER*/
+					'status' => $status,
+					/*END OVICKO MULTISELLER*/
+
 					'quantity'		   => $product['quantity'],
 					'price'    		   => $this->currency->format($product['price'] + ($this->config->get('config_tax') ? $product['tax'] : 0), $order_info['currency_code'], $order_info['currency_value']),
 					'total'    		   => $this->currency->format($product['total'] + ($this->config->get('config_tax') ? ($product['tax'] * $product['quantity']) : 0), $order_info['currency_code'], $order_info['currency_value']),
 					'href'     		   => $this->url->link('catalog/product/edit', 'user_token=' . $this->session->data['user_token'] . '&product_id=' . $product['product_id'], true)
-				);
+					);
 			}
 
 			$data['vouchers'] = array();
@@ -1589,7 +1570,7 @@ class ControllerSaleOrder extends Controller {
 					'description' => $voucher['description'],
 					'amount'      => $this->currency->format($voucher['amount'], $order_info['currency_code'], $order_info['currency_value']),
 					'href'        => $this->url->link('sale/voucher/edit', 'user_token=' . $this->session->data['user_token'] . '&voucher_id=' . $voucher['voucher_id'], true)
-				);
+					);
 			}
 
 			$data['totals'] = array();
@@ -1600,7 +1581,7 @@ class ControllerSaleOrder extends Controller {
 				$data['totals'][] = array(
 					'title' => $total['title'],
 					'text'  => $this->currency->format($total['value'], $order_info['currency_code'], $order_info['currency_value'])
-				);
+					);
 			}
 
 			$data['comment'] = nl2br($order_info['comment']);
@@ -1650,7 +1631,7 @@ class ControllerSaleOrder extends Controller {
 			$filter_data = array(
 				'sort'  => 'cf.sort_order',
 				'order' => 'ASC'
-			);
+				);
 
 			$custom_fields = $this->model_customer_custom_field->getCustomFields($filter_data);
 
@@ -1663,7 +1644,7 @@ class ControllerSaleOrder extends Controller {
 							$data['account_custom_fields'][] = array(
 								'name'  => $custom_field['name'],
 								'value' => $custom_field_value_info['name']
-							);
+								);
 						}
 					}
 
@@ -1675,7 +1656,7 @@ class ControllerSaleOrder extends Controller {
 								$data['account_custom_fields'][] = array(
 									'name'  => $custom_field['name'],
 									'value' => $custom_field_value_info['name']
-								);
+									);
 							}
 						}
 					}
@@ -1684,7 +1665,7 @@ class ControllerSaleOrder extends Controller {
 						$data['account_custom_fields'][] = array(
 							'name'  => $custom_field['name'],
 							'value' => $order_info['custom_field'][$custom_field['custom_field_id']]
-						);
+							);
 					}
 
 					if ($custom_field['type'] == 'file') {
@@ -1694,7 +1675,7 @@ class ControllerSaleOrder extends Controller {
 							$data['account_custom_fields'][] = array(
 								'name'  => $custom_field['name'],
 								'value' => $upload_info['name']
-							);
+								);
 						}
 					}
 				}
@@ -1713,7 +1694,7 @@ class ControllerSaleOrder extends Controller {
 								'name'  => $custom_field['name'],
 								'value' => $custom_field_value_info['name'],
 								'sort_order' => $custom_field['sort_order']
-							);
+								);
 						}
 					}
 
@@ -1726,7 +1707,7 @@ class ControllerSaleOrder extends Controller {
 									'name'  => $custom_field['name'],
 									'value' => $custom_field_value_info['name'],
 									'sort_order' => $custom_field['sort_order']
-								);
+									);
 							}
 						}
 					}
@@ -1736,7 +1717,7 @@ class ControllerSaleOrder extends Controller {
 							'name'  => $custom_field['name'],
 							'value' => $order_info['payment_custom_field'][$custom_field['custom_field_id']],
 							'sort_order' => $custom_field['sort_order']
-						);
+							);
 					}
 
 					if ($custom_field['type'] == 'file') {
@@ -1747,7 +1728,7 @@ class ControllerSaleOrder extends Controller {
 								'name'  => $custom_field['name'],
 								'value' => $upload_info['name'],
 								'sort_order' => $custom_field['sort_order']
-							);
+								);
 						}
 					}
 				}
@@ -1766,7 +1747,7 @@ class ControllerSaleOrder extends Controller {
 								'name'  => $custom_field['name'],
 								'value' => $custom_field_value_info['name'],
 								'sort_order' => $custom_field['sort_order']
-							);
+								);
 						}
 					}
 
@@ -1779,7 +1760,7 @@ class ControllerSaleOrder extends Controller {
 									'name'  => $custom_field['name'],
 									'value' => $custom_field_value_info['name'],
 									'sort_order' => $custom_field['sort_order']
-								);
+									);
 							}
 						}
 					}
@@ -1789,7 +1770,7 @@ class ControllerSaleOrder extends Controller {
 							'name'  => $custom_field['name'],
 							'value' => $order_info['shipping_custom_field'][$custom_field['custom_field_id']],
 							'sort_order' => $custom_field['sort_order']
-						);
+							);
 					}
 
 					if ($custom_field['type'] == 'file') {
@@ -1800,7 +1781,7 @@ class ControllerSaleOrder extends Controller {
 								'name'  => $custom_field['name'],
 								'value' => $upload_info['name'],
 								'sort_order' => $custom_field['sort_order']
-							);
+								);
 						}
 					}
 				}
@@ -1828,7 +1809,7 @@ class ControllerSaleOrder extends Controller {
 						'code'    => $order_info['payment_code'],
 						'title'   => $this->language->get('heading_title'),
 						'content' => $content
-					);
+						);
 				}
 			}
 
@@ -1847,7 +1828,7 @@ class ControllerSaleOrder extends Controller {
 							'code'    => $extension,
 							'title'   => $this->language->get('extension')->get('heading_title'),
 							'content' => $content
-						);
+							);
 					}
 				}
 			}
@@ -2076,7 +2057,7 @@ class ControllerSaleOrder extends Controller {
 				'status'     => $result['status'],
 				'comment'    => nl2br($result['comment']),
 				'date_added' => date($this->language->get('date_format_short'), strtotime($result['date_added']))
-			);
+				);
 		}
 
 		$history_total = $this->model_sale_order->getTotalOrderHistories($this->request->get['order_id']);
@@ -2163,7 +2144,7 @@ class ControllerSaleOrder extends Controller {
 					'{zone}',
 					'{zone_code}',
 					'{country}'
-				);
+					);
 
 				$replace = array(
 					'firstname' => $order_info['payment_firstname'],
@@ -2176,7 +2157,7 @@ class ControllerSaleOrder extends Controller {
 					'zone'      => $order_info['payment_zone'],
 					'zone_code' => $order_info['payment_zone_code'],
 					'country'   => $order_info['payment_country']
-				);
+					);
 
 				$payment_address = str_replace(array("\r\n", "\r", "\n"), '<br />', preg_replace(array("/\s\s+/", "/\r\r+/", "/\n\n+/"), '<br />', trim(str_replace($find, $replace, $format))));
 
@@ -2197,7 +2178,7 @@ class ControllerSaleOrder extends Controller {
 					'{zone}',
 					'{zone_code}',
 					'{country}'
-				);
+					);
 
 				$replace = array(
 					'firstname' => $order_info['shipping_firstname'],
@@ -2210,7 +2191,7 @@ class ControllerSaleOrder extends Controller {
 					'zone'      => $order_info['shipping_zone'],
 					'zone_code' => $order_info['shipping_zone_code'],
 					'country'   => $order_info['shipping_country']
-				);
+					);
 
 				$shipping_address = str_replace(array("\r\n", "\r", "\n"), '<br />', preg_replace(array("/\s\s+/", "/\r\r+/", "/\n\n+/"), '<br />', trim(str_replace($find, $replace, $format))));
 
@@ -2221,117 +2202,117 @@ class ControllerSaleOrder extends Controller {
 				$products = $this->model_sale_order->getOrderProducts($order_id);
 
 
-			 /*START OVICKO MULTISELLER*/
-			$data['order_sellers'] = $this->model_sale_order->getSellersByOrder($order_id);	
-			$order_sellers = $this->model_sale_order->getSellersByOrder($order_id);	
-			$this->load->model('sale/seller');
-			$addresssellers =array();
-			foreach($order_sellers as $order_seller){
-			if($order_seller['seller_id']){			
-			$adsellers = $this->model_sale_seller->getaddressid($order_seller['seller_id']);
-		  	if($adsellers){
-			  $addresssellers[] = $this->model_sale_seller->getAddress($adsellers);
-						 $data['addresses'] = array();
-						 foreach($addresssellers as $result){
-						 if ($result['address_format']) {
-      			$format = $result['address_format'];
-    		} else {
-				$format = '{firstname} {lastname}' . "\n" . '{company}' . "\n" . '{address_1}' . "\n" . '{address_2}' . "\n" . '{city} {postcode}' . "\n" . '{zone}' . "\n" . '{country}'. "\n" . '{email}'. "\n" . '{telephone}';
-			}
-    		$find = array(
-	  			'{firstname}',
-	  			'{lastname}',
-				'{company}',
-      			'{address_1}',
-      			'{address_2}',
-     			'{city}',
-      			'{postcode}',
-      			'{zone}',
-				'{zone_code}',
-      			'{country}',
-				'{email}',
-				'{telephone}'
-			);
-			$replace = array(
-	  			'firstname' => $result['firstname'],
-	  			'lastname'  => $result['lastname'],
-				'company'   => $result['company'],
-      			'address_1' => $result['address_1'],
-      			'address_2' => $result['address_2'],
-      			'city'      => $result['city'],
-      			'postcode'  => $result['postcode'],
-      			'zone'      => $result['zone'],
-				'zone_code' => $result['zone_code'],
-      			'country'   => $result['country'] ,
-                'email'  => $result['email'],
-'telephone'  => $result['telephone']				
-			);
-      		$data['addresses'][] = array(
-        		'name' => $result['firstname'],
-        		'address'    => str_replace(array("\r\n", "\r", "\n"), '<br />', preg_replace(array("/\s\s+/", "/\r\r+/", "/\n\n+/"), '<br />', trim(str_replace($find, $replace, $format))))
-      		);
-			 }
-			     }
-			}
-			}
-			/*END OVICKO MULTISELLER*/
-			
+				/*START OVICKO MULTISELLER*/
+				$data['order_sellers'] = $this->model_sale_order->getSellersByOrder($order_id);	
+				$order_sellers = $this->model_sale_order->getSellersByOrder($order_id);	
+				$this->load->model('sale/seller');
+				$addresssellers =array();
+				foreach($order_sellers as $order_seller){
+					if($order_seller['seller_id']){			
+						$adsellers = $this->model_sale_seller->getaddressid($order_seller['seller_id']);
+						if($adsellers){
+							$addresssellers[] = $this->model_sale_seller->getAddress($adsellers);
+							$data['addresses'] = array();
+							foreach($addresssellers as $result){
+								if ($result['address_format']) {
+									$format = $result['address_format'];
+								} else {
+									$format = '{firstname} {lastname}' . "\n" . '{company}' . "\n" . '{address_1}' . "\n" . '{address_2}' . "\n" . '{city} {postcode}' . "\n" . '{zone}' . "\n" . '{country}'. "\n" . '{email}'. "\n" . '{telephone}';
+								}
+								$find = array(
+									'{firstname}',
+									'{lastname}',
+									'{company}',
+									'{address_1}',
+									'{address_2}',
+									'{city}',
+									'{postcode}',
+									'{zone}',
+									'{zone_code}',
+									'{country}',
+									'{email}',
+									'{telephone}'
+									);
+								$replace = array(
+									'firstname' => $result['firstname'],
+									'lastname'  => $result['lastname'],
+									'company'   => $result['company'],
+									'address_1' => $result['address_1'],
+									'address_2' => $result['address_2'],
+									'city'      => $result['city'],
+									'postcode'  => $result['postcode'],
+									'zone'      => $result['zone'],
+									'zone_code' => $result['zone_code'],
+									'country'   => $result['country'] ,
+									'email'  => $result['email'],
+									'telephone'  => $result['telephone']				
+									);
+								$data['addresses'][] = array(
+									'name' => $result['firstname'],
+									'address'    => str_replace(array("\r\n", "\r", "\n"), '<br />', preg_replace(array("/\s\s+/", "/\r\r+/", "/\n\n+/"), '<br />', trim(str_replace($find, $replace, $format))))
+									);
+							}
+						}
+					}
+				}
+				/*END OVICKO MULTISELLER*/
 
-			 /*START OVICKO MULTISELLER*/
-			$data['order_sellers'] = $this->model_sale_order->getSellersByOrder($order_id);	
-			$order_sellers = $this->model_sale_order->getSellersByOrder($order_id);	
-			$this->load->model('sale/seller');
-			$addresssellers =array();
-			foreach($order_sellers as $order_seller){
-			if($order_seller['seller_id']){			
-			$adsellers = $this->model_sale_seller->getaddressid($order_seller['seller_id']);
-		  	if($adsellers){
-			  $addresssellers[] = $this->model_sale_seller->getAddress($adsellers);
-						 $data['addresses'] = array();
-						 foreach($addresssellers as $result){
-						 if ($result['address_format']) {
-      			$format = $result['address_format'];
-    		} else {
-				$format = '{firstname} {lastname}' . "\n" . '{company}' . "\n" . '{address_1}' . "\n" . '{address_2}' . "\n" . '{city} {postcode}' . "\n" . '{zone}' . "\n" . '{country}'. "\n" . '{email}'. "\n" . '{telephone}';
-			}
-    		$find = array(
-	  			'{firstname}',
-	  			'{lastname}',
-				'{company}',
-      			'{address_1}',
-      			'{address_2}',
-     			'{city}',
-      			'{postcode}',
-      			'{zone}',
-				'{zone_code}',
-      			'{country}',
-				'{email}',
-				'{telephone}'
-			);
-			$replace = array(
-	  			'firstname' => $result['firstname'],
-	  			'lastname'  => $result['lastname'],
-				'company'   => $result['company'],
-      			'address_1' => $result['address_1'],
-      			'address_2' => $result['address_2'],
-      			'city'      => $result['city'],
-      			'postcode'  => $result['postcode'],
-      			'zone'      => $result['zone'],
-				'zone_code' => $result['zone_code'],
-      			'country'   => $result['country'] ,
-                'email'  => $result['email'],
-'telephone'  => $result['telephone']				
-			);
-      		$data['addresses'][] = array(
-        		'name' => $result['firstname'],
-        		'address'    => str_replace(array("\r\n", "\r", "\n"), '<br />', preg_replace(array("/\s\s+/", "/\r\r+/", "/\n\n+/"), '<br />', trim(str_replace($find, $replace, $format))))
-      		);
-			 }
-			     }
-			}
-			}
-			/*END OVICKO MULTISELLER*/
-			
+
+				/*START OVICKO MULTISELLER*/
+				$data['order_sellers'] = $this->model_sale_order->getSellersByOrder($order_id);	
+				$order_sellers = $this->model_sale_order->getSellersByOrder($order_id);	
+				$this->load->model('sale/seller');
+				$addresssellers =array();
+				foreach($order_sellers as $order_seller){
+					if($order_seller['seller_id']){			
+						$adsellers = $this->model_sale_seller->getaddressid($order_seller['seller_id']);
+						if($adsellers){
+							$addresssellers[] = $this->model_sale_seller->getAddress($adsellers);
+							$data['addresses'] = array();
+							foreach($addresssellers as $result){
+								if ($result['address_format']) {
+									$format = $result['address_format'];
+								} else {
+									$format = '{firstname} {lastname}' . "\n" . '{company}' . "\n" . '{address_1}' . "\n" . '{address_2}' . "\n" . '{city} {postcode}' . "\n" . '{zone}' . "\n" . '{country}'. "\n" . '{email}'. "\n" . '{telephone}';
+								}
+								$find = array(
+									'{firstname}',
+									'{lastname}',
+									'{company}',
+									'{address_1}',
+									'{address_2}',
+									'{city}',
+									'{postcode}',
+									'{zone}',
+									'{zone_code}',
+									'{country}',
+									'{email}',
+									'{telephone}'
+									);
+								$replace = array(
+									'firstname' => $result['firstname'],
+									'lastname'  => $result['lastname'],
+									'company'   => $result['company'],
+									'address_1' => $result['address_1'],
+									'address_2' => $result['address_2'],
+									'city'      => $result['city'],
+									'postcode'  => $result['postcode'],
+									'zone'      => $result['zone'],
+									'zone_code' => $result['zone_code'],
+									'country'   => $result['country'] ,
+									'email'  => $result['email'],
+									'telephone'  => $result['telephone']				
+									);
+								$data['addresses'][] = array(
+									'name' => $result['firstname'],
+									'address'    => str_replace(array("\r\n", "\r", "\n"), '<br />', preg_replace(array("/\s\s+/", "/\r\r+/", "/\n\n+/"), '<br />', trim(str_replace($find, $replace, $format))))
+									);
+							}
+						}
+					}
+				}
+				/*END OVICKO MULTISELLER*/
+
 				foreach ($products as $product) {
 					$option_data = array();
 
@@ -2353,7 +2334,7 @@ class ControllerSaleOrder extends Controller {
 						$option_data[] = array(
 							'name'  => $option['name'],
 							'value' => $value
-						);
+							);
 					}
 
 					$product_data[] = array(
@@ -2363,7 +2344,7 @@ class ControllerSaleOrder extends Controller {
 						'quantity' => $product['quantity'],
 						'price'    => $this->currency->format($product['price'] + ($this->config->get('config_tax') ? $product['tax'] : 0), $order_info['currency_code'], $order_info['currency_value']),
 						'total'    => $this->currency->format($product['total'] + ($this->config->get('config_tax') ? ($product['tax'] * $product['quantity']) : 0), $order_info['currency_code'], $order_info['currency_value'])
-					);
+						);
 				}
 
 				$voucher_data = array();
@@ -2374,7 +2355,7 @@ class ControllerSaleOrder extends Controller {
 					$voucher_data[] = array(
 						'description' => $voucher['description'],
 						'amount'      => $this->currency->format($voucher['amount'], $order_info['currency_code'], $order_info['currency_value'])
-					);
+						);
 				}
 
 				$total_data = array();
@@ -2385,7 +2366,7 @@ class ControllerSaleOrder extends Controller {
 					$total_data[] = array(
 						'title' => $total['title'],
 						'text'  => $this->currency->format($total['value'], $order_info['currency_code'], $order_info['currency_value'])
-					);
+						);
 				}
 
 				$data['orders'][] = array(
@@ -2408,7 +2389,7 @@ class ControllerSaleOrder extends Controller {
 					'voucher'          => $voucher_data,
 					'total'            => $total_data,
 					'comment'          => nl2br($order_info['comment'])
-				);
+					);
 			}
 		}
 
@@ -2485,7 +2466,7 @@ class ControllerSaleOrder extends Controller {
 					'{zone}',
 					'{zone_code}',
 					'{country}'
-				);
+					);
 
 				$replace = array(
 					'firstname' => $order_info['shipping_firstname'],
@@ -2498,7 +2479,7 @@ class ControllerSaleOrder extends Controller {
 					'zone'      => $order_info['shipping_zone'],
 					'zone_code' => $order_info['shipping_zone_code'],
 					'country'   => $order_info['shipping_country']
-				);
+					);
 
 				$shipping_address = str_replace(array("\r\n", "\r", "\n"), '<br />', preg_replace(array("/\s\s+/", "/\r\r+/", "/\n\n+/"), '<br />', trim(str_replace($find, $replace, $format))));
 
@@ -2509,117 +2490,117 @@ class ControllerSaleOrder extends Controller {
 				$products = $this->model_sale_order->getOrderProducts($order_id);
 
 
-			 /*START OVICKO MULTISELLER*/
-			$data['order_sellers'] = $this->model_sale_order->getSellersByOrder($order_id);	
-			$order_sellers = $this->model_sale_order->getSellersByOrder($order_id);	
-			$this->load->model('sale/seller');
-			$addresssellers =array();
-			foreach($order_sellers as $order_seller){
-			if($order_seller['seller_id']){			
-			$adsellers = $this->model_sale_seller->getaddressid($order_seller['seller_id']);
-		  	if($adsellers){
-			  $addresssellers[] = $this->model_sale_seller->getAddress($adsellers);
-						 $data['addresses'] = array();
-						 foreach($addresssellers as $result){
-						 if ($result['address_format']) {
-      			$format = $result['address_format'];
-    		} else {
-				$format = '{firstname} {lastname}' . "\n" . '{company}' . "\n" . '{address_1}' . "\n" . '{address_2}' . "\n" . '{city} {postcode}' . "\n" . '{zone}' . "\n" . '{country}'. "\n" . '{email}'. "\n" . '{telephone}';
-			}
-    		$find = array(
-	  			'{firstname}',
-	  			'{lastname}',
-				'{company}',
-      			'{address_1}',
-      			'{address_2}',
-     			'{city}',
-      			'{postcode}',
-      			'{zone}',
-				'{zone_code}',
-      			'{country}',
-				'{email}',
-				'{telephone}'
-			);
-			$replace = array(
-	  			'firstname' => $result['firstname'],
-	  			'lastname'  => $result['lastname'],
-				'company'   => $result['company'],
-      			'address_1' => $result['address_1'],
-      			'address_2' => $result['address_2'],
-      			'city'      => $result['city'],
-      			'postcode'  => $result['postcode'],
-      			'zone'      => $result['zone'],
-				'zone_code' => $result['zone_code'],
-      			'country'   => $result['country'] ,
-                'email'  => $result['email'],
-'telephone'  => $result['telephone']				
-			);
-      		$data['addresses'][] = array(
-        		'name' => $result['firstname'],
-        		'address'    => str_replace(array("\r\n", "\r", "\n"), '<br />', preg_replace(array("/\s\s+/", "/\r\r+/", "/\n\n+/"), '<br />', trim(str_replace($find, $replace, $format))))
-      		);
-			 }
-			     }
-			}
-			}
-			/*END OVICKO MULTISELLER*/
-			
+				/*START OVICKO MULTISELLER*/
+				$data['order_sellers'] = $this->model_sale_order->getSellersByOrder($order_id);	
+				$order_sellers = $this->model_sale_order->getSellersByOrder($order_id);	
+				$this->load->model('sale/seller');
+				$addresssellers =array();
+				foreach($order_sellers as $order_seller){
+					if($order_seller['seller_id']){			
+						$adsellers = $this->model_sale_seller->getaddressid($order_seller['seller_id']);
+						if($adsellers){
+							$addresssellers[] = $this->model_sale_seller->getAddress($adsellers);
+							$data['addresses'] = array();
+							foreach($addresssellers as $result){
+								if ($result['address_format']) {
+									$format = $result['address_format'];
+								} else {
+									$format = '{firstname} {lastname}' . "\n" . '{company}' . "\n" . '{address_1}' . "\n" . '{address_2}' . "\n" . '{city} {postcode}' . "\n" . '{zone}' . "\n" . '{country}'. "\n" . '{email}'. "\n" . '{telephone}';
+								}
+								$find = array(
+									'{firstname}',
+									'{lastname}',
+									'{company}',
+									'{address_1}',
+									'{address_2}',
+									'{city}',
+									'{postcode}',
+									'{zone}',
+									'{zone_code}',
+									'{country}',
+									'{email}',
+									'{telephone}'
+									);
+								$replace = array(
+									'firstname' => $result['firstname'],
+									'lastname'  => $result['lastname'],
+									'company'   => $result['company'],
+									'address_1' => $result['address_1'],
+									'address_2' => $result['address_2'],
+									'city'      => $result['city'],
+									'postcode'  => $result['postcode'],
+									'zone'      => $result['zone'],
+									'zone_code' => $result['zone_code'],
+									'country'   => $result['country'] ,
+									'email'  => $result['email'],
+									'telephone'  => $result['telephone']				
+									);
+								$data['addresses'][] = array(
+									'name' => $result['firstname'],
+									'address'    => str_replace(array("\r\n", "\r", "\n"), '<br />', preg_replace(array("/\s\s+/", "/\r\r+/", "/\n\n+/"), '<br />', trim(str_replace($find, $replace, $format))))
+									);
+							}
+						}
+					}
+				}
+				/*END OVICKO MULTISELLER*/
 
-			 /*START OVICKO MULTISELLER*/
-			$data['order_sellers'] = $this->model_sale_order->getSellersByOrder($order_id);	
-			$order_sellers = $this->model_sale_order->getSellersByOrder($order_id);	
-			$this->load->model('sale/seller');
-			$addresssellers =array();
-			foreach($order_sellers as $order_seller){
-			if($order_seller['seller_id']){			
-			$adsellers = $this->model_sale_seller->getaddressid($order_seller['seller_id']);
-		  	if($adsellers){
-			  $addresssellers[] = $this->model_sale_seller->getAddress($adsellers);
-						 $data['addresses'] = array();
-						 foreach($addresssellers as $result){
-						 if ($result['address_format']) {
-      			$format = $result['address_format'];
-    		} else {
-				$format = '{firstname} {lastname}' . "\n" . '{company}' . "\n" . '{address_1}' . "\n" . '{address_2}' . "\n" . '{city} {postcode}' . "\n" . '{zone}' . "\n" . '{country}'. "\n" . '{email}'. "\n" . '{telephone}';
-			}
-    		$find = array(
-	  			'{firstname}',
-	  			'{lastname}',
-				'{company}',
-      			'{address_1}',
-      			'{address_2}',
-     			'{city}',
-      			'{postcode}',
-      			'{zone}',
-				'{zone_code}',
-      			'{country}',
-				'{email}',
-				'{telephone}'
-			);
-			$replace = array(
-	  			'firstname' => $result['firstname'],
-	  			'lastname'  => $result['lastname'],
-				'company'   => $result['company'],
-      			'address_1' => $result['address_1'],
-      			'address_2' => $result['address_2'],
-      			'city'      => $result['city'],
-      			'postcode'  => $result['postcode'],
-      			'zone'      => $result['zone'],
-				'zone_code' => $result['zone_code'],
-      			'country'   => $result['country'] ,
-                'email'  => $result['email'],
-'telephone'  => $result['telephone']				
-			);
-      		$data['addresses'][] = array(
-        		'name' => $result['firstname'],
-        		'address'    => str_replace(array("\r\n", "\r", "\n"), '<br />', preg_replace(array("/\s\s+/", "/\r\r+/", "/\n\n+/"), '<br />', trim(str_replace($find, $replace, $format))))
-      		);
-			 }
-			     }
-			}
-			}
-			/*END OVICKO MULTISELLER*/
-			
+
+				/*START OVICKO MULTISELLER*/
+				$data['order_sellers'] = $this->model_sale_order->getSellersByOrder($order_id);	
+				$order_sellers = $this->model_sale_order->getSellersByOrder($order_id);	
+				$this->load->model('sale/seller');
+				$addresssellers =array();
+				foreach($order_sellers as $order_seller){
+					if($order_seller['seller_id']){			
+						$adsellers = $this->model_sale_seller->getaddressid($order_seller['seller_id']);
+						if($adsellers){
+							$addresssellers[] = $this->model_sale_seller->getAddress($adsellers);
+							$data['addresses'] = array();
+							foreach($addresssellers as $result){
+								if ($result['address_format']) {
+									$format = $result['address_format'];
+								} else {
+									$format = '{firstname} {lastname}' . "\n" . '{company}' . "\n" . '{address_1}' . "\n" . '{address_2}' . "\n" . '{city} {postcode}' . "\n" . '{zone}' . "\n" . '{country}'. "\n" . '{email}'. "\n" . '{telephone}';
+								}
+								$find = array(
+									'{firstname}',
+									'{lastname}',
+									'{company}',
+									'{address_1}',
+									'{address_2}',
+									'{city}',
+									'{postcode}',
+									'{zone}',
+									'{zone_code}',
+									'{country}',
+									'{email}',
+									'{telephone}'
+									);
+								$replace = array(
+									'firstname' => $result['firstname'],
+									'lastname'  => $result['lastname'],
+									'company'   => $result['company'],
+									'address_1' => $result['address_1'],
+									'address_2' => $result['address_2'],
+									'city'      => $result['city'],
+									'postcode'  => $result['postcode'],
+									'zone'      => $result['zone'],
+									'zone_code' => $result['zone_code'],
+									'country'   => $result['country'] ,
+									'email'  => $result['email'],
+									'telephone'  => $result['telephone']				
+									);
+								$data['addresses'][] = array(
+									'name' => $result['firstname'],
+									'address'    => str_replace(array("\r\n", "\r", "\n"), '<br />', preg_replace(array("/\s\s+/", "/\r\r+/", "/\n\n+/"), '<br />', trim(str_replace($find, $replace, $format))))
+									);
+							}
+						}
+					}
+				}
+				/*END OVICKO MULTISELLER*/
+
 				foreach ($products as $product) {
 					$option_weight = '';
 
@@ -2646,7 +2627,7 @@ class ControllerSaleOrder extends Controller {
 							$option_data[] = array(
 								'name'  => $option['name'],
 								'value' => $value
-							);
+								);
 
 							$product_option_value_info = $this->model_catalog_product->getProductOptionValue($product['product_id'], $option['product_option_value_id']);
 
@@ -2672,7 +2653,7 @@ class ControllerSaleOrder extends Controller {
 							'isbn'     => $product_info['isbn'],
 							'mpn'      => $product_info['mpn'],
 							'weight'   => $this->weight->format(($product_info['weight'] + (float)$option_weight) * $product['quantity'], $product_info['weight_class_id'], $this->language->get('decimal_point'), $this->language->get('thousand_point'))
-						);
+							);
 					}
 				}
 
@@ -2691,7 +2672,7 @@ class ControllerSaleOrder extends Controller {
 					'shipping_method'  => $order_info['shipping_method'],
 					'product'          => $product_data,
 					'comment'          => nl2br($order_info['comment'])
-				);
+					);
 			}
 		}
 

@@ -59,7 +59,7 @@ class ControllerSellerFileManager extends Controller {
 					'type'  => 'directory',
 					'path'  => utf8_substr($image, utf8_strlen(DIR_IMAGE)),
 					'href'  => $this->url->link('seller/filemanager',  '&directory=' . urlencode(utf8_substr($image, utf8_strlen(DIR_IMAGE .$foldername.'/'))) . $url, 'SSL')
-				);
+					);
 			} elseif (is_file($image)) {
 				// Find which protocol to use to pass the full image link back
 				if ($this->request->server['HTTPS']) {
@@ -73,7 +73,7 @@ class ControllerSellerFileManager extends Controller {
 					'type'  => 'image',
 					'path'  => utf8_substr($image, utf8_strlen(DIR_IMAGE)),
 					'href'  => $server . 'image/' . utf8_substr($image, utf8_strlen(DIR_IMAGE))
-				);
+					);
 			}
 		}
 		$data['heading_title'] = $this->language->get('heading_title');
@@ -190,7 +190,7 @@ class ControllerSellerFileManager extends Controller {
 					'jpeg',
 					'gif',
 					'png'
-				);
+					);
 				if (!in_array(utf8_strtolower(utf8_substr(strrchr($filename, '.'), 1)), $allowed)) {
 					$json['error'] = $this->language->get('error_filetype');
 				}
@@ -201,7 +201,7 @@ class ControllerSellerFileManager extends Controller {
 					'image/png',
 					'image/x-png',
 					'image/gif'
-				);
+					);
 				if (!in_array($this->request->files['file']['type'], $allowed)) {
 					$json['error'] = $this->language->get('error_filetype');
 				}
