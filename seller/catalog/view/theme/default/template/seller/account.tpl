@@ -1,6 +1,11 @@
 <?php if (!empty($logged)) { ?>
 <?php echo $header; ?>
 <?php echo $column_left; ?>
+<style type="text/css">
+  .fa {
+    font-size: 18px;
+  }
+</style>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Main content -->
