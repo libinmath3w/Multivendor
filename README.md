@@ -62,6 +62,8 @@ Multi Vendor extensions can be created using the same pattern like OpenCart exte
 VQMODS will work though you have to check if they really fit with the Multi Vendor script.
 You can submit your extensions to [CodLance](https://codlance.com) for sale or for free.
 ## Themes
+Get  [Journal Theme for MultiVendor](https://yiirestful.ovicko.com/journal-theme-for-multivendor-is-finally-here/)  
+  
 Get the latest Multi Vendor themes on [our website](https://codlance.com)
 ![Moonsoon theme](multivendor_moonsoon_preview.png)
 ## Credits
