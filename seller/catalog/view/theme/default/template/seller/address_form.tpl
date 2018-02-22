@@ -125,8 +125,7 @@
           </div>
         </div>
       </form>
-      <?php echo $content_bottom; ?></div>
-    <?php echo $column_right; ?></div>
+      </div></div>
 </div>
 <script type="text/javascript"><!--
 // Sort the custom fields
