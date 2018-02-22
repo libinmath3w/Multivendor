@@ -455,7 +455,7 @@ class ControllerReportSellerTransactions extends Controller {
 					);
 			}
 		}	
-		var_dump($pending);
+		//var_dump($pending);
 		$pagination = new Pagination();
 		$pagination->total = $transaction_total;
 		$pagination->page = $page;

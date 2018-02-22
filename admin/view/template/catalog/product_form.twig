@@ -1718,7 +1718,7 @@ var discount_row = {{ discount_row }};
 function addDiscount() {
 	html  = '<tr id="discount-row' + discount_row + '">';
 
-            <!--START OVICKO MULTISELLER-->
+  <!--START OVICKO MULTISELLER-->
 	html += '    <td class="text-left"><select name="product_discount[' + discount_row + '][seller_id]" class="form-control"><option value="">--Select--</option>';
    {% for seller in sellers %}
 	html += '      <option value="{{ seller.seller_id }}">{{ seller.username|escape('js') }}</option>';

@@ -91,9 +91,7 @@ public function editCategory($category_id, $data) {
 				}
 			}
 		}
-		if ($data['keyword']) {
-			$this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET query = 'category_id=" . (int)$category_id . "', keyword = '" . $this->db->escape($data['keyword']) . "'");
-		}
+		
 		$this->load->language('seller/category');
 		$subject = sprintf($this->language->get('text_subject'), $this->config->get('config_name'));
 		$message = sprintf($this->language->get('text_welcome'), $this->config->get('config_name')) . "\n\n";

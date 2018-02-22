@@ -332,6 +332,15 @@ class ControllerCommonColumnLeft extends Controller {
 						'children' => array()		
 					);	
 				}
+				
+				// if ($this->user->hasPermission('access', 'report/seller_transactions')) {		
+				// 	$seller[] = array(
+				// 		'name'	   => $this->language->get('text_seller_transactions'),
+				// 		'href'     => $this->url->link('report/seller_transactions', 'user_token=' . $this->session->data['user_token'], true),
+				// 		'children' => array()		
+				// 	);	
+				// }
+
 				if ($seller) {
 					$data['menus'][] = array(
 						'id'       => 'menu-seller',

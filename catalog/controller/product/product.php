@@ -194,7 +194,7 @@ class ControllerProductProduct extends Controller {
 		if ($product_info) {
 
             /*START OVICKO MULTISELLER*/
-		$data['seller_id'] = $seller_id;
+			$data['seller_id'] = $seller_id;
 			/*END OVICKO MULTISELLER*/
 			
 			$url = '';
@@ -333,7 +333,7 @@ class ControllerProductProduct extends Controller {
 
 			
             /*START OVICKO MULTISELLER*/
-		$discounts = $this->model_catalog_product->getSProductDiscounts($this->request->get['product_id'],$seller_id);
+		   $discounts = $this->model_catalog_product->getSProductDiscounts($this->request->get['product_id'],$seller_id);
 			/*END OVICKO MULTISELLER*/
 			
 

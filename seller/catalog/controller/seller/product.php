@@ -313,11 +313,12 @@ class ControllerSellerProduct extends Controller {
 					break;
 				}					
 			}
-			if($result['approve']==0){
-				$edit = $this->url->link('seller/product/update', 'product_id=' . $result['product_id'] . $url, 'SSL');
-			}else{
-				$edit = $this->url->link('seller/product/details', 'product_id=' . $result['product_id'] . $url, 'SSL');
-			}
+			// if($result['approve']== 0){
+			// 	$edit = $this->url->link('seller/product/update', 'product_id=' . $result['product_id'] . $url, 'SSL');
+			// } else { 
+			// 	$edit = $this->url->link('seller/product/details', 'product_id=' . $result['product_id'] . $url, 'SSL');
+			// }
+			$edit = $this->url->link('seller/product/update', 'product_id=' . $result['product_id'] . $url, 'SSL');
 			$this->load->model('seller/download');
 			$data['products'][] = array(
 				'product_id' => $result['product_id'],
@@ -855,7 +856,7 @@ class ControllerSellerProduct extends Controller {
 		if (isset($this->request->post['license'])) {
 			$data['license'] = $this->request->post['license'];
 		}elseif (!empty($product_info)) {
-			if($product_info['price'] >0){
+			if($product_info['price'] > 0){
 				$data['license'] = 1;
 			}
 		} else {
@@ -1036,7 +1037,7 @@ class ControllerSellerProduct extends Controller {
 		$data['product_downloads'] = array();
 		foreach ($product_downloads as $download_id) {
 			$download_info = $this->model_seller_download->getDownload($download_id,$this->seller->getId());
-			var_dump($download_info);
+			//var_dump($download_info);
 			if ($download_info) {
 				$data['product_downloads'][] = array(
 					'download_id' => $download_info['download_id'],
