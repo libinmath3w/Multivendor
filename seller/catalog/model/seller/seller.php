@@ -170,15 +170,13 @@ class ModelSellerSeller extends Model {
 			username = '" . $this->db->escape($data['username']) . "', firstname = '" . $this->db->escape($data['firstname']) . "', 
 			lastname = '" . $this->db->escape($data['lastname']) . "', email = '" . $this->db->escape($data['email']) . "'
 			, telephone = '" . $this->db->escape($data['telephone']) . "', 
-			salt = '" . $this->db->escape($salt = substr(md5(uniqid(rand(), true)), 0, 9)) . "',
+			salt = '" . $this->db->escape($salt = token(9)) . "',
 			password = '" . $this->db->escape(sha1($salt . sha1($salt . sha1($data['password'])))) . "',    
 			foldername = '" . $this->db->escape($data['username']) . "', 
 			commission_id = '" . (int)$config_sellercommission_id . "', 
 			ip = '" . $this->db->escape($this->request->server['REMOTE_ADDR']) . "', status = '1', date_added = NOW()");
 		$seller_id = $this->db->getLastId();
-		// if ($data['username']) {
-		// 	$this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET query = 'seller_id=" . (int)$seller_id . "', keyword = '" . $this->db->escape($data['username']) . "'");
-		// }
+
 		$this->db->query("INSERT INTO " . DB_PREFIX . "saddress SET seller_id = '" . (int)$seller_id . "', 
 			firstname = '" . $this->db->escape($data['firstname']) . "', 
 			lastname = '" . $this->db->escape($data['lastname']) . "'
@@ -295,7 +293,7 @@ class ModelSellerSeller extends Model {
 		}
 	}
 	public function editPassword($email, $password) {
-		$this->db->query("UPDATE " . DB_PREFIX . "sellers SET salt = '" . $this->db->escape($salt = substr(md5(uniqid(rand(), true)), 0, 9)) . "', password = '" . $this->db->escape(sha1($salt . sha1($salt . sha1($password)))) . "' WHERE email = '" . $this->db->escape($email) . "'");
+		$this->db->query("UPDATE " . DB_PREFIX . "sellers SET salt = '" . $this->db->escape($salt = token(9)) . "', password = '" . $this->db->escape(sha1($salt . sha1($salt . sha1($password)))) . "' WHERE email = '" . $this->db->escape($email) . "'");
 	}
 	public function editNewsletter($newsletter) {
 		$this->db->query("UPDATE " . DB_PREFIX . "sellers SET newsletter = '" . (int)$newsletter . "' WHERE seller_id = '" . (int)$this->seller->getId() . "'");
