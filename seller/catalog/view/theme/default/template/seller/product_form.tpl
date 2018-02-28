@@ -733,6 +733,7 @@ $('input[name=\'category\']').autocomplete({
 			dataType: 'json',			
 			success: function(json) {
 				response($.map(json, function(item) {
+          console.log(item);
 					return {
 						label: item['name'],
 						value: item['category_id']

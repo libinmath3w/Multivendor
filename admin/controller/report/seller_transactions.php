@@ -1,82 +1,149 @@
 <?php
 class ControllerReportSellerTransactions extends Controller {
+	
 	private $error = array();
+	
 	public function index() {  
+		
 		$this->load->language('report/seller_transactions');
+		
 		$this->document->setTitle($this->language->get('heading_title'));
+		
 		$this->load->model('report/seller_transactions');
+		
 		if (isset($this->request->get['filter_date_start'])) {
+		
 			$filter_date_start = $this->request->get['filter_date_start'];
+		
 		} else {
+		
 			$filter_date_start = '';
+		
 		}
+		
 		if (isset($this->request->get['filter_date_end'])) {
+		
 			$filter_date_end = $this->request->get['filter_date_end'];
+		
 		} else {
+		
 			$filter_date_end = '';
+		
 		}
+		
 		if (isset($this->request->get['filter_seller_group'])) {
+		
 			$filter_seller_group = $this->request->get['filter_seller_group'];
+		
 		} else {
+		
 			$filter_seller_group = 0;
+		
 		}
+		
 		if (isset($this->request->get['filter_paid_status'])) {
+		
 			$filter_paid_status = $this->request->get['filter_paid_status'];
+		
 		} else {
+		
 			$filter_paid_status = 0;
+		
 		}
+		
 		if (isset($this->request->get['filter_order_status_id'])) {
+		
 			$filter_order_status_id = $this->request->get['filter_order_status_id'];
+		
 		} else {
+		
 			$filter_order_status_id = 0;
+		
 		}	
+		
 		if (isset($this->request->get['filter_eligible_status_id'])) {
+		
 			$filter_eligible_status_id = $this->request->get['filter_eligible_status_id'];
+		
 		} else {
+		
 			$filter_eligible_status_id = implode(",",$this->config->get('config_seller_payments'));
 			//var_dump($this->config->get('config_seller_payments'));
 		}
+		
 		if (isset($this->request->get['page'])) {
+		
 			$page = $this->request->get['page'];
+		
 		} else {
+		
 			$page = 1;
+		
 		}
+		
 		$url = '';
+		
 		if (isset($this->request->get['filter_date_start'])) {
+		
 			$url .= '&filter_date_start=' . $this->request->get['filter_date_start'];
+		
 		}
+		
 		if (isset($this->request->get['filter_date_end'])) {
+		
 			$url .= '&filter_date_end=' . $this->request->get['filter_date_end'];
+		
 		}
+		
 		if (isset($this->request->get['filter_seller_group'])) {
+		
 			$url .= '&filter_seller_group=' . $this->request->get['filter_seller_group'];
+		
 		}
+		
 		if (isset($this->request->get['filter_paid_status'])) {
+		
 			$url .= '&filter_paid_status=' . $this->request->get['filter_paid_status'];
+		
 		}
+		
 		if (isset($this->request->get['filter_order_status_id'])) {
+		
 			$url .= '&filter_order_status_id=' . $this->request->get['filter_order_status_id'];
+		
 		}
+		
 		if (isset($this->request->get['page'])) {
+		
 			$url .= '&page=' . $this->request->get['page'];
+		
 		}
+		
 		$data['breadcrumbs'] = array();
+		
 		$data['breadcrumbs'][] = array(
 			'text'      => $this->language->get('text_home'),
 			'href'      => $this->url->link('common/home', 'user_token=' . $this->session->data['user_token'], 'SSL'),       		
 			'separator' => false
 			);
+		
 		$data['breadcrumbs'][] = array(
 			'text'      => $this->language->get('heading_title'),
 			'href'      => $this->url->link('report/seller_transactions', 'user_token=' . $this->session->data['user_token'] . $url, 'SSL'),
 			'separator' => ' :: '
 			);
 		$data['isseller'] = false;
+
 		$seller_access = $this->model_report_seller_transactions->getSellersName1();
+
 		$seller_access = implode(",",$seller_access);
+
 		$this->load->model('report/seller_transactions');
+
 		$data['orders']    = array();
+
 		$data['incomes']   = array();
+
 		$data1 = array(
 			'filter_date_start'	     => $filter_date_start, 
 			'filter_date_end'	     => $filter_date_end, 
@@ -87,6 +154,7 @@ class ControllerReportSellerTransactions extends Controller {
 			'start'                  => ($page - 1) * $this->config->get('config_admin_limit'),
 			'limit'                  => $this->config->get('config_admin_limit')
 			);
+
 		$balances = $this->model_report_seller_transactions->getSellerTotalAmount($data1,$seller_access);
 
 		foreach ($balances as $balance) {	
@@ -106,7 +174,9 @@ class ControllerReportSellerTransactions extends Controller {
 		}
 		$data['paidincomes']  = array();
 		$paidbalances = $this->model_report_seller_transactions->getSellerpaidTotalAmount123($data1,$seller_access);
+
 		$paid_total = count($paidbalances);
+
 		foreach ($paidbalances AS $pbalance) {
 			$data['paidincomes'][] = array (
 				'seller_id'			=> $pbalance['seller_id'],
@@ -174,18 +244,31 @@ class ControllerReportSellerTransactions extends Controller {
 		if (isset($this->request->get['filter_order_status_id'])) {
 			$url .= '&filter_order_status_id=' . $this->request->get['filter_order_status_id'];
 		}
+		
 		$pagination = new Pagination();
+		
 		$pagination->total = $paid_total;
+		
 		$pagination->page = $page;
+		
 		$pagination->limit = $this->config->get('config_admin_limit');
+		
 		$pagination->text = $this->language->get('text_pagination');
+		
 		$pagination->url = $this->url->link('report/seller_transactions', 'user_token=' . $this->session->data['user_token'] . $url . '&page={page}', 'SSL');
+		
 		$data['pagination'] = $pagination->render();	
+		
 		$data['results'] = sprintf($this->language->get('text_pagination'), ($paid_total) ? (($page - 1) * $this->config->get('config_limit_admin')) + 1 : 0, ((($page - 1) * $this->config->get('config_limit_admin')) > ($paid_total - $this->config->get('config_limit_admin'))) ? $paid_total : ((($page - 1) * $this->config->get('config_limit_admin')) + $this->config->get('config_limit_admin')), $paid_total, ceil($paid_total / $this->config->get('config_limit_admin')));
+		
 		$data['filter_date_start'] = $filter_date_start;
+		
 		$data['filter_date_end'] = $filter_date_end;	
+		
 		$data['filter_seller_group'] = $filter_seller_group;	
+		
 		$data['filter_paid_status'] = $filter_paid_status;		
+		
 		$data['filter_order_status_id'] = $filter_order_status_id;
 
 		$data['addPayment'] = $this->url->link('report/seller_transactions/insert', 'user_token=' . $this->session->data['user_token'] . $url, 'SSL');
@@ -194,106 +277,200 @@ class ControllerReportSellerTransactions extends Controller {
 		$data['footer'] = $this->load->controller('common/footer');
 		$this->response->setOutput($this->load->view('report/seller_transactions', $data));
 	}
+
 	public function insert() {
+
 		$this->load->language('report/seller_transactions');
+
 		$this->document->setTitle('Pay to seller'); 
+
 		$data['heading_title'] = 'Pay to seller';
+
 		$this->load->model('report/seller_transactions');
+
 		$this->load->model('sale/seller');
-		if(isset($this->session->data['user_token'])){
+
+		if( isset( $this->session->data['user_token'] ) ) {
+
 			$data['user_token'] = $this->session->data['user_token'];
-		}else{
+
+		} else {
+
 			$data['user_token'] = '';
+
 		}
 		$url = '';
 		if (isset($this->error['warning'])) {
+
 			$data['error_warning'] = $this->error['warning'];
+
 		} else {
 			$data['error_warning'] = '';
+
 		}
-		if(isset($this->request->get['seller_transaction_ids'])){
+
+		if( isset( $this->request->get['seller_transaction_ids'] ) ) {
+
 			$data['seller_transaction_ids'] = $this->request->get['seller_transaction_ids'];
-		}else{
+		
+		} else {
+
 			$data['seller_transaction_ids'] = '';
+		
 		}
-		if(isset($this->request->get['seller_amount'])){
+
+		if( isset( $this->request->get['seller_amount'] ) ) {
+
 			$data['seller_amount'] = $this->request->get['seller_amount'];
-		}elseif(isset($this->request->post['seller_amount'])){
+		
+		} elseif( isset( $this->request->post['seller_amount'] ) ) {
+
 			$data['seller_amount'] = $this->request->post['seller_amount'];;
-		}
-		else{
+		
+		} else {
+
 			$data['seller_amount'] = '';
+		
 		}
-		if (isset($this->request->get['seller_transaction_ids'])) {
+
+		if ( isset( $this->request->get['seller_transaction_ids'] ) ) {
+
 			$url .= '&seller_transaction_ids=' . $this->request->get['seller_transaction_ids'];
+		
 		}
-		if (isset($this->request->get['seller_amount'])) {
+
+		if ( isset( $this->request->get['seller_amount'] ) ) {
+
 			$url .= '&seller_amount=' . $this->request->get['seller_amount'];
+		
 		}
-		if (isset($this->request->get['seller_id'])) {
+
+		if ( isset( $this->request->get['seller_id'] ) ) {
+
 			$url .= '&seller_id=' . $this->request->get['seller_id'];
+		
 		}
+		
 		$data['cancel'] = $this->url->link('report/seller_transactions', 'user_token=' . $this->session->data['user_token'] . $url, 'SSL');
+		
 		$data['insert'] = $this->url->link('report/seller_transactions/insert', 'user_token=' . $this->session->data['user_token'] . $url, 'SSL');
-		if (($this->request->server['REQUEST_METHOD'] == 'POST')&& $this->validate()) {
+		
+		if ( ( $this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate() ) {
+
 			$seller_info = $this->model_sale_seller->getSeller($this->request->post['seller_id']);
+			
 			$this->model_report_seller_transactions->addPaymentToSellerId($this->request->post,$seller_info);
+			
 			$this->response->redirect($this->url->link('report/seller_transactions', 'user_token=' . $this->session->data['user_token'] . $url, 'SSL'));
+		
 		}
-		if (isset($this->error['seller_amount'])) {
-			$data['error_seller_amount'] = $this->error['seller_amount'];
+		
+		if ( isset( $this->error['seller_amount'] ) ) {
+ 			
+ 			$data['error_seller_amount'] = $this->error['seller_amount'];
+		
 		} else {
+
 			$data['error_seller_amount'] = '';
+		
 		}
-		if (isset($this->error['description'])) {
+
+		if ( isset( $this->error['description'] ) ) {
+
 			$data['error_description'] = $this->error['description'];
+		
 		} else {
+
 			$data['error_description'] = '';
+
 		}	
-		if(isset($this->request->get['seller_id'])){
+
+		if( isset( $this->request->get['seller_id'] ) ) {
+
 			$data['seller_id'] = $this->request->get['seller_id'];
-		}else{
+		
+		} else {
+
 			$data['seller_id'] = 0;
+
 		}
+		
 		$seller_info = $this->model_sale_seller->getSeller($data['seller_id']);	
+		
 		$data['bank_name']	= "";
+		
 		$data['account_number']= "";
+		
 		$data['account_name']	= "";
+		
 		$data['branch']		= "";
+		
 		$data['ifsccode']		= "";
+		
 		$data['telephone']	= "";
+		
 		$data['business_name']= "";
+		
 		$data['vat_number']	= "";
-		if($seller_info){
+		
+		if( $seller_info ) {
+
 			$data['bank_name']	= $seller_info['bank_name'];
+			
 			$data['account_number']=$seller_info['account_number'];
+			
 			$data['account_name']	= $seller_info['account_name'];
+			
 			$data['branch']		= $seller_info['branch'];
+			
 			$data['ifsccode']		= $seller_info['ifsccode'];
+			
 			$data['telephone']	= $seller_info['telephone'];
+			
 			$data['name']= $seller_info['firstname']." ".$seller_info['lastname'];
 		}
+
 		$data['header'] = $this->load->controller('common/header');
+
 		$data['column_left'] = $this->load->controller('common/column_left');
+		
 		$data['footer'] = $this->load->controller('common/footer');
+		
 		$this->response->setOutput($this->load->view('report/seller_payment1', $data));			
 	}
+
 	public function callback() {	
-		if (isset($this->request->post['custom'])) {
+		
+		if ( isset( $this->request->post['custom'] ) ) {
+
 			$sid = explode('#',$this->request->post['custom']);
+			
 			$order_product_id = explode(',',$sid['0']);
+			
 			$seller_id = $sid['1'];
+		
 		} else {
+			
 			$order_product_id =array();
+			
 			$seller_id = 0;
+		
 		}		
+		
 		$this->load->model('report/seller_transactions');		
-		if($order_product_id){
-			foreach ($order_product_id as $key => $value) {
+		
+		if( $order_product_id ) {
+			
+			foreach ( $order_product_id as $key => $value ) {
+
 				$this->model_report_seller_transactions->updateorderproduct($seller_id,$value);
+			
 			}
+
 		}	
+		
 		$url = "";				
+		
 		$this->model_report_seller_transactions->updatetransaction($seller_id,$this->request->post['mc_gross']);		
 		$this->response->redirect($this->url->link('report/seller_transactions', 'user_token=' . $this->session->data['user_token'] . $url, 'SSL'));
 	}
