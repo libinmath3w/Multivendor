@@ -955,18 +955,25 @@ class ControllerSellerProduct extends Controller {
 				'href'      => $this->url->link('seller/product/add',$url, 'SSL'),
 				'separator' => ' :: '
 				);
-		}else{
+		} else {
+
 			$data['breadcrumbs'][] = array(
 				'text'      => $this->language->get('heading_title1'),
 				'href'      => $this->url->link('seller/product/update',$url, 'SSL'),
 				'separator' => ' :: '
 				);
 		}
+		
 		if (!isset($this->request->get['product_id'])) {
+		
 			$data['action'] = $this->url->link('seller/product/add',  $url, 'SSL');
+		
 		} else {
+		
 			$data['action'] = $this->url->link('seller/product/update','&product_id=' . $this->request->get['product_id'] . $url, 'SSL');
+		
 		}
+		
 		$data['cancel'] = $this->url->link('seller/product',$url, 'SSL');
 		
 		if (isset($this->request->get['product_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
@@ -1025,17 +1032,12 @@ class ControllerSellerProduct extends Controller {
 
 		/**NEW ADDED CODE**/
 		if (isset($this->request->post['sku'])) {
-
 			$data['sku'] = $this->request->post['sku'];
-
 		} elseif (!empty($product_info)) {
 
 			$data['sku'] = $product_info['sku'];
-
 		} else {
-
 			$data['sku'] = '';
-
 		}
 
 		if (isset($this->request->post['weight'])) {
@@ -1057,31 +1059,19 @@ class ControllerSellerProduct extends Controller {
 		$data['weight_classes'] = $this->model_seller_weight_class->getWeightClasses();
 
 		if (isset($this->request->post['weight_class_id'])) {
-
 			$data['weight_class_id'] = $this->request->post['weight_class_id'];
-
 		} elseif (!empty($product_info)) {
-
 			$data['weight_class_id'] = $product_info['weight_class_id'];
-
 		} else {
-
 			$data['weight_class_id'] = $this->config->get('config_weight_class_id');
-
 		}
 
 		if (isset($this->request->post['length'])) {
-
 			$data['length'] = $this->request->post['length'];
-
 		} elseif (!empty($product_info)) {
-
 			$data['length'] = $product_info['length'];
-
 		} else {
-
 			$data['length'] = '';
-
 		}
 
 		if (isset($this->request->post['width'])) {
@@ -1240,9 +1230,10 @@ class ControllerSellerProduct extends Controller {
 		
 		}
 		
-		elseif (!empty($product_info) && $product_info['image'] && file_exists(DIR_IMAGE . $product_info['image'])
-	) {
+		elseif (!empty($product_info) && $product_info['image'] && file_exists(DIR_IMAGE . $product_info['image'])) {
+			
 			$data['thumb'] = $this->model_tool_image->resize($product_info['image'], 100, 100);
+		
 		} else {
 			$data['thumb'] = $this->model_tool_image->resize('no_image.png', 100, 100);
 		}
@@ -1270,6 +1261,55 @@ class ControllerSellerProduct extends Controller {
 		} else {
 			$data['model'] = '';
 		}
+
+		if (isset($this->request->post['upc'])) {
+			$data['upc'] = $this->request->post['upc'];
+		} elseif (!empty($product_info)) {
+			$data['upc'] = $product_info['upc'];
+		} else {
+			$data['upc'] = '';
+		}
+
+		if (isset($this->request->post['ean'])) {
+			$data['ean'] = $this->request->post['ean'];
+		} elseif (!empty($product_info)) {
+			$data['ean'] = $product_info['ean'];
+		} else {
+			$data['ean'] = '';
+		}
+
+		if (isset($this->request->post['jan'])) {
+			$data['jan'] = $this->request->post['jan'];
+		} elseif (!empty($product_info)) {
+			$data['jan'] = $product_info['jan'];
+		} else {
+			$data['jan'] = '';
+		}
+
+		if (isset($this->request->post['isbn'])) {
+			$data['isbn'] = $this->request->post['isbn'];
+		} elseif (!empty($product_info)) {
+			$data['isbn'] = $product_info['isbn'];
+		} else {
+			$data['isbn'] = '';
+		}
+
+		if (isset($this->request->post['mpn'])) {
+			$data['mpn'] = $this->request->post['mpn'];
+		} elseif (!empty($product_info)) {
+			$data['mpn'] = $product_info['mpn'];
+		} else {
+			$data['mpn'] = '';
+		}
+
+		if (isset($this->request->post['location'])) {
+			$data['location'] = $this->request->post['location'];
+		} elseif (!empty($product_info)) {
+			$data['location'] = $product_info['location'];
+		} else {
+			$data['location'] = '';
+		}
+
 		if (isset($this->request->post['documentation'])) {
 			$data['documentation'] = $this->request->post['documentation'];
 		} elseif (!empty($product_info)) {
@@ -1277,13 +1317,15 @@ class ControllerSellerProduct extends Controller {
 		} else {
 			$data['documentation'] = '';
 		}
+
 		if (isset($this->request->post['date_available'])) {
 			$data['date_available'] = $this->request->post['date_available'];
 		} elseif (!empty($product_info)) {
-			$data['date_available'] = date('Y-m-d', strtotime($product_info['date_available']));
+			$data['date_available'] = ($product_info['date_available'] != '0000-00-00') ? $product_info['date_available'] : '';
 		} else {
-			$data['date_available'] = date('Y-m-d', time() - 86400);
+			$data['date_available'] = date('Y-m-d');
 		}
+
 		if (isset($this->request->post['quantity'])) {
 			$data['quantity'] = $this->request->post['quantity'];
 		} elseif (!empty($product_info)) {
@@ -1298,6 +1340,7 @@ class ControllerSellerProduct extends Controller {
 		} else {
 			$data['minimum'] = 1;
 		}
+		
 		if (isset($this->request->post['subtract'])) {
 			$data['subtract'] = $this->request->post['subtract'];
 		} elseif (!empty($product_info)) {
@@ -1305,6 +1348,7 @@ class ControllerSellerProduct extends Controller {
 		} else {
 			$data['subtract'] = 0;
 		}
+
 		if (isset($this->request->post['sort_order'])) {
 			$data['sort_order'] = $this->request->post['sort_order'];
 		} elseif (!empty($product_info)) {
@@ -1312,23 +1356,42 @@ class ControllerSellerProduct extends Controller {
 		} else {
 			$data['sort_order'] = 1;
 		}
+
+		if (isset($this->request->post['shipping'])) {
+			$data['shipping'] = $this->request->post['shipping'];
+		} elseif (!empty($product_info)) {
+			$data['shipping'] = $product_info['shipping'];
+		} else {
+			//$data['shipping'] = 1;
+			$data['shipping'] = 0;
+		}
 		
 		$this->load->model('seller/stock_status');
 		
 		$data['stock_statuses'] = $this->model_seller_stock_status->getStockStatuses();
-		
+
 		if (isset($this->request->post['stock_status_id'])) {
-		
 			$data['stock_status_id'] = $this->request->post['stock_status_id'];
-		
 		} elseif (!empty($product_info)) {
-		
 			$data['stock_status_id'] = $product_info['stock_status_id'];
-		
 		} else {
-		
-			$data['stock_status_id'] = $this->config->get('config_stock_status_id');
-		
+			$data['stock_status_id'] = 0;
+		}
+
+		if (isset($this->request->post['sort_order'])) {
+			$data['sort_order'] = $this->request->post['sort_order'];
+		} elseif (!empty($product_info)) {
+			$data['sort_order'] = $product_info['sort_order'];
+		} else {
+			$data['sort_order'] = 1;
+		}
+
+		if (isset($this->request->post['points'])) {
+			$data['points'] = $this->request->post['points'];
+		} elseif (!empty($product_info)) {
+			$data['points'] = $product_info['points'];
+		} else {
+			$data['points'] = 0;
 		}
 		
 		if (isset($this->request->post['status'])) {
@@ -2021,17 +2084,43 @@ class ControllerSellerProduct extends Controller {
 		} else {
 			$data['status'] = 1;
 		}
-		$this->load->model('localisation/language');
-		$data['languages'] = $this->model_localisation_language->getLanguages();
-		$this->load->model('seller/attribute');
-		if (isset($this->request->post['product_attribute'])) {
-			$product_attributes = $this->request->post['product_attribute'];
-		}elseif (!empty($product_info)) {
-			$product_attributes = $this->model_seller_offer->getProductAttributes($this->request->get['product_id']);
+
+		$this->load->model('localisation/tax_class');
+
+		$this->model_localisation_tax_class->getTaxClasses();
+
+		$data['tax_classes'] = $this->model_localisation_tax_class->getTaxClasses();
+
+		if (isset($this->request->post['tax_class_id'])) {
+			$data['tax_class_id'] = $this->request->post['tax_class_id'];
+		} elseif (!empty($product_info)) {
+			$data['tax_class_id'] = $product_info['tax_class_id'];
 		} else {
-			$product_attributes = array();
+			$data['tax_class_id'] = 0;
 		}
+
+		$this->load->model('localisation/language');
+		
+		$data['languages'] = $this->model_localisation_language->getLanguages();
+		
+		$this->load->model('seller/attribute');
+		
+		if (isset($this->request->post['product_attribute'])) {
+			
+			$product_attributes = $this->request->post['product_attribute'];
+		
+		}elseif (!empty($product_info)) {
+			
+			$product_attributes = $this->model_seller_offer->getProductAttributes($this->request->get['product_id']);
+		
+		} else {
+		
+			$product_attributes = array();
+		
+		}
+		
 		$data['product_attributes'] = array();
+		
 		foreach ($product_attributes as $product_attribute) {
 			$attribute_info = $this->model_seller_attribute->getAttribute($product_attribute['attribute_id']);
 			if ($attribute_info) {

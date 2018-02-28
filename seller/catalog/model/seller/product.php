@@ -20,24 +20,19 @@ public function getAssignLimit() {
 		return $query->rows;
 	}
 	public function addProduct($data) {		
+		
 		$price = $data['price'];
 		/**new query**/
 		$this->db->query("INSERT INTO " . DB_PREFIX . "product SET quantity = '" . (int)$data['quantity'] . "',
 		model='".$this->db->escape($data['model'])."',
-		sku = '" . $this->db->escape($data['sku']) . "', 
-		minimum = '1', subtract = '0', 
-		stock_status_id = '" . (int)$this->config->get('config_stock_status_id'). "',
-		price='".(float)$price."', 
-		date_available = '" . date('Y-m-d', time() - 86400) . "',
-		manufacturer_id = '" . (int)$data['manufacturer_id'] . "', 
-		weight = '" . (float)$data['weight'] . "', 
-		weight_class_id = '" . (int)$data['weight_class_id'] . "', 
-		length = '" . (float)$data['length'] . "', 
-		width = '" . (float)$data['width'] . "', 
-		height = '" . (float)$data['height'] . "', 
-		length_class_id = '" . (int)$data['length_class_id'] . "', 
-		date_added = NOW(),status = '" . (int)$data['status'] . "',seller_id='".(int)$this->seller->getId()."'");
+		sku = '" . $this->db->escape($data['sku']) . "', minimum = '" . (int)$data['minimum'] . "', subtract = '" . (int)$data['subtract'] . "', stock_status_id = '" . (int)$this->config->get('config_stock_status_id'). "', price='".(float)$price."', date_available = '" . $this->db->escape($data['date_available']) . "', manufacturer_id = '" . (int)$data['manufacturer_id'] . "', 
+		weight = '" . (float)$data['weight'] . "', weight_class_id = '" . (int)$data['weight_class_id'] . "', 
+		length = '" . (float)$data['length'] . "', width = '" . (float)$data['width'] . "', 
+		height = '" . (float)$data['height'] . "', length_class_id = '" . (int)$data['length_class_id'] . "', 
+		date_added = NOW(), date_modified = NOW(),status = '" . (int)$data['status'] . "',seller_id='".(int)$this->seller->getId()."'");
+
 		$product_id = $this->db->getLastId();
+
 		$this->db->query("INSERT INTO " . DB_PREFIX . "seller SET vproduct_id = '" . (int)$product_id . "', seller_id = '" . (int)$this->seller->getId() . "'");
 		$query = $this->db->query("SELECT foldername FROM " . DB_PREFIX . "sellers WHERE seller_id = '" . (int)$this->seller->getId() . "'");
 		$foldername = $query->row['foldername'];
@@ -159,21 +154,15 @@ public function getAssignLimit() {
 			}
 	}
 	public function editProduct($product_id, $data) {
-		$price = $data['price'];
+		$price = $data['price']; 
+
+		if ( ($data['points'] = 0) || ($data['points'] = '') ) {
+			$points = 0;
+		}
         /**new query**/		
-		$this->db->query("UPDATE " . DB_PREFIX . "product SET 
-		price='".(float)$price."',
-		quantity = '" . (int)$data['quantity'] . "',
-		model='".$this->db->escape($data['model'])."', 
-		manufacturer_id = '" . (int)$data['manufacturer_id'] . "', 
-		weight = '" . (float)$data['weight'] . "', 
-		weight_class_id = '" . (int)$data['weight_class_id'] . "', 
-		length = '" . (float)$data['length'] . "', 
-		width = '" . (float)$data['width'] . "', 
-		height = '" . (float)$data['height'] . "', 
-		length_class_id = '" . (int)$data['length_class_id'] . "', 
-		date_added = NOW(),seller_id='".(int)$this->seller->getId()."',
-		date_modified = NOW(),status = '" . (int)$data['status'] . "' WHERE product_id = '" . (int)$product_id . "'");	
+		$this->db->query("UPDATE " . DB_PREFIX . "product SET model = '" . $this->db->escape($data['model']) . "', sku = '" . $this->db->escape($data['sku']) . "', upc = '" . $this->db->escape($data['upc']) . "', ean = '" . $this->db->escape($data['ean']) . "', jan = '" . $this->db->escape($data['jan']) . "', isbn = '" . $this->db->escape($data['isbn']) . "', mpn = '" . $this->db->escape($data['mpn']) . "', location = '" . $this->db->escape($data['location']) . "', quantity = '" . (int)$data['quantity'] . "', minimum = '" . (int)$data['minimum'] . "', subtract = '" . (int)$data['subtract'] . "', stock_status_id = '" . (int)$data['stock_status_id'] . "', date_available = '" . $this->db->escape($data['date_available']) . "', manufacturer_id = '" . (int)$data['manufacturer_id'] . "', shipping = '" . (int)$data['shipping'] . "', price = '" . (float)$data['price'] . "', weight = '" . (float)$data['weight'] . "', weight_class_id = '" . (int)$data['weight_class_id'] . "', length = '" . (float)$data['length'] . "', width = '" . (float)$data['width'] . "', height = '" . (float)$data['height'] . "', length_class_id = '" . (int)$data['length_class_id'] . "', status = '" . (int)$data['status'] . "', sort_order = '" . (int)$data['sort_order'] . "',seller_id='".(int)$this->seller->getId()."',date_modified = NOW() WHERE product_id = '" . (int)$product_id . "'");
+
+
 		$query = $this->db->query("SELECT foldername FROM " . DB_PREFIX . "sellers WHERE seller_id = '" . (int)$this->seller->getId() . "'");
 		$foldername = $query->row['foldername'];
 		if (isset($data['image'])) {

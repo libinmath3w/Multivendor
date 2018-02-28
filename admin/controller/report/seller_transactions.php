@@ -226,21 +226,29 @@ class ControllerReportSellerTransactions extends Controller {
 		$data['button_addPayment'] = $this->language->get('button_addPayment');
 		$data['button_filter'] = $this->language->get('button_filter');
 		$data['user_token'] = $this->session->data['user_token'];
+
 		$this->load->model('localisation/order_status');
+
 		$data['order_statuses'] = $this->model_localisation_order_status->getOrderStatuses();
+
 		$url = '';
+
 		if (isset($this->request->get['filter_date_start'])) {
 			$url .= '&filter_date_start=' . $this->request->get['filter_date_start'];
 		}
+		
 		if (isset($this->request->get['filter_date_end'])) {
 			$url .= '&filter_date_end=' . $this->request->get['filter_date_end'];
 		}
+		
 		if (isset($this->request->get['filter_seller_group'])) {
 			$url .= '&filter_seller_group=' . $this->request->get['filter_seller_group'];
 		}
+		
 		if (isset($this->request->get['filter_paid_status'])) {
 			$url .= '&filter_paid_status=' . $this->request->get['filter_paid_status'];
 		}
+		
 		if (isset($this->request->get['filter_order_status_id'])) {
 			$url .= '&filter_order_status_id=' . $this->request->get['filter_order_status_id'];
 		}
@@ -272,9 +280,13 @@ class ControllerReportSellerTransactions extends Controller {
 		$data['filter_order_status_id'] = $filter_order_status_id;
 
 		$data['addPayment'] = $this->url->link('report/seller_transactions/insert', 'user_token=' . $this->session->data['user_token'] . $url, 'SSL');
+		
 		$data['header'] = $this->load->controller('common/header');
+		
 		$data['column_left'] = $this->load->controller('common/column_left');
+		
 		$data['footer'] = $this->load->controller('common/footer');
+		
 		$this->response->setOutput($this->load->view('report/seller_transactions', $data));
 	}
 
