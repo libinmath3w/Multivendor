@@ -155,7 +155,7 @@ class ModelReportSellerTransactions extends Model {
 		st.transaction_status AS paid_status 
 		FROM " . DB_PREFIX . "seller_transaction st 
 		LEFT JOIN " . DB_PREFIX . "order_product op ON (st.order_product_id=op.order_product_id)
-		LEFT JOIN " . DB_PREFIX . "order o ON (o.order_id = op.order_id) WHERE (st.seller_id IN (" . $seller_access . ") AND op.seller_id IN (" . $seller_access . ") AND op.order_id=st.order_id)  AND o.order_status_id > '0' AND st.transaction_status='0'";
+		LEFT JOIN `" . DB_PREFIX . "order` o ON (o.order_id = op.order_id) WHERE (st.seller_id IN (" . $seller_access . ") AND op.seller_id IN (" . $seller_access . ") AND op.order_id=st.order_id)  AND o.order_status_id > '0' AND st.transaction_status='0'";
 		
 		if (!empty($data['filter_eligible_status_id'])) {
 			$sql .= " AND op.product_status_id IN (".$data['filter_eligible_status_id'].")";
@@ -318,7 +318,7 @@ class ModelReportSellerTransactions extends Model {
 		FROM " . DB_PREFIX . "seller_transaction st 
 		LEFT JOIN " . DB_PREFIX . "order_product op ON (op.order_product_id=st.order_product_id)
 		LEFT JOIN " . DB_PREFIX . "sellers vds ON (st.seller_id=vds.seller_id)
-		LEFT JOIN " . DB_PREFIX . "order o ON (o.order_id = st.order_id)		
+		LEFT JOIN `" . DB_PREFIX . "order` o ON (o.order_id = st.order_id)		
 		WHERE ((st.seller_id IN (".$seller_access.") AND o.order_status_id IN (".$filter_eligible_status_id.") AND st.transaction_status IN (".$filter_eligible_status_id.")) OR (st.seller_id IN (".$seller_access.") AND st.order_id=0))";
 		$sql .= " group by st.seller_id";
 		
@@ -549,7 +549,7 @@ class ModelReportSellerTransactions extends Model {
 		} else {
 			$filter_eligible_status_id = 0;
 		}
-		$query = $this->db->query("SELECT SUM(st.amount) AS pamount FROM " . DB_PREFIX . "seller_transaction st LEFT JOIN " . DB_PREFIX . "order o ON (st.order_id=o.order_id) WHERE (st.seller_id = '" . (int)$seller_id. "' AND o.order_status_id IN (".$filter_eligible_status_id.") AND st.transaction_status IN (".$filter_eligible_status_id.")) OR (st.seller_id = '" .(int)$seller_id. "' AND st.order_id=0)");
+		$query = $this->db->query("SELECT SUM(st.amount) AS pamount FROM " . DB_PREFIX . "seller_transaction st LEFT JOIN `" . DB_PREFIX . "order` o ON (st.order_id=o.order_id) WHERE (st.seller_id = '" . (int)$seller_id. "' AND o.order_status_id IN (".$filter_eligible_status_id.") AND st.transaction_status IN (".$filter_eligible_status_id.")) OR (st.seller_id = '" .(int)$seller_id. "' AND st.order_id=0)");
 		return $query->row;
 	}
 	
