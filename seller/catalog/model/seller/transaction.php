@@ -148,7 +148,7 @@ class ModelSellerTransaction extends Model {
 		}else{
 			$filter_eligible_status_id = 0;
 		}
-		$query = $this->db->query("SELECT SUM(st.amount) AS pamount FROM " . DB_PREFIX . "seller_transaction st LEFT JOIN " . DB_PREFIX . "order o ON (st.order_id=o.order_id) WHERE (st.seller_id = '" . (int)$seller_id. "' AND o.order_status_id IN (".$filter_eligible_status_id.") AND st.transaction_status IN (".$filter_eligible_status_id.")) OR (st.seller_id = '" .(int)$seller_id. "' AND st.order_id=0)");
+		$query = $this->db->query("SELECT SUM(st.amount) AS pamount FROM " . DB_PREFIX . "seller_transaction st LEFT JOIN `" . DB_PREFIX . "order` o ON (st.order_id=o.order_id) WHERE (st.seller_id = '" . (int)$seller_id. "' AND o.order_status_id IN (".$filter_eligible_status_id.") AND st.transaction_status IN (".$filter_eligible_status_id.")) OR (st.seller_id = '" .(int)$seller_id. "' AND st.order_id=0)");
 		return $query->row;
 	}
 	public function getSellerTotalSales($seller_id) {
