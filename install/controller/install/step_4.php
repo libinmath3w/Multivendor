@@ -347,13 +347,13 @@ class ControllerInstallStep4 extends Controller {
 		}
 		$abc3 = $this->db->query("SELECT * FROM information_schema.COLUMNS WHERE COLUMN_NAME='seller_id' AND TABLE_NAME='".DB_PREFIX."option' AND TABLE_SCHEMA='".DB_DATABASE."'");
 		if($abc3->num_rows==0){
-			$a_12_sql = "ALTER TABLE `" .DB_PREFIX. "option` ADD COLUMN seller_id int(11) NOT NULL default 0";
+			$a_12_sql = "ALTER TABLE " .DB_PREFIX. "option ADD COLUMN seller_id int(11) NOT NULL default 0";
 			$this->db->query($a_12_sql);
 		}
 
 		$abc4 = $this->db->query("SELECT * FROM information_schema.COLUMNS WHERE COLUMN_NAME='approve' AND TABLE_NAME='".DB_PREFIX."option' AND TABLE_SCHEMA='".DB_DATABASE."'");
 		if($abc4->num_rows==0){
-			$a_13_sql = "ALTER TABLE `" .DB_PREFIX. "option` ADD COLUMN approve smallint(6) NOT NULL default 0";
+			$a_13_sql = "ALTER TABLE " .DB_PREFIX. "option ADD COLUMN approve smallint(6) NOT NULL default 0";
 			$this->db->query($a_13_sql);
 		}
 		$abc5 = $this->db->query("SELECT * FROM information_schema.COLUMNS WHERE COLUMN_NAME='seller_id' AND TABLE_NAME='".DB_PREFIX."download' AND TABLE_SCHEMA='".DB_DATABASE."'");
@@ -512,7 +512,7 @@ class ControllerInstallStep4 extends Controller {
 		$this->db->query($a_51_sql);
 		$a_52_sql = "UPDATE " .DB_PREFIX. "product SET approve=1";
 		$this->db->query($a_52_sql);
-		$a_53_sql = "UPDATE `" .DB_PREFIX. "option` SET approve=1";
+		$a_53_sql = "UPDATE " .DB_PREFIX. "option SET approve=1";
 		$this->db->query($a_53_sql);
 		$query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "user` limit 1");
 		if($query->num_rows){
