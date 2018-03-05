@@ -65,10 +65,15 @@ class ControllerReportSellerTransactions extends Controller {
 		
 			$filter_eligible_status_id = $this->request->get['filter_eligible_status_id'];
 		
-		} else {
-		
+		}  elseif(!is_null($this->config->get('config_seller_payments'))) {
+            		
 			$filter_eligible_status_id = implode(",",$this->config->get('config_seller_payments'));
-			//var_dump($this->config->get('config_seller_payments'));
+            		//var_dump($this->config->get('config_seller_payments'));
+        	
+		}else{
+		
+			$filter_eligible_status_id = 0;
+		
 		}
 		
 		if (isset($this->request->get['page'])) {
