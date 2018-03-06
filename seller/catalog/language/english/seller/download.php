@@ -5,9 +5,10 @@ $_['heading_title1']    = 'Add Download';
 // Text
 $_['text_success']     = 'Success: You have modified downloads!';
 $_['text_upload']      = 'Your file was successfully uploaded!';
-$_['text_loading']      = 'Loading..';
-$_['text_edit']      = 'Edit';
-$_['text_no_results']      = 'No Results Found';
+$_['text_loading']     = 'Loading..';
+$_['text_edit']        = 'Edit';
+$_['text_no_results']  = 'No Results Found';
+$_['text_confirm']     = 'Confirm';
 // Column
 $_['column_name']      = 'Download Name';
 $_['column_remaining'] = 'Total Downloads Allowed';

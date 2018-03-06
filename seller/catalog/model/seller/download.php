@@ -23,14 +23,20 @@ class ModelSellerDownload extends Model {
 	  	$this->db->query("DELETE FROM " . DB_PREFIX . "download_description WHERE download_id = '" . (int)$download_id . "'");	
 	}	
 	public function getDownload($download_id,$sellerid) {
-	   if($sellerid){
-	   $query = $this->db->query("SELECT DISTINCT * FROM " . DB_PREFIX . "download WHERE download_id = '" . (int)$download_id . "'
-	   AND seller_id = '" . (int)$sellerid . "'");
-	   }else{
+
+	   if( $sellerid ){
+	   	
+	   	$query = $this->db->query("SELECT DISTINCT * FROM " . DB_PREFIX . "download d LEFT JOIN " . DB_PREFIX . "download_description dd ON (d.download_id = dd.download_id) WHERE d.download_id = '" . (int)$download_id . "' AND seller_id = '" . (int)$sellerid . "'");
+
+	   } else {
+
 		$query = $this->db->query("SELECT DISTINCT * FROM " . DB_PREFIX . "download WHERE download_id = '" . (int)$download_id . "'");
+
 		}
 		return $query->row;
-	}
+	}  
+
+
 	public function getDownload1($sellerid) {
 	   if($sellerid){
 		$sql = "SELECT * FROM " . DB_PREFIX . "download d LEFT JOIN " . DB_PREFIX . "download_description dd ON 

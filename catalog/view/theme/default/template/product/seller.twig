@@ -17,7 +17,11 @@
       <h2>{{ heading_title }}</h2>
      
       <div class="row"> {% if thumb %}
-        <div class="col-sm-2"><img src="{{ thumb }}" alt="{{ heading_title }}" title="{{ heading_title }}" class="img-thumbnail" /></div>
+        <!-- <div class="col-sm-10"><img src="{{ thumb }}" alt="{{ heading_title }}" title="{{ heading_title }}" class="img-thumbnail" /></div> -->
+        <div class="col-md-12">
+          <img src="{{  seller_banner }}" alt="{{ heading_title }}" style="width:100%; background-size: 100%;" title="{{ heading_title }}"  />
+        </div>
+       
         {% endif %}
 
 		{% if sellerating %}

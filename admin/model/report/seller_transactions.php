@@ -16,24 +16,6 @@ class ModelReportSellerTransactions extends Model {
 			transaction_status ='5', 
 			date_added = NOW()");
 
-
-
-                    /*if(isset($nids)){
-		foreach ($nids AS $details) {
-				
-					$this->db->query("UPDATE " . DB_PREFIX . "seller_transaction op SET transaction_status = '5'
-					WHERE op.seller_id = '" . (int)$data['seller_id']. "' AND 
-					op.seller_transaction_id = '".(int)$details."'");
-
-
-
-					
-				
-			}
-			
-		}*/
-		
-
 		$this->language->load('mail/seller');
 		$store_name = $this->config->get('config_name');		
 		$message  = "You have received ".$this->currency->format($data['seller_amount'], $this->config->get('config_currency'))." credit in your bank"."\n\n";
@@ -126,44 +108,37 @@ class ModelReportSellerTransactions extends Model {
 	
 	
 	
-	public function getSellersOrders($data = array(),$seller_access) {
-		if(empty($seller_access)){$seller_access=0;}
+	public function getSellersOrders( $data = array(), $seller_access ) {
 		
+		if( empty( $seller_access ) ){ 
+			$seller_access=0; 
+		}
 		
-
-
-
 		$sql = "SELECT 
 		st.date_added AS date,
 		st.order_id AS order_id,
 		st.seller_transaction_id,
 		o.order_status_id AS order_status,
-		op.name AS product_name,
-		
+		op.name AS product_name,	
 		op.model,
-		
 		op.price AS price,
 		op.quantity AS quantity, 
 		st.commission AS commission,
 		st.fixed_rate AS fixed_rate,
 		op.total AS total,
 		st.amount AS amount,
-		
 		st.sub_total,
-
-		
 		st.transaction_status AS paid_status 
 		FROM " . DB_PREFIX . "seller_transaction st 
 		LEFT JOIN " . DB_PREFIX . "order_product op ON (st.order_product_id=op.order_product_id)
 		LEFT JOIN `" . DB_PREFIX . "order` o ON (o.order_id = op.order_id) WHERE (st.seller_id IN (" . $seller_access . ") AND op.seller_id IN (" . $seller_access . ") AND op.order_id=st.order_id)  AND o.order_status_id > '0' AND st.transaction_status='0'";
 		
-		if (!empty($data['filter_eligible_status_id'])) {
+		if ( !empty($data['filter_eligible_status_id']) ) {
+
 			$sql .= " AND op.product_status_id IN (".$data['filter_eligible_status_id'].")";
 		} else {
 			$sql .= " AND op.product_status_id > '0'";
 		}
-
-
 		
 		$sql .= " ORDER BY o.order_id DESC";
 		
@@ -173,22 +148,28 @@ class ModelReportSellerTransactions extends Model {
 	}
 
 	
-	public function getSellerTotalOrders12($data = array(),$seller_access) {
-		if(empty($seller_access)){$seller_access=0;}
+	public function getSellerTotalOrders12( $data = array(), $seller_access ) {
+		if( empty( $seller_access ) ){
+			$seller_access=0;
+		}
 		$sql = "SELECT COUNT(*) AS total 
 		FROM `" . DB_PREFIX . "order` o LEFT JOIN `" . DB_PREFIX . "order_product` op ON (o.order_id = op.order_id)
 		LEFT JOIN `" . DB_PREFIX . "sellers` vds ON (op.seller_id = vds.seller_id)";
 		
-		if (!empty($data['filter_order_status_id'])) {
+		if ( !empty($data['filter_order_status_id']) ) {
 			$sql .= " WHERE o.order_status_id = '" . (int)$data['filter_order_status_id'] . "'";
 		} else {
 			$sql .= " WHERE o.order_status_id > '0'";
 		}
 		
-		if (!empty($data['filter_eligible_status_id'])) {
+		if ( !empty($data['filter_eligible_status_id']) ) {
+
 			$sql .= " AND op.product_status_id IN (".$data['filter_eligible_status_id'].")";
+
 		} else {
+
 			$sql .= " AND op.product_status_id > '0'";
+
 		}
 
 		$sql .= " AND op.seller_id IN (" . $seller_access . ")";
@@ -252,26 +233,17 @@ class ModelReportSellerTransactions extends Model {
 	
 	public function updateorderproduct($seller_id,$opid) {
 
-
-
 		$query = $this->db->query("SELECT *	FROM `" . DB_PREFIX . "order` o 
 			LEFT JOIN `" . DB_PREFIX . "order_product` op ON (o.order_id = op.order_id) 
 			where op.order_product_id = '" . (int)$opid . "' AND op.seller_id ='" . (int)$seller_id . "' AND 
 			op.seller_paid_status = '0' AND o.order_id = op.order_id");
-
-
 		if ($query->rows) {
 			foreach ($query->rows AS $data) {
 
-				$this->db->query("UPDATE " . DB_PREFIX . "order_product  SET seller_paid_status = '5'
-					WHERE order_id = '" . (int)$data['order_id'] . "'"); 			
-
-
-
+				$this->db->query("UPDATE " . DB_PREFIX . "order_product  SET seller_paid_status = '5' WHERE order_id = '" . (int)$data['order_id'] . "'"); 
 			}
 
 		}
-
 
 		return 1;
 		
@@ -280,6 +252,7 @@ class ModelReportSellerTransactions extends Model {
 	public function updatetransaction($seller_id,$amt) {
 
 		if ($seller_id) {
+
 			$query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "seller_transaction`  WHERE seller_id = '" . (int)$seller_id . "'");
 			
 			$this->db->query("INSERT INTO " . DB_PREFIX . "seller_payment SET seller_id = '" . (int)$seller_id . "', 
@@ -287,7 +260,6 @@ class ModelReportSellerTransactions extends Model {
 			
 			if ($query->rows) {
 				foreach ($query->rows AS $data) {
-
 
 					$this->db->query("UPDATE " . DB_PREFIX . "seller_transaction  SET transaction_status = '5' WHERE 
 						seller_transaction_id = '" . (int)$data['seller_transaction_id'] . "'");      
@@ -301,15 +273,19 @@ class ModelReportSellerTransactions extends Model {
 		}
 	}
 	
-	public function getSellerTotalAmount($data = array(),$seller_access) {
+	public function getSellerTotalAmount( $data = array(), $seller_access) {
+		
 		$filter_eligible_status_id = $this->config->get('config_seller_payments');
+
 		if(!empty($filter_eligible_status_id))
 		{	
 			$filter_eligible_status_id = implode(",",$filter_eligible_status_id);
-		}else{
+		} else {
 			$filter_eligible_status_id = 0;
 		}
-		if(empty($seller_access)){$seller_access=0;}
+
+		if( empty( $seller_access) ){ $seller_access=0; }
+
 		$sql = "SELECT SUM(st.amount) AS seller_amount, SUM(st.commission) AS commission, 
 		SUM(op.price)
 		AS gross_amount,SUM(op.quantity) AS quantity, st.seller_id AS seller_id,
@@ -321,8 +297,7 @@ class ModelReportSellerTransactions extends Model {
 		LEFT JOIN `" . DB_PREFIX . "order` o ON (o.order_id = st.order_id)		
 		WHERE ((st.seller_id IN (".$seller_access.") AND o.order_status_id IN (".$filter_eligible_status_id.") AND st.transaction_status IN (".$filter_eligible_status_id.")) OR (st.seller_id IN (".$seller_access.") AND st.order_id=0))";
 		$sql .= " group by st.seller_id";
-		
-		
+			
 		$query = $this->db->query($sql);
 		return $query->rows;
 	}
@@ -403,7 +378,10 @@ class ModelReportSellerTransactions extends Model {
 	}
 
 	public function getSellersName($data = array(),$seller_access) {
-		if(empty($seller_access)){$seller_access=0;}
+		if( empty($seller_access) ){
+			$seller_access=0;
+		}
+		
 		$sql = "SELECT distinct(c.seller_id) as seller_id, CONCAT(c.firstname, ' ', c.lastname) AS name FROM `" . DB_PREFIX . "sellers` c , `" . DB_PREFIX . "seller` s where s.seller_id = c.seller_id";
 
 		$query = $this->db->query($sql);

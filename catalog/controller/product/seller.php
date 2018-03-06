@@ -1,5 +1,6 @@
 <?php 
 class ControllerProductSeller extends Controller {  
+	
 	public function index() { 
 		$this->language->load('product/seller');
 		
@@ -42,16 +43,15 @@ class ControllerProductSeller extends Controller {
    		);	
 			
 		if (isset($this->request->get['seller_id'])) {
-		      $seller_id=$this->request->get['seller_id'];
-			  
+		    $seller_id = $this->request->get['seller_id'];			
 			
-			
-		}else{
-		$seller_id=0;
+		} else {
+
+			$seller_id=0;
 		}		
 		
-		$seller_info = $this->model_catalog_seller->getSeller($seller_id);		
-		
+		$seller_info = $this->model_catalog_seller->getSeller($seller_id);	
+		//var_dump($seller_info)	;
 	
 		if ($seller_info) {
 	  		$this->document->setTitle($seller_info['firstname']);
@@ -79,33 +79,32 @@ class ControllerProductSeller extends Controller {
 			$data['button_continue'] = $this->language->get('button_continue');
 			
 			$data['button_list'] = $this->language->get('button_list');
-			$data['button_grid'] = $this->language->get('button_grid');
-			
+			$data['button_grid'] = $this->language->get('button_grid');			
 			
 			$this->load->model('tool/image');
-					
 			
-			
-			
-			if (!empty($seller_info) && $seller_info['image'] && file_exists(DIR_IMAGE . $seller_info['image'])) {
-					$data['thumb'] = $this->model_tool_image->resize($seller_info['image'], 100, 100);
-					} else {
-					$data['thumb'] = $this->model_tool_image->resize('no_image.jpg', 100, 100);
-					}
+			if (!empty($seller_info) && $seller_info['image'] && file_exists(DIR_IMAGE . $seller_info['image']) )
+			{
+				$data['thumb'] = $this->model_tool_image->resize($seller_info['image'], 100, 100);
+				$data['seller_banner'] = $this->model_tool_image->resize($seller_info['image'], 1200, 250);
+
+			} else {
+			   $data['thumb'] = $this->model_tool_image->resize('no_image.jpg', 100, 100);
+			   $data['seller_banner'] = $this->model_tool_image->resize('no_image.jpg', 800, 320);
+			}
 
 			$data['name'] = html_entity_decode($seller_info['name'], ENT_QUOTES, 'UTF-8');
 			
 			if ($seller_info['aboutus']) {
 			
-			$data['aboutus'] = html_entity_decode($seller_info['aboutus'], ENT_QUOTES, 'UTF-8');
-			}else{
+				$data['aboutus'] = html_entity_decode($seller_info['aboutus'], ENT_QUOTES, 'UTF-8');
+			} else {
 			
-			$data['aboutus'] = "";
+				$data['aboutus'] = "";
 			
 			}
 
 			$this->document->addScript('catalog/view/javascript/jquery/magnific/jquery.magnific-popup.min.js');
-			
 			
 			$data['compare'] = $this->url->link('product/compare');
 			
@@ -145,10 +144,7 @@ class ControllerProductSeller extends Controller {
 			$product_total = $this->model_catalog_seller->getTotalProductss($data1,$seller_id); 
 			
 			$results = $this->model_catalog_seller->getProducts($data1,$seller_id);
-			
-					
-			
-			
+						
 			foreach ($results as $result) {
 				if ($result['image']) {
 					$image = $this->model_tool_image->resize($result['image'], $this->config->get('theme_' . $this->config->get('config_theme') . '_image_product_width'), $this->config->get('theme_' . $this->config->get('config_theme') . '_image_product_height'));
@@ -363,11 +359,11 @@ class ControllerProductSeller extends Controller {
       		$data['continue'] = $this->url->link('common/home');
 
 			$data['column_left'] = $this->load->controller('common/column_left');
-		$data['column_right'] = $this->load->controller('common/column_right');
-		$data['content_top'] = $this->load->controller('common/content_top');
-		$data['content_bottom'] = $this->load->controller('common/content_bottom');
-		$data['footer'] = $this->load->controller('common/footer');
-		$data['header'] = $this->load->controller('common/header');
+			$data['column_right'] = $this->load->controller('common/column_right');
+			$data['content_top'] = $this->load->controller('common/content_top');
+			$data['content_bottom'] = $this->load->controller('common/content_bottom');
+			$data['footer'] = $this->load->controller('common/footer');
+			$data['header'] = $this->load->controller('common/header');
 
 
 			$this->response->setOutput($this->load->view('error/not_found', $data));
