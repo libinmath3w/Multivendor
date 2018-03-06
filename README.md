@@ -38,8 +38,15 @@ Make sure the `seller/config.php`, `admin/config.php` and `config.php` files hav
 Visit `http://yourdomain.com/install` to start the installtion process
 
 Login to your admin end, give admins permissions by navigating to `System->Users->User groups (edit)` **select all** and save. 
-![Add Admin permissions](select_all_user_permissions.png) 
-That's it!  
+![Add Admin permissions](select_all_user_permissions.png)   
+Configure these seller settings in the sellers tab
+- Select Default Seller  
+- Seller Account Terms   
+- Select Default commission  
+- Seller default categories permission  
+- Seller Order Statuses  
+- Seller Eligible for Payment
+
 You can now access the seller dashboard at yourdomain/seller/index.php  
   
 ##  Screenshots 
