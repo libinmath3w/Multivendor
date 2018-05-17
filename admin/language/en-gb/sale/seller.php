@@ -17,6 +17,7 @@ $_['text_clear']          = 'Clear';
 
 $_['text_login']            = 'Login into Store';
 
+$_['tab_payment_details'] = 'Payment Details';
 
 $_['entry_bankname']	   = 'Bank Name:';
 $_['entry_accountnumber']  = 'Account Number:';

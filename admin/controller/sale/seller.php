@@ -771,7 +771,7 @@ $data['text_confirm'] = $this->language->get('text_confirm');
     	$data['entry_zone2'] = $this->language->get('entry_zone');
     	$data['entry_paypalemail'] = $this->language->get('entry_paypalemail');
 		$data['entry_username'] = $this->language->get('entry_username');
- $data['entry_commission'] = $this->language->get('entry_commission');
+ 		$data['entry_commission'] = $this->language->get('entry_commission');
 		$data['button_save'] = $this->language->get('button_save');
     	$data['button_cancel'] = $this->language->get('button_cancel');
     	$data['button_add_address'] = $this->language->get('button_add_address');
@@ -805,7 +805,6 @@ $data['text_confirm'] = $this->language->get('text_confirm');
 		} else {
 			$data['error_address_2'] = '';
 		}
-		
 		
 		
 		if (isset($this->error['city2'])) {
@@ -881,7 +880,7 @@ $data['text_confirm'] = $this->language->get('text_confirm');
 		}
 		
 		if (isset($this->error['username12'])) {
-		$data['error_username12'] = $this->error['username12'];
+			$data['error_username12'] = $this->error['username12'];
 		} else {
 			$data['error_username12'] = '';
 		}
@@ -928,7 +927,7 @@ $data['text_confirm'] = $this->language->get('text_confirm');
 			$data['error_confirm'] = '';
 		}
 		
-			if (isset($this->error['address'])) {
+		if (isset($this->error['address'])) {
 			$data['error_address'] = $this->error['address'];
 		} else {
 			$data['error_address'] = array();
@@ -997,12 +996,6 @@ $data['text_confirm'] = $this->language->get('text_confirm');
       		$sellerinfo = $this->model_sale_seller->getAddresses($this->request->get['seller_id']);
 			foreach($sellerinfo as $seller_info){}
     	}
-		
-		
-		
-		
-		
-		
 			
     	if (isset($this->request->post['firstname'])) {
       		$data['firstname'] = $this->request->post['firstname'];
@@ -1034,7 +1027,15 @@ $data['text_confirm'] = $this->language->get('text_confirm');
 			$data['telephone'] = $seller_info['telephone'];
 		} else {
       		$data['telephone'] = '';
-    	}if (isset($this->request->post['tin_no'])) {      		$data['tin_no'] = $this->request->post['tin_no'];    	} elseif (!empty($seller_info)) { 			$data['tin_no'] = $seller_info['tin_no'];		} else {      		$data['tin_no'] = '';    	}
+    	}
+
+    	if (isset($this->request->post['tin_no'])) {
+    	    $data['tin_no'] = $this->request->post['tin_no'];
+    	} elseif (!empty($seller_info)) {
+    	 	$data['tin_no'] = $seller_info['tin_no'];
+    	} else {
+    	    $data['tin_no'] = '';
+       	}
 
     	if (isset($this->request->post['fax'])) {
       		$data['fax'] = $this->request->post['fax'];
@@ -1100,7 +1101,6 @@ $data['text_confirm'] = $this->language->get('text_confirm');
 			$data['ifsccode'] = '';
 		}
 
-		
 		if (isset($this->request->post['commission_id'])) {
       		$data['commission_id'] = $this->request->post['commission_id'];
     	} elseif (!empty($seller_info)) { 
@@ -1108,8 +1108,6 @@ $data['text_confirm'] = $this->language->get('text_confirm');
 		} else {
       		$data['commission_id'] = '';
     	}
-
-		
 		
 		if (isset($this->request->post['aboutus'])) {
       		$data['aboutus'] = $this->request->post['aboutus'];
@@ -1118,8 +1116,6 @@ $data['text_confirm'] = $this->language->get('text_confirm');
 		} else {
       		$data['aboutus'] = '';
     	}
-		
-		
 		
 		if (isset($this->request->post['aboutus'])) {
     		$data['aboutus'] = $this->request->post['aboutus'];
@@ -1131,7 +1127,7 @@ $data['text_confirm'] = $this->language->get('text_confirm');
 		
 		if (isset($this->request->post['image'])) {
 			$data['image'] = $this->request->post['image'];
-		}elseif(!empty($seller_info)) {	
+		} elseif(!empty($seller_info)) {	
 			$data['image'] = $seller_info['image'];
 			}
 			else {
@@ -1140,7 +1136,7 @@ $data['text_confirm'] = $this->language->get('text_confirm');
 
 		$this->load->model('tool/image');
 		$this->load->model('sale/seller');
-	 if (isset($this->request->post['image']) && file_exists(DIR_IMAGE . $this->request->post['image'])) {
+	 	if (isset($this->request->post['image']) && file_exists(DIR_IMAGE . $this->request->post['image'])) {
 			$data['thumb'] = $this->model_tool_image->resize($this->request->post['image'], 100, 100);
 		} elseif (!empty($seller_info) && $seller_info['image'] && file_exists(DIR_IMAGE . $seller_info['image'])) {
 			$data['thumb'] = $this->model_tool_image->resize($seller_info['image'], 100, 100);
@@ -1183,8 +1179,6 @@ $data['text_confirm'] = $this->language->get('text_confirm');
 			$data['addresses'] = array();
     	}
 
-	
-
     	if (isset($this->request->post['address_id'])) {
       		$data['address_id'] = $this->request->post['address_id'];
     	} elseif (!empty($seller_info)) { 
@@ -1192,12 +1186,6 @@ $data['text_confirm'] = $this->language->get('text_confirm');
 		} else {
       		$data['address_id'] = '';
     	}
-		
-		
-		
-		
-		
-	
 
     	if (isset($this->request->post['address_2'])) {
       		$data['address_2'] = $this->request->post['address_2'];
@@ -1206,9 +1194,6 @@ $data['text_confirm'] = $this->language->get('text_confirm');
 		} else {
       		$data['address_2'] = '';
     	}
-
-     
-		
 
     	if (isset($this->request->post['postcode2'])) {
       		$data['postcode2'] = $this->request->post['postcode2'];
@@ -1292,10 +1277,6 @@ $data['text_confirm'] = $this->language->get('text_confirm');
       		$this->error['firstname'] = $this->language->get('error_firstname');
     	}
 		
-		
-		
-		
-
     	if ((utf8_strlen($this->request->post['lastname']) < 1) || (utf8_strlen($this->request->post['lastname']) > 32)) {
       		$this->error['lastname'] = $this->language->get('error_lastname');
     	}
@@ -1333,11 +1314,9 @@ $data['text_confirm'] = $this->language->get('text_confirm');
       		if ((utf8_strlen($this->request->post['password']) < 4) || (utf8_strlen($this->request->post['password']) > 20)) {
         		$this->error['password'] = $this->language->get('error_password');
       		}
-	
-	  		
     	}
 
-			if (isset($this->request->post['address'])) {
+		if (isset($this->request->post['address'])) {
 			foreach ($this->request->post['address'] as $key => $value) {
 				if ((utf8_strlen($value['firstname']) < 1) || (utf8_strlen($value['firstname']) > 32)) {
 					$this->error['address'][$key]['firstname'] = $this->language->get('error_firstname');
@@ -1375,15 +1354,12 @@ $data['text_confirm'] = $this->language->get('text_confirm');
 			}
 		}
 		
-		
-		
 		if ($this->request->post['paypalorcheque'] == 1) {
 			if ((utf8_strlen($this->request->post['paypal_email']) > 96) || !preg_match('/^[^\@]+@.*\.[a-z]{2,6}$/i', $this->request->post['paypal_email'])) 
 			{
 				$this->error['error_paypalemail'] = $this->language->get('error_paypalemail');
 			}
-		}
-		elseif ($this->request->post['paypalorcheque'] == 2) {
+		} elseif ($this->request->post['paypalorcheque'] == 2) {
 			if ((utf8_strlen($this->request->post['bank_name']) < 3) || (utf8_strlen($this->request->post['bank_name']) > 32)) {
 				$this->error['bank_name'] = $this->language->get('error_bankname');
 			}
@@ -1404,14 +1380,11 @@ $data['text_confirm'] = $this->language->get('text_confirm');
 				$this->error['ifsccode'] = $this->language->get('error_ifsccode');
 			}
 
-		}
-
-		else{
+		} else {
 			if ((utf8_strlen($this->request->post['cheque']) < 3) || (utf8_strlen($this->request->post['cheque']) > 128)) {
 				$this->error['cheque'] = $this->language->get('error_cheque');
 			}
-		}
-		
+		}	
 		
 		if ($this->error && !isset($this->error['warning'])) {
 			$this->error['warning'] = $this->language->get('error_warning');
