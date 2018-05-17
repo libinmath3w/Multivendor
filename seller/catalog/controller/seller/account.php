@@ -1,5 +1,6 @@
 <?php 
 class ControllerSellerAccount extends Controller { 
+
 	public function index() {
 		$this->load->model('seller/order');
 		if (!$this->seller->isLogged()) {
@@ -95,7 +96,7 @@ class ControllerSellerAccount extends Controller {
 			);
 		$data['order_total'] = $this->model_seller_order->getTotalOrders();
 		$results = $this->model_seller_order->getOrders($filter_data);
-		//var_dump($results);
+
 		foreach ($results as $result) {
 			$product_total = $this->model_seller_order->getTotalOrderProductsByOrderId($result['order_id']);
 			$voucher_total = $this->model_seller_order->getTotalOrderVouchersByOrderId($result['order_id']);	
@@ -104,10 +105,10 @@ class ControllerSellerAccount extends Controller {
 			if($orderstatus){
 				$order_status_id = $orderstatus['order_status_id'];
 				$StatusName = $this->model_seller_order->getOrderStatusName($order_status_id);
-			}
-			else{
+			} else {
 				$StatusName = $result['status'];
 			}
+			
 			$data['orders'][] = array(
 				'order_id'   => $result['order_id'],
 				'customer'       => $result['firstname'] . ' ' . $result['lastname'],

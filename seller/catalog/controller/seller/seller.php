@@ -40,10 +40,10 @@ class ControllerSellerSeller extends Controller {
     	$data['text_your_address'] = $this->language->get('text_your_address');
     	$data['text_your_password'] = $this->language->get('text_your_password');
 		$data['text_newsletter'] = $this->language->get('text_newsletter');
-//Multiseller code start from here
+		//Multiseller code start from here
 		$data['entry_paypalemail'] = $this->language->get('entry_paypalemail');
 		$data['entry_telephone'] = $this->language->get('entry_telephone');
-//Multiseller code ends here				
+		//Multiseller code ends here				
     	$data['entry_firstname'] = $this->language->get('entry_firstname');
     	$data['entry_lastname'] = $this->language->get('entry_lastname');
     	$data['entry_email'] = $this->language->get('entry_email');    	
@@ -79,13 +79,13 @@ class ControllerSellerSeller extends Controller {
 		} else {
 			$data['error_email'] = '';
 		}
-//Multiseller code start from here
+		//Multiseller code start from here
 		if (isset($this->error['error_paypalemail'])) {
 			$data['error_paypalemail'] = $this->error['error_paypalemail'];
 		} else {
 			$data['error_paypalemail'] = '';
 		}
-//Multiseller code ends here		
+		//Multiseller code ends here		
 		if (isset($this->error['telephone'])) {
 			$data['error_telephone'] = $this->error['telephone'];
 		} else {
@@ -142,13 +142,13 @@ class ControllerSellerSeller extends Controller {
 		} else {
 			$data['email'] = '';
 		}
-//Multiseller code start from here
+		//Multiseller code start from here
 		if (isset($this->request->post['paypal_email'])) {
 			$data['paypal_email'] = $this->request->post['paypal_email'];
 		} else {
 			$data['paypal_email'] = '';
 		}
-//Multiseller code ends here		
+		//Multiseller code ends here		
 		if (isset($this->request->post['telephone'])) {
     		$data['telephone'] = $this->request->post['telephone'];
 		} else {
@@ -243,13 +243,13 @@ class ControllerSellerSeller extends Controller {
     	if ((utf8_strlen($this->request->post['email']) > 96) || !preg_match('/^[^\@]+@.*\.[a-z]{2,6}$/i', $this->request->post['email'])) {
       		$this->error['email'] = $this->language->get('error_email');
     	}
-//Multiseller code start from here
+		//Multiseller code start from here
 		if(utf8_strlen($this->request->post['paypal_email']) > 0){
 			if ((utf8_strlen($this->request->post['paypal_email']) > 96) || !preg_match('/^[^\@]+@.*\.[a-z]{2,6}$/i', $this->request->post['paypal_email'])) {
 				$this->error['error_paypalemail'] = $this->language->get('error_paypalemail');
 			}
 		}
-//Multiseller code ends here
+		//Multiseller code ends here
     	if ($this->model_seller_seller->getTotalSellersByEmail($this->request->post['email'])) {
       		$this->error['warning'] = $this->language->get('error_exists');
     	}

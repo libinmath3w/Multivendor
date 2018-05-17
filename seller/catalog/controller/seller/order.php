@@ -1,44 +1,66 @@
 <?php 
 class ControllerSellerOrder extends Controller {
+
 	private $error = array();
+
 	public function index() {
+
     	if (!$this->seller->isLogged()) {
       		$this->session->data['redirect'] = $this->url->link('seller/order', '', 'SSL');
 	  		$this->response->redirect($this->url->link('seller/login', '', 'SSL'));
     	}
+
 		$this->language->load('seller/order');
+
 		$this->load->model('seller/order');
+
 		if (isset($this->request->get['filter_date_end'])) {
 			$filter_date_end = $this->request->get['filter_date_end'];
 		} else {
 			$filter_date_end ='';
 		}
-       if (isset($this->request->get['filter_date_start'])) {
+
+        if (isset($this->request->get['filter_date_start'])) {
 			$filter_date_start = $this->request->get['filter_date_start'];
 		} else {
 			$filter_date_start = '';
 		}
+		
 		if (isset($this->request->get['filter_order_id'])) {
 			$filter_order_id = $this->request->get['filter_order_id'];
 		} else {
 			$filter_order_id = '';
 		}
+
  		$data['order_statuses'] = $this->model_seller_order->getOrderStatuses(array());
+
 		if (isset($this->request->get['order_id'])) {
+
 			$order_info = $this->model_seller_order->getOrder($this->request->get['order_id']);
 			if ($order_info) {
+
 				$order_products = $this->model_seller_order->getOrderProducts($this->request->get['order_id']);
+
 				foreach ($order_products as $order_product) {
+
 					$option_data = array();
+
 					$order_options = $this->model_seller_order->getOrderOptions($this->request->get['order_id'], $order_product['order_product_id']);
+
 					foreach ($order_options as $order_option) {
+
 						if ($order_option['type'] == 'select' || $order_option['type'] == 'radio') {
 							$option_data[$order_option['product_option_id']] = $order_option['product_option_value_id'];
+
 						} elseif ($order_option['type'] == 'checkbox') {
+
 							$option_data[$order_option['product_option_id']][] = $order_option['product_option_value_id'];
+
 						} elseif ($order_option['type'] == 'text' || $order_option['type'] == 'textarea' || $order_option['type'] == 'date' || $order_option['type'] == 'datetime' || $order_option['type'] == 'time') {
+
 							$option_data[$order_option['product_option_id']] = $order_option['value'];	
 						} elseif ($order_option['type'] == 'file') {
+
 							$option_data[$order_option['product_option_id']] = $this->encryption->encrypt($order_option['value']);
 						}
 					}
@@ -108,21 +130,32 @@ class ControllerSellerOrder extends Controller {
 			'start'                  => ($page - 1) * $this->config->get('config_admin_limit'),
 			'limit'                  => $this->config->get('config_admin_limit')
 		);
+
 		$data['orders'] = array();
+
 		$order_total = $this->model_seller_order->getTotalOrders($data1);
+
 		$results = $this->model_seller_order->getOrders($data1);
-		foreach ($results as $result) {
+
+		foreach ( $results as $result ) {
+
 			$product_total = $this->model_seller_order->getTotalOrderProductsByOrderId($result['order_id']);
-			$voucher_total = $this->model_seller_order->getTotalOrderVouchersByOrderId($result['order_id']);	
+
+			$voucher_total = $this->model_seller_order->getTotalOrderVouchersByOrderId($result['order_id']);
+
 			$prodtotal = $this->model_seller_order->getOrderProductsSum($result['order_id']);
+
 			$orderstatus = $this->model_seller_order->getOrderStatus($result['order_id']);
-			if($orderstatus){
+
+			if( $orderstatus ){
 				$order_status_id = $orderstatus['order_status_id'];
+
 				$StatusName = $this->model_seller_order->getOrderStatusName($order_status_id);
-			}
-			else{
+
+			} else {
 				$StatusName = $result['status'];
 			}
+
 			$data['orders'][] = array(
 				'order_id'   => $result['order_id'],
 				'name'       => $result['firstname'] . ' ' . $result['lastname'],
@@ -134,7 +167,9 @@ class ControllerSellerOrder extends Controller {
 				'invoice'    => $this->url->link('seller/order/invoice', 'order_id=' . $result['order_id'], 'SSL')
 			);
 		}
+
 		$url = '';
+
 		if (isset($this->request->get['filter_date_start'])) {
 			$url .= '&filter_date_start=' . $this->request->get['filter_date_start'];
 		}
@@ -147,6 +182,7 @@ class ControllerSellerOrder extends Controller {
 		if (isset($this->request->get['page'])) {
 			$url .= '&page=' . $this->request->get['page'];
 		}
+
 		$pagination = new Pagination();
 		$pagination->total = $order_total;
 		$pagination->page = $page;
@@ -169,46 +205,79 @@ class ControllerSellerOrder extends Controller {
 			$this->response->setOutput($this->load->view('default/template/seller/order_list.tpl', $data));
 		}				
 	}
-	public function info() { 
+
+	public function info() {
+
 		$this->language->load('seller/order');
+
 		$this->load->model('seller/order');
+
 		if (isset($this->request->get['order_id'])) {
+
 			$order_id = $this->request->get['order_id'];
+
 		} else {
+
 			$order_id = 0;
 		}
+
 		$data['action'] = $this->url->link('seller/order/info','order_id=' . (int)$this->request->get['order_id'], 'SSL');
+
 		if ($this->request->server['REQUEST_METHOD'] == 'POST') {
+
 			$this->model_seller_order->addOrderHistory($this->request->get['order_id'], $this->request->post);
+
 		}
+
 		$order_statuses = $this->model_seller_order->getOrderStatuses(array());
+
 		$config_seller_orderstatuses = $this->config->get('config_seller_orderstatuses');
+
 		$data['order_statuses'] = array();
-		foreach($order_statuses as $order_status){
+
+		foreach( $order_statuses as $order_status ){
+
 			if (in_array($order_status['order_status_id'], $config_seller_orderstatuses)){
 				$data['order_statuses'][] = $order_status;
 			}
+
 		}
+
 		$order_info = $this->model_seller_order->getOrder($order_id);
+
 		if (isset($this->request->post['order_status_id'])) {
+
       		$data['order_status_id'] = $this->request->post['order_status_id'];
-    	} elseif (!empty($order_info)) {
+
+    	} elseif ( !empty($order_info) ) {
+
 			$orderstatus = $this->model_seller_order->getOrderStatus($order_id);
-			if($orderstatus){
+
+			if( $orderstatus ){
+
 				$data['order_status_id'] = $orderstatus['order_status_id'];
-			}
-			else{
+
+			} else {
+
 				$data['order_status_id'] = $order_info['order_status_id'];
 			}
+
 		} else {
+
       		$data['order_status_id'] = '';
     	}
+
 		$data['invoice'] = $this->url->link('seller/order/invoice','order_id=' . (int)$this->request->get['order_id'], 'SSL');
+
 		if (!$this->seller->isLogged()) {
+
 			$this->session->data['redirect'] = $this->url->link('seller/order/info', 'order_id=' . $order_id, 'SSL');
 			$this->response->redirect($this->url->link('seller/login', '', 'SSL'));
+
     	}
-		if ($order_info) {
+
+		if ( $order_info ) {
+
 			$this->document->setTitle($this->language->get('text_order'));
 			$data['breadcrumbs'] = array();
 			$data['breadcrumbs'][] = array(
@@ -257,18 +326,25 @@ class ControllerSellerOrder extends Controller {
       		$data['column_comment'] = $this->language->get('column_comment');
 			$data['button_return'] = $this->language->get('button_return');
       		$data['button_continue'] = $this->language->get('button_continue');
+
 			if ($order_info['invoice_no']) {
+
 				$data['invoice_no'] = $order_info['invoice_prefix'] . $order_info['invoice_no'];
+
 			} else {
 				$data['invoice_no'] = '';
 			}
+
 			$data['order_id'] = $this->request->get['order_id'];
+
 			$data['date_added'] = date($this->language->get('date_format_short'), strtotime($order_info['date_added']));
+
 			if ($order_info['payment_address_format']) {
       			$format = $order_info['payment_address_format'];
     		} else {
 				$format = '{firstname} {lastname}' . "\n" . '{company}' . "\n" . '{address_1}' . "\n" . '{address_2}' . "\n" . '{city} {postcode}' . "\n" . '{zone}' . "\n" . '{country}';
 			}
+
     		$find = array(
 	  			'{firstname}',
 	  			'{lastname}',
@@ -281,6 +357,7 @@ class ControllerSellerOrder extends Controller {
 				'{zone_code}',
       			'{country}'
 			);
+
 			$replace = array(
 	  			'firstname' => $order_info['payment_firstname'],
 	  			'lastname'  => $order_info['payment_lastname'],
@@ -293,13 +370,17 @@ class ControllerSellerOrder extends Controller {
 				'zone_code' => $order_info['payment_zone_code'],
       			'country'   => $order_info['payment_country']  
 			);
+
 			$data['payment_address'] = str_replace(array("\r\n", "\r", "\n"), '<br />', preg_replace(array("/\s\s+/", "/\r\r+/", "/\n\n+/"), '<br />', trim(str_replace($find, $replace, $format))));
+
       		$data['payment_method'] = $order_info['payment_method'];
+
 			if ($order_info['shipping_address_format']) {
       			$format = $order_info['shipping_address_format'];
     		} else {
 				$format = '{firstname} {lastname}' . "\n" . '{company}' . "\n" . '{address_1}' . "\n" . '{address_2}' . "\n" . '{city} {postcode}' . "\n" . '{zone}' . "\n" . '{country}';
 			}
+
     		$find = array(
 	  			'{firstname}',
 	  			'{lastname}',
@@ -324,24 +405,39 @@ class ControllerSellerOrder extends Controller {
 				'zone_code' => $order_info['shipping_zone_code'],
       			'country'   => $order_info['shipping_country']  
 			);
+
 			$data['shipping_address'] = str_replace(array("\r\n", "\r", "\n"), '<br />', preg_replace(array("/\s\s+/", "/\r\r+/", "/\n\n+/"), '<br />', trim(str_replace($find, $replace, $format))));
+
 			$data['shipping_method'] = $order_info['shipping_method'];
+
 			$data['products'] = array();
+
 			$products = $this->model_seller_order->getOrderProducts($this->request->get['order_id']);
+
       		foreach ($products as $product) {
+
 				$option_data = array();
+
 				$options = $this->model_seller_order->getOrderOptions($this->request->get['order_id'], $product['order_product_id']);
+
          		foreach ($options as $option) {
+
           			if ($option['type'] != 'file') {
+
 						$value = $option['value'];
+
 					} else {
+
 						$value = utf8_substr($option['value'], 0, utf8_strrpos($option['value'], '.'));
+
 					}
+
 					$option_data[] = array(
 						'name'  => $option['name'],
 						'value' => (utf8_strlen($value) > 20 ? utf8_substr($value, 0, 20) . '..' : $value)
 					);					
         		}
+
         		$data['products'][] = array(
           			'name'     => $product['name'],
           			'model'    => $product['model'],
@@ -354,44 +450,58 @@ class ControllerSellerOrder extends Controller {
       		}
 			// Voucher
 			$data['vouchers'] = array();
+
 			$vouchers = $this->model_seller_order->getOrderVouchers($this->request->get['order_id']);
+
 			foreach ($vouchers as $voucher) {
+
 				$data['vouchers'][] = array(
 					'description' => $voucher['description'],
 					'amount'      => $this->currency->format($voucher['amount'], $order_info['currency_code'], $order_info['currency_value'])
 				);
+
 			}
 			// Totals
 			$data['totals'] = array();
+
 			$totals = $this->model_seller_order->getOrderTotals($this->request->get['order_id']);
-			foreach ($totals as $total) {
+
+			foreach ( $totals as $total ) {
+
 				$data['totals'][] = array(
 					'title' => $total['title'],
 					'text'  => $this->currency->format($total['value'], $order_info['currency_code'], $order_info['currency_value']),
 				);
 			}
+
 			$data['comment'] = nl2br($order_info['comment']);
+
 			$data['histories'] = array();
+
 			$results = $this->model_seller_order->getOrderHistories($this->request->get['order_id']);
+
       		foreach ($results as $result) {
+
         		$data['histories'][] = array(
           			'date_added' => date($this->language->get('date_format_short'), strtotime($result['date_added'])),
           			'status'     => $result['status'],
           			'comment'    => nl2br($result['comment'])
         		);
+
       		}
+
       		$data['continue'] = $this->url->link('seller/order', '', 'SSL');
-		$data['column_left'] = $this->load->controller('common/column_left');
-		$data['column_right'] = 
-		$data['content_top'] = $this->load->controller('common/content_top');
-		$data['content_bottom'] = $this->load->controller('common/content_bottom');
-		$data['footer'] = $this->load->controller('common/footer');
-		$data['header'] = $this->load->controller('common/header');
-		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/seller/order_info.tpl')) {
-			$this->response->setOutput($this->load->view($this->config->get('config_template') . '/template/seller/order_info.tpl', $data));
-		} else {
-			$this->response->setOutput($this->load->view('default/template/seller/order_info.tpl', $data));
-		}		
+			$data['column_left'] = $this->load->controller('common/column_left');
+
+			$data['footer'] = $this->load->controller('common/footer');
+			$data['header'] = $this->load->controller('common/header');
+
+			if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/seller/order_info.tpl')) {
+				$this->response->setOutput($this->load->view($this->config->get('config_template') . '/template/seller/order_info.tpl', $data));
+			} else {
+				$this->response->setOutput($this->load->view('default/template/seller/order_info.tpl', $data));
+			}	
+
     	} else {
 			$this->document->setTitle($this->language->get('text_order'));
       		$data['heading_title'] = $this->language->get('text_order');
@@ -418,13 +528,13 @@ class ControllerSellerOrder extends Controller {
 				'href'      => $this->url->link('seller/order/info', 'order_id=' . $order_id, 'SSL'),
 				'separator' => $this->language->get('text_separator')
 			);
+
       		$data['continue'] = $this->url->link('seller/order', '', 'SSL');
 			$data['column_left'] = $this->load->controller('common/column_left');
-		$data['column_right'] = 
-		$data['content_top'] = $this->load->controller('common/content_top');
-		$data['content_bottom'] = $this->load->controller('common/content_bottom');
-		$data['footer'] = $this->load->controller('common/footer');
-		$data['header'] = $this->load->controller('common/header');
+
+			$data['footer'] = $this->load->controller('common/footer');
+			$data['header'] = $this->load->controller('common/header');
+
 		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/error/not_found.tpl')) {
 			$this->response->setOutput($this->load->view($this->config->get('config_template') . '/template/error/not_found.tpl', $data));
 		} else {
@@ -432,6 +542,7 @@ class ControllerSellerOrder extends Controller {
 		}				
     	}
   	}
+
 	public function invoice() {
 		$this->language->load('seller/invoiceorder');
 		$data['title'] = $this->language->get('heading_title');

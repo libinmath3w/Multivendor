@@ -1,9 +1,11 @@
 <?php
 class ControllerSellerAttribute extends Controller {
+
 	private $error = array();
+
 	public function index() {
 		if (!$this->seller->isLogged()) {
-			$this->session->data['redirect'] = $this->url->link('seller/account', '', 'SSL');
+			$this->session->data['redirect'] = $this->url->link('seller/attribute', '', 'SSL');
 			$this->response->redirect($this->url->link('seller/login', '', 'SSL'));
 		} 
 		
@@ -12,11 +14,18 @@ class ControllerSellerAttribute extends Controller {
 		$this->load->model('seller/attribute');
 		$this->getList();
 	}
+
+	private function attributeRedirect($endpoint) {
+		
+    	if (!$this->seller->isLogged()) {
+      		$this->session->data['redirect'] = $this->url->link('seller/attribute/'.trim($endpoint), '', 'SSL');
+	  		$this->response->redirect($this->url->link('seller/login', '', 'SSL'));
+    	}
+	}
+
 	public function add() {
-		if (!$this->seller->isLogged()) {
-			$this->session->data['redirect'] = $this->url->link('seller/account', '', 'SSL');
-			$this->response->redirect($this->url->link('seller/login', '', 'SSL'));
-		} 
+		
+		$this->attributeRedirect('add');
 		$this->load->language('seller/attribute');
 		$this->document->setTitle($this->language->get('heading_title'));
 		$this->load->model('seller/attribute');
@@ -38,49 +47,73 @@ class ControllerSellerAttribute extends Controller {
 		$this->getForm();
 	}
 	public function edit() {
+		
+		$this->attributeRedirect('edit');
+
 		$this->load->language('seller/attribute');
 		$this->document->setTitle($this->language->get('heading_title'));
+
 		$this->load->model('seller/attribute');
+
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
 			$this->model_seller_attribute->editAttribute($this->request->get['attribute_id'], $this->request->post);
+
 			$this->session->data['success'] = $this->language->get('text_success');
+
 			$url = '';
+
 			if (isset($this->request->get['sort'])) {
 				$url .= '&sort=' . $this->request->get['sort'];
 			}
+
 			if (isset($this->request->get['order'])) {
 				$url .= '&order=' . $this->request->get['order'];
 			}
+
 			if (isset($this->request->get['page'])) {
 				$url .= '&page=' . $this->request->get['page'];
 			}
+
 			$this->response->redirect($this->url->link('seller/attribute',$url, 'SSL'));
 		}
+
 		$this->getForm();
 	}
+
 	public function delete() {
+
+		$this->attributeRedirect('delete');
 		$this->load->language('seller/attribute');
 		$this->document->setTitle($this->language->get('heading_title'));
 		$this->load->model('seller/attribute');
+
 		if (isset($this->request->post['selected']) && $this->validateDelete()) {
 			foreach ($this->request->post['selected'] as $attribute_id) {
 				$this->model_seller_attribute->deleteAttribute($attribute_id);
 			}
+
 			$this->session->data['success'] = $this->language->get('text_success');
+
 			$url = '';
+
 			if (isset($this->request->get['sort'])) {
 				$url .= '&sort=' . $this->request->get['sort'];
 			}
+
 			if (isset($this->request->get['order'])) {
 				$url .= '&order=' . $this->request->get['order'];
 			}
+
 			if (isset($this->request->get['page'])) {
 				$url .= '&page=' . $this->request->get['page'];
 			}
+
 			$this->response->redirect($this->url->link('seller/attribute',$url, 'SSL'));
 		}
+
 		$this->getList();
 	}
+
 	protected function getList() {
 		if (isset($this->request->get['sort'])) {
 			$sort = $this->request->get['sort'];
@@ -135,7 +168,7 @@ class ControllerSellerAttribute extends Controller {
 			$data['attributes'][] = array(
 				'attribute_id'    => $result['attribute_id'],
 				'name'            => $result['name'],
-				'approve'            => $result['approve'],
+				'approve'         => $result['approve'],
 				'attribute_group' => $result['attribute_group'],
 				'sort_order'      => $result['sort_order'],
 				'edit'            => $this->url->link('seller/attribute/edit','&attribute_id=' . $result['attribute_id'] . $url, 'SSL')
@@ -205,6 +238,7 @@ class ControllerSellerAttribute extends Controller {
 			$this->response->setOutput($this->load->view('default/template/seller/attribute_list.tpl', $data));
 		}
 	}
+
 	protected function getForm() {
 		$data['heading_title'] = $this->language->get('heading_title');
 		$data['text_form'] = !isset($this->request->get['attribute_id']) ? $this->language->get('text_add') : $this->language->get('text_edit');
@@ -310,6 +344,7 @@ class ControllerSellerAttribute extends Controller {
 		}
 		return !$this->error;
 	}
+	
 	public function autocomplete() {
 		$json = array();
 		if (isset($this->request->get['filter_name'])) {

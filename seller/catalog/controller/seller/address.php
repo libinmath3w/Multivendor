@@ -1,21 +1,24 @@
 <?php 
 class ControllerSellerAddress extends Controller {
+
 	private $error = array();
+
   	public function index() {
-    	if (!$this->seller->isLogged()) {
-	  		$this->session->data['redirect'] = $this->url->link('seller/address', '', 'SSL');
-	  		$this->response->redirect($this->url->link('seller/login', '', 'SSL')); 
-    	}
+    	$this->addressRedirect(''); 
     	$this->language->load('seller/address');
 		$this->document->setTitle($this->language->get('heading_title'));
 		$this->load->model('seller/address');
 		$this->getList();
   	}
-  	public function insert() {
+	private function addressRedirect($endpoint) {
+		
     	if (!$this->seller->isLogged()) {
-	  		$this->session->data['redirect'] = $this->url->link('seller/address', '', 'SSL');
-	  		$this->response->redirect($this->url->link('seller/login', '', 'SSL')); 
-    	} 
+      		$this->session->data['redirect'] = $this->url->link('seller/address/'.trim($endpoint), '', 'SSL');
+	  		$this->response->redirect($this->url->link('seller/login', '', 'SSL'));
+    	}
+	}
+  	public function insert() {
+    	$this->addressRedirect('insert'); 
     	$this->language->load('seller/address');
 		$this->document->setTitle($this->language->get('heading_title'));
 		$this->load->model('seller/address');
@@ -27,10 +30,7 @@ class ControllerSellerAddress extends Controller {
 		$this->getForm();
   	}
   	public function update() {
-    	if (!$this->seller->isLogged()) {
-	  		$this->session->data['redirect'] = $this->url->link('seller/address', '', 'SSL');
-	  		$this->response->redirect($this->url->link('seller/login', '', 'SSL')); 
-    	} 
+    	$this->addressRedirect('');  
     	$this->language->load('seller/address');
 		$this->document->setTitle($this->language->get('heading_title'));
 		$this->load->model('seller/address');
@@ -57,10 +57,7 @@ class ControllerSellerAddress extends Controller {
 		$this->getForm();
   	}
   	public function delete() {
-    	if (!$this->seller->isLogged()) {
-	  		$this->session->data['redirect'] = $this->url->link('seller/address', '', 'SSL');
-	  		$this->response->redirect($this->url->link('seller/login', '', 'SSL')); 
-    	} 
+    	$this->addressRedirect('');  
     	$this->language->load('seller/address');
 		$this->document->setTitle($this->language->get('heading_title'));
 		$this->load->model('seller/address');

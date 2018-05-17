@@ -1,5 +1,7 @@
 <?php
+
 class Seller {
+
 	private $seller_id;
 	private $username;
 	private $firstname;
@@ -10,6 +12,7 @@ class Seller {
 	private $newsletter;
 	private $seller_group_id;
 	private $address_id;
+
 	public function __construct($registry) {
 		$this->config = $registry->get('config');
 		$this->db = $registry->get('db');
@@ -36,13 +39,19 @@ class Seller {
 			}
 		}
 	}
+
 	public function login($email, $password, $override = false) {
+
 		if ($override) {
+
 			$seller_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "sellers where LOWER(email) = '" . $this->db->escape(strtolower($email)) . "' AND status = '1'");
 		} else {
+
 			$seller_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "sellers WHERE LOWER(email) = '" . $this->db->escape(strtolower($email)) . "' AND (password = SHA1(CONCAT(salt, SHA1(CONCAT(salt, SHA1('" . $this->db->escape($password) . "'))))) OR password = '" . $this->db->escape(md5($password)) . "') AND status = '1' AND approved = '1'");
 		}
+
 		if ($seller_query->num_rows) {
+
 			$this->session->data['seller_id'] = $seller_query->row['seller_id'];	
 			$this->seller_id = $seller_query->row['seller_id'];
 			$this->username = $seller_query->row['username'];
@@ -59,6 +68,7 @@ class Seller {
 			return false;
 		}
 	}
+
 	public function logout() {
 		unset($this->session->data['seller_id']);
 		$this->seller_id = '';
@@ -72,9 +82,11 @@ class Seller {
 		$this->seller_group_id = '';
 		$this->address_id = '';
 	}
+
 	public function isLogged() {
 		return $this->seller_id;
 	}
+
 	public function getId() {
 		return $this->seller_id;
 	}
@@ -103,6 +115,7 @@ class Seller {
 		return $this->address_id;	
 	}
 	public function getBalance() {
+		
 		$filter_eligible_status_id = $this->config->get('config_seller_payments');		
 		if(!empty($filter_eligible_status_id))		{				
 			$filter_eligible_status_id = implode(",",$filter_eligible_status_id);		

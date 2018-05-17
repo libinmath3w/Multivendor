@@ -1,16 +1,14 @@
 <?php 
 class ControllerSellerMessages extends Controller {
+	
 	private $error = array();
+	
 	public function index() {
-    	if (!$this->seller->isLogged()) {
-      		$this->session->data['redirect'] = $this->url->link('seller/messages', '', 'SSL');
-	  		$this->redirect($this->url->link('seller/login', '', 'SSL'));
-    	}		
+    	$this->messageRedirect('');		
 		$this->language->load('seller/messages');		
 		$this->load->model('seller/messages');
     	$this->document->setTitle($this->language->get('heading_title'));
     	
-
 		$data['heading_title'] = $this->language->get('heading_title');
 		$data['text_order_id'] = $this->language->get('text_order_id');
 		$data['text_status'] = $this->language->get('text_status');
@@ -82,8 +80,8 @@ class ControllerSellerMessages extends Controller {
 			$this->response->setOutput($this->load->view('default/template/seller/messages_list.tpl', $data));
 		}	
 	}
-	public function reply()
-	{		
+	public function reply() {
+		$this->messageRedirect('');
 		$this->language->load('seller/messages');		
 		$this->load->model('seller/messages');
 
@@ -131,21 +129,24 @@ class ControllerSellerMessages extends Controller {
 		$this->response->setOutput(json_encode($json));
     	
 	}
-	private function validate()
-	{
-		# code...
+	private function validate() {
+		$this->messageRedirect('');
 	}
-	public function deleteMessage()
-	{
-		# code...
+	public function deleteMessage() {
+		$this->messageRedirect('');
+	}
+
+	private function messageRedirect($endpoint) {
+		
+    	if (!$this->seller->isLogged()) {
+      		$this->session->data['redirect'] = $this->url->link('seller/messages/'.trim($endpoint), '', 'SSL');
+	  		$this->response->redirect($this->url->link('seller/login', '', 'SSL'));
+    	}
 	}
     
-    public function message_info()
-    {
-    	if (!$this->seller->isLogged()) {
-      		$this->session->data['redirect'] = $this->url->link('seller/messages', '', 'SSL');
-	  		$this->response->redirect($this->url->link('seller/login', '', 'SSL'));
-    	}		
+    public function message_info() {
+    	$this->messageRedirect('');
+
 		$this->language->load('seller/messages');		
 		$this->load->model('seller/messages');
     	$this->document->setTitle($this->language->get('heading_title'));
@@ -168,11 +169,8 @@ class ControllerSellerMessages extends Controller {
     	$data['history'] = $this->seller->getMessageHistory($message_id,$this->seller->getId());
     	
     	$data['messageInfo'] = $messageInfo;
-        //var_dump($messageInfo );
-    	//get message content by Id and sellerId
-    	//render the data
-    	$data['continue'] = $this->url->link('seller/account', '', 'SSL');
 
+    	$data['continue'] = $this->url->link('seller/account', '', 'SSL');
     	$data['column_left'] = $this->load->controller('common/column_left');
     	$data['content_top'] = $this->load->controller('common/content_top');
     	$data['content_bottom'] = $this->load->controller('common/content_bottom');

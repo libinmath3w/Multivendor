@@ -1,16 +1,16 @@
 <?php  
 class ControllerSellerDownload extends Controller {  
+	
 	private $error = array();
+  	
   	public function index() {
-	  if (!$this->seller->isLogged()) {
-	  		$this->session->data['redirect'] = $this->url->link('seller/download', '', 'SSL');
-	  		$this->response->redirect($this->url->link('seller/login', '', 'SSL'));
-    	}
+    	$this->downloadRedirect('');
 		$this->load->language('seller/download');
     	$this->document->setTitle($this->language->get('heading_title'));
 		$this->load->model('seller/download');
     	$this->getList();
   	}
+
 	public function autocomplete() {
 		$json = array();
 		if (isset($this->request->get['filter_name'])) {
@@ -36,7 +36,17 @@ class ControllerSellerDownload extends Controller {
 		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
 	}
+
+	private function downloadRedirect($endpoint) {
+		
+    	if (!$this->seller->isLogged()) {
+      		$this->session->data['redirect'] = $this->url->link('seller/download/'.trim($endpoint), '', 'SSL');
+	  		$this->response->redirect($this->url->link('seller/login', '', 'SSL'));
+    	}
+	}
+
   	public function insert() {
+		$this->downloadRedirect('insert');
 		$this->load->language('seller/download');
     	$this->document->setTitle($this->language->get('heading_title1'));
 		$this->load->model('seller/download');
@@ -58,6 +68,7 @@ class ControllerSellerDownload extends Controller {
     	$this->getForm();
   	}
   	public function update() {
+		$this->downloadRedirect('');
 		$this->load->language('seller/download');
     	$this->document->setTitle($this->language->get('heading_title'));
 		$this->load->model('seller/download');
@@ -79,6 +90,7 @@ class ControllerSellerDownload extends Controller {
     	$this->getForm();
   	}
   	public function delete() {
+		$this->downloadRedirect('');
 		$this->load->language('seller/download');
     	$this->document->setTitle($this->language->get('heading_title'));
 		$this->load->model('seller/download');
@@ -411,7 +423,7 @@ class ControllerSellerDownload extends Controller {
 		}	
 		$this->response->setOutput(json_encode($json));
 	}
-public function upload() {
+	public function upload() {
 		$this->load->language('seller/download');
 		$json = array();
 		if (!$json) {

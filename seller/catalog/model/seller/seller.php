@@ -162,10 +162,12 @@ class ModelSellerSeller extends Model {
 		$path = HTTPS_SERVER1;
 		$fPath = DIR_IMAGE. $folderName;
 		$exist = is_dir($fPath);
+
 		if(!$exist) {
 			mkdir("$fPath");
 			chmod("$fPath", 0777);
 		}
+
 		$this->db->query("INSERT INTO " . DB_PREFIX . "sellers SET store_id = '" . (int)$this->config->get('config_store_id') . "',
 			username = '" . $this->db->escape($data['username']) . "', firstname = '" . $this->db->escape($data['firstname']) . "', 
 			lastname = '" . $this->db->escape($data['lastname']) . "', email = '" . $this->db->escape($data['email']) . "'
@@ -181,22 +183,28 @@ class ModelSellerSeller extends Model {
 			firstname = '" . $this->db->escape($data['firstname']) . "', 
 			lastname = '" . $this->db->escape($data['lastname']) . "'
 			");
+
 		$address_id = $this->db->getLastId();
+
 		$this->db->query("UPDATE " . DB_PREFIX . "sellers SET address_id = '" . (int)$address_id . "' WHERE
 			seller_id = '" . (int)$seller_id . "'");
+
 		if ($this->config->get('config_seller_autoapprove')) {
 			$this->db->query("UPDATE " . DB_PREFIX . "sellers SET approved = 1,status=1
 				WHERE	seller_id = '" . (int)$seller_id . "'");
 		}
+
 		$this->load->language('mail/seller');
+
 		if (!$this->config->get('config_seller_autoapprove')) {
 			$subject = sprintf($this->language->get('text_approvalsubject'), $this->config->get('config_name'));
 			$message = sprintf($this->language->get('text_welcome'), $this->config->get('config_name')) . "\n\n";
 			$message .= $this->language->get('text_approval') . "\n";
-		}else{
+		} else {
 			$subject = sprintf($this->language->get('text_subject'), $this->config->get('config_name'));
 			$message = sprintf($this->language->get('text_welcome'), $this->config->get('config_name')) . "\n\n";
 		}
+
 		$message .= $this->url->link('seller/login', '', 'SSL') . "\n\n";
 		$message .= $this->language->get('text_services') . "\n\n";
 		$message .= $this->language->get('text_thanks') . "\n";
@@ -273,11 +281,13 @@ class ModelSellerSeller extends Model {
 			SET commission_id = '" . (int)$plan_id. "',
 			expiry_date = '".$expirydate."',payment_status = 1
 			WHERE seller_id = '" . (int)$seller_id . "'");
+
 	}
 	public function updateplanseller1($data,$seller_id) {
 		$this->db->query("UPDATE " . DB_PREFIX . "sellers SET commission_id = '" . (int)$data['commission_id'] . "'
 			WHERE seller_id = '" . (int)$seller_id . "'");
 	}
+
 	public function editSeller($data) {
 		$this->db->query("UPDATE " . DB_PREFIX . "sellers SET firstname = '" . $this->db->escape($data['firstname']) . "', 
 			lastname = '" . $this->db->escape($data['lastname']) . "', email = '" . $this->db->escape($data['email']) . "', 
@@ -295,31 +305,40 @@ class ModelSellerSeller extends Model {
 	public function editPassword($email, $password) {
 		$this->db->query("UPDATE " . DB_PREFIX . "sellers SET salt = '" . $this->db->escape($salt = token(9)) . "', password = '" . $this->db->escape(sha1($salt . sha1($salt . sha1($password)))) . "' WHERE email = '" . $this->db->escape($email) . "'");
 	}
+
 	public function editNewsletter($newsletter) {
 		$this->db->query("UPDATE " . DB_PREFIX . "sellers SET newsletter = '" . (int)$newsletter . "' WHERE seller_id = '" . (int)$this->seller->getId() . "'");
 	}
+
 	public function getSeller($seller_id) {
 		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "sellers WHERE seller_id = '" . (int)$seller_id . "'");
 		return $query->row;
 	}
+
 	public function getSellerByEmail($email) {
 		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "sellers WHERE email = '" . $this->db->escape($email) . "'");
 		return $query->row;
 	}
+
 	public function getSellerByToken($token) {
 		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "sellers WHERE token = '" . $this->db->escape($token) . "' AND token != ''");
 		$this->db->query("UPDATE " . DB_PREFIX . "sellers SET token = ''");
 		return $query->row;
 	}
+
 	public function getSellers($data = array()) {
 		$sql = "SELECT *, CONCAT(c.firstname, ' ', c.lastname) AS name, cg.name AS seller_group FROM " . DB_PREFIX . "sellers c LEFT JOIN " . DB_PREFIX . "seller_group cg ON (c.seller_group_id = cg.seller_group_id) ";
+
 		$implode = array();
+
 		if (isset($data['filter_name']) && !is_null($data['filter_name'])) {
 			$implode[] = "LCASE(CONCAT(c.firstname, ' ', c.lastname)) LIKE '" . $this->db->escape(utf8_strtolower($data['filter_name'])) . "%'";
 		}
+
 		if (isset($data['filter_email']) && !is_null($data['filter_email'])) {
 			$implode[] = "c.email = '" . $this->db->escape($data['filter_email']) . "'";
 		}
+		
 		if (isset($data['filter_seller_group_id']) && !is_null($data['filter_seller_group_id'])) {
 			$implode[] = "cg.seller_group_id = '" . $this->db->escape($data['filter_seller_group_id']) . "'";
 		}

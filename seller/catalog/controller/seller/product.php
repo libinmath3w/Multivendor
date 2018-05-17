@@ -22,6 +22,14 @@ class ControllerSellerProduct extends Controller {
 		$this->getList();
 	
 	}
+
+	private function productRedirect($endpoint) {
+		
+    	if (!$this->seller->isLogged()) {
+      		$this->session->data['redirect'] = $this->url->link('seller/product/'.trim($endpoint), '', 'SSL');
+	  		$this->response->redirect($this->url->link('seller/login', '', 'SSL'));
+    	}
+	}
 	
 	private function OverMaxLimit() { 
 	
@@ -59,13 +67,7 @@ class ControllerSellerProduct extends Controller {
 	
 	public function add() {
 	
-		if (!$this->seller->isLogged()) {
-	
-			$this->session->data['redirect'] = $this->url->link('seller/product/add', '', 'SSL');
-	
-			$this->response->redirect($this->url->link('seller/login', '', 'SSL'));
-	
-		}
+		$this->productRedirect('add');
 	
 		$this->load->language('seller/product');
 	
@@ -147,13 +149,7 @@ class ControllerSellerProduct extends Controller {
 
 	public function update() {
 
-		if (!$this->seller->isLogged()) {
-
-			$this->session->data['redirect'] = $this->url->link('seller/product', '', 'SSL');
-
-			$this->response->redirect($this->url->link('seller/login', '', 'SSL'));
-
-		}
+		$this->productRedirect('update');
 
 		$this->load->language('seller/product');
 
@@ -221,13 +217,7 @@ class ControllerSellerProduct extends Controller {
 
 	public function delete() {
 
-		if (!$this->seller->isLogged()) {
-
-			$this->session->data['redirect'] = $this->url->link('seller/product', '', 'SSL');
-
-			$this->response->redirect($this->url->link('seller/login', '', 'SSL'));
-
-		} 
+		$this->productRedirect('delete');
 
 		$this->load->language('seller/product');
 
@@ -299,14 +289,7 @@ class ControllerSellerProduct extends Controller {
 
 	public function copy() {
 
-		if (!$this->seller->isLogged()) {
-
-			$this->session->data['redirect'] = $this->url->link('seller/product', '', 'SSL');
-
-			$this->response->redirect($this->url->link('seller/login', '', 'SSL'));
-
-		} 
-
+		$this->productRedirect('copy');
 		$this->load->language('seller/product');
 
 		$this->document->setTitle($this->language->get('heading_title'));
@@ -1662,15 +1645,23 @@ class ControllerSellerProduct extends Controller {
 		}
 	} 
 	public function upload() {
+
+		$this->productRedirect('');
+
 		$this->language->load('seller/product');	
+
 		$json = array();
+
 		if (!empty($this->request->files['file']['name'])) {
 			$filename = basename(html_entity_decode($this->request->files['file']['name'], ENT_QUOTES, 'UTF-8'));
+
 			if ((strlen($filename) < 3) || (strlen($filename) > 128)) {
 				$json['error'] = $this->language->get('error_filename');
-			}	  	
+			}	 
+
 			$allowed = array();
 			$filetypes = explode("\n", $this->config->get('config_file_ext_allowed'));
+
 			foreach ($filetypes as $filetype) {
 				$allowed[] = trim($filetype);
 			}
@@ -1698,7 +1689,10 @@ class ControllerSellerProduct extends Controller {
 		}	
 		$this->response->setOutput(json_encode($json));		
 	}
+
 	public function download() {
+		
+		$this->productRedirect('');
 		$this->language->load('seller/product');
 		$json = array();
 		if (!empty($this->request->files['file']['name'])) {

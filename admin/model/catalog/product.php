@@ -301,7 +301,7 @@ class ModelCatalogProduct extends Model {
 							}
 					    $i++;
 					}else{
-			           if($this->config->get('config_defaultseller_id')){
+			           if( $this->config->get('config_defaultseller_id') ) {
 							$this->db->query("UPDATE " . DB_PREFIX . "product SET seller_id = '" . (int)$this->config->get('config_defaultseller_id') . "' WHERE product_id = '" . (int)$product_id . "'");
 							$this->db->query("INSERT INTO " . DB_PREFIX . "seller SET vproduct_id = '" . (int)$product_id . "', seller_id = '" . (int)$this->config->get('config_defaultseller_id') . "'");
 							$this->db->query("INSERT INTO " . DB_PREFIX . "sellers_products SET
@@ -315,9 +315,9 @@ class ModelCatalogProduct extends Model {
 		}
 		$this->db->query("DELETE FROM " . DB_PREFIX . "sellers_products WHERE product_id = '" . (int)$product_id . "'");
 		
-		if (isset($data['product_seller'])) {
+		if ( isset($data['product_seller']) ) {
 		
-			foreach ($data['product_seller'] as $product_seller) {
+			foreach ( $data['product_seller'] as $product_seller ) {
 		
 				$this->db->query("INSERT INTO " . DB_PREFIX . "sellers_products SET product_id = '" . (int)$product_id . "', 
 				seller_id = '" . (int)$product_seller['seller_id'] . "', quantity = '" . (int)$product_seller['quantity'] . "',
@@ -393,17 +393,17 @@ class ModelCatalogProduct extends Model {
 
 						foreach ($product_option['product_option_value'] as $product_option_value) {
 							
-           				 /*START OVICKO MULTISELLER*/
+           				 	/*START OVICKO MULTISELLER*/
 							$this->db->query("INSERT INTO " . DB_PREFIX . "product_option_value SET product_option_value_id = '" . (int)$product_option_value['product_option_value_id'] . "', product_option_id = '" . (int)$product_option_id . "', product_id = '" . (int)$product_id . "', option_id = '" . (int)$product_option['option_id'] . "', option_value_id = '" . (int)$product_option_value['option_value_id'] . "', quantity = '" . (int)$product_option_value['quantity'] . "', subtract = '" . (int)$product_option_value['subtract'] . "', price = '" . (float)$product_option_value['price'] . "', price_prefix = '" . $this->db->escape($product_option_value['price_prefix']) . "', points = '" . (int)$product_option_value['points'] . "', points_prefix = '" . $this->db->escape($product_option_value['points_prefix']) . "', weight = '" . (float)$product_option_value['weight'] . "', weight_prefix = '" . $this->db->escape($product_option_value['weight_prefix']) . "', seller_id = '" . (int)$product_option['seller_id']. "'");
-						/*END OVICKO MULTISELLER*/
+							/*END OVICKO MULTISELLER*/
 			
 						}
 					}
 				} else {
 					
-            /*START OVICKO MULTISELLER*/
+            	/*START OVICKO MULTISELLER*/
 				$this->db->query("INSERT INTO " . DB_PREFIX . "product_option SET product_option_id = '" . (int)$product_option['product_option_id'] . "', product_id = '" . (int)$product_id . "', option_id = '" . (int)$product_option['option_id'] . "', value = '" . $this->db->escape($product_option['value']) . "', required = '" . (int)$product_option['required'] . "', seller_id = '" . (int)$product_option['seller_id']. "'");
-			/*END OVICKO MULTISELLER*/
+				/*END OVICKO MULTISELLER*/
 			
 				}
 			}
@@ -529,19 +529,21 @@ class ModelCatalogProduct extends Model {
 		$query = $this->db->query("SELECT DISTINCT * FROM " . DB_PREFIX . "product p WHERE p.product_id = '" . (int)$product_id . "'");
 
 		if ($query->num_rows) {
+
 			$data = $query->row;
 
 			$data['sku'] = '';
+
 			$data['upc'] = '';
+
 			$data['viewed'] = '0';
+
 			$data['keyword'] = '';
+
 			$data['status'] = '0';
-
             /*START OVICKO MULTISELLER*/
-				$data['approve'] = '0';
-			/*END OVICKO MULTISELLER*/
-			
-
+			$data['approve'] = '0';
+			/*END OVICKO MULTISELLER*/		
 			$data['product_attribute'] = $this->getProductAttributes($product_id);
 			$data['product_description'] = $this->getProductDescriptions($product_id);
 			$data['product_discount'] = $this->getProductDiscounts($product_id);
@@ -564,14 +566,13 @@ class ModelCatalogProduct extends Model {
 	public function deleteProduct($product_id) {
 		$this->db->query("DELETE FROM " . DB_PREFIX . "product WHERE product_id = '" . (int)$product_id . "'");
 
-            /*START OVICKO MULTISELLER*/
-				$this->db->query("DELETE FROM " . DB_PREFIX . "seller WHERE vproduct_id = '" . (int)$product_id . "'");
-			/*END OVICKO MULTISELLER*/
+        /*START OVICKO MULTISELLER*/
+		$this->db->query("DELETE FROM " . DB_PREFIX . "seller WHERE vproduct_id = '" . (int)$product_id . "'");
+		/*END OVICKO MULTISELLER*/
 			
-
-            /*START OVICKO MULTISELLER*/
-								$this->db->query("DELETE FROM " . DB_PREFIX . "sellers_products WHERE product_id = '" . (int)$product_id . "'");
-			/*END OVICKO MULTISELLER*/
+        /*START OVICKO MULTISELLER*/
+		$this->db->query("DELETE FROM " . DB_PREFIX . "sellers_products WHERE product_id = '" . (int)$product_id . "'");
+		/*END OVICKO MULTISELLER*/
 			
 		$this->db->query("DELETE FROM " . DB_PREFIX . "product_attribute WHERE product_id = '" . (int)$product_id . "'");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "product_description WHERE product_id = '" . (int)$product_id . "'");

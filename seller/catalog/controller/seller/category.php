@@ -22,9 +22,19 @@ class ControllerSellerCategory extends Controller {
 		$this->getList();
 	
 	}
+
+	private function categoryRedirect($endpoint) {
+		
+    	if (!$this->seller->isLogged()) {
+      		$this->session->data['redirect'] = $this->url->link('seller/category/'.trim($endpoint), '', 'SSL');
+	  		$this->response->redirect($this->url->link('seller/login', '', 'SSL'));
+    	}
+	}
 	
 	public function add() {
-	
+
+		$this->categoryRedirect('add');
+
 		$this->load->language('seller/category');
 	
 		$this->document->setTitle($this->language->get('heading_title1'));
@@ -47,6 +57,7 @@ class ControllerSellerCategory extends Controller {
 	
 	public function update() {
 	
+		$this->categoryRedirect('update');
 		$this->load->language('seller/category');
 	
 		$this->document->setTitle($this->language->get('heading_title'));
@@ -69,6 +80,7 @@ class ControllerSellerCategory extends Controller {
 	
 	public function delete() {
 	
+		$this->categoryRedirect('delete');
 		$this->load->language('seller/category');
 	
 		$this->document->setTitle($this->language->get('heading_title'));
