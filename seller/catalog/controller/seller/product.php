@@ -5,13 +5,7 @@ class ControllerSellerProduct extends Controller {
 	
 	public function index() {
 	
-		if (!$this->seller->isLogged()) {
-	
-			$this->session->data['redirect'] = $this->url->link('seller/product', '', 'SSL');
-	
-			$this->response->redirect($this->url->link('seller/login', '', 'SSL'));
-	
-		} 
+		$this->productRedirect('');
 	
 		$this->load->language('seller/product');
 	
@@ -533,6 +527,7 @@ class ControllerSellerProduct extends Controller {
 		$this->load->model('tool/image');
 		$product_total = $this->model_seller_product->getTotalProducts($filterdata,$this->seller->getId());
 		$results = $this->model_seller_product->getProducts($filterdata,$this->seller->getId());
+		
 		foreach ($results as $result) {
 			$action = array();
 			$action[] = array(
@@ -544,19 +539,19 @@ class ControllerSellerProduct extends Controller {
 			} else {
 				$image = $this->model_tool_image->resize('no_image.png', 40, 40);
 			}
+
 			$special = false;
-			$product_specials = $this->model_seller_product->getProductSpecials1($result['product_id'],$this->seller->getId());
+
+			$product_specials = $this->model_seller_product->getProductSpecialsBySeller($result['product_id'],$this->seller->getId());
+
 			foreach ($product_specials  as $product_special) {
-				if (($product_special['date_start'] == '0000-00-00' || $product_special['date_start'] > date('Y-m-d')) && ($product_special['date_end'] == '0000-00-00' || $product_special['date_end'] < date('Y-m-d'))) {
-					$special = $product_special['price'];
+				if (($product_special['date_start'] == '0000-00-00' || strtotime($product_special['date_start']) < time()) && ($product_special['date_end'] == '0000-00-00' || strtotime($product_special['date_end']) > time())) {
+					$special = $this->currency->format($product_special['price'], $this->config->get('config_currency'));
+
 					break;
 				}					
 			}
-			// if($result['approve']== 0){
-			// 	$edit = $this->url->link('seller/product/update', 'product_id=' . $result['product_id'] . $url, 'SSL');
-			// } else { 
-			// 	$edit = $this->url->link('seller/product/details', 'product_id=' . $result['product_id'] . $url, 'SSL');
-			// }
+
 			$edit = $this->url->link('seller/product/update', 'product_id=' . $result['product_id'] . $url, 'SSL');
 			$this->load->model('seller/download');
 			$data['products'][] = array(
@@ -564,11 +559,11 @@ class ControllerSellerProduct extends Controller {
 				'name'       => $result['name'],
 				'date_added'       => $result['date_added'],
 				'model'      => $result['model'],
-				'price'      => $result['sprice'],
+				'price'      => $this->currency->format($result['price'], $this->config->get('config_currency')),
 				'sku'      	 => $result['sku'],
 				'special'    => $special,
 				'image'      => $image,
-				'quantity'   => $result['squantity'],
+				'quantity'   => $result['quantity'],
 				'status'     => ($result['status'] ? $this->language->get('text_enabled') : $this->language->get('text_disabled')),
 				'selected'   => isset($this->request->post['selected']) && in_array($result['product_id'], $this->request->post['selected']),
 				'edit'       => $edit
@@ -618,48 +613,62 @@ class ControllerSellerProduct extends Controller {
 		} else {
 			$data['success'] = '';
 		}
+
 		if (isset($this->request->post['selected'])) {
 			$data['selected'] = (array)$this->request->post['selected'];
 		} else {
 			$data['selected'] = array();
 		}
+
 		$url = '';
+
 		if (isset($this->request->get['filter_name1'])) {
 			$url .= '&filter_name1=' . $this->request->get['filter_name1'];
 		}
+
 		if (isset($this->request->get['filter_model'])) {
 			$url .= '&filter_model=' . $this->request->get['filter_model'];
 		}
+
 		if (isset($this->request->get['filter_sku'])) {
 			$url .= '&filter_sku=' . $this->request->get['filter_sku'];
 		}
+
 		if (isset($this->request->get['filter_price'])) {
 			$url .= '&filter_price=' . $this->request->get['filter_price'];
 		}
+
 		if (isset($this->request->get['filter_quantity'])) {
 			$url .= '&filter_quantity=' . $this->request->get['filter_quantity'];
 		}
+
 		if ($order == 'ASC') {
 			$url .= '&order=DESC';
 		} else {
 			$url .= '&order=ASC';
 		}
+
 		if (isset($this->request->get['page'])) {
 			$url .= '&page=' . $this->request->get['page'];
 		}
+
 		$data['sort_name'] = $this->url->link('seller/product', 'sort=pd.name' . $url, 'SSL');
 		$data['sort_model'] = $this->url->link('seller/product', 'sort=p.model' . $url, 'SSL');
 		$data['sort_sku'] = $this->url->link('seller/product', 'sort=p.sku' . $url, 'SSL');
 		$data['sort_price'] = $this->url->link('seller/product', 'sort=p.price' . $url, 'SSL');
 		$data['sort_quantity'] = $this->url->link('seller/product', 'sort=p.quantity' . $url, 'SSL');
 		$data['sort_order'] = $this->url->link('seller/product', 'sort=p.sort_order' . $url, 'SSL');
+
 		$url = '';
+
 		if (isset($this->request->get['filter_name1'])) {
 			$url .= '&filter_name1=' . $this->request->get['filter_name1'];
 		}
+
 		if (isset($this->request->get['filter_model'])) {
 			$url .= '&filter_model=' . $this->request->get['filter_model'];
 		}
+
 		if (isset($this->request->get['filter_sku'])) {
 			$url .= '&filter_sku=' . $this->request->get['filter_sku'];
 		}

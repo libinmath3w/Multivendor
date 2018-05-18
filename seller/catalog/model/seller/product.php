@@ -647,10 +647,17 @@ public function getAssignLimit() {
 		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product_special WHERE product_id = '" . (int)$product_id . "' ORDER BY priority, price");
 		return $query->rows;
 	}
+
 	public function getProductSpecials1($product_id,$seller_id) {
 		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product_special WHERE product_id = '" . (int)$product_id . "' AND  seller_id = '" . (int)$seller_id . "'  ORDER BY priority, price");
-		return $query->rows;
+		return $query->rows;	
 	}
+
+	public function getProductSpecialsBySeller($product_id,$seller_id) {
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product_special WHERE product_id = '" . (int)$product_id . "' AND  seller_id = '" . (int)$seller_id . "'  ORDER BY priority, price");
+		return $query->rows;	
+	}
+
 	public function getProductRewards($product_id) {
 		$product_reward_data = array();
 		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product_reward WHERE product_id = '" . (int)$product_id . "'");

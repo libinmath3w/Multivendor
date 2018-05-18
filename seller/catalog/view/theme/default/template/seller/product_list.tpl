@@ -117,6 +117,7 @@
                     <?php } else { ?>
                     <?php echo $product['price']; ?>
                     <?php } ?></td>
+                    <!-- <td class="text-left"> <?php echo $product['price']; ?></td> -->
                   <td class="text-right"><?php if ($product['quantity'] <= 0) { ?>
                     <span class="label label-warning"><?php echo $product['quantity']; ?></span>
                     <?php } elseif ($product['quantity'] <= 5) { ?>

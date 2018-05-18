@@ -369,14 +369,9 @@ class ControllerCatalogProduct extends Controller {
 		/*END OVICKO MULTISELLER*/
 			
 		$filter_data = array(
-
-            /*START OVICKO MULTISELLER*/
-			/*code start*/
 			'filter_seller'   	   => $filter_seller, 
 			'filter_seller_name'   => $filter_seller_name,
 			'filter_approve'       => $filter_approve,
-			/*END OVICKO MULTISELLER*/
-			
 			'filter_name'	  => $filter_name,
 			'filter_model'	  => $filter_model,
 			'filter_price'	  => $filter_price,
@@ -393,16 +388,10 @@ class ControllerCatalogProduct extends Controller {
 		$product_total = $this->model_catalog_product->getTotalProducts($filter_data);
 
 		$results = $this->model_catalog_product->getProducts($filter_data);
-        
+		
 		foreach ($results as $result) {
-			//var_dump($result);
-			//echo "\n\n\n";
-            //var_dump($result['seller_id']);
-            /*START OVICKO MULTISELLER*/
 			$sellers1 = $this->model_catalog_product->getSellers1();
 
-			/*END OVICKO MULTISELLER*/
-			
 			if (is_file(DIR_IMAGE . $result['image'])) {
 				$image = $this->model_tool_image->resize($result['image'], 40, 40);
 			} else {
@@ -420,19 +409,12 @@ class ControllerCatalogProduct extends Controller {
 				}
 			}
 
-            /*START OVICKO MULTISELLER*/
 			$sellername = "";
-			//var_dump($this->model_sale_seller->getSellerName($result['seller_id']));
-			//echo "\n\n";
-			//var_dump(json_encode($result) );
-			//var_dump(json_encode($sellers1) );
-
 			if(isset($sellers1[$result['seller_id']])){
 				$sellername = $sellers1[$result['seller_id']];
 			}
 			/*END OVICKO MULTISELLER*/
 			$data['products'][] = array(
-            /*START OVICKO MULTISELLER*/
 	           //'seller_name'  => $sellername,
 	            'seller_name'  =>$this->model_sale_seller->getSellerName($result['seller_id']),
 	            //'seller_name'  =>$result['seller_id'],
