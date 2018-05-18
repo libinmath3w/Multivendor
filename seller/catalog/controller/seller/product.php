@@ -527,6 +527,7 @@ class ControllerSellerProduct extends Controller {
 		$this->load->model('tool/image');
 		$product_total = $this->model_seller_product->getTotalProducts($filterdata,$this->seller->getId());
 		$results = $this->model_seller_product->getProducts($filterdata,$this->seller->getId());
+		//var_dump($results);
 		
 		foreach ($results as $result) {
 			$action = array();
@@ -555,6 +556,7 @@ class ControllerSellerProduct extends Controller {
 			$edit = $this->url->link('seller/product/update', 'product_id=' . $result['product_id'] . $url, 'SSL');
 			$this->load->model('seller/download');
 			$data['products'][] = array(
+				'approve'     => ($result['approve'] ? $this->language->get('text_approved') : $this->language->get('text_pending')),
 				'product_id' => $result['product_id'],
 				'name'       => $result['name'],
 				'date_added'       => $result['date_added'],
@@ -572,7 +574,10 @@ class ControllerSellerProduct extends Controller {
 		$data['heading_title'] = $this->language->get('heading_title');						
 		$data['new_extensions'] = sprintf($this->language->get('new_extensions'), $this->url->link('seller/product/add', '', 'SSL'));	
 		$data['text_enabled'] = $this->language->get('text_enabled');		
-		$data['text_disabled'] = $this->language->get('text_disabled');		
+		$data['text_disabled'] = $this->language->get('text_disabled');
+		$data['text_pending']  = $this->language->get('text_pending');
+		$data['approved']  = $this->language->get('approved');
+		$data['text_delete']	= $this->language->get('text_delete');
 		$data['text_no_results'] = $this->language->get('text_no_results');		
 		$data['text_image_manager'] = $this->language->get('text_image_manager');		
 		$data['column_name'] = $this->language->get('column_name');
@@ -590,6 +595,7 @@ class ControllerSellerProduct extends Controller {
 		$data['column_model'] = $this->language->get('column_model');		
 		$data['column_price'] = $this->language->get('column_price');		
 		$data['column_quantity'] = $this->language->get('column_quantity');
+		$data['column_approve'] = $this->language->get('column_approve');
 		$data['text_list'] = $this->language->get('text_list');
 		$data['entry_name'] = $this->language->get('entry_name');
 		$data['entry_model'] = $this->language->get('entry_model');
@@ -658,6 +664,7 @@ class ControllerSellerProduct extends Controller {
 		$data['sort_price'] = $this->url->link('seller/product', 'sort=p.price' . $url, 'SSL');
 		$data['sort_quantity'] = $this->url->link('seller/product', 'sort=p.quantity' . $url, 'SSL');
 		$data['sort_order'] = $this->url->link('seller/product', 'sort=p.sort_order' . $url, 'SSL');
+		$data['sort_approve'] = $this->url->link('seller/product', 'sort=p.sort_approve' . $url, 'SSL');
 
 		$url = '';
 

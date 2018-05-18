@@ -45,6 +45,8 @@ $_['text_clear']         		= 'Clear';
 $_['text_enabled']         		= 'Yes';
 $_['text_disabled']         	= 'No';
 $_['text_edit']         		= 'Edit';
+$_['text_approved']         	= 'Approved';
+$_['text_pending']         		= 'Pending';
 $_['text_delete']      			= 'You have modified products!';
 $_['text_modify']      			= 'You have successfully modified products!';
 //button
@@ -54,6 +56,7 @@ $_['column_name']        = 'Product Name';
 $_['column_action']      = 'Action';
 $_['column_date_added']  = 'Date Added';
 $_['column_downloads']   = 'Downloads';
+$_['column_approve']     = 'Approval Status';
 // Entry
 $_['entry_name']        = 'Product Name:';
 $_['entry_model']        = 'Model:';
