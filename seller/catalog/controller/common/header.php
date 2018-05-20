@@ -27,6 +27,7 @@ class ControllerCommonHeader extends Controller {
 		$this->load->language('common/header');
 		$data['store_home'] = HTTP_SERVER1;
 		$data['text_home'] = $this->language->get('text_home');
+		$data['seller_shop'] = HTTPS_SERVER1.'index.php?route=product/seller&seller_id='.$this->seller->getId();
 		// Wishlist
 		if ($this->customer->isLogged()) {
 			$this->load->model('account/wishlist');
@@ -40,6 +41,7 @@ class ControllerCommonHeader extends Controller {
 		$data['text_register'] = $this->language->get('text_register');
 		$data['text_login'] = $this->language->get('text_login');
 		$data['text_logout'] = $this->language->get('text_logout');
+		$data['text_seller_store'] = $this->language->get('text_seller_store');
 		$data['text_checkout'] = $this->language->get('text_checkout');
 		$data['text_all'] = $this->language->get('text_all');
 		$data['username']=$this->seller->getFirstname()." ".$this->seller->getLastname();

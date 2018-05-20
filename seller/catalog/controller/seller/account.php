@@ -38,8 +38,6 @@ class ControllerSellerAccount extends Controller {
 		$data['text_reward'] = $this->language->get('text_reward');
 		$data['text_return'] = $this->language->get('text_return');
 		$data['text_transaction'] = $this->language->get('text_transaction');
-		$data['text_newsletter'] = $this->language->get('text_newsletter');
-		$data['text_getpaid'] = $this->language->get('text_getpaid');
 		$data['text_messagebox'] = $this->language->get('text_messagebox');
 		$data['text_checkmessage'] = $this->language->get('text_checkmessage');
 		$data['edit'] = $this->url->link('seller/edit', '', 'SSL');
@@ -108,7 +106,7 @@ class ControllerSellerAccount extends Controller {
 			} else {
 				$StatusName = $result['status'];
 			}
-			
+
 			$data['orders'][] = array(
 				'order_id'   => $result['order_id'],
 				'customer'       => $result['firstname'] . ' ' . $result['lastname'],
@@ -151,14 +149,12 @@ class ControllerSellerAccount extends Controller {
 		$data['seller_total_products'] = $this->model_seller_product->getTotalProducts1();
 		$seller_total_sale = $this->model_seller_transaction->getSellerTotalSales($this->seller->getId());
 		$data['seller_total_sales'] = $this->currency->format($seller_total_sale['totalSales'],$this->config->get('config_currency'));
-		//var_dump($seller_total_sale);
-		/**code added here**/
+
 		$data['option'] = $this->url->link('seller/option', '', 'SSL');
 		$data['category'] = $this->url->link('seller/category', '', 'SSL');
 		$data['text_option'] = $this->language->get('text_option');
 		$data['text_category'] = $this->language->get('text_category');	
-		$data['text_download'] = $this->language->get('text_download');			
-		/**/
+		$data['text_download'] = $this->language->get('text_download');
 		if ($this->config->get('reward_status')) {
 			$data['reward'] = $this->url->link('seller/reward', '', 'SSL');
 		} else {

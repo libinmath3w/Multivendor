@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title><?php echo $heading_title; ?></title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 <script src="catalog/view/javascript/jquery/jquery-2.1.1.min.js" type="text/javascript"></script>
@@ -16,10 +17,6 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
-  <!-- iCheck -->
-  <link rel="stylesheet" href="../../plugins/iCheck/square/blue.css">
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -30,9 +27,9 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-      <?php if ($logo) { ?>  
-      <a href="<?php echo $home; ?>"><img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>"  height="40px" /></a   
-     <?php } else { ?>        
+      <?php if ($logo) { ?>
+      <a href="<?php echo $home; ?>"><img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>"  height="40px" /></a
+     <?php } else { ?>
       <b><a href="<?php echo HTTP_SERVER1; ?>"><?php echo $name; ?></a></b><?php } ?>
   </div>
   <!-- /.login-logo -->
@@ -58,7 +55,7 @@
           <div class="checkbox icheck">
             <!-- <label>
               <input type="checkbox"> Remember Me
-            </label> 
+            </label>
              SILENCE IS GOLDEN
             -->
           </div>
@@ -75,25 +72,13 @@
     </form>
     <a  id="login1" href="<?php echo $forgotten; ?>" class="register">I forgot my password</a><br><br>
     <a  id="login1" href="<?php echo $register; ?>" class="text-center">Register a new membership</a> <Hr>
-    <a  id="login1" href="<?php echo HTTP_SERVER1; ?>" class="text-center"> Back to store</a>  
+    <a  id="login1" href="<?php echo HTTP_SERVER1; ?>" class="text-center"> Back to store</a>
 
   </div>
   <!-- /.login-box-body -->
 </div>
 <!-- /.login-box -->
-<!-- Bootstrap 3.3.5 -->
-<script src="../../bootstrap/js/bootstrap.min.js"></script>
-<!-- iCheck -->
-<script src="../../plugins/iCheck/icheck.min.js"></script>
-<script>
-  $(function () {
-    $('input').iCheck({
-      checkboxClass: 'icheckbox_square-blue',
-      radioClass: 'iradio_square-blue',
-      increaseArea: '20%' // optional
-    });
-  });
 </script>
 </body>
 </html>
-<?php echo $footer; ?>
+<?php echo; $footer; ?>

@@ -1,14 +1,14 @@
-<?php 
-class ControllerProductSeller extends Controller {  
+<?php
+class ControllerProductSeller extends Controller {
 	
-	public function index() { 
+	public function index() {
 		$this->language->load('product/seller');
 		
 		$this->load->model('catalog/seller');
 		
 		$this->load->model('catalog/product');
 		
-		$this->load->model('tool/image'); 
+		$this->load->model('tool/image');
 		
 		if (isset($this->request->get['sort'])) {
 			$sort = $this->request->get['sort'];
@@ -24,9 +24,9 @@ class ControllerProductSeller extends Controller {
 		
 		if (isset($this->request->get['page'])) {
 			$page = $this->request->get['page'];
-		} else { 
+		} else {
 			$page = 1;
-		}	
+		}
 							
 		if (isset($this->request->get['limit'])) {
 			$limit = $this->request->get['limit'];
@@ -40,26 +40,23 @@ class ControllerProductSeller extends Controller {
        		'text'      => $this->language->get('text_home'),
 			'href'      => $this->url->link('common/home'),
        		'separator' => false
-   		);	
+   		);
 			
 		if (isset($this->request->get['seller_id'])) {
-		    $seller_id = $this->request->get['seller_id'];			
-			
+		    $seller_id = $this->request->get['seller_id'];
 		} else {
-
 			$seller_id=0;
-		}		
+		}
 		
-		$seller_info = $this->model_catalog_seller->getSeller($seller_id);	
-		//var_dump($seller_info)	;
-	
+		$seller_info = $this->model_catalog_seller->getSeller($seller_id);
 		if ($seller_info) {
-	  		$this->document->setTitle($seller_info['firstname']);
+	  		$this->document->setTitle($seller_info['name']);
 						
-			$data['heading_title'] = $seller_info['firstname'];
-			
+			$data['heading_title'] = $seller_info['name'];
+            $data['seller_since']    = date('Y-M',strtotime($seller_info['date_added'])) ;
+
 			$data['text_refine'] = $this->language->get('text_refine');
-			$data['text_empty'] = $this->language->get('text_empty');			
+			$data['text_empty'] = $this->language->get('text_empty');
 			$data['text_quantity'] = $this->language->get('text_quantity');
 			$data['text_manufacturer'] = $this->language->get('text_manufacturer');
 			$data['text_model'] = $this->language->get('text_model');
@@ -79,7 +76,7 @@ class ControllerProductSeller extends Controller {
 			$data['button_continue'] = $this->language->get('button_continue');
 			
 			$data['button_list'] = $this->language->get('button_list');
-			$data['button_grid'] = $this->language->get('button_grid');			
+			$data['button_grid'] = $this->language->get('button_grid');
 			
 			$this->load->model('tool/image');
 			
@@ -96,12 +93,9 @@ class ControllerProductSeller extends Controller {
 			$data['name'] = html_entity_decode($seller_info['name'], ENT_QUOTES, 'UTF-8');
 			
 			if ($seller_info['aboutus']) {
-			
 				$data['aboutus'] = html_entity_decode($seller_info['aboutus'], ENT_QUOTES, 'UTF-8');
 			} else {
-			
 				$data['aboutus'] = "";
-			
 			}
 
 			$this->document->addScript('catalog/view/javascript/jquery/magnific/jquery.magnific-popup.min.js');
@@ -112,11 +106,11 @@ class ControllerProductSeller extends Controller {
 			
 			if (isset($this->request->get['sort'])) {
 				$url .= '&sort=' . $this->request->get['sort'];
-			}	
+			}
 
 			if (isset($this->request->get['order'])) {
 				$url .= '&order=' . $this->request->get['order'];
-			}	
+			}
 			
 			if (isset($this->request->get['limit'])) {
 				$url .= '&limit=' . $this->request->get['limit'];
@@ -126,22 +120,20 @@ class ControllerProductSeller extends Controller {
 			
 			$data['seller_id'] = $seller_id;
 			
-			//$results = $this->model_catalog_seller->getseller($seller_id);
-			
 			$data['sellereview'] = $this->model_catalog_seller->getSellerReview($seller_id);
 			$data['sellerating'] = (int)$this->model_catalog_seller->getSellerRating($seller_id);
 
 			$data['products'] = array();
 			
 			$data1 = array(
-				'filter_seller_id' => $seller_id, 
+				'filter_seller_id' => $seller_id,
 				'sort'               => $sort,
 				'order'              => $order,
 				'start'              => ($page - 1) * $limit,
 				'limit'              => $limit
 			);
 			
-			$product_total = $this->model_catalog_seller->getTotalProductss($data1,$seller_id); 
+			$product_total = $this->model_catalog_seller->getTotalProductss($data1,$seller_id);
 			
 			$results = $this->model_catalog_seller->getProducts($data1,$seller_id);
 						
@@ -223,20 +215,20 @@ class ControllerProductSeller extends Controller {
 				'text'  => $this->language->get('text_price_asc'),
 				'value' => 'sp.price-ASC',
 				'href'  => $this->url->link('product/seller','seller_id=' . $this->request->get['seller_id'] .'&sort=sp.price&order=ASC' . $url)
-			); 
+			);
 
 			$data['sorts'][] = array(
 				'text'  => $this->language->get('text_price_desc'),
 				'value' => 'sp.price-DESC',
 				'href'  => $this->url->link('product/seller','seller_id=' . $this->request->get['seller_id'] .'&sort=sp.price&order=DESC' . $url)
-			); 
+			);
 			
 			if ($this->config->get('config_review_status')) {
 				$data['sorts'][] = array(
 					'text'  => $this->language->get('text_rating_desc'),
 					'value' => 'rating-DESC',
 					'href'  => $this->url->link('product/seller','seller_id=' . $this->request->get['seller_id'] .'&sort=rating&order=DESC' . $url)
-				); 
+				);
 				
 				$data['sorts'][] = array(
 					'text'  => $this->language->get('text_rating_asc'),
@@ -261,7 +253,7 @@ class ControllerProductSeller extends Controller {
 	
 			if (isset($this->request->get['sort'])) {
 				$url .= '&sort=' . $this->request->get['sort'];
-			}	
+			}
 
 			if (isset($this->request->get['order'])) {
 				$url .= '&order=' . $this->request->get['order'];
@@ -281,14 +273,12 @@ class ControllerProductSeller extends Controller {
 					'href'  => $this->url->link('product/seller', 'seller_id=' . $this->request->get['seller_id'] . $url . '&limit=' . $value)
 				);
 			}
-			
-			
-						
+            
 			$url = '';
 	
 			if (isset($this->request->get['sort'])) {
 				$url .= '&sort=' . $this->request->get['sort'];
-			}	
+			}
 
 			if (isset($this->request->get['order'])) {
 				$url .= '&order=' . $this->request->get['order'];
@@ -310,25 +300,22 @@ class ControllerProductSeller extends Controller {
 			$data['sort'] = $sort;
 			$data['order'] = $order;
 			$data['limit'] = $limit;
-		
-			$data['continue'] = $this->url->link('common/home');
-			$data['column_left'] = $this->load->controller('common/column_left');
+            
+            $data['continue'] = $this->url->link('common/home');
 			$data['column_right'] = $this->load->controller('common/column_right');
 			$data['content_top'] = $this->load->controller('common/content_top');
 			$data['content_bottom'] = $this->load->controller('common/content_bottom');
+            $data['seller_categories']  = $this->load->controller('extension/module/sellercategory');
 			$data['footer'] = $this->load->controller('common/footer');
 			$data['header'] = $this->load->controller('common/header');
-
 			$this->response->setOutput($this->load->view('product/seller', $data));
-			
-													
     	} else {
 			$url = '';
 			
 								
 			if (isset($this->request->get['sort'])) {
 				$url .= '&sort=' . $this->request->get['sort'];
-			}	
+			}
 
 			if (isset($this->request->get['order'])) {
 				$url .= '&order=' . $this->request->get['order'];
@@ -358,6 +345,7 @@ class ControllerProductSeller extends Controller {
 
       		$data['continue'] = $this->url->link('common/home');
 
+
 			$data['column_left'] = $this->load->controller('common/column_left');
 			$data['column_right'] = $this->load->controller('common/column_right');
 			$data['content_top'] = $this->load->controller('common/content_top');
@@ -385,7 +373,7 @@ class ControllerProductSeller extends Controller {
 			$page = $this->request->get['page'];
 		} else {
 			$page = 1;
-		}  
+		}
 		
 		$data['reviews'] = array();
 		
@@ -401,12 +389,12 @@ class ControllerProductSeller extends Controller {
         		'reviews'    => sprintf($this->language->get('text_reviews'), (int)$review_total),
         		'date_added' => date($this->language->get('date_format_short'), strtotime($result['date_added']))
         	);
-      	}			
+      	}
 			
 		$pagination = new Pagination();
 		$pagination->total = $review_total;
 		$pagination->page = $page;
-		$pagination->limit = 5; 
+		$pagination->limit = 5;
 		$pagination->text = $this->language->get('text_pagination');
 		$pagination->url = $this->url->link('product/seller/review', 'seller_id=' . $this->request->get['seller_id'] . '&page={page}');
 			
@@ -415,8 +403,7 @@ class ControllerProductSeller extends Controller {
 		$data['results'] = sprintf($this->language->get('text_pagination'), ($review_total) ? (($page - 1) * 5) + 1 : 0, ((($page - 1) * 5) > ($review_total - 5)) ? $review_total : ((($page - 1) * 5) + 5), $review_total, ceil($review_total / 5));
 
 			$this->response->setOutput($this->load->view('product/review', $data));
-
-		
 	}
+
 }
 ?>

@@ -1,5 +1,6 @@
 <?php
 class ControllerSellerFileManager extends Controller {
+	
 	public function index() {
 		$this->load->language('common/filemanager');
 		if (!$this->seller->isLogged()) {

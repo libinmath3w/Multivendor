@@ -58,7 +58,7 @@ $(document).ready(function() {
 				$('body').append('<div id="modal-image" class="modal">' + html + '</div>');
 				$('#modal-image').modal('show');
 			}
-		});	
+		});
 	});
 	// Image Manager
 	$(document).delegate('a[data-toggle=\'image\']', 'click', function(e) {
@@ -97,7 +97,7 @@ $(document).ready(function() {
 			$(element).popover('hide', function() {
 				$('.popover').remove();
 			});
-		});		
+		});
 		$('#button-clear').on('click', function() {
 			$(element).find('img').attr('src', $(element).find('img').attr('data-placeholder'));
 			$(element).parent().find('input').attr('value', '');
@@ -115,14 +115,14 @@ $(document).ready(function() {
 	// https://github.com/opencart/opencart/issues/2595
 	$.event.special.remove = {
 		remove: function(o) {
-			if (o.handler) { 
+			if (o.handler) {
 				o.handler.apply(this, arguments);
 			}
 		}
-	}
+	};
 	$('[data-toggle=\'tooltip\']').on('remove', function() {
 		$(this).tooltip('destroy');
-	});	
+	});
 });
 </script>
 </head>
@@ -152,7 +152,8 @@ $(document).ready(function() {
                   <span class="hidden-xs"><?php echo $username?></span>
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a href="index.php?route=seller/logout">Logout</a></li>
+                  <li><a href="<?php echo $seller_shop; ?>"><?php echo $text_seller_store; ?></a></li>
+                  <li><a href="index.php?route=seller/logout"><?php echo $text_logout; ?></a></li>
                 </ul>
               </li>
             </ul>

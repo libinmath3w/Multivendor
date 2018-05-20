@@ -287,10 +287,9 @@ class ModelCatalogProduct extends Model {
 			/*END OVICKO MULTISELLER*/
 			
 	public function editProduct($product_id, $data) {
+			   if($data['seller_id'] > 0){
 
-            /*START OVICKO MULTISELLER*/
-			   if($data['seller_id'] >0){	
-				}else{
+				} else {
 					if (isset($data['product_seller'])) {
 						$i = 1;
 						   foreach ($data['product_seller'] as $product_seller) {
@@ -332,8 +331,6 @@ class ModelCatalogProduct extends Model {
 			
 		$this->db->query("UPDATE " . DB_PREFIX . "product SET model = '" . $this->db->escape($data['model']) . "', sku = '" . $this->db->escape($data['sku']) . "', upc = '" . $this->db->escape($data['upc']) . "', ean = '" . $this->db->escape($data['ean']) . "', jan = '" . $this->db->escape($data['jan']) . "', isbn = '" . $this->db->escape($data['isbn']) . "', mpn = '" . $this->db->escape($data['mpn']) . "', location = '" . $this->db->escape($data['location']) . "', quantity = '" . (int)$data['quantity'] . "', minimum = '" . (int)$data['minimum'] . "', subtract = '" . (int)$data['subtract'] . "', stock_status_id = '" . (int)$data['stock_status_id'] . "', date_available = '" . $this->db->escape($data['date_available']) . "', manufacturer_id = '" . (int)$data['manufacturer_id'] . "', shipping = '" . (int)$data['shipping'] . "', price = '" . (float)$data['price'] . "', points = '" . (int)$data['points'] . "', weight = '" . (float)$data['weight'] . "', weight_class_id = '" . (int)$data['weight_class_id'] . "', length = '" . (float)$data['length'] . "', width = '" . (float)$data['width'] . "', height = '" . (float)$data['height'] . "', length_class_id = '" . (int)$data['length_class_id'] . "', status = '" . (int)$data['status'] . "', tax_class_id = '" . (int)$data['tax_class_id'] . "', sort_order = '" . (int)$data['sort_order'] . "',date_modified = NOW() WHERE product_id = '" . (int)$product_id . "'");
 
-
-            /*START OVICKO MULTISELLER*/
 			if (isset($data['product_seller'])) {			
 		        $q=0;
 				foreach ($data['product_seller'] as $product_seller) {
@@ -341,8 +338,7 @@ class ModelCatalogProduct extends Model {
 				}
 				$this->db->query("UPDATE " . DB_PREFIX . "product SET quantity = '" . (int)$q . "' WHERE product_id = '" . (int)$product_id . "'");
 		     }	
-		/*END OVICKO MULTISELLER*/
-			
+
 		if (isset($data['image'])) {
 			$this->db->query("UPDATE " . DB_PREFIX . "product SET image = '" . $this->db->escape($data['image']) . "' WHERE product_id = '" . (int)$product_id . "'");
 		}
@@ -384,26 +380,16 @@ class ModelCatalogProduct extends Model {
 				if ($product_option['type'] == 'select' || $product_option['type'] == 'radio' || $product_option['type'] == 'checkbox' || $product_option['type'] == 'image') {
 					
 					if (isset($product_option['product_option_value'])) {
-						
-            			/*START OVICKO MULTISELLER*/
 						$this->db->query("INSERT INTO " . DB_PREFIX . "product_option SET product_option_id = '" . (int)$product_option['product_option_id'] . "', product_id = '" . (int)$product_id . "', option_id = '" . (int)$product_option['option_id'] . "', required = '" . (int)$product_option['required'] . "', seller_id = '" . (int)$product_option['seller_id']. "'");
-						/*END OVICKO MULTISELLER*/
-			
+
 						$product_option_id = $this->db->getLastId();
 
 						foreach ($product_option['product_option_value'] as $product_option_value) {
-							
-           				 	/*START OVICKO MULTISELLER*/
 							$this->db->query("INSERT INTO " . DB_PREFIX . "product_option_value SET product_option_value_id = '" . (int)$product_option_value['product_option_value_id'] . "', product_option_id = '" . (int)$product_option_id . "', product_id = '" . (int)$product_id . "', option_id = '" . (int)$product_option['option_id'] . "', option_value_id = '" . (int)$product_option_value['option_value_id'] . "', quantity = '" . (int)$product_option_value['quantity'] . "', subtract = '" . (int)$product_option_value['subtract'] . "', price = '" . (float)$product_option_value['price'] . "', price_prefix = '" . $this->db->escape($product_option_value['price_prefix']) . "', points = '" . (int)$product_option_value['points'] . "', points_prefix = '" . $this->db->escape($product_option_value['points_prefix']) . "', weight = '" . (float)$product_option_value['weight'] . "', weight_prefix = '" . $this->db->escape($product_option_value['weight_prefix']) . "', seller_id = '" . (int)$product_option['seller_id']. "'");
-							/*END OVICKO MULTISELLER*/
-			
 						}
 					}
 				} else {
-					
-            	/*START OVICKO MULTISELLER*/
 				$this->db->query("INSERT INTO " . DB_PREFIX . "product_option SET product_option_id = '" . (int)$product_option['product_option_id'] . "', product_id = '" . (int)$product_id . "', option_id = '" . (int)$product_option['option_id'] . "', value = '" . $this->db->escape($product_option['value']) . "', required = '" . (int)$product_option['required'] . "', seller_id = '" . (int)$product_option['seller_id']. "'");
-				/*END OVICKO MULTISELLER*/
 			
 				}
 			}
@@ -421,8 +407,7 @@ class ModelCatalogProduct extends Model {
 
 		if (isset($data['product_discount'])) {
 			foreach ($data['product_discount'] as $product_discount) {
-				
-            /*START OVICKO MULTISELLER*/
+
 				$this->db->query("INSERT INTO " . DB_PREFIX . "product_discount SET product_id = '" . (int)$product_id . "', 
 				customer_group_id = '" . (int)$product_discount['customer_group_id'] . "', 
 				quantity = '" . (int)$product_discount['quantity'] . "', priority = '" . (int)$product_discount['priority'] . "',
@@ -430,7 +415,6 @@ class ModelCatalogProduct extends Model {
 				date_start = '" . $this->db->escape($product_discount['date_start']) . "',
 				date_end = '" . $this->db->escape($product_discount['date_end']) . "', 
 				seller_id = '" . (int)$product_discount['seller_id'] . "'");
-			/*END OVICKO MULTISELLER*/
 			
 			}
 		}
@@ -439,11 +423,7 @@ class ModelCatalogProduct extends Model {
 
 		if (isset($data['product_special'])) {
 			foreach ($data['product_special'] as $product_special) {
-				
-            /*START OVICKO MULTISELLER*/
 				$this->db->query("INSERT INTO " . DB_PREFIX . "product_special SET product_id = '" . (int)$product_id . "', customer_group_id = '" . (int)$product_special['customer_group_id'] . "', priority = '" . (int)$product_special['priority'] . "', price = '" . (float)$product_special['price'] . "', date_start = '" . $this->db->escape($product_special['date_start']) . "', date_end = '" . $this->db->escape($product_special['date_end']) . "', seller_id = '" . (int)$product_special['seller_id'] . "'");
-			/*END OVICKO MULTISELLER*/
-			
 			}
 		}
 
@@ -531,19 +511,12 @@ class ModelCatalogProduct extends Model {
 		if ($query->num_rows) {
 
 			$data = $query->row;
-
 			$data['sku'] = '';
-
 			$data['upc'] = '';
-
 			$data['viewed'] = '0';
-
 			$data['keyword'] = '';
-
 			$data['status'] = '0';
-            /*START OVICKO MULTISELLER*/
 			$data['approve'] = '0';
-			/*END OVICKO MULTISELLER*/		
 			$data['product_attribute'] = $this->getProductAttributes($product_id);
 			$data['product_description'] = $this->getProductDescriptions($product_id);
 			$data['product_discount'] = $this->getProductDiscounts($product_id);
@@ -566,14 +539,10 @@ class ModelCatalogProduct extends Model {
 	public function deleteProduct($product_id) {
 		$this->db->query("DELETE FROM " . DB_PREFIX . "product WHERE product_id = '" . (int)$product_id . "'");
 
-        /*START OVICKO MULTISELLER*/
 		$this->db->query("DELETE FROM " . DB_PREFIX . "seller WHERE vproduct_id = '" . (int)$product_id . "'");
-		/*END OVICKO MULTISELLER*/
-			
-        /*START OVICKO MULTISELLER*/
+
 		$this->db->query("DELETE FROM " . DB_PREFIX . "sellers_products WHERE product_id = '" . (int)$product_id . "'");
-		/*END OVICKO MULTISELLER*/
-			
+	
 		$this->db->query("DELETE FROM " . DB_PREFIX . "product_attribute WHERE product_id = '" . (int)$product_id . "'");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "product_description WHERE product_id = '" . (int)$product_id . "'");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "product_discount WHERE product_id = '" . (int)$product_id . "'");
@@ -603,16 +572,12 @@ class ModelCatalogProduct extends Model {
 		return $query->row;
 	}
 
-	public function getProducts($data = array()) {
-		
-            /*START OVICKO MULTISELLER*/
-				$sql = "SELECT p.*,pd.*,vd.vproduct_id,vds.username,vds.firstname,vds.lastname 
-				FROM " . DB_PREFIX . "product p LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id) 
-				LEFT JOIN " . DB_PREFIX . "seller vd ON (pd.product_id = vd.vproduct_id) 
-				LEFT JOIN " . DB_PREFIX . "sellers vds ON (vd.seller_id = vds.seller_id)  
-				WHERE pd.language_id = '" . (int)$this->config->get('config_language_id') . "'";
-			/*END OVICKO MULTISELLER*/
-			
+	public function getProducts($data = array()) {         
+		$sql = "SELECT p.*,pd.*,vd.vproduct_id,vds.username,vds.firstname,vds.lastname 
+		FROM " . DB_PREFIX . "product p LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id) 
+		LEFT JOIN " . DB_PREFIX . "seller vd ON (pd.product_id = vd.vproduct_id) 
+		LEFT JOIN " . DB_PREFIX . "sellers vds ON (vd.seller_id = vds.seller_id)  
+		WHERE pd.language_id = '" . (int)$this->config->get('config_language_id') . "'";
 
 		if (!empty($data['filter_name'])) {
 			$sql .= " AND pd.name LIKE '" . $this->db->escape($data['filter_name']) . "%'";
@@ -622,16 +587,13 @@ class ModelCatalogProduct extends Model {
 			$sql .= " AND p.model LIKE '" . $this->db->escape($data['filter_model']) . "%'";
 		}
 
+		if (isset($data['filter_seller_name']) && !is_null($data['filter_seller_name'])) {
+			$sql .= " AND vd.seller_id = '" . (int)$data['filter_seller_name'] . "'";
+		}
+		if (isset($data['filter_approve']) && !is_null($data['filter_approve'])) {
+			$sql .= " AND p.approve = '" . (int)$data['filter_approve'] . "'";
+		}
 
-            /*START OVICKO MULTISELLER*/
-				if (isset($data['filter_seller_name']) && !is_null($data['filter_seller_name'])) {
-					$sql .= " AND vd.seller_id = '" . (int)$data['filter_seller_name'] . "'";
-				}
-				if (isset($data['filter_approve']) && !is_null($data['filter_approve'])) {
-					$sql .= " AND p.approve = '" . (int)$data['filter_approve'] . "'";
-				}
-			/*END OVICKO MULTISELLER*/
-			
 		if (!empty($data['filter_price'])) {
 			$sql .= " AND p.price LIKE '" . $this->db->escape($data['filter_price']) . "%'";
 		}
@@ -645,9 +607,6 @@ class ModelCatalogProduct extends Model {
 		}
 
 		$sql .= " GROUP BY p.product_id";
-
-		
-            /*START OVICKO MULTISELLER*/
 				$sort_data = array(
 				'pd.name',
 				'p.model',
@@ -657,15 +616,6 @@ class ModelCatalogProduct extends Model {
 				'p.status',
 				'p.sort_order'
 			);
-			/*END OVICKO MULTISELLER*/
-			
-
-
-
-
-
-
-
 
 		if (isset($data['sort']) && in_array($data['sort'], $sort_data)) {
 			$sql .= " ORDER BY " . $data['sort'];
@@ -771,11 +721,7 @@ class ModelCatalogProduct extends Model {
 	public function getProductOptions($product_id) {
 		$product_option_data = array();
 
-		
-            /*START OVICKO MULTISELLER*/
-				$product_option_query = $this->db->query("SELECT *,po.seller_id as pseller_id FROM `" . DB_PREFIX . "product_option` po LEFT JOIN `" . DB_PREFIX . "option` o ON (po.option_id = o.option_id) LEFT JOIN `" . DB_PREFIX . "option_description` od ON (o.option_id = od.option_id) WHERE po.product_id = '" . (int)$product_id . "' AND od.language_id = '" . (int)$this->config->get('config_language_id') . "'");
-			/*END OVICKO MULTISELLER*/
-			
+		$product_option_query = $this->db->query("SELECT *,po.seller_id as pseller_id FROM `" . DB_PREFIX . "product_option` po LEFT JOIN `" . DB_PREFIX . "option` o ON (po.option_id = o.option_id) LEFT JOIN `" . DB_PREFIX . "option_description` od ON (o.option_id = od.option_id) WHERE po.product_id = '" . (int)$product_id . "' AND od.language_id = '" . (int)$this->config->get('config_language_id') . "'");
 
 		foreach ($product_option_query->rows as $product_option) {
 			$product_option_value_data = array();
@@ -801,11 +747,7 @@ class ModelCatalogProduct extends Model {
 				'product_option_id'    => $product_option['product_option_id'],
 				'product_option_value' => $product_option_value_data,
 				'option_id'            => $product_option['option_id'],
-
-            /*START OVICKO MULTISELLER*/
 				'seller_id'            => $product_option['pseller_id'],
-			/*END OVICKO MULTISELLER*/
-			
 				'name'                 => $product_option['name'],
 				'type'                 => $product_option['type'],
 				'value'                => $product_option['value'],
@@ -938,16 +880,13 @@ class ModelCatalogProduct extends Model {
 			$sql .= " AND p.model LIKE '" . $this->db->escape($data['filter_model']) . "%'";
 		}
 
+		if (isset($data['filter_seller_name']) && !is_null($data['filter_seller_name'])) {
+			$sql .= " AND vd.seller_id = '" . (int)$data['filter_seller_name'] . "'";
+		}
+		if (isset($data['filter_approve']) && !is_null($data['filter_approve'])) {
+			$sql .= " AND p.approve = '" . (int)$data['filter_approve'] . "'";
+		}
 
-            /*START OVICKO MULTISELLER*/
-				if (isset($data['filter_seller_name']) && !is_null($data['filter_seller_name'])) {
-					$sql .= " AND vd.seller_id = '" . (int)$data['filter_seller_name'] . "'";
-				}
-				if (isset($data['filter_approve']) && !is_null($data['filter_approve'])) {
-					$sql .= " AND p.approve = '" . (int)$data['filter_approve'] . "'";
-				}
-			/*END OVICKO MULTISELLER*/
-			
 		if (isset($data['filter_price']) && !is_null($data['filter_price'])) {
 			$sql .= " AND p.price LIKE '" . $this->db->escape($data['filter_price']) . "%'";
 		}
