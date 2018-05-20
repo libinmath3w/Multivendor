@@ -81,4 +81,4 @@
 </script>
 </body>
 </html>
-<?php echo; $footer; ?>
+<?php echo $footer; ?>

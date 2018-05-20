@@ -2,25 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e025f402-4bfb-423a-9d02-bcb18a0103e7" name="Default" comment="Removed unnecessary comments">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/catalog/controller/extension/module/sellercategory.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/catalog/language/en-gb/extension/module/sellercategory.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/catalog/model/catalog/sellercategory.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/catalog/view/theme/default/template/extension/module/sellercategory.twig" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/admin/view/stylesheet/bootstrap.css" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/model/catalog/product.php" afterPath="$PROJECT_DIR$/admin/model/catalog/product.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/view/template/catalog/product_list.twig" afterPath="$PROJECT_DIR$/admin/view/template/catalog/product_list.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/catalog/controller/product/seller.php" afterPath="$PROJECT_DIR$/catalog/controller/product/seller.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/catalog/model/catalog/seller.php" afterPath="$PROJECT_DIR$/catalog/model/catalog/seller.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/catalog/view/theme/default/template/product/seller.twig" afterPath="$PROJECT_DIR$/catalog/view/theme/default/template/product/seller.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/seller/catalog/controller/common/header.php" afterPath="$PROJECT_DIR$/seller/catalog/controller/common/header.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/seller/catalog/controller/seller/account.php" afterPath="$PROJECT_DIR$/seller/catalog/controller/seller/account.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/seller/catalog/controller/seller/filemanager.php" afterPath="$PROJECT_DIR$/seller/catalog/controller/seller/filemanager.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/seller/catalog/language/english/common/header.php" afterPath="$PROJECT_DIR$/seller/catalog/language/english/common/header.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/seller/catalog/view/theme/default/template/common/header.tpl" afterPath="$PROJECT_DIR$/seller/catalog/view/theme/default/template/common/header.tpl" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/seller/catalog/view/theme/default/template/seller/login.tpl" afterPath="$PROJECT_DIR$/seller/catalog/view/theme/default/template/seller/login.tpl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/seller/catalog/view/theme/default/template/seller/membership.tpl" afterPath="$PROJECT_DIR$/seller/catalog/view/theme/default/template/seller/membership.tpl" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -47,11 +29,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="error.log" pinned="false" current-in-tab="true">
+      <file leaf-file-name="error.log" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/system/storage/logs/error.log">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.tpl" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/seller/catalog/view/theme/default/template/seller/login.tpl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="504">
+              <caret line="83" column="9" lean-forward="true" selection-start-line="83" selection-start-column="9" selection-end-line="83" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -115,49 +107,6 @@
             <state relative-caret-position="200">
               <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="seller.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/catalog/model/seller/seller.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="220" column="9" lean-forward="false" selection-start-line="220" selection-start-column="9" selection-end-line="220" selection-end-column="9" />
-              <folding>
-                <marker date="1518516067872" expanded="true" signature="122:209" ph="SELECT * FRO... ${DB_PREFIX}seller_folder" />
-                <marker date="1518516067872" expanded="true" signature="583:825" ph="INSERT INTO ${DB_PREFIX}seller_folder... " />
-                <marker date="1518516067872" expanded="true" signature="908:992" ph="SELECT * FRO... ${DB_PREFIX}sellers" />
-                <marker date="1518516067872" expanded="true" signature="1107:1191" ph="SELECT * FRO... ${DB_PREFIX}sellers" />
-                <marker date="1518516067872" expanded="true" signature="1362:1460" ph="SELECT COUNT... ${DB_PREFIX}" />
-                <marker date="1518516067872" expanded="true" signature="1579:1667" ph="SELECT * FRO... ${DB_PREFIX}" />
-                <marker date="1518516067872" expanded="true" signature="1943:2031" ph="SELECT * FRO... ${DB_PREFIX}" />
-                <marker date="1518516067872" expanded="true" signature="2258:2344" ph="DELETE FROM " />
-                <marker date="1518516067872" expanded="true" signature="3173:3264" ph="SELECT usern... ${DB_PREFIX}sellers" />
-                <marker date="1518516067872" expanded="true" signature="3467:3689" ph="INSERT INTO ${DB_PREFIX}seller_folder... " />
-                <marker date="1518516067872" expanded="true" signature="3765:3830" ph="SELECT * FRO... ${DB_PREFIX}" />
-                <marker date="1518516067872" expanded="true" signature="4462:4546" ph="SELECT * FRO... ${DB_PREFIX}" />
-                <marker date="1518516067872" expanded="true" signature="5202:5292" ph="select commi... ${DB_PREFIX}" />
-                <marker date="1518516067872" expanded="true" signature="5400:5729" ph="INSERT INTO ${DB_PREFIX}upgraded_members... " />
-                <marker date="1518516067872" expanded="true" signature="6632:7460" ph="INSERT INTO ${DB_PREFIX}sellers... " />
-                <marker date="1518516067872" expanded="true" signature="7559:7703" ph="INSERT INTO ${DB_PREFIX}url_alias... " />
-                <marker date="1518516067872" expanded="true" signature="7737:7942" ph="INSERT INTO ${DB_PREFIX}saddress... " />
-                <marker date="1518516067872" expanded="true" signature="11189:11273" ph="SELECT * FRO... ${DB_PREFIX}" />
-                <marker date="1518516067872" expanded="true" signature="11929:12019" ph="select commi... ${DB_PREFIX}" />
-                <marker date="1518516067872" expanded="true" signature="12127:12456" ph="INSERT INTO ${DB_PREFIX}upgraded_sellers... " />
-                <marker date="1518516067872" expanded="true" signature="13432:13535" ph="SELECT folde... ${DB_PREFIX}" />
-                <marker date="1518516067872" expanded="true" signature="14480:14562" ph="SELECT * FRO... ${DB_PREFIX}" />
-                <marker date="1518516067872" expanded="true" signature="14669:14757" ph="SELECT * FRO... ${DB_PREFIX}" />
-                <marker date="1518516067872" expanded="true" signature="14865:14969" ph="SELECT * FRO... ${DB_PREFIX}" />
-                <marker date="1518516067872" expanded="true" signature="15134:15332" ph="SELECT *, CO... ${DB_PREFIX}" />
-                <marker date="1518516067872" expanded="true" signature="17546:17669" ph="SELECT COUNT... ${DB_PREFIX}" />
-                <marker date="1518516067872" expanded="true" signature="17796:17925" ph="SELECT COUNT... ${DB_PREFIX}" />
-                <marker date="1518516067872" expanded="true" signature="18046:18159" ph="SELECT * FRO... ${DB_PREFIX}" />
-                <marker date="1518516067872" expanded="true" signature="18260:18346" ph="SELECT * FRO... ${DB_PREFIX}seller_ip" />
-                <marker date="1518516067872" expanded="true" signature="18455:18548" ph="SELECT folde... ${DB_PREFIX}sellers" />
-                <marker date="1518516067872" expanded="true" signature="18664:18760" ph="SELECT * FRO... ${DB_PREFIX}seller_ip_blacklist" />
-                <marker date="1518516067872" expanded="true" signature="18874:19291" ph="INSERT INTO ${DB_PREFIX}seller_message... " />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -266,6 +215,7 @@
         <option value="$PROJECT_DIR$/catalog/controller/product/seller.php" />
         <option value="$PROJECT_DIR$/catalog/view/theme/default/template/product/seller.twig" />
         <option value="$PROJECT_DIR$/system/storage/logs/error.log" />
+        <option value="$PROJECT_DIR$/seller/catalog/view/theme/default/template/seller/login.tpl" />
       </list>
     </option>
   </component>
@@ -403,6 +353,24 @@
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="seller">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Multivendor">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="seller">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
             <PATH_ELEMENT USER_OBJECT="catalog">
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
@@ -433,37 +401,7 @@
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="catalog">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="view">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="theme">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="default">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="template">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="extension">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="Multivendor">
+            <PATH_ELEMENT USER_OBJECT="seller">
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
@@ -487,11 +425,7 @@
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="extension">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="module">
+            <PATH_ELEMENT USER_OBJECT="seller">
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
@@ -502,6 +436,10 @@
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
             <PATH_ELEMENT USER_OBJECT="Multivendor">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="seller">
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
@@ -531,6 +469,10 @@
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="seller">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
             <PATH_ELEMENT USER_OBJECT="catalog">
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
@@ -546,6 +488,10 @@
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
             <PATH_ELEMENT USER_OBJECT="Multivendor">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="seller">
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
@@ -647,7 +593,7 @@
       <workItem from="1514440009662" duration="3267000" />
       <workItem from="1515046969613" duration="1971000" />
       <workItem from="1515084181789" duration="17000" />
-      <workItem from="1526805160266" duration="5539000" />
+      <workItem from="1526805160266" duration="5817000" />
     </task>
     <task id="LOCAL-00001" summary="Demo images">
       <created>1515047615069</created>
@@ -660,10 +606,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18686000" />
+    <option name="totallyTimeSpent" value="18964000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="784" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.238653" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -707,7 +653,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/seller/catalog/controller/saccount/contact.php" />
     <entry file="file://$PROJECT_DIR$/seller/catalog/controller/seller/contact.php" />
     <entry file="file://$PROJECT_DIR$/seller/index.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -1116,6 +1061,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/seller/catalog/view/theme/default/template/seller/login.tpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="83" column="9" lean-forward="true" selection-start-line="83" selection-start-column="9" selection-end-line="83" selection-end-column="9" />
           <folding />
         </state>
       </provider>
