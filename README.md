@@ -78,6 +78,8 @@ This software is built on top of [OpenCart](http://opencart.com) .
 Additional software and development done by [Ovicko](https://ovicko.com).
 
 Submit any issues so that we help make this a great software.
+## Support this Project
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=K7HBK7452TH2U)
 # Disclaimer
 This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
