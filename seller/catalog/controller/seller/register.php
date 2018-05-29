@@ -1,4 +1,4 @@
-<?php 
+<?php
 class ControllerSellerRegister extends Controller {
 	private $error = array();
   	public function index() {
@@ -17,18 +17,18 @@ class ControllerSellerRegister extends Controller {
 				$data['logo'] = HTTP_SERVER1. 'image/' . $this->config->get('config_logo');
 		} else {			$data['logo'] = '';		}
     	if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
-			$sellid =  $this->model_seller_seller->addSeller($this->request->post);	
+			$sellid =  $this->model_seller_seller->addSeller($this->request->post);
 			unset($this->session->data['guest']);
 			// Default Shipping Address
 			if ($this->config->get('config_tax_seller') == 'shipping') {
 				$this->session->data['shipping_country_id'] = $this->request->post['country_id'];
 				$this->session->data['shipping_zone_id'] = $this->request->post['zone_id'];
-				$this->session->data['shipping_postcode'] = $this->request->post['postcode'];				
+				$this->session->data['shipping_postcode'] = $this->request->post['postcode'];
 			}
 			// Default Payment Address
 			if ($this->config->get('config_tax_seller') == 'payment') {
 				$this->session->data['payment_country_id'] = $this->request->post['country_id'];
-				$this->session->data['payment_zone_id'] = $this->request->post['zone_id'];			
+				$this->session->data['payment_zone_id'] = $this->request->post['zone_id'];
 			}
 			if(!empty($this->request->post['new_commission_id']) && !empty($sellid)){
 				$customs = $sellid;
@@ -44,7 +44,7 @@ class ControllerSellerRegister extends Controller {
 			}else{
 			$this->response->redirect($this->url->link('seller/success'));
 			}
-    	} 
+    	}
     	$data['heading_title'] = $this->language->get('heading_title');
 		$data['text_account_already'] = sprintf($this->language->get('text_account_already'), $this->url->link('seller/login', '', 'SSL'));
 		$data['text_your_details'] = $this->language->get('text_your_details');
@@ -56,7 +56,7 @@ class ControllerSellerRegister extends Controller {
 		$data['text_no'] = $this->language->get('text_no');
 		$data['text_select'] = $this->language->get('text_select');
 		$data['text_none'] = $this->language->get('text_none');
-		$data['entry_username'] = $this->language->get('entry_username');				
+		$data['entry_username'] = $this->language->get('entry_username');
     	$data['entry_firstname'] = $this->language->get('entry_firstname');
     	$data['entry_lastname'] = $this->language->get('entry_lastname');
     	$data['entry_email'] = $this->language->get('entry_email');
@@ -104,12 +104,12 @@ class ControllerSellerRegister extends Controller {
 			$data['error_firstname'] = $this->error['firstname'];
 		} else {
 			$data['error_firstname'] = '';
-		}	
+		}
 		if (isset($this->error['lastname'])) {
 			$data['error_lastname'] = $this->error['lastname'];
 		} else {
 			$data['error_lastname'] = '';
-		}		
+		}
 		if (isset($this->error['email'])) {
 			$data['error_email'] = $this->error['email'];
 		} else {
@@ -321,7 +321,7 @@ class ControllerSellerRegister extends Controller {
 		if (isset($this->request->post['postcode'])) {
     		$data['postcode'] = $this->request->post['postcode'];
 		} elseif (isset($this->session->data['shipping_postcode'])) {
-			$data['postcode'] = $this->session->data['shipping_postcode'];		
+			$data['postcode'] = $this->session->data['shipping_postcode'];
 		} else {
 			$data['postcode'] = '';
 		}
@@ -333,8 +333,8 @@ class ControllerSellerRegister extends Controller {
     	if (isset($this->request->post['country_id'])) {
       		$data['country_id'] = $this->request->post['country_id'];
 		} elseif (isset($this->session->data['shipping_country_id'])) {
-			$data['country_id'] = $this->session->data['shipping_country_id'];		
-		} else {	
+			$data['country_id'] = $this->session->data['shipping_country_id'];
+		} else {
       		$data['country_id'] = $this->config->get('config_country_id');
     	}
 		if (isset($this->request->post['cheque'])) {
@@ -343,9 +343,9 @@ class ControllerSellerRegister extends Controller {
 			$data['cheque'] = '';
 		}
     	if (isset($this->request->post['zone_id'])) {
-      		$data['zone_id'] = $this->request->post['zone_id']; 	
+      		$data['zone_id'] = $this->request->post['zone_id'];
 		} elseif (isset($this->session->data['shipping_zone_id'])) {
-			$data['zone_id'] = $this->session->data['shipping_zone_id'];			
+			$data['zone_id'] = $this->session->data['shipping_zone_id'];
 		} else {
       		$data['zone_id'] = '';
     	}
@@ -382,7 +382,7 @@ class ControllerSellerRegister extends Controller {
 		} else {
 			$data['agree'] = false;
 		}
-		$data['allplan'] = $this->url->link('seller/plan1', '', 'SSL');  
+		$data['allplan'] = $this->url->link('seller/plan1', '', 'SSL');
 			  if (isset($this->request->post['new_commission_id'])) {
 			$data['new_commission_id'] = $this->request->post['new_commission_id'];
 		} else {
@@ -395,7 +395,7 @@ class ControllerSellerRegister extends Controller {
 				   $data['ncommissions'][] = array(
 					'commission_id' 	=> $result['commission_id'],
 					'commission_name' 	=> $result['commission_name'],
-					'amount' 	=>$result['amount'],				
+					'amount' 	=>$result['amount'],
 					'commission'    	=> $result['commission'],
 					'per'    	=> $result['per'],
 					'duration_id'    	=> $result['duration_id'],
@@ -405,7 +405,7 @@ class ControllerSellerRegister extends Controller {
 				);
 			}
 		$data['column_left'] = $this->load->controller('common/column_left');
-		$data['column_right'] = 
+		$data['column_right'] =
 		$data['content_top'] = $this->load->controller('common/content_top');
 		$data['content_bottom'] = $this->load->controller('common/content_bottom');
 		$data['footer'] = $this->load->controller('common/footer');
@@ -422,12 +422,11 @@ class ControllerSellerRegister extends Controller {
 		$this->load->model('seller/seller');
 		if ((utf8_strlen($this->request->post['username']) < 4) || (utf8_strlen($this->request->post['username']) > 32)){
       		$json['error'] = $this->language->get('error_username');
-    	}elseif(!preg_match('/^[a-zA-Z0-9!@$^]*$/',$this->request->post['username']))
-		{
+    	} elseif(!preg_match('/^[a-zA-Z0-9!@$^]*$/',$this->request->post['username'])) {
 			$json['error'] = $this->language->get('error_invalidusername');
-		}elseif($this->model_seller_seller->getTotalSellersByUsername($this->request->post['username'])) {
+		} elseif($this->model_seller_seller->getTotalSellersByUsername($this->request->post['username'])) {
       		$json['error'] = $this->language->get('error_userexists');
-    	}else{
+    	} else {
 			$json['success'] = $this->language->get('error_available');
 		}
 		$this->response->setOutput(json_encode($json));
@@ -484,11 +483,11 @@ class ControllerSellerRegister extends Controller {
 				'address_format'    => $country_info['address_format'],
 				'postcode_required' => $country_info['postcode_required'],
 				'zone'              => $this->model_localisation_zone->getZonesByCountryId($this->request->get['country_id']),
-				'status'            => $country_info['status']		
+				'status'            => $country_info['status']
 			);
 		}
 		$this->response->setOutput(json_encode($json));
-	}	
+	}
 	public function captcha() {
 		$this->load->library('captcha');
 		$captcha = new Captcha();

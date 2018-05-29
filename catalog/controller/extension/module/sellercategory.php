@@ -63,6 +63,6 @@ class ControllerExtensionModuleSellercategory extends Controller {
 			);
 		}
 
-		return $this->load->view('extension/module/Sellercategory', $data);
+		return $this->load->view('extension/module/sellercategory', $data);
 	}
 }

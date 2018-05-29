@@ -78,7 +78,7 @@
   <!-- /.login-box-body -->
 </div>
 <!-- /.login-box -->
-</script>
+</body>
 </body>
 </html>
 <?php echo $footer; ?>
